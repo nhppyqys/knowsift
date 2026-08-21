@@ -1,5 +1,7 @@
 # KnowSift
 
+[English](README.en.md) | 简体中文
+
 > AI 负责把资料找回来，KnowSift 负责决定什么配叫知识。
 
 把 Bilibili、YouTube、网页、论文和本地文档交给 Agent。KnowSift 会把混在一起的**知识、条件结论、从业者经验、个人自述、营销承诺和错误说法**分开，生成一份可以追溯来源的 Markdown 知识文档。
