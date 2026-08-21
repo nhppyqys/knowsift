@@ -1,0 +1,6 @@
+interface:
+  display_name: "KnowSift"
+  short_description: "Compile mixed sources into layered knowledge"
+  default_prompt: "Use $knowsift to turn these collected sources into a layered, traceable knowledge document."
+policy:
+  allow_implicit_invocation: true

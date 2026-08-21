@@ -1,0 +1,173 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "85a6d403574c544686ebfddabd25fb4bd2c1b5930cb597de47b837322e1ef3c0",
+  "claim_id": "SD-YT-003",
+  "claim_text": "YouTube合作伙伴获得分配后Shorts收入的百分之四十五。",
+  "canonical_claim": "YouTube合作伙伴获得分配后Shorts收入的百分之四十五。",
+  "normalized_ir": {
+    "claim_id": "SD-YT-003",
+    "source_text": "YouTube合作伙伴获得分配后Shorts收入的百分之四十五。",
+    "operator": "FACT",
+    "subject": "YouTube合作伙伴",
+    "predicate": "获得",
+    "object": "分配后Shorts收入的百分之四十五",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "YouTube合作伙伴",
+        "start": 0,
+        "end": 11
+      },
+      "predicate": {
+        "text": "获得",
+        "start": 11,
+        "end": 13
+      },
+      "object": {
+        "text": "分配后Shorts收入的百分之四十五",
+        "start": 13,
+        "end": 31
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-SD-YT-003"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-SD-YT-003": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-SD-YT-003"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-SD-YT-003"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "YT-REVENUE-SHARES"
+    ],
+    "roots_by_source": {
+      "YT-REVENUE-SHARES": [
+        "YT-REVENUE-SHARES"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "YT-REVENUE-SHARES": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-SD-YT-003"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-SD-YT-003",
+      "source_id": "YT-REVENUE-SHARES",
+      "source_kind": "official_documentation",
+      "quote": {
+        "text": "Shorts: 45% allocated",
+        "start": 21,
+        "end": 42
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

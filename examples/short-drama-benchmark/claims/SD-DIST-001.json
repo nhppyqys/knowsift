@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-DIST-001",
+    "source_text": "DramaBox日本创作者页面接受十五至一百集的短剧作品进行分发洽谈。",
+    "operator": "FACT",
+    "subject": "DramaBox日本创作者页面",
+    "predicate": "接受",
+    "object": "十五至一百集的短剧作品进行分发洽谈",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "DramaBox日本创作者页面",
+        "start": 0,
+        "end": 15
+      },
+      "predicate": {
+        "text": "接受",
+        "start": 15,
+        "end": 17
+      },
+      "object": {
+        "text": "十五至一百集的短剧作品进行分发洽谈",
+        "start": 17,
+        "end": 34
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-DIST-001",
+      "source_id": "DRAMABOX-JP-CREATORS",
+      "source_kind": "official_documentation",
+      "source_text": "募集対象は15-100話のショートドラマ。収益分配は基本的にMG+レベニューシェアで、詳細は契約による。",
+      "quote": {
+        "text": "募集対象は15-100話のショートドラマ",
+        "start": 0,
+        "end": 20
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-DIST-001",
+      "evidence_id": "E-SD-DIST-001",
+      "relation": "ENTAILS",
+      "claim_fragment": "DramaBox日本创作者页面接受十五至一百集的短剧作品进行分发洽谈",
+      "evidence_fragment": "募集対象は15-100話のショートドラマ",
+      "missing_bridge": ""
+    }
+  ]
+}

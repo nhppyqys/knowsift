@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-BILI-002",
+    "source_text": "参与B站充电计划的UP主应拥有发布内容的合法权利或全部合法授权。",
+    "operator": "FACT",
+    "subject": "参与B站充电计划的UP主",
+    "predicate": "应拥有",
+    "object": "发布内容的合法权利或全部合法授权",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "参与B站充电计划的UP主",
+        "start": 0,
+        "end": 12
+      },
+      "predicate": {
+        "text": "应拥有",
+        "start": 12,
+        "end": 15
+      },
+      "object": {
+        "text": "发布内容的合法权利或全部合法授权",
+        "start": 15,
+        "end": 31
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-BILI-002",
+      "source_id": "BILI-CHARGE-RULES",
+      "source_kind": "official_documentation",
+      "source_text": "用户可以在充电面板支付B币为UP主充电。UP主应拥有发布内容的合法权利或全部合法授权。",
+      "quote": {
+        "text": "UP主应拥有发布内容的合法权利或全部合法授权",
+        "start": 20,
+        "end": 42
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-BILI-002",
+      "evidence_id": "E-SD-BILI-002",
+      "relation": "ENTAILS",
+      "claim_fragment": "参与B站充电计划的UP主应拥有发布内容的合法权利或全部合法授权",
+      "evidence_fragment": "UP主应拥有发布内容的合法权利或全部合法授权",
+      "missing_bridge": ""
+    }
+  ]
+}

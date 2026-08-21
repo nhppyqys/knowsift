@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-YT-002",
+    "source_text": "YouTube合作伙伴的观看页广告净收入分成为百分之五十五。",
+    "operator": "FACT",
+    "subject": "YouTube合作伙伴的观看页广告净收入分成",
+    "predicate": "为",
+    "object": "百分之五十五",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "YouTube合作伙伴的观看页广告净收入分成",
+        "start": 0,
+        "end": 22
+      },
+      "predicate": {
+        "text": "为",
+        "start": 22,
+        "end": 23
+      },
+      "object": {
+        "text": "百分之五十五",
+        "start": 23,
+        "end": 29
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-YT-002",
+      "source_id": "YT-REVENUE-SHARES",
+      "source_kind": "official_documentation",
+      "source_text": "Watch Page: 55% net. Shorts: 45% allocated. Fan funding: 70% net.",
+      "quote": {
+        "text": "Watch Page: 55% net",
+        "start": 0,
+        "end": 19
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-YT-002",
+      "evidence_id": "E-SD-YT-002",
+      "relation": "ENTAILS",
+      "claim_fragment": "YouTube合作伙伴的观看页广告净收入分成为百分之五十五",
+      "evidence_fragment": "Watch Page: 55% net",
+      "missing_bridge": ""
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-VIEW-001",
+    "source_text": "B站创作者把画面、运镜、景别、时长、台词、声音、转场和道具列为拍摄脚本字段。",
+    "operator": "OBSERVE",
+    "subject": "B站创作者",
+    "predicate": "把",
+    "object": "画面、运镜、景别、时长、台词、声音、转场和道具列为拍摄脚本字段",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "B站创作者",
+        "start": 0,
+        "end": 5
+      },
+      "predicate": {
+        "text": "把",
+        "start": 5,
+        "end": 6
+      },
+      "object": {
+        "text": "画面、运镜、景别、时长、台词、声音、转场和道具列为拍摄脚本字段",
+        "start": 6,
+        "end": 37
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-VIEW-001",
+      "source_id": "BILI-STORYBOARD",
+      "source_kind": "primary_source",
+      "source_text": "拍摄脚本一般包含画面内容、镜头运动、景别、长度、台词、音乐音效、转场方式和道具。",
+      "quote": {
+        "text": "拍摄脚本一般包含画面内容、镜头运动、景别、长度、台词、音乐音效、转场方式和道具",
+        "start": 0,
+        "end": 39
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-VIEW-001",
+      "evidence_id": "E-SD-VIEW-001",
+      "relation": "ENTAILS",
+      "claim_fragment": "B站创作者把画面、运镜、景别、时长、台词、声音、转场和道具列为拍摄脚本字段",
+      "evidence_fragment": "拍摄脚本一般包含画面内容、镜头运动、景别、长度、台词、音乐音效、转场方式和道具",
+      "missing_bridge": ""
+    }
+  ]
+}

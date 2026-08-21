@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-REJECT-002",
+    "source_text": "批量生成重复模板化AI短剧就能稳定通过YouTube频道变现审核。",
+    "operator": "FACT",
+    "subject": "批量生成重复模板化AI短剧",
+    "predicate": "就能稳定通过",
+    "object": "YouTube频道变现审核",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "批量生成重复模板化AI短剧",
+        "start": 0,
+        "end": 13
+      },
+      "predicate": {
+        "text": "就能稳定通过",
+        "start": 13,
+        "end": 19
+      },
+      "object": {
+        "text": "YouTube频道变现审核",
+        "start": 19,
+        "end": 32
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-REJECT-002",
+      "source_id": "YT-MONETIZATION-POLICY",
+      "source_kind": "official_documentation",
+      "source_text": "Mass-produced or repetitive content is inauthentic and has always been ineligible for monetization.",
+      "quote": {
+        "text": "Mass-produced or repetitive content is inauthentic and has always been ineligible for monetization",
+        "start": 0,
+        "end": 98
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-REJECT-002",
+      "evidence_id": "E-SD-REJECT-002",
+      "relation": "CONTRADICTS",
+      "claim_fragment": "批量生成重复模板化AI短剧就能稳定通过YouTube频道变现审核",
+      "evidence_fragment": "Mass-produced or repetitive content is inauthentic and has always been ineligible for monetization",
+      "missing_bridge": ""
+    }
+  ]
+}

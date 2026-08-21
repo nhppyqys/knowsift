@@ -1,0 +1,173 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "728557e0670ee45681ddafec0d1fdebf0be73d22ef822783ec284ca135b3088a",
+  "claim_id": "SD-PROD-001",
+  "claim_text": "短片前期计划的三份基础文件是剧本、拍摄计划和预算。",
+  "canonical_claim": "短片前期计划的三份基础文件是剧本、拍摄计划和预算。",
+  "normalized_ir": {
+    "claim_id": "SD-PROD-001",
+    "source_text": "短片前期计划的三份基础文件是剧本、拍摄计划和预算。",
+    "operator": "FACT",
+    "subject": "短片前期计划的三份基础文件",
+    "predicate": "是",
+    "object": "剧本、拍摄计划和预算",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "短片前期计划的三份基础文件",
+        "start": 0,
+        "end": 13
+      },
+      "predicate": {
+        "text": "是",
+        "start": 13,
+        "end": 14
+      },
+      "object": {
+        "text": "剧本、拍摄计划和预算",
+        "start": 14,
+        "end": 24
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-SD-PROD-001"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-SD-PROD-001": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-SD-PROD-001"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-SD-PROD-001"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "GUIDE-STUDIOBINDER-2025"
+    ],
+    "roots_by_source": {
+      "GUIDE-STUDIOBINDER-2025": [
+        "GUIDE-STUDIOBINDER-2025"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "GUIDE-STUDIOBINDER-2025": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-SD-PROD-001"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-SD-PROD-001",
+      "source_id": "GUIDE-STUDIOBINDER-2025",
+      "source_kind": "primary_source",
+      "quote": {
+        "text": "The Screenplay; The Schedule; The Budget",
+        "start": 0,
+        "end": 40
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

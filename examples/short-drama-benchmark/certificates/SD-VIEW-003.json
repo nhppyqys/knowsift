@@ -1,0 +1,173 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "4e2f1407b7121a7b5a69e4d2c9073e22c94bcec0734a1627cb4a8a8d23cf50ce",
+  "claim_id": "SD-VIEW-003",
+  "claim_text": "B站视频发布者自述每天花一小时做海外短剧推广，当月多赚二千三百元以上。",
+  "canonical_claim": "B站视频发布者自述每天花一小时做海外短剧推广，当月多赚二千三百元以上。",
+  "normalized_ir": {
+    "claim_id": "SD-VIEW-003",
+    "source_text": "B站视频发布者自述每天花一小时做海外短剧推广，当月多赚二千三百元以上。",
+    "operator": "OBSERVE",
+    "subject": "B站视频发布者",
+    "predicate": "自述",
+    "object": "每天花一小时做海外短剧推广，当月多赚二千三百元以上",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "B站视频发布者",
+        "start": 0,
+        "end": 7
+      },
+      "predicate": {
+        "text": "自述",
+        "start": 7,
+        "end": 9
+      },
+      "object": {
+        "text": "每天花一小时做海外短剧推广，当月多赚二千三百元以上",
+        "start": 9,
+        "end": 34
+      }
+    }
+  },
+  "protocols_required": [
+    "SOURCE_ATTESTATION",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-SD-VIEW-003"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-SD-VIEW-003": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-SD-VIEW-003"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "SOURCE_ATTESTATION": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-SD-VIEW-003"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "BILI-EARNING-2300"
+    ],
+    "roots_by_source": {
+      "BILI-EARNING-2300": [
+        "BILI-EARNING-2300"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "BILI-EARNING-2300": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-SD-VIEW-003"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-SD-VIEW-003",
+      "source_id": "BILI-EARNING-2300",
+      "source_kind": "primary_source",
+      "quote": {
+        "text": "每天花1小时用电脑操作，这个月多赚2300+",
+        "start": 6,
+        "end": 28
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

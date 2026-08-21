@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-VIEW-004",
+    "source_text": "D4Darious的视频简介称该视频讨论短片写作中的背景故事管理和应避免的问题。",
+    "operator": "OBSERVE",
+    "subject": "D4Darious的视频简介",
+    "predicate": "称",
+    "object": "该视频讨论短片写作中的背景故事管理和应避免的问题",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "D4Darious的视频简介",
+        "start": 0,
+        "end": 14
+      },
+      "predicate": {
+        "text": "称",
+        "start": 14,
+        "end": 15
+      },
+      "object": {
+        "text": "该视频讨论短片写作中的背景故事管理和应避免的问题",
+        "start": 15,
+        "end": 39
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-VIEW-004",
+      "source_id": "YT-D4DARIOUS-TIPS",
+      "source_kind": "primary_source",
+      "source_text": "The description says the video covers managing backstory and what to avoid in the writing process.",
+      "quote": {
+        "text": "managing backstory and what to avoid in the writing process",
+        "start": 38,
+        "end": 97
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-VIEW-004",
+      "evidence_id": "E-SD-VIEW-004",
+      "relation": "ENTAILS",
+      "claim_fragment": "D4Darious的视频简介称该视频讨论短片写作中的背景故事管理和应避免的问题",
+      "evidence_fragment": "managing backstory and what to avoid in the writing process",
+      "missing_bridge": ""
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "fbf3550f93bb6fb1c19433564587a8377c8b7e9def4fb220abe8df293a68a0c9",
+  "claim_id": "SD-DIST-001",
+  "claim_text": "DramaBox日本创作者页面接受十五至一百集的短剧作品进行分发洽谈。",
+  "canonical_claim": "DramaBox日本创作者页面接受十五至一百集的短剧作品进行分发洽谈。",
+  "normalized_ir": {
+    "claim_id": "SD-DIST-001",
+    "source_text": "DramaBox日本创作者页面接受十五至一百集的短剧作品进行分发洽谈。",
+    "operator": "FACT",
+    "subject": "DramaBox日本创作者页面",
+    "predicate": "接受",
+    "object": "十五至一百集的短剧作品进行分发洽谈",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "DramaBox日本创作者页面",
+        "start": 0,
+        "end": 15
+      },
+      "predicate": {
+        "text": "接受",
+        "start": 15,
+        "end": 17
+      },
+      "object": {
+        "text": "十五至一百集的短剧作品进行分发洽谈",
+        "start": 17,
+        "end": 34
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-SD-DIST-001"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-SD-DIST-001": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-SD-DIST-001"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-SD-DIST-001"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "DRAMABOX-JP-CREATORS"
+    ],
+    "roots_by_source": {
+      "DRAMABOX-JP-CREATORS": [
+        "DRAMABOX-JP-CREATORS"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "DRAMABOX-JP-CREATORS": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-SD-DIST-001"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-SD-DIST-001",
+      "source_id": "DRAMABOX-JP-CREATORS",
+      "source_kind": "official_documentation",
+      "quote": {
+        "text": "募集対象は15-100話のショートドラマ",
+        "start": 0,
+        "end": 20
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

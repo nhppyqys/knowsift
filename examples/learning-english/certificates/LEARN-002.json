@@ -1,0 +1,173 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "bc8d35a388b586010e62a1c3258546fcdb2eaaabaa29c392cc7e0adfcc6c3b50",
+  "claim_id": "LEARN-002",
+  "claim_text": "讲师甲主张成年人绝对不应该背单词。",
+  "canonical_claim": "讲师甲主张成年人绝对不应该背单词。",
+  "normalized_ir": {
+    "claim_id": "LEARN-002",
+    "source_text": "讲师甲主张成年人绝对不应该背单词。",
+    "operator": "OBSERVE",
+    "subject": "讲师甲",
+    "predicate": "主张",
+    "object": "成年人绝对不应该背单词",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "讲师甲",
+        "start": 0,
+        "end": 3
+      },
+      "predicate": {
+        "text": "主张",
+        "start": 3,
+        "end": 5
+      },
+      "object": {
+        "text": "成年人绝对不应该背单词",
+        "start": 5,
+        "end": 16
+      }
+    }
+  },
+  "protocols_required": [
+    "SOURCE_ATTESTATION",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-VIDEO-1"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-VIDEO-1": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-VIDEO-1"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "SOURCE_ATTESTATION": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-VIDEO-1"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "VIDEO-A"
+    ],
+    "roots_by_source": {
+      "VIDEO-A": [
+        "VIDEO-A"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "VIDEO-A": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-VIDEO-1"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-VIDEO-1",
+      "source_id": "VIDEO-A",
+      "source_kind": "primary_source",
+      "quote": {
+        "text": "讲师甲主张成年人绝对不应该背单词",
+        "start": 5,
+        "end": 21
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

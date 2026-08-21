@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "LEARN-004",
+    "source_text": "学习者丙自述自己在三个月内从零基础达到流利。",
+    "operator": "OBSERVE",
+    "subject": "学习者丙",
+    "predicate": "自述",
+    "object": "自己在三个月内从零基础达到流利",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "学习者丙",
+        "start": 0,
+        "end": 4
+      },
+      "predicate": {
+        "text": "自述",
+        "start": 4,
+        "end": 6
+      },
+      "object": {
+        "text": "自己在三个月内从零基础达到流利",
+        "start": 6,
+        "end": 21
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-VIDEO-3",
+      "source_id": "VIDEO-C",
+      "source_kind": "primary_source",
+      "source_text": "视频字幕：学习者丙自述自己在三个月内从零基础达到流利。",
+      "quote": {
+        "text": "学习者丙自述自己在三个月内从零基础达到流利",
+        "start": 5,
+        "end": 26
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "LEARN-004",
+      "evidence_id": "E-VIDEO-3",
+      "relation": "ENTAILS",
+      "claim_fragment": "学习者丙自述自己在三个月内从零基础达到流利",
+      "evidence_fragment": "学习者丙自述自己在三个月内从零基础达到流利",
+      "missing_bridge": ""
+    }
+  ]
+}

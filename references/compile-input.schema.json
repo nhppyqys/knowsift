@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "compile-input.schema.json",
+  "title": "Knowledge Compiler Input 4.0",
+  "type": "object",
+  "required": ["claim_ir", "evidence", "semantic_reviews"],
+  "additionalProperties": false,
+  "properties": {
+    "claim_ir": {"$ref": "claim-ir.schema.json"},
+    "domain": {"type": ["string", "null"]},
+    "claim_class": {"type": ["string", "null"]},
+    "evidence": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/evidence"}
+    },
+    "semantic_reviews": {
+      "type": "array",
+      "items": {"$ref": "semantic-review.schema.json"}
+    },
+    "verified_scope": {"$ref": "#/$defs/linkedValues"},
+    "verified_conditions": {"$ref": "#/$defs/linkedValues"},
+    "verified_exceptions": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/exception"}
+    },
+    "supported_components": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/component"}
+    },
+    "protocol_inputs": {"type": "object"}
+  },
+  "$defs": {
+    "anchor": {
+      "type": "object",
+      "required": ["text", "start", "end"],
+      "additionalProperties": false,
+      "properties": {
+        "text": {"type": "string"},
+        "start": {"type": "integer", "minimum": 0},
+        "end": {"type": "integer", "minimum": 0}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["evidence_id", "source_id", "source_kind", "source_text", "quote"],
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {"type": "string", "minLength": 1},
+        "source_id": {"type": "string", "minLength": 1},
+        "source_kind": {"type": "string", "minLength": 1},
+        "source_text": {"type": "string", "minLength": 1},
+        "quote": {"$ref": "#/$defs/anchor"},
+        "date": {"type": ["string", "null"]},
+        "version": {"type": ["string", "null"]},
+        "entities": {"type": "array"},
+        "numbers": {"type": "array"},
+        "scope": {"type": "object"},
+        "derived_from": {"type": "array", "items": {"type": "string"}},
+        "cites": {"type": "array", "items": {"type": "string"}},
+        "dataset_id": {"type": ["string", "null"]}
+      }
+    },
+    "linkedValue": {
+      "type": "object",
+      "required": ["value", "evidence_ids", "evidence_fragments"],
+      "additionalProperties": false,
+      "properties": {
+        "value": {},
+        "evidence_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "evidence_fragments": {
+          "type": "object",
+          "additionalProperties": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "linkedValues": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/linkedValue"}
+    },
+    "exception": {
+      "type": "object",
+      "required": ["text", "evidence_id", "quote"],
+      "additionalProperties": false,
+      "properties": {
+        "text": {"type": "string", "minLength": 1},
+        "evidence_id": {"type": "string", "minLength": 1},
+        "quote": {"$ref": "#/$defs/anchor"}
+      }
+    },
+    "component": {
+      "type": "object",
+      "required": ["component_id", "text", "claim_fragment", "evidence_ids"],
+      "additionalProperties": false,
+      "properties": {
+        "component_id": {"type": "string", "minLength": 1},
+        "text": {"type": "string", "minLength": 1},
+        "claim_fragment": {"type": "string", "minLength": 1},
+        "evidence_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+      }
+    }
+  }
+}

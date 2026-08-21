@@ -1,0 +1,173 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "d9f745fb6304505a6332ceb9efdcc6cc08641cb33797c2da14ff04ea0ef49de5",
+  "claim_id": "SD-CN-001",
+  "claim_text": "在中国境内由网络视听平台、小程序或投流方播出、引流或推送的微短剧，须持有网络剧片发行许可证或完成相应上线报备登记程序。",
+  "canonical_claim": "在中国境内由网络视听平台、小程序或投流方播出、引流或推送的微短剧须持有网络剧片发行许可证或完成相应上线报备登记程序。",
+  "normalized_ir": {
+    "claim_id": "SD-CN-001",
+    "source_text": "在中国境内由网络视听平台、小程序或投流方播出、引流或推送的微短剧，须持有网络剧片发行许可证或完成相应上线报备登记程序。",
+    "operator": "FACT",
+    "subject": "在中国境内由网络视听平台、小程序或投流方播出、引流或推送的微短剧",
+    "predicate": "须",
+    "object": "持有网络剧片发行许可证或完成相应上线报备登记程序",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "在中国境内由网络视听平台、小程序或投流方播出、引流或推送的微短剧",
+        "start": 0,
+        "end": 32
+      },
+      "predicate": {
+        "text": "须",
+        "start": 33,
+        "end": 34
+      },
+      "object": {
+        "text": "持有网络剧片发行许可证或完成相应上线报备登记程序",
+        "start": 34,
+        "end": 58
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-SD-CN-001"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-SD-CN-001": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-SD-CN-001"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-SD-CN-001"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "NRTA-NOTICE-2025"
+    ],
+    "roots_by_source": {
+      "NRTA-NOTICE-2025": [
+        "NRTA-NOTICE-2025"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "NRTA-NOTICE-2025": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-SD-CN-001"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-SD-CN-001",
+      "source_id": "NRTA-NOTICE-2025",
+      "source_kind": "official_record",
+      "quote": {
+        "text": "所有微短剧，均须持有《网络剧片发行许可证》或完成相应上线报备登记程序",
+        "start": 24,
+        "end": 58
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "LEARN-006",
+    "source_text": "任何成年人每天学习十分钟都能在三十天达到母语水平。",
+    "operator": "FACT",
+    "subject": "任何成年人",
+    "predicate": "每天学习十分钟都能在三十天达到",
+    "object": "母语水平",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "任何成年人",
+        "start": 0,
+        "end": 5
+      },
+      "predicate": {
+        "text": "每天学习十分钟都能在三十天达到",
+        "start": 5,
+        "end": 20
+      },
+      "object": {
+        "text": "母语水平",
+        "start": 20,
+        "end": 24
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SALES-1",
+      "source_id": "SALES-1",
+      "source_kind": "marketing_copy",
+      "source_text": "销售页宣称：任何成年人每天学习十分钟都能在三十天达到母语水平。",
+      "quote": {
+        "text": "任何成年人每天学习十分钟都能在三十天达到母语水平",
+        "start": 6,
+        "end": 30
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "LEARN-006",
+      "evidence_id": "E-SALES-1",
+      "relation": "ENTAILS",
+      "claim_fragment": "任何成年人每天学习十分钟都能在三十天达到母语水平",
+      "evidence_fragment": "任何成年人每天学习十分钟都能在三十天达到母语水平",
+      "missing_bridge": ""
+    }
+  ]
+}

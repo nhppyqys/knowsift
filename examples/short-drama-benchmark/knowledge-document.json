@@ -1,0 +1,565 @@
+{
+  "document_version": "1.0",
+  "title": "做短剧并赚钱：经过过滤的知识地图",
+  "question": "B站和YouTube上的短剧教程中，哪些是可复用知识，哪些只是经验、营销承诺或待验证假设？",
+  "language": "zh-CN",
+  "source_boundary": "检索日为2026-08-21。包含5个B站创作者页面、1个YouTube创作者视频、YouTube与B站官方规则、国家广电总局文件、StudioBinder制作指南及DramaBox日本创作者页面。网页内容按短摘录或结构化事实捕获；没有获得完整视频字幕的内容只用于确认标题、简介或发布者主张。",
+  "sources": [
+    {
+      "source_id": "GUIDE-STUDIOBINDER-2025",
+      "title": "Making a Short Film — Pre Production Workflow Step-by-Step",
+      "source_type": "AUTHORITATIVE_GUIDANCE",
+      "medium": "ARTICLE",
+      "locator": "https://www.studiobinder.com/blog/making-short-film-pre-production/"
+    },
+    {
+      "source_id": "YT-D4DARIOUS-TIPS",
+      "title": "How to Make A Short Film: Important Tips and Advice",
+      "source_type": "EXPERT_INTERPRETATION",
+      "medium": "VIDEO",
+      "locator": "https://www.youtube.com/watch?v=PalEaciHvXI"
+    },
+    {
+      "source_id": "BILI-STORYBOARD",
+      "title": "拍摄视频第一步：了解视频创作与分镜脚本设计",
+      "source_type": "EXPERT_INTERPRETATION",
+      "medium": "ARTICLE",
+      "locator": "https://www.bilibili.com/opus/602498179786822057"
+    },
+    {
+      "source_id": "BILI-AI-COURSE",
+      "title": "AI短剧：剧本、分镜、人物、视频、配音、剪辑全流程",
+      "source_type": "MARKETING",
+      "medium": "VIDEO",
+      "locator": "https://www.bilibili.com/video/BV1n3Vz6LEVS/"
+    },
+    {
+      "source_id": "BILI-PROMOTION-TUTORIAL",
+      "title": "短剧推广项目：授权、收益、流程、剪辑和发布",
+      "source_type": "EXPERT_INTERPRETATION",
+      "medium": "VIDEO",
+      "locator": "https://www.bilibili.com/video/BV1QryeBtEGv/"
+    },
+    {
+      "source_id": "BILI-EARNING-2300",
+      "title": "实测月赚2k+：海外短剧推广",
+      "source_type": "ANECDOTE",
+      "medium": "VIDEO",
+      "locator": "https://www.bilibili.com/video/BV1NahvzTEYn/"
+    },
+    {
+      "source_id": "BILI-EARNING-20K",
+      "title": "短剧推广项目拆解：小白也可以月入2w+",
+      "source_type": "MARKETING",
+      "medium": "VIDEO",
+      "locator": "https://www.bilibili.com/video/BV1Wr421H7oz/"
+    },
+    {
+      "source_id": "BILI-SCAM-WARNING",
+      "title": "短剧版权剪辑骗局与短剧分红资金盘骗局",
+      "source_type": "OPINION",
+      "medium": "VIDEO",
+      "locator": "https://www.bilibili.com/video/BV1rwdjBHEdE/"
+    },
+    {
+      "source_id": "YT-YPP-ELIGIBILITY",
+      "title": "YouTube Partner Program overview and eligibility",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "ARTICLE",
+      "locator": "https://support.google.com/youtube/answer/72851"
+    },
+    {
+      "source_id": "YT-REVENUE-SHARES",
+      "title": "YouTube partner earnings overview",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "ARTICLE",
+      "locator": "https://support.google.com/youtube/answer/72902"
+    },
+    {
+      "source_id": "YT-MONETIZATION-POLICY",
+      "title": "YouTube channel monetization policies",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "ARTICLE",
+      "locator": "https://support.google.com/youtube/answer/1311392"
+    },
+    {
+      "source_id": "YT-AI-DISCLOSURE",
+      "title": "Disclosing use of GenAI content",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "ARTICLE",
+      "locator": "https://support.google.com/youtube/answer/14328491"
+    },
+    {
+      "source_id": "BILI-CHARGE-RULES",
+      "title": "哔哩哔哩充电计划用户协议",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "DOCUMENT",
+      "locator": "https://www.bilibili.com/blackboard/charge-privacy.html"
+    },
+    {
+      "source_id": "BILI-HUAHUO-FAQ",
+      "title": "花火商单平台UP主入驻常见问题",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "DOCUMENT",
+      "locator": "https://www.bilibili.com/blackboard/activity-zWUGlzmXPK.html"
+    },
+    {
+      "source_id": "NRTA-NOTICE-2025",
+      "title": "关于进一步统筹发展和安全促进网络微短剧行业健康繁荣发展的通知",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "DOCUMENT",
+      "locator": "https://www.nrta.gov.cn/art/2025/2/5/art_113_70148.html"
+    },
+    {
+      "source_id": "NRTA-MEASURES-2026",
+      "title": "微短剧发展管理办法",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "DOCUMENT",
+      "locator": "https://www.nrta.gov.cn/art/2026/7/31/art_1588_73827.html"
+    },
+    {
+      "source_id": "DRAMABOX-JP-CREATORS",
+      "title": "DramaBox短剧征集与分发说明",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "ARTICLE",
+      "locator": "https://www.dramabox.jp/creators"
+    }
+  ],
+  "records": [
+    {
+      "record_id": "DOC-SD-PROD-001",
+      "topic": "制作基础",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "短片前期计划的三份基础文件是剧本、拍摄计划和预算。",
+      "explanation": "权威制作指南明确列出三份基础文件。",
+      "source_ids": [
+        "GUIDE-STUDIOBINDER-2025"
+      ],
+      "conditions": [],
+      "limitations": [
+        "这是通用短片前期框架，不等于短剧题材与商业成功公式。"
+      ],
+      "certificate_file": "certificates/SD-PROD-001.json"
+    },
+    {
+      "record_id": "DOC-SD-PROD-002",
+      "topic": "制作基础",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "短片前期制作包括拆分剧本、准备镜头清单或分镜、排期、组建演员与团队以及落实场地。",
+      "explanation": "权威制作指南逐项列出这些前期任务。",
+      "source_ids": [
+        "GUIDE-STUDIOBINDER-2025"
+      ],
+      "conditions": [],
+      "limitations": [
+        "AI流程可以替换部分执行工具，但不会自动消除计划、版权和质量控制。"
+      ],
+      "certificate_file": "certificates/SD-PROD-002.json"
+    },
+    {
+      "record_id": "DOC-SD-YT-001",
+      "topic": "YouTube变现",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "YouTube完整广告分成门槛可以通过一千订阅加近十二个月四千小时公开观看时长，或一千订阅加近九十天一千万次有效Shorts公开观看达到。",
+      "explanation": "YouTube官方YPP页面给出完整广告分成门槛。",
+      "source_ids": [
+        "YT-YPP-ELIGIBILITY"
+      ],
+      "conditions": [
+        "频道仍需通过政策审核。"
+      ],
+      "limitations": [
+        "达到数字门槛不保证申请通过，也不保证收入水平。"
+      ],
+      "certificate_file": "certificates/SD-YT-001.json"
+    },
+    {
+      "record_id": "DOC-SD-YT-002",
+      "topic": "YouTube变现",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "YouTube合作伙伴的观看页广告净收入分成为百分之五十五。",
+      "explanation": "YouTube官方收益说明给出观看页广告分成比例。",
+      "source_ids": [
+        "YT-REVENUE-SHARES"
+      ],
+      "conditions": [
+        "需要加入YPP并接受对应模块。"
+      ],
+      "limitations": [
+        "实际收入取决于有效观看、地区、广告需求等因素。"
+      ],
+      "certificate_file": "certificates/SD-YT-002.json"
+    },
+    {
+      "record_id": "DOC-SD-YT-003",
+      "topic": "YouTube变现",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "YouTube合作伙伴获得分配后Shorts收入的百分之四十五。",
+      "explanation": "YouTube官方收益说明给出Shorts分配后收入比例。",
+      "source_ids": [
+        "YT-REVENUE-SHARES"
+      ],
+      "conditions": [
+        "先按Creator Pool规则分配，再应用45%比例。"
+      ],
+      "limitations": [
+        "45%不是每次播放的固定单价。"
+      ],
+      "certificate_file": "certificates/SD-YT-003.json"
+    },
+    {
+      "record_id": "DOC-SD-YT-004",
+      "topic": "YouTube变现",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "YouTube合作伙伴的粉丝资助净收入分成为百分之七十。",
+      "explanation": "YouTube官方收益说明给出粉丝资助净收入比例。",
+      "source_ids": [
+        "YT-REVENUE-SHARES"
+      ],
+      "conditions": [
+        "需要满足相应功能资格并接受Commerce Product Module。"
+      ],
+      "limitations": [
+        "粉丝是否付费取决于真实受众关系。"
+      ],
+      "certificate_file": "certificates/SD-YT-004.json"
+    },
+    {
+      "record_id": "DOC-SD-YT-005",
+      "topic": "YouTube风险",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "YouTube把批量生产或重复内容归为不真实内容，并规定这类内容不符合变现条件。",
+      "explanation": "YouTube官方频道变现政策直接规定批量、重复内容不符合变现要求。",
+      "source_ids": [
+        "YT-MONETIZATION-POLICY"
+      ],
+      "conditions": [],
+      "limitations": [
+        "使用AI本身不是问题，模板化、低差异和缺少原创价值才是关键风险。"
+      ],
+      "certificate_file": "certificates/SD-YT-005.json"
+    },
+    {
+      "record_id": "DOC-SD-YT-006",
+      "topic": "YouTube风险",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "YouTube要求披露看起来真实的AI生成内容或经过实质性AI修改的内容。",
+      "explanation": "YouTube官方AI披露规则要求披露逼真或实质性修改内容。",
+      "source_ids": [
+        "YT-AI-DISCLOSURE"
+      ],
+      "conditions": [
+        "适用于看起来真实的生成或实质性修改内容。"
+      ],
+      "limitations": [
+        "仍需同时遵守版权、社区与广告友好规则。"
+      ],
+      "certificate_file": "certificates/SD-YT-006.json"
+    },
+    {
+      "record_id": "DOC-SD-YT-007",
+      "topic": "YouTube风险",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "在YouTube正确披露AI内容本身不会限制该内容的变现资格。",
+      "explanation": "YouTube官方说明确认正确披露本身不降低变现资格。",
+      "source_ids": [
+        "YT-AI-DISCLOSURE"
+      ],
+      "conditions": [],
+      "limitations": [
+        "不代表该内容自动符合其他变现政策。"
+      ],
+      "certificate_file": "certificates/SD-YT-007.json"
+    },
+    {
+      "record_id": "DOC-SD-BILI-001",
+      "topic": "B站变现",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "B站充电计划允许用户在充电面板支付B币支持UP主。",
+      "explanation": "B站官方充电协议确认了观众直接支持渠道。",
+      "source_ids": [
+        "BILI-CHARGE-RULES"
+      ],
+      "conditions": [
+        "UP主需开通充电计划并满足平台流程。"
+      ],
+      "limitations": [
+        "存在功能不等于观众会付费。"
+      ],
+      "certificate_file": "certificates/SD-BILI-001.json"
+    },
+    {
+      "record_id": "DOC-SD-BILI-002",
+      "topic": "版权",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "参与B站充电计划的UP主应拥有发布内容的合法权利或全部合法授权。",
+      "explanation": "B站官方协议明确要求合法权利或完整授权。",
+      "source_ids": [
+        "BILI-CHARGE-RULES"
+      ],
+      "conditions": [],
+      "limitations": [
+        "具体素材还可能涉及音乐、字体、肖像、声音和AI训练/生成条款。"
+      ],
+      "certificate_file": "certificates/SD-BILI-002.json"
+    },
+    {
+      "record_id": "DOC-SD-BILI-003",
+      "topic": "B站变现",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "B站花火当前要求实名认证且年满十八岁、粉丝不少于一万、近三十天发布过原创视频，并达到规定的电磁力分数。",
+      "explanation": "B站官方花火FAQ列出当前入驻条件。",
+      "source_ids": [
+        "BILI-HUAHUO-FAQ"
+      ],
+      "conditions": [
+        "规则会变化，应在接单前重新核对。"
+      ],
+      "limitations": [
+        "入驻只是获得商单工具资格，不保证获得订单。"
+      ],
+      "certificate_file": "certificates/SD-BILI-003.json"
+    },
+    {
+      "record_id": "DOC-SD-CN-001",
+      "topic": "中国发行合规",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "在中国境内由网络视听平台、小程序或投流方播出、引流或推送的微短剧须持有网络剧片发行许可证或完成相应上线报备登记程序。",
+      "explanation": "国家广电总局官方通知给出当前上线前审核备案要求。",
+      "source_ids": [
+        "NRTA-NOTICE-2025"
+      ],
+      "conditions": [
+        "适用于中国境内网络微短剧传播。"
+      ],
+      "limitations": [
+        "不同投资规模与传播方式对应的申报层级不同。"
+      ],
+      "certificate_file": "certificates/SD-CN-001.json"
+    },
+    {
+      "record_id": "DOC-SD-CN-002",
+      "topic": "中国发行合规",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "《微短剧发展管理办法》规定未取得发行许可证、批准文件或节目编号的微短剧不得播出。",
+      "explanation": "已公布的部门规章给出许可证、批准文件或节目编号要求。",
+      "source_ids": [
+        "NRTA-MEASURES-2026"
+      ],
+      "conditions": [
+        "该办法自2026-09-01起施行。"
+      ],
+      "limitations": [
+        "申报类别和实施细则需要结合项目所在地与播出平台确认。"
+      ],
+      "certificate_file": "certificates/SD-CN-002.json"
+    },
+    {
+      "record_id": "DOC-SD-CN-003",
+      "topic": "中国发行合规",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "《微短剧发展管理办法》自二〇二六年九月一日起施行。",
+      "explanation": "国家广电总局正式公布了施行日期。",
+      "source_ids": [
+        "NRTA-MEASURES-2026"
+      ],
+      "conditions": [],
+      "limitations": [
+        "本案例检索日是2026-08-21，施行日尚未到。"
+      ],
+      "certificate_file": "certificates/SD-CN-003.json"
+    },
+    {
+      "record_id": "DOC-SD-DIST-001",
+      "topic": "专业平台分发",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "DramaBox日本创作者页面接受十五至一百集的短剧作品进行分发洽谈。",
+      "explanation": "DramaBox日本官方创作者页面给出接收的集数范围。",
+      "source_ids": [
+        "DRAMABOX-JP-CREATORS"
+      ],
+      "conditions": [
+        "仅代表该日本站页面与洽谈入口。"
+      ],
+      "limitations": [
+        "提交样片不等于签约或上线。"
+      ],
+      "certificate_file": "certificates/SD-DIST-001.json"
+    },
+    {
+      "record_id": "DOC-SD-DIST-002",
+      "topic": "专业平台分发",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "DramaBox日本创作者页面所述的基本收益方式是最低保底加收入分成，具体条件以合同为准。",
+      "explanation": "DramaBox日本官方页面说明基本收益结构。",
+      "source_ids": [
+        "DRAMABOX-JP-CREATORS"
+      ],
+      "conditions": [
+        "具体比例、费用、独占性和权利范围以合同为准。"
+      ],
+      "limitations": [
+        "MG并非所有项目都必然获得的固定收入。"
+      ],
+      "certificate_file": "certificates/SD-DIST-002.json"
+    },
+    {
+      "record_id": "DOC-SD-VIEW-001",
+      "topic": "制作经验",
+      "layer": "PRACTICE_OR_VIEWPOINT",
+      "text": "B站创作者把画面、运镜、景别、时长、台词、声音、转场和道具列为拍摄脚本字段。",
+      "explanation": "证书只确认该B站创作者给出了这组脚本字段。",
+      "source_ids": [
+        "BILI-STORYBOARD"
+      ],
+      "conditions": [],
+      "limitations": [
+        "这是实务模板，不是唯一正确格式。"
+      ],
+      "certificate_file": "certificates/SD-VIEW-001.json"
+    },
+    {
+      "record_id": "DOC-SD-VIEW-002",
+      "topic": "推广经验",
+      "layer": "PRACTICE_OR_VIEWPOINT",
+      "text": "B站教程发布者把短剧推广描述为授权后剪辑片段并发布，为指定应用拉新以赚取佣金。",
+      "explanation": "证书只确认发布者这样描述短剧推广模式。",
+      "source_ids": [
+        "BILI-PROMOTION-TUTORIAL"
+      ],
+      "conditions": [
+        "发布者明确提到先取得授权。"
+      ],
+      "limitations": [
+        "佣金规则、平台资格和实际转化率未被独立核验。"
+      ],
+      "certificate_file": "certificates/SD-VIEW-002.json"
+    },
+    {
+      "record_id": "DOC-SD-VIEW-003",
+      "topic": "收入个案",
+      "layer": "PRACTICE_OR_VIEWPOINT",
+      "text": "B站视频发布者自述每天花一小时做海外短剧推广，当月多赚二千三百元以上。",
+      "explanation": "证书只确认发布者做过该收入自述。",
+      "source_ids": [
+        "BILI-EARNING-2300"
+      ],
+      "conditions": [],
+      "limitations": [
+        "没有核验成本、失败样本、账号基数和后台原始数据。"
+      ],
+      "certificate_file": "certificates/SD-VIEW-003.json"
+    },
+    {
+      "record_id": "DOC-SD-VIEW-004",
+      "topic": "制作经验",
+      "layer": "PRACTICE_OR_VIEWPOINT",
+      "text": "D4Darious的视频简介称该视频讨论短片写作中的背景故事管理和应避免的问题。",
+      "explanation": "证书只确认YouTube视频简介声明了这些讨论内容。",
+      "source_ids": [
+        "YT-D4DARIOUS-TIPS"
+      ],
+      "conditions": [],
+      "limitations": [
+        "没有完整字幕，因此不把具体建议扩写成知识。"
+      ],
+      "certificate_file": "certificates/SD-VIEW-004.json"
+    },
+    {
+      "record_id": "DOC-SD-VIEW-005",
+      "topic": "风险观点",
+      "layer": "PRACTICE_OR_VIEWPOINT",
+      "text": "B站视频发布者提醒短剧版权剪辑、分红和投资项目中存在骗局风险。",
+      "explanation": "证书只确认发布者发出了骗局风险提醒。",
+      "source_ids": [
+        "BILI-SCAM-WARNING"
+      ],
+      "conditions": [],
+      "limitations": [
+        "不能据此认定某个具体项目违法或诈骗。"
+      ],
+      "certificate_file": "certificates/SD-VIEW-005.json"
+    },
+    {
+      "record_id": "DOC-SD-HOLD-001",
+      "topic": "收入承诺",
+      "layer": "DISPUTED_OR_UNRESOLVED",
+      "text": "零基础用户学完一套AI短剧教程即可接单变现。",
+      "explanation": "唯一依据是带资料导流和变现承诺的课程营销页面。",
+      "source_ids": [
+        "BILI-AI-COURSE"
+      ],
+      "conditions": [],
+      "limitations": [
+        "缺少真实订单、报价、获客成本、交付能力和失败率。"
+      ],
+      "certificate_file": "certificates/SD-HOLD-001.json"
+    },
+    {
+      "record_id": "DOC-SD-HOLD-002",
+      "topic": "收入承诺",
+      "layer": "DISPUTED_OR_UNRESOLVED",
+      "text": "短剧推广适合普通新手稳定月入二万元以上。",
+      "explanation": "唯一依据是收入承诺型视频标题。",
+      "source_ids": [
+        "BILI-EARNING-20K"
+      ],
+      "conditions": [],
+      "limitations": [
+        "缺少样本范围、时间成本、投流成本、账号存活率和后台数据。"
+      ],
+      "certificate_file": "certificates/SD-HOLD-002.json"
+    },
+    {
+      "record_id": "DOC-SD-HOLD-003",
+      "topic": "收入外推",
+      "layer": "DISPUTED_OR_UNRESOLVED",
+      "text": "普通人每天花一小时做海外短剧推广都能月赚二千三百元以上。",
+      "explanation": "一个人的自述不能外推到普通人。",
+      "source_ids": [
+        "BILI-EARNING-2300"
+      ],
+      "conditions": [],
+      "limitations": [
+        "需要多账号、完整成本与时间窗口的可审计记录。"
+      ],
+      "certificate_file": "certificates/SD-HOLD-003.json"
+    },
+    {
+      "record_id": "DOC-SD-REJECT-001",
+      "topic": "版权红线",
+      "layer": "REJECTED",
+      "text": "无需获得版权或授权也可以剪辑他人短剧并在B站发布获利。",
+      "explanation": "B站官方协议与“无需授权”的说法直接冲突。",
+      "source_ids": [
+        "BILI-CHARGE-RULES"
+      ],
+      "conditions": [],
+      "limitations": [
+        "其他平台和素材类型还需要核对各自授权条款。"
+      ],
+      "certificate_file": "certificates/SD-REJECT-001.json"
+    },
+    {
+      "record_id": "DOC-SD-REJECT-002",
+      "topic": "YouTube红线",
+      "layer": "REJECTED",
+      "text": "批量生成重复模板化AI短剧就能稳定通过YouTube频道变现审核。",
+      "explanation": "YouTube官方政策与“模板化批量内容稳定通过变现”的说法直接冲突。",
+      "source_ids": [
+        "YT-MONETIZATION-POLICY"
+      ],
+      "conditions": [],
+      "limitations": [
+        "原创、内容差异和观众价值仍需要人工与平台审核。"
+      ],
+      "certificate_file": "certificates/SD-REJECT-002.json"
+    }
+  ],
+  "open_questions": [
+    "B站与YouTube短剧账号在不同题材、地区和时长下的真实RPM、完播率和付费率分布是什么？",
+    "专业短剧平台对独立创作者的签约率、MG范围、分账周期和回本率是什么？",
+    "真人短剧与AI短剧在相同剧本和投放条件下的完播、复看、获客成本和制作成本如何比较？",
+    "短剧推广项目的授权链、结算后台、退款与封号率能否获得可审计样本？"
+  ]
+}

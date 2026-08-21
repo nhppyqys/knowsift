@@ -1,0 +1,189 @@
+{
+  "bundle_version": "1.0",
+  "topic": "个人或小团队如何制作网络短剧并建立可验证的收入路径",
+  "question": "B站和YouTube上的短剧教程中，哪些是可复用知识，哪些只是经验、营销承诺或待验证假设？",
+  "language": "zh-CN",
+  "source_boundary": "检索日为2026-08-21。包含5个B站创作者页面、1个YouTube创作者视频、YouTube与B站官方规则、国家广电总局文件、StudioBinder制作指南及DramaBox日本创作者页面。网页内容按短摘录或结构化事实捕获；没有获得完整视频字幕的内容只用于确认标题、简介或发布者主张。",
+  "sources": [
+    {
+      "source_id": "GUIDE-STUDIOBINDER-2025",
+      "title": "Making a Short Film — Pre Production Workflow Step-by-Step",
+      "source_type": "AUTHORITATIVE_GUIDANCE",
+      "medium": "ARTICLE",
+      "locator": "https://www.studiobinder.com/blog/making-short-film-pre-production/",
+      "published_at": "2025-04-05",
+      "captured_at": "2026-08-21",
+      "content": "The Screenplay; The Schedule; The Budget.\nBreaking down the script; Shot listing and/or storyboarding; Scheduling production; Hiring cast and crew; Securing shoot locations.",
+      "notes": "短摘录，用于核对前期制作基础文件与任务。"
+    },
+    {
+      "source_id": "YT-D4DARIOUS-TIPS",
+      "title": "How to Make A Short Film: Important Tips and Advice",
+      "source_type": "EXPERT_INTERPRETATION",
+      "medium": "VIDEO",
+      "locator": "https://www.youtube.com/watch?v=PalEaciHvXI",
+      "published_at": "2014-01-20",
+      "captured_at": "2026-08-21",
+      "content": "The description says the video covers managing backstory and what to avoid in the writing process.",
+      "notes": "仅捕获YouTube页面简介，没有把整段视频当作已转录证据。"
+    },
+    {
+      "source_id": "BILI-STORYBOARD",
+      "title": "拍摄视频第一步：了解视频创作与分镜脚本设计",
+      "source_type": "EXPERT_INTERPRETATION",
+      "medium": "ARTICLE",
+      "locator": "https://www.bilibili.com/opus/602498179786822057",
+      "published_at": "2021-12-01",
+      "captured_at": "2026-08-21",
+      "content": "拍摄脚本一般包含画面内容、镜头运动、景别、长度、台词、音乐音效、转场方式和道具。",
+      "notes": "B站创作者文章摘录。"
+    },
+    {
+      "source_id": "BILI-AI-COURSE",
+      "title": "AI短剧：剧本、分镜、人物、视频、配音、剪辑全流程",
+      "source_type": "MARKETING",
+      "medium": "VIDEO",
+      "locator": "https://www.bilibili.com/video/BV1n3Vz6LEVS/",
+      "published_at": "2026-06-02",
+      "captured_at": "2026-08-21",
+      "content": "视频标题宣称零基础学完即可接单变现；课程目录覆盖剧本、角色、场景、分镜、视频、配音音效和剪辑。",
+      "notes": "带有资料领取与变现承诺，按营销材料处理。"
+    },
+    {
+      "source_id": "BILI-PROMOTION-TUTORIAL",
+      "title": "短剧推广项目：授权、收益、流程、剪辑和发布",
+      "source_type": "EXPERT_INTERPRETATION",
+      "medium": "VIDEO",
+      "locator": "https://www.bilibili.com/video/BV1QryeBtEGv/",
+      "published_at": "2025-10-31",
+      "captured_at": "2026-08-21",
+      "content": "发布者把短剧推广描述为：授权后剪辑片段并发布，为指定APP拉新以赚取佣金。",
+      "notes": "这是发布者对推广模式的说明，未由相应推广平台规则交叉验证。"
+    },
+    {
+      "source_id": "BILI-EARNING-2300",
+      "title": "实测月赚2k+：海外短剧推广",
+      "source_type": "ANECDOTE",
+      "medium": "VIDEO",
+      "locator": "https://www.bilibili.com/video/BV1NahvzTEYn/",
+      "published_at": "2025-08-30",
+      "captured_at": "2026-08-21",
+      "content": "发布者自述：每天花1小时用电脑操作，这个月多赚2300+。",
+      "notes": "个人自述，缺少后台原始数据、成本和可复现样本。"
+    },
+    {
+      "source_id": "BILI-EARNING-20K",
+      "title": "短剧推广项目拆解：小白也可以月入2w+",
+      "source_type": "MARKETING",
+      "medium": "VIDEO",
+      "locator": "https://www.bilibili.com/video/BV1Wr421H7oz/",
+      "published_at": "2024-03-12",
+      "captured_at": "2026-08-21",
+      "content": "视频标题宣称短剧推广小白也可以月入2w+。",
+      "notes": "收入承诺型标题，按营销材料处理。"
+    },
+    {
+      "source_id": "BILI-SCAM-WARNING",
+      "title": "短剧版权剪辑骗局与短剧分红资金盘骗局",
+      "source_type": "OPINION",
+      "medium": "VIDEO",
+      "locator": "https://www.bilibili.com/video/BV1rwdjBHEdE/",
+      "published_at": "2026-04-20",
+      "captured_at": "2026-08-21",
+      "content": "发布者提醒：短剧版权剪辑、短剧分红和短剧投资项目中存在骗局风险。",
+      "notes": "风险提醒，不等于对所有具体项目的司法认定。"
+    },
+    {
+      "source_id": "YT-YPP-ELIGIBILITY",
+      "title": "YouTube Partner Program overview and eligibility",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "ARTICLE",
+      "locator": "https://support.google.com/youtube/answer/72851",
+      "captured_at": "2026-08-21",
+      "content": "Full ad-share threshold: 1,000 subscribers plus 4,000 watch hours / 12 months, or 10 million Shorts views / 90 days.",
+      "notes": "从YouTube官方页面结构化提取的门槛事实。"
+    },
+    {
+      "source_id": "YT-REVENUE-SHARES",
+      "title": "YouTube partner earnings overview",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "ARTICLE",
+      "locator": "https://support.google.com/youtube/answer/72902",
+      "captured_at": "2026-08-21",
+      "content": "Watch Page: 55% net. Shorts: 45% allocated. Fan funding: 70% net.",
+      "notes": "从YouTube官方页面结构化提取的分成比例。"
+    },
+    {
+      "source_id": "YT-MONETIZATION-POLICY",
+      "title": "YouTube channel monetization policies",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "ARTICLE",
+      "locator": "https://support.google.com/youtube/answer/1311392",
+      "captured_at": "2026-08-21",
+      "content": "Mass-produced or repetitive content is inauthentic and has always been ineligible for monetization.",
+      "notes": "YouTube官方频道变现政策短摘录。"
+    },
+    {
+      "source_id": "YT-AI-DISCLOSURE",
+      "title": "Disclosing use of GenAI content",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "ARTICLE",
+      "locator": "https://support.google.com/youtube/answer/14328491",
+      "captured_at": "2026-08-21",
+      "content": "Realistic generated or meaningfully altered content requires disclosure. Disclosure itself does not limit monetization eligibility.",
+      "notes": "YouTube官方AI内容披露规则的结构化摘录。"
+    },
+    {
+      "source_id": "BILI-CHARGE-RULES",
+      "title": "哔哩哔哩充电计划用户协议",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "DOCUMENT",
+      "locator": "https://www.bilibili.com/blackboard/charge-privacy.html",
+      "captured_at": "2026-08-21",
+      "content": "用户可以在充电面板支付B币为UP主充电。UP主应拥有发布内容的合法权利或全部合法授权。",
+      "notes": "B站官方充电计划协议短摘录。"
+    },
+    {
+      "source_id": "BILI-HUAHUO-FAQ",
+      "title": "花火商单平台UP主入驻常见问题",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "DOCUMENT",
+      "locator": "https://www.bilibili.com/blackboard/activity-zWUGlzmXPK.html",
+      "captured_at": "2026-08-21",
+      "content": "入驻要求：实名认证且年满18岁；粉丝不少于1万；近30天发布原创视频；创作分和影响分不低于70，信用分不低于90。",
+      "notes": "B站官方花火FAQ的结构化摘录。"
+    },
+    {
+      "source_id": "NRTA-NOTICE-2025",
+      "title": "关于进一步统筹发展和安全促进网络微短剧行业健康繁荣发展的通知",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "DOCUMENT",
+      "locator": "https://www.nrta.gov.cn/art/2025/2/5/art_113_70148.html",
+      "published_at": "2025-02-05",
+      "captured_at": "2026-08-21",
+      "content": "网络视听平台、小程序、投流方等播出或引流、推送的所有微短剧，均须持有《网络剧片发行许可证》或完成相应上线报备登记程序。",
+      "notes": "国家广播电视总局官方通知。"
+    },
+    {
+      "source_id": "NRTA-MEASURES-2026",
+      "title": "微短剧发展管理办法",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "DOCUMENT",
+      "locator": "https://www.nrta.gov.cn/art/2026/7/31/art_1588_73827.html",
+      "published_at": "2026-07-31",
+      "captured_at": "2026-08-21",
+      "content": "未取得发行许可证、批准文件或节目编号的微短剧不得播出。本办法自2026年9月1日起施行。",
+      "notes": "已公布、尚未到施行日的国家广播电视总局部门规章。"
+    },
+    {
+      "source_id": "DRAMABOX-JP-CREATORS",
+      "title": "DramaBox短剧征集与分发说明",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "ARTICLE",
+      "locator": "https://www.dramabox.jp/creators",
+      "captured_at": "2026-08-21",
+      "content": "募集対象は15-100話のショートドラマ。収益分配は基本的にMG+レベニューシェアで、詳細は契約による。",
+      "notes": "DramaBox日本站创作者页面；条款仅代表该页面和具体签约场景。"
+    }
+  ]
+}

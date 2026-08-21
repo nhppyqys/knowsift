@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-YT-006",
+    "source_text": "YouTube要求披露看起来真实的AI生成内容或经过实质性AI修改的内容。",
+    "operator": "FACT",
+    "subject": "YouTube",
+    "predicate": "要求披露",
+    "object": "看起来真实的AI生成内容或经过实质性AI修改的内容",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "YouTube",
+        "start": 0,
+        "end": 7
+      },
+      "predicate": {
+        "text": "要求披露",
+        "start": 7,
+        "end": 11
+      },
+      "object": {
+        "text": "看起来真实的AI生成内容或经过实质性AI修改的内容",
+        "start": 11,
+        "end": 36
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-YT-006",
+      "source_id": "YT-AI-DISCLOSURE",
+      "source_kind": "official_documentation",
+      "source_text": "Realistic generated or meaningfully altered content requires disclosure. Disclosure itself does not limit monetization eligibility.",
+      "quote": {
+        "text": "Realistic generated or meaningfully altered content requires disclosure",
+        "start": 0,
+        "end": 71
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-YT-006",
+      "evidence_id": "E-SD-YT-006",
+      "relation": "ENTAILS",
+      "claim_fragment": "YouTube要求披露看起来真实的AI生成内容或经过实质性AI修改的内容",
+      "evidence_fragment": "Realistic generated or meaningfully altered content requires disclosure",
+      "missing_bridge": ""
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "3673d356ffd8c2c96eb7efa64f3495c3b8d52fb55e572027ea943ce04fbe8e9b",
+  "claim_id": "SD-VIEW-004",
+  "claim_text": "D4Darious的视频简介称该视频讨论短片写作中的背景故事管理和应避免的问题。",
+  "canonical_claim": "D4Darious的视频简介称该视频讨论短片写作中的背景故事管理和应避免的问题。",
+  "normalized_ir": {
+    "claim_id": "SD-VIEW-004",
+    "source_text": "D4Darious的视频简介称该视频讨论短片写作中的背景故事管理和应避免的问题。",
+    "operator": "OBSERVE",
+    "subject": "D4Darious的视频简介",
+    "predicate": "称",
+    "object": "该视频讨论短片写作中的背景故事管理和应避免的问题",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "D4Darious的视频简介",
+        "start": 0,
+        "end": 14
+      },
+      "predicate": {
+        "text": "称",
+        "start": 14,
+        "end": 15
+      },
+      "object": {
+        "text": "该视频讨论短片写作中的背景故事管理和应避免的问题",
+        "start": 15,
+        "end": 39
+      }
+    }
+  },
+  "protocols_required": [
+    "SOURCE_ATTESTATION",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-SD-VIEW-004"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-SD-VIEW-004": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-SD-VIEW-004"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "SOURCE_ATTESTATION": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-SD-VIEW-004"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "YT-D4DARIOUS-TIPS"
+    ],
+    "roots_by_source": {
+      "YT-D4DARIOUS-TIPS": [
+        "YT-D4DARIOUS-TIPS"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "YT-D4DARIOUS-TIPS": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-SD-VIEW-004"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-SD-VIEW-004",
+      "source_id": "YT-D4DARIOUS-TIPS",
+      "source_kind": "primary_source",
+      "quote": {
+        "text": "managing backstory and what to avoid in the writing process",
+        "start": 38,
+        "end": 97
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

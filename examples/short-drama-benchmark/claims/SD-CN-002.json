@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-CN-002",
+    "source_text": "《微短剧发展管理办法》规定未取得发行许可证、批准文件或节目编号的微短剧不得播出。",
+    "operator": "FACT",
+    "subject": "《微短剧发展管理办法》",
+    "predicate": "规定",
+    "object": "未取得发行许可证、批准文件或节目编号的微短剧不得播出",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "《微短剧发展管理办法》",
+        "start": 0,
+        "end": 11
+      },
+      "predicate": {
+        "text": "规定",
+        "start": 11,
+        "end": 13
+      },
+      "object": {
+        "text": "未取得发行许可证、批准文件或节目编号的微短剧不得播出",
+        "start": 13,
+        "end": 39
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-CN-002",
+      "source_id": "NRTA-MEASURES-2026",
+      "source_kind": "official_record",
+      "source_text": "未取得发行许可证、批准文件或节目编号的微短剧不得播出。本办法自2026年9月1日起施行。",
+      "quote": {
+        "text": "未取得发行许可证、批准文件或节目编号的微短剧不得播出",
+        "start": 0,
+        "end": 26
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-CN-002",
+      "evidence_id": "E-SD-CN-002",
+      "relation": "ENTAILS",
+      "claim_fragment": "《微短剧发展管理办法》规定未取得发行许可证、批准文件或节目编号的微短剧不得播出",
+      "evidence_fragment": "未取得发行许可证、批准文件或节目编号的微短剧不得播出",
+      "missing_bridge": ""
+    }
+  ]
+}

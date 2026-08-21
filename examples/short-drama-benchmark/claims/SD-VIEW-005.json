@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-VIEW-005",
+    "source_text": "B站视频发布者提醒短剧版权剪辑、分红和投资项目中存在骗局风险。",
+    "operator": "OBSERVE",
+    "subject": "B站视频发布者",
+    "predicate": "提醒",
+    "object": "短剧版权剪辑、分红和投资项目中存在骗局风险",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "B站视频发布者",
+        "start": 0,
+        "end": 7
+      },
+      "predicate": {
+        "text": "提醒",
+        "start": 7,
+        "end": 9
+      },
+      "object": {
+        "text": "短剧版权剪辑、分红和投资项目中存在骗局风险",
+        "start": 9,
+        "end": 30
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-VIEW-005",
+      "source_id": "BILI-SCAM-WARNING",
+      "source_kind": "primary_source",
+      "source_text": "发布者提醒：短剧版权剪辑、短剧分红和短剧投资项目中存在骗局风险。",
+      "quote": {
+        "text": "短剧版权剪辑、短剧分红和短剧投资项目中存在骗局风险",
+        "start": 6,
+        "end": 31
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-VIEW-005",
+      "evidence_id": "E-SD-VIEW-005",
+      "relation": "ENTAILS",
+      "claim_fragment": "B站视频发布者提醒短剧版权剪辑、分红和投资项目中存在骗局风险",
+      "evidence_fragment": "短剧版权剪辑、短剧分红和短剧投资项目中存在骗局风险",
+      "missing_bridge": ""
+    }
+  ]
+}

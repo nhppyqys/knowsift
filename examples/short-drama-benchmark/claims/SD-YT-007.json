@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-YT-007",
+    "source_text": "在YouTube正确披露AI内容本身不会限制该内容的变现资格。",
+    "operator": "FACT",
+    "subject": "在YouTube正确披露AI内容本身",
+    "predicate": "不会限制",
+    "object": "该内容的变现资格",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "在YouTube正确披露AI内容本身",
+        "start": 0,
+        "end": 18
+      },
+      "predicate": {
+        "text": "不会限制",
+        "start": 18,
+        "end": 22
+      },
+      "object": {
+        "text": "该内容的变现资格",
+        "start": 22,
+        "end": 30
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-YT-007",
+      "source_id": "YT-AI-DISCLOSURE",
+      "source_kind": "official_documentation",
+      "source_text": "Realistic generated or meaningfully altered content requires disclosure. Disclosure itself does not limit monetization eligibility.",
+      "quote": {
+        "text": "Disclosure itself does not limit monetization eligibility",
+        "start": 73,
+        "end": 130
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-YT-007",
+      "evidence_id": "E-SD-YT-007",
+      "relation": "ENTAILS",
+      "claim_fragment": "在YouTube正确披露AI内容本身不会限制该内容的变现资格",
+      "evidence_fragment": "Disclosure itself does not limit monetization eligibility",
+      "missing_bridge": ""
+    }
+  ]
+}

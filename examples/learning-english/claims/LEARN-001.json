@@ -1,0 +1,77 @@
+{
+  "claim_ir": {
+    "claim_id": "LEARN-001",
+    "source_text": "在本综述纳入的词汇记忆任务中，分散安排复习的延迟测试成绩高于一次性集中复习。",
+    "operator": "FACT",
+    "subject": "分散安排复习的延迟测试成绩",
+    "predicate": "高于",
+    "object": "一次性集中复习",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {
+      "study": "本综述纳入的词汇记忆任务"
+    },
+    "anchors": {
+      "subject": {
+        "text": "分散安排复习的延迟测试成绩",
+        "start": 15,
+        "end": 28
+      },
+      "predicate": {
+        "text": "高于",
+        "start": 28,
+        "end": 30
+      },
+      "object": {
+        "text": "一次性集中复习",
+        "start": 30,
+        "end": 37
+      },
+      "scope": {
+        "text": "本综述纳入的词汇记忆任务",
+        "start": 1,
+        "end": 13
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-PAPER-1",
+      "source_id": "PAPER-1",
+      "source_kind": "peer_reviewed_study",
+      "source_text": "示例研究摘要：在本综述纳入的词汇记忆任务中，分散安排复习的延迟测试成绩高于一次性集中复习。摘要没有比较口语能力，也没有证明这一结果适用于所有年龄、水平和学习目标。",
+      "quote": {
+        "text": "在本综述纳入的词汇记忆任务中，分散安排复习的延迟测试成绩高于一次性集中复习",
+        "start": 7,
+        "end": 44
+      },
+      "derived_from": [],
+      "cites": [],
+      "scope": {
+        "study": "本综述纳入的词汇记忆任务"
+      }
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "LEARN-001",
+      "evidence_id": "E-PAPER-1",
+      "relation": "ENTAILS",
+      "claim_fragment": "在本综述纳入的词汇记忆任务中，分散安排复习的延迟测试成绩高于一次性集中复习",
+      "evidence_fragment": "在本综述纳入的词汇记忆任务中，分散安排复习的延迟测试成绩高于一次性集中复习",
+      "missing_bridge": ""
+    }
+  ],
+  "verified_scope": {
+    "study": {
+      "value": "本综述纳入的词汇记忆任务",
+      "evidence_ids": [
+        "E-PAPER-1"
+      ],
+      "evidence_fragments": {
+        "E-PAPER-1": "本综述纳入的词汇记忆任务"
+      }
+    }
+  }
+}

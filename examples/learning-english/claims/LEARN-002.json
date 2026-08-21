@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "LEARN-002",
+    "source_text": "讲师甲主张成年人绝对不应该背单词。",
+    "operator": "OBSERVE",
+    "subject": "讲师甲",
+    "predicate": "主张",
+    "object": "成年人绝对不应该背单词",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "讲师甲",
+        "start": 0,
+        "end": 3
+      },
+      "predicate": {
+        "text": "主张",
+        "start": 3,
+        "end": 5
+      },
+      "object": {
+        "text": "成年人绝对不应该背单词",
+        "start": 5,
+        "end": 16
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-VIDEO-1",
+      "source_id": "VIDEO-A",
+      "source_kind": "primary_source",
+      "source_text": "视频字幕：讲师甲主张成年人绝对不应该背单词。",
+      "quote": {
+        "text": "讲师甲主张成年人绝对不应该背单词",
+        "start": 5,
+        "end": 21
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "LEARN-002",
+      "evidence_id": "E-VIDEO-1",
+      "relation": "ENTAILS",
+      "claim_fragment": "讲师甲主张成年人绝对不应该背单词",
+      "evidence_fragment": "讲师甲主张成年人绝对不应该背单词",
+      "missing_bridge": ""
+    }
+  ]
+}

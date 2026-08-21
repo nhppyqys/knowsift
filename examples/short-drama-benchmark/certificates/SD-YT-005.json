@@ -1,0 +1,173 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "28314a2d46356c5da4868419b95fb3c179fd96c4517616575c64f10ce5f0c9ac",
+  "claim_id": "SD-YT-005",
+  "claim_text": "YouTube把批量生产或重复内容归为不真实内容，并规定这类内容不符合变现条件。",
+  "canonical_claim": "YouTube把批量生产或重复内容归为不真实内容，并规定这类内容不符合变现条件。",
+  "normalized_ir": {
+    "claim_id": "SD-YT-005",
+    "source_text": "YouTube把批量生产或重复内容归为不真实内容，并规定这类内容不符合变现条件。",
+    "operator": "FACT",
+    "subject": "YouTube",
+    "predicate": "把批量生产或重复内容归为",
+    "object": "不真实内容，并规定这类内容不符合变现条件",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "YouTube",
+        "start": 0,
+        "end": 7
+      },
+      "predicate": {
+        "text": "把批量生产或重复内容归为",
+        "start": 7,
+        "end": 19
+      },
+      "object": {
+        "text": "不真实内容，并规定这类内容不符合变现条件",
+        "start": 19,
+        "end": 39
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-SD-YT-005"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-SD-YT-005": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-SD-YT-005"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-SD-YT-005"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "YT-MONETIZATION-POLICY"
+    ],
+    "roots_by_source": {
+      "YT-MONETIZATION-POLICY": [
+        "YT-MONETIZATION-POLICY"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "YT-MONETIZATION-POLICY": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-SD-YT-005"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-SD-YT-005",
+      "source_id": "YT-MONETIZATION-POLICY",
+      "source_kind": "official_documentation",
+      "quote": {
+        "text": "Mass-produced or repetitive content is inauthentic and has always been ineligible for monetization",
+        "start": 0,
+        "end": 98
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

@@ -1,0 +1,142 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "88d2d23a2b5e02f7ec39b88ce9c2da1e62bda2c0d2a427048b323bc3ef68e346",
+  "claim_id": "SD-REJECT-001",
+  "claim_text": "无需获得版权或授权也可以剪辑他人短剧并在B站发布获利。",
+  "canonical_claim": null,
+  "normalized_ir": null,
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "FAIL",
+    "code": "EVIDENCE_CONTRADICTS_CLAIM",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 1,
+      "ENTAILS": 0,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [],
+    "contradicting_evidence_ids": [
+      "E-SD-REJECT-001"
+    ],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-SD-REJECT-001": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-SD-REJECT-001"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "FAIL",
+      "code": "APPROPRIATE_EVIDENCE_CONTRADICTS_CLAIM",
+      "missing": []
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "BILI-CHARGE-RULES"
+    ],
+    "roots_by_source": {
+      "BILI-CHARGE-RULES": [
+        "BILI-CHARGE-RULES"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "BILI-CHARGE-RULES": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-SD-REJECT-001"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-SD-REJECT-001",
+      "source_id": "BILI-CHARGE-RULES",
+      "source_kind": "official_documentation",
+      "quote": {
+        "text": "UP主应拥有发布内容的合法权利或全部合法授权",
+        "start": 20,
+        "end": 42
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [
+    "CLAIM_CONTRADICTED_BY_SUPPLIED_EVIDENCE"
+  ],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "APPROPRIATE_EVIDENCE_CONTRADICTS_CLAIM"
+  ],
+  "admission": "REJECT"
+}

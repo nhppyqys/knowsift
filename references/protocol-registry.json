@@ -1,0 +1,40 @@
+{
+  "version": "4.0.0",
+  "high_impact_operators": ["CAUSE", "PRESCRIBE", "THRESHOLD", "LEGAL_RULE"],
+  "generalizing_quantifiers": ["ALL", "MOST", "GENERALLY"],
+  "base_routes": {
+    "FORMAL": ["FORMAL_PROOF"],
+    "DEFINE": ["DEFINITION", "SCOPE_BOUNDARY"],
+    "FACT": ["FACTUAL_RECORD", "SCOPE_BOUNDARY"],
+    "LEGAL_RULE": ["LEGAL_AUTHORITY", "SCOPE_BOUNDARY"],
+    "COMPARE": ["STATISTICAL_INFERENCE", "SCOPE_BOUNDARY"],
+    "ASSOCIATE": ["STATISTICAL_INFERENCE", "SCOPE_BOUNDARY"],
+    "CAUSE": ["CAUSAL_INFERENCE", "SCOPE_BOUNDARY"],
+    "PREDICT": ["PREDICTIVE_VALIDATION", "SCOPE_BOUNDARY"],
+    "PRESCRIBE": ["PRESCRIPTIVE_DECISION", "SCOPE_BOUNDARY"],
+    "THRESHOLD": ["CONDITIONAL_PHENOMENON", "SCOPE_BOUNDARY"],
+    "OBSERVE": ["SOURCE_ATTESTATION", "SCOPE_BOUNDARY"]
+  },
+  "protocols": {
+    "FORMAL_PROOF": {"validator": "formal_proof", "input_key": "formal_proof"},
+    "DEFINITION": {"validator": "semantic_evidence"},
+    "FACTUAL_RECORD": {"validator": "semantic_evidence"},
+    "LEGAL_AUTHORITY": {"validator": "legal_authority", "input_key": "legal_authority"},
+    "STATISTICAL_INFERENCE": {"validator": "statistical_inference", "input_key": "statistical_inference"},
+    "CAUSAL_INFERENCE": {"validator": "causal_inference", "input_key": "causal_inference"},
+    "PREDICTIVE_VALIDATION": {"validator": "predictive_validation", "input_key": "predictive_validation"},
+    "PRESCRIPTIVE_DECISION": {"validator": "prescriptive_decision", "input_key": "prescriptive_decision"},
+    "CONDITIONAL_PHENOMENON": {"validator": "conditional_phenomenon", "input_key": "conditional_phenomenon"},
+    "SOURCE_ATTESTATION": {"validator": "semantic_evidence"},
+    "SCOPE_BOUNDARY": {"validator": "scope_boundary"},
+    "GENERALIZATION": {"validator": "generalization", "input_key": "generalization"},
+    "VERSIONED_TECHNICAL_SPEC": {"validator": "versioned_technical_spec", "input_key": "versioned_technical_spec"},
+    "EVIDENCE_SYNTHESIS": {"validator": "evidence_synthesis", "input_key": "evidence_synthesis"},
+    "HISTORICAL_SOURCE_CRITICISM": {"validator": "historical_source_criticism", "input_key": "historical_source_criticism"},
+    "PRACTITIONER_HEURISTIC": {"validator": "practitioner_heuristic", "input_key": "practitioner_heuristic"}
+  },
+  "input_augmentations": {
+    "evidence_synthesis": "EVIDENCE_SYNTHESIS",
+    "practitioner_heuristic": "PRACTITIONER_HEURISTIC"
+  }
+}

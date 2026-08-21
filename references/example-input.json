@@ -1,0 +1,58 @@
+{
+  "claim_ir": {
+    "claim_id": "C1",
+    "source_text": "Widget 4.2 supports signed exports.",
+    "operator": "FACT",
+    "subject": "Widget 4.2",
+    "predicate": "supports",
+    "object": "signed exports",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {"version": "4.2"},
+    "anchors": {
+      "subject": {"text": "Widget 4.2", "start": 0, "end": 10},
+      "predicate": {"text": "supports", "start": 11, "end": 19},
+      "object": {"text": "signed exports", "start": 20, "end": 34},
+      "scope": {"text": "4.2", "start": 7, "end": 10}
+    }
+  },
+  "domain": "SOFTWARE",
+  "claim_class": "API_BEHAVIOR",
+  "evidence": [
+    {
+      "evidence_id": "E1",
+      "source_id": "DOC-42",
+      "source_kind": "official_documentation",
+      "source_text": "In version 4.2, Widget supports signed exports.",
+      "quote": {"text": "Widget supports signed exports", "start": 16, "end": 46},
+      "version": "4.2",
+      "scope": {"version": "4.2"},
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "C1",
+      "evidence_id": "E1",
+      "relation": "ENTAILS",
+      "claim_fragment": "Widget 4.2 supports signed exports",
+      "evidence_fragment": "Widget supports signed exports",
+      "missing_bridge": ""
+    }
+  ],
+  "verified_scope": {
+    "version": {
+      "value": "4.2",
+      "evidence_ids": ["E1"],
+      "evidence_fragments": {"E1": "version 4.2"}
+    }
+  },
+  "protocol_inputs": {
+    "versioned_technical_spec": {
+      "version": "4.2",
+      "evidence_ids": ["E1"]
+    }
+  }
+}

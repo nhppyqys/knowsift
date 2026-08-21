@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-PROD-002",
+    "source_text": "短片前期制作包括拆分剧本、准备镜头清单或分镜、排期、组建演员与团队以及落实场地。",
+    "operator": "FACT",
+    "subject": "短片前期制作",
+    "predicate": "包括",
+    "object": "拆分剧本、准备镜头清单或分镜、排期、组建演员与团队以及落实场地",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "短片前期制作",
+        "start": 0,
+        "end": 6
+      },
+      "predicate": {
+        "text": "包括",
+        "start": 6,
+        "end": 8
+      },
+      "object": {
+        "text": "拆分剧本、准备镜头清单或分镜、排期、组建演员与团队以及落实场地",
+        "start": 8,
+        "end": 39
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-PROD-002",
+      "source_id": "GUIDE-STUDIOBINDER-2025",
+      "source_kind": "primary_source",
+      "source_text": "The Screenplay; The Schedule; The Budget.\nBreaking down the script; Shot listing and/or storyboarding; Scheduling production; Hiring cast and crew; Securing shoot locations.",
+      "quote": {
+        "text": "Breaking down the script; Shot listing and/or storyboarding; Scheduling production; Hiring cast and crew; Securing shoot locations",
+        "start": 42,
+        "end": 172
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-PROD-002",
+      "evidence_id": "E-SD-PROD-002",
+      "relation": "ENTAILS",
+      "claim_fragment": "短片前期制作包括拆分剧本、准备镜头清单或分镜、排期、组建演员与团队以及落实场地",
+      "evidence_fragment": "Breaking down the script; Shot listing and/or storyboarding; Scheduling production; Hiring cast and crew; Securing shoot locations",
+      "missing_bridge": ""
+    }
+  ]
+}

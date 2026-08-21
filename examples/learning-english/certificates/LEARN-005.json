@@ -1,0 +1,172 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "e806856285c7c7668cadc889f6e82e602b6dfb0750ddcd37b6215a86677e306c",
+  "claim_id": "LEARN-005",
+  "claim_text": "成年人绝对不应该背单词。",
+  "canonical_claim": null,
+  "normalized_ir": null,
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "HOLD",
+    "code": "SEMANTIC_CONFLICT",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 1,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-DISPUTE-A"
+    ],
+    "contradicting_evidence_ids": [
+      "E-DISPUTE-B"
+    ],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-DISPUTE-A": "APPROPRIATE",
+      "E-DISPUTE-B": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-DISPUTE-A",
+      "E-DISPUTE-B"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "HOLD",
+      "code": "SEMANTIC_SUPPORT_UNRESOLVED",
+      "missing": []
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 2,
+    "source_count": 2,
+    "independent_root_count": 2,
+    "independent_provenance_roots": [
+      "VIDEO-A",
+      "VIDEO-B"
+    ],
+    "roots_by_source": {
+      "VIDEO-A": [
+        "VIDEO-A"
+      ],
+      "VIDEO-B": [
+        "VIDEO-B"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "VIDEO-A": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-DISPUTE-A"
+        ]
+      },
+      "VIDEO-B": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-DISPUTE-B"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-DISPUTE-A",
+      "source_id": "VIDEO-A",
+      "source_kind": "primary_source",
+      "quote": {
+        "text": "成年人绝对不应该背单词",
+        "start": 10,
+        "end": 21
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    },
+    {
+      "evidence_id": "E-DISPUTE-B",
+      "source_id": "VIDEO-B",
+      "source_kind": "primary_source",
+      "quote": {
+        "text": "基础词汇不足时仍需要系统记忆单词",
+        "start": 10,
+        "end": 26
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [
+    "semantic:SEMANTIC_CONFLICT",
+    "protocol:FACTUAL_RECORD:SEMANTIC_SUPPORT_UNRESOLVED"
+  ],
+  "decisive_reasons": [
+    "APPROPRIATE_EVIDENCE_CONFLICT"
+  ],
+  "admission": "HOLD"
+}

@@ -1,0 +1,77 @@
+{
+  "claim_ir": {
+    "claim_id": "LEARN-005",
+    "source_text": "成年人绝对不应该背单词。",
+    "operator": "FACT",
+    "subject": "成年人",
+    "predicate": "绝对不应该",
+    "object": "背单词",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "成年人",
+        "start": 0,
+        "end": 3
+      },
+      "predicate": {
+        "text": "绝对不应该",
+        "start": 3,
+        "end": 8
+      },
+      "object": {
+        "text": "背单词",
+        "start": 8,
+        "end": 11
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-DISPUTE-A",
+      "source_id": "VIDEO-A",
+      "source_kind": "primary_source",
+      "source_text": "视频字幕：讲师甲主张成年人绝对不应该背单词。",
+      "quote": {
+        "text": "成年人绝对不应该背单词",
+        "start": 10,
+        "end": 21
+      },
+      "derived_from": [],
+      "cites": []
+    },
+    {
+      "evidence_id": "E-DISPUTE-B",
+      "source_id": "VIDEO-B",
+      "source_kind": "primary_source",
+      "source_text": "视频字幕：讲师乙主张基础词汇不足时仍需要系统记忆单词。",
+      "quote": {
+        "text": "基础词汇不足时仍需要系统记忆单词",
+        "start": 10,
+        "end": 26
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "LEARN-005",
+      "evidence_id": "E-DISPUTE-A",
+      "relation": "ENTAILS",
+      "claim_fragment": "成年人绝对不应该背单词",
+      "evidence_fragment": "成年人绝对不应该背单词",
+      "missing_bridge": ""
+    },
+    {
+      "claim_id": "LEARN-005",
+      "evidence_id": "E-DISPUTE-B",
+      "relation": "CONTRADICTS",
+      "claim_fragment": "成年人绝对不应该背单词",
+      "evidence_fragment": "基础词汇不足时仍需要系统记忆单词",
+      "missing_bridge": "讲师乙的建议与绝对化说法冲突"
+    }
+  ]
+}

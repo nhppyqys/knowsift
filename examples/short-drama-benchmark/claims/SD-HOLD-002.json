@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-HOLD-002",
+    "source_text": "短剧推广适合普通新手稳定月入二万元以上。",
+    "operator": "FACT",
+    "subject": "短剧推广",
+    "predicate": "适合普通新手稳定",
+    "object": "月入二万元以上",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "短剧推广",
+        "start": 0,
+        "end": 4
+      },
+      "predicate": {
+        "text": "适合普通新手稳定",
+        "start": 4,
+        "end": 12
+      },
+      "object": {
+        "text": "月入二万元以上",
+        "start": 12,
+        "end": 19
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-HOLD-002",
+      "source_id": "BILI-EARNING-20K",
+      "source_kind": "marketing_copy",
+      "source_text": "视频标题宣称短剧推广小白也可以月入2w+。",
+      "quote": {
+        "text": "短剧推广小白也可以月入2w+",
+        "start": 6,
+        "end": 20
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-HOLD-002",
+      "evidence_id": "E-SD-HOLD-002",
+      "relation": "ENTAILS",
+      "claim_fragment": "短剧推广适合普通新手稳定月入二万元以上",
+      "evidence_fragment": "短剧推广小白也可以月入2w+",
+      "missing_bridge": ""
+    }
+  ]
+}

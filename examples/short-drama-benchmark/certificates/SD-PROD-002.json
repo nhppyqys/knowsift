@@ -1,0 +1,173 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "43f150a21c98ead88b80268df16ba35ce6884398ec0d753849f1bb21389271c6",
+  "claim_id": "SD-PROD-002",
+  "claim_text": "短片前期制作包括拆分剧本、准备镜头清单或分镜、排期、组建演员与团队以及落实场地。",
+  "canonical_claim": "短片前期制作包括拆分剧本、准备镜头清单或分镜、排期、组建演员与团队以及落实场地。",
+  "normalized_ir": {
+    "claim_id": "SD-PROD-002",
+    "source_text": "短片前期制作包括拆分剧本、准备镜头清单或分镜、排期、组建演员与团队以及落实场地。",
+    "operator": "FACT",
+    "subject": "短片前期制作",
+    "predicate": "包括",
+    "object": "拆分剧本、准备镜头清单或分镜、排期、组建演员与团队以及落实场地",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "短片前期制作",
+        "start": 0,
+        "end": 6
+      },
+      "predicate": {
+        "text": "包括",
+        "start": 6,
+        "end": 8
+      },
+      "object": {
+        "text": "拆分剧本、准备镜头清单或分镜、排期、组建演员与团队以及落实场地",
+        "start": 8,
+        "end": 39
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-SD-PROD-002"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-SD-PROD-002": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-SD-PROD-002"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-SD-PROD-002"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "GUIDE-STUDIOBINDER-2025"
+    ],
+    "roots_by_source": {
+      "GUIDE-STUDIOBINDER-2025": [
+        "GUIDE-STUDIOBINDER-2025"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "GUIDE-STUDIOBINDER-2025": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-SD-PROD-002"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-SD-PROD-002",
+      "source_id": "GUIDE-STUDIOBINDER-2025",
+      "source_kind": "primary_source",
+      "quote": {
+        "text": "Breaking down the script; Shot listing and/or storyboarding; Scheduling production; Hiring cast and crew; Securing shoot locations",
+        "start": 42,
+        "end": 172
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

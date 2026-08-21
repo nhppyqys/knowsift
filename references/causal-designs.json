@@ -1,0 +1,22 @@
+{
+  "RCT": {
+    "required_fields": ["random_assignment_record", "treatment_definition", "outcome_definition", "attrition_reported"],
+    "required_assumptions": ["allocation_integrity", "noncompliance_impact", "outcome_measure_validity"]
+  },
+  "DID": {
+    "required_fields": ["treated_group", "comparison_group", "pre_period", "post_period", "parallel_trends_check"],
+    "required_assumptions": ["parallel_trends", "no_anticipation", "composition_stability", "concurrent_shocks"]
+  },
+  "IV": {
+    "required_fields": ["instrument", "treatment", "outcome", "first_stage_evidence"],
+    "required_assumptions": ["exclusion_restriction", "instrument_independence", "relevance", "monotonicity_if_late"]
+  },
+  "RDD": {
+    "required_fields": ["running_variable", "cutoff", "treatment_assignment_rule", "manipulation_check", "bandwidth"],
+    "required_assumptions": ["continuity_assumption", "no_precise_manipulation", "functional_form_robustness"]
+  },
+  "OBSERVATIONAL": {
+    "required_fields": ["exposure_definition", "outcome_definition", "measured_confounders", "adjustment_method"],
+    "required_assumptions": ["unmeasured_confounding", "positivity_overlap", "model_specification"]
+  }
+}

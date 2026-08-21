@@ -1,0 +1,142 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "1689727ac1b50534b34b6fff5f1c68d68a87b050c7d3c5a43f4b42ddd8422a50",
+  "claim_id": "SD-REJECT-002",
+  "claim_text": "批量生成重复模板化AI短剧就能稳定通过YouTube频道变现审核。",
+  "canonical_claim": null,
+  "normalized_ir": null,
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "FAIL",
+    "code": "EVIDENCE_CONTRADICTS_CLAIM",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 1,
+      "ENTAILS": 0,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [],
+    "contradicting_evidence_ids": [
+      "E-SD-REJECT-002"
+    ],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-SD-REJECT-002": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-SD-REJECT-002"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "FAIL",
+      "code": "APPROPRIATE_EVIDENCE_CONTRADICTS_CLAIM",
+      "missing": []
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "YT-MONETIZATION-POLICY"
+    ],
+    "roots_by_source": {
+      "YT-MONETIZATION-POLICY": [
+        "YT-MONETIZATION-POLICY"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "YT-MONETIZATION-POLICY": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-SD-REJECT-002"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-SD-REJECT-002",
+      "source_id": "YT-MONETIZATION-POLICY",
+      "source_kind": "official_documentation",
+      "quote": {
+        "text": "Mass-produced or repetitive content is inauthentic and has always been ineligible for monetization",
+        "start": 0,
+        "end": 98
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [
+    "CLAIM_CONTRADICTED_BY_SUPPLIED_EVIDENCE"
+  ],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "APPROPRIATE_EVIDENCE_CONTRADICTS_CLAIM"
+  ],
+  "admission": "REJECT"
+}

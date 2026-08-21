@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-BILI-003",
+    "source_text": "B站花火当前要求个人UP主实名认证且年满十八岁、粉丝不少于一万、近三十天发布过原创视频，并达到规定的电磁力分数。",
+    "operator": "FACT",
+    "subject": "B站花火当前",
+    "predicate": "要求",
+    "object": "实名认证且年满十八岁、粉丝不少于一万、近三十天发布过原创视频，并达到规定的电磁力分数",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "B站花火当前",
+        "start": 0,
+        "end": 6
+      },
+      "predicate": {
+        "text": "要求",
+        "start": 6,
+        "end": 8
+      },
+      "object": {
+        "text": "实名认证且年满十八岁、粉丝不少于一万、近三十天发布过原创视频，并达到规定的电磁力分数",
+        "start": 13,
+        "end": 55
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-BILI-003",
+      "source_id": "BILI-HUAHUO-FAQ",
+      "source_kind": "official_documentation",
+      "source_text": "入驻要求：实名认证且年满18岁；粉丝不少于1万；近30天发布原创视频；创作分和影响分不低于70，信用分不低于90。",
+      "quote": {
+        "text": "实名认证且年满18岁；粉丝不少于1万；近30天发布原创视频；创作分和影响分不低于70，信用分不低于90",
+        "start": 5,
+        "end": 56
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-BILI-003",
+      "evidence_id": "E-SD-BILI-003",
+      "relation": "ENTAILS",
+      "claim_fragment": "B站花火当前要求个人UP主实名认证且年满十八岁、粉丝不少于一万、近三十天发布过原创视频，并达到规定的电磁力分数",
+      "evidence_fragment": "实名认证且年满18岁；粉丝不少于1万；近30天发布原创视频；创作分和影响分不低于70，信用分不低于90",
+      "missing_bridge": ""
+    }
+  ]
+}

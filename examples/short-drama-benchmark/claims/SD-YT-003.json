@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-YT-003",
+    "source_text": "YouTube合作伙伴获得分配后Shorts收入的百分之四十五。",
+    "operator": "FACT",
+    "subject": "YouTube合作伙伴",
+    "predicate": "获得",
+    "object": "分配后Shorts收入的百分之四十五",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "YouTube合作伙伴",
+        "start": 0,
+        "end": 11
+      },
+      "predicate": {
+        "text": "获得",
+        "start": 11,
+        "end": 13
+      },
+      "object": {
+        "text": "分配后Shorts收入的百分之四十五",
+        "start": 13,
+        "end": 31
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-YT-003",
+      "source_id": "YT-REVENUE-SHARES",
+      "source_kind": "official_documentation",
+      "source_text": "Watch Page: 55% net. Shorts: 45% allocated. Fan funding: 70% net.",
+      "quote": {
+        "text": "Shorts: 45% allocated",
+        "start": 21,
+        "end": 42
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-YT-003",
+      "evidence_id": "E-SD-YT-003",
+      "relation": "ENTAILS",
+      "claim_fragment": "YouTube合作伙伴获得分配后Shorts收入的百分之四十五",
+      "evidence_fragment": "Shorts: 45% allocated",
+      "missing_bridge": ""
+    }
+  ]
+}

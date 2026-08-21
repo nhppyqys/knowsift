@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-PROD-001",
+    "source_text": "短片前期计划的三份基础文件是剧本、拍摄计划和预算。",
+    "operator": "FACT",
+    "subject": "短片前期计划的三份基础文件",
+    "predicate": "是",
+    "object": "剧本、拍摄计划和预算",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "短片前期计划的三份基础文件",
+        "start": 0,
+        "end": 13
+      },
+      "predicate": {
+        "text": "是",
+        "start": 13,
+        "end": 14
+      },
+      "object": {
+        "text": "剧本、拍摄计划和预算",
+        "start": 14,
+        "end": 24
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-PROD-001",
+      "source_id": "GUIDE-STUDIOBINDER-2025",
+      "source_kind": "primary_source",
+      "source_text": "The Screenplay; The Schedule; The Budget.\nBreaking down the script; Shot listing and/or storyboarding; Scheduling production; Hiring cast and crew; Securing shoot locations.",
+      "quote": {
+        "text": "The Screenplay; The Schedule; The Budget",
+        "start": 0,
+        "end": 40
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-PROD-001",
+      "evidence_id": "E-SD-PROD-001",
+      "relation": "ENTAILS",
+      "claim_fragment": "短片前期计划的三份基础文件是剧本、拍摄计划和预算",
+      "evidence_fragment": "The Screenplay; The Schedule; The Budget",
+      "missing_bridge": ""
+    }
+  ]
+}

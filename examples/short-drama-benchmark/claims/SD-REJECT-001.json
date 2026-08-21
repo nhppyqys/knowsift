@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-REJECT-001",
+    "source_text": "无需获得版权或授权也可以剪辑他人短剧并在B站发布获利。",
+    "operator": "FACT",
+    "subject": "剪辑他人短剧并在B站发布获利",
+    "predicate": "无需获得",
+    "object": "版权或授权",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "剪辑他人短剧并在B站发布获利",
+        "start": 12,
+        "end": 26
+      },
+      "predicate": {
+        "text": "无需获得",
+        "start": 0,
+        "end": 4
+      },
+      "object": {
+        "text": "版权或授权",
+        "start": 4,
+        "end": 9
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-REJECT-001",
+      "source_id": "BILI-CHARGE-RULES",
+      "source_kind": "official_documentation",
+      "source_text": "用户可以在充电面板支付B币为UP主充电。UP主应拥有发布内容的合法权利或全部合法授权。",
+      "quote": {
+        "text": "UP主应拥有发布内容的合法权利或全部合法授权",
+        "start": 20,
+        "end": 42
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-REJECT-001",
+      "evidence_id": "E-SD-REJECT-001",
+      "relation": "CONTRADICTS",
+      "claim_fragment": "无需获得版权或授权也可以剪辑他人短剧并在B站发布获利",
+      "evidence_fragment": "UP主应拥有发布内容的合法权利或全部合法授权",
+      "missing_bridge": ""
+    }
+  ]
+}

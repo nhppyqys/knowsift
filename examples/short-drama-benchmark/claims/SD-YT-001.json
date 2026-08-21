@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-YT-001",
+    "source_text": "YouTube完整广告分成门槛可以通过一千订阅加近十二个月四千小时公开观看时长，或一千订阅加近九十天一千万次有效Shorts公开观看达到。",
+    "operator": "FACT",
+    "subject": "YouTube完整广告分成门槛",
+    "predicate": "可以通过",
+    "object": "一千订阅加近十二个月四千小时公开观看时长，或一千订阅加近九十天一千万次有效Shorts公开观看达到",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "YouTube完整广告分成门槛",
+        "start": 0,
+        "end": 15
+      },
+      "predicate": {
+        "text": "可以通过",
+        "start": 15,
+        "end": 19
+      },
+      "object": {
+        "text": "一千订阅加近十二个月四千小时公开观看时长，或一千订阅加近九十天一千万次有效Shorts公开观看达到",
+        "start": 19,
+        "end": 68
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-YT-001",
+      "source_id": "YT-YPP-ELIGIBILITY",
+      "source_kind": "official_documentation",
+      "source_text": "Full ad-share threshold: 1,000 subscribers plus 4,000 watch hours / 12 months, or 10 million Shorts views / 90 days.",
+      "quote": {
+        "text": "1,000 subscribers plus 4,000 watch hours / 12 months, or 10 million Shorts views / 90 days",
+        "start": 25,
+        "end": 115
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-YT-001",
+      "evidence_id": "E-SD-YT-001",
+      "relation": "ENTAILS",
+      "claim_fragment": "YouTube完整广告分成门槛可以通过一千订阅加近十二个月四千小时公开观看时长，或一千订阅加近九十天一千万次有效Shorts公开观看达到",
+      "evidence_fragment": "1,000 subscribers plus 4,000 watch hours / 12 months, or 10 million Shorts views / 90 days",
+      "missing_bridge": ""
+    }
+  ]
+}

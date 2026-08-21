@@ -1,0 +1,173 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "ef67f0384570c393dd69230314901ff9031ef6a330c612e4beeb1ae29598c20a",
+  "claim_id": "SD-VIEW-005",
+  "claim_text": "B站视频发布者提醒短剧版权剪辑、分红和投资项目中存在骗局风险。",
+  "canonical_claim": "B站视频发布者提醒短剧版权剪辑、分红和投资项目中存在骗局风险。",
+  "normalized_ir": {
+    "claim_id": "SD-VIEW-005",
+    "source_text": "B站视频发布者提醒短剧版权剪辑、分红和投资项目中存在骗局风险。",
+    "operator": "OBSERVE",
+    "subject": "B站视频发布者",
+    "predicate": "提醒",
+    "object": "短剧版权剪辑、分红和投资项目中存在骗局风险",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "B站视频发布者",
+        "start": 0,
+        "end": 7
+      },
+      "predicate": {
+        "text": "提醒",
+        "start": 7,
+        "end": 9
+      },
+      "object": {
+        "text": "短剧版权剪辑、分红和投资项目中存在骗局风险",
+        "start": 9,
+        "end": 30
+      }
+    }
+  },
+  "protocols_required": [
+    "SOURCE_ATTESTATION",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-SD-VIEW-005"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-SD-VIEW-005": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-SD-VIEW-005"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "SOURCE_ATTESTATION": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-SD-VIEW-005"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "BILI-SCAM-WARNING"
+    ],
+    "roots_by_source": {
+      "BILI-SCAM-WARNING": [
+        "BILI-SCAM-WARNING"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "BILI-SCAM-WARNING": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-SD-VIEW-005"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-SD-VIEW-005",
+      "source_id": "BILI-SCAM-WARNING",
+      "source_kind": "primary_source",
+      "quote": {
+        "text": "短剧版权剪辑、短剧分红和短剧投资项目中存在骗局风险",
+        "start": 6,
+        "end": 31
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

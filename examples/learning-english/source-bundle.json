@@ -1,0 +1,49 @@
+{
+  "bundle_version": "1.0",
+  "topic": "成年人如何学习英语",
+  "question": "这些材料真正支持哪些学习结论？哪些只是观点、经历或营销承诺？",
+  "language": "zh-CN",
+  "source_boundary": "演示用的 1 份研究摘要、3 段视频字幕和 1 个课程销售页。全部来源均为虚构样本，只用于展示过滤流程，不构成真实学习建议。",
+  "sources": [
+    {
+      "source_id": "PAPER-1",
+      "title": "分散学习与集中学习：演示研究摘要",
+      "source_type": "RESEARCH",
+      "medium": "PAPER",
+      "locator": "demo://paper-1",
+      "content": "示例研究摘要：在本综述纳入的词汇记忆任务中，分散安排复习的延迟测试成绩高于一次性集中复习。摘要没有比较口语能力，也没有证明这一结果适用于所有年龄、水平和学习目标。"
+    },
+    {
+      "source_id": "VIDEO-A",
+      "title": "讲师甲：不要背单词",
+      "source_type": "OPINION",
+      "medium": "VIDEO",
+      "locator": "demo://video-a#t=03:12",
+      "content": "视频字幕：讲师甲主张成年人绝对不应该背单词。"
+    },
+    {
+      "source_id": "VIDEO-B",
+      "title": "讲师乙：基础阶段仍要记词汇",
+      "source_type": "PRACTITIONER_EXPERIENCE",
+      "medium": "VIDEO",
+      "locator": "demo://video-b#t=05:40",
+      "content": "视频字幕：讲师乙主张基础词汇不足时仍需要系统记忆单词。"
+    },
+    {
+      "source_id": "VIDEO-C",
+      "title": "学习者丙的三个月经历",
+      "source_type": "ANECDOTE",
+      "medium": "VIDEO",
+      "locator": "demo://video-c#t=00:48",
+      "content": "视频字幕：学习者丙自述自己在三个月内从零基础达到流利。"
+    },
+    {
+      "source_id": "SALES-1",
+      "title": "三十天母语水平课程销售页",
+      "source_type": "MARKETING",
+      "medium": "ARTICLE",
+      "locator": "demo://sales-1",
+      "content": "销售页宣称：任何成年人每天学习十分钟都能在三十天达到母语水平。"
+    }
+  ]
+}

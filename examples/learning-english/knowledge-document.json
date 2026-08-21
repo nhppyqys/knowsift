@@ -1,0 +1,146 @@
+{
+  "document_version": "1.0",
+  "title": "怎样学英语：一份经过过滤的材料地图（演示）",
+  "question": "这些材料真正支持哪些学习结论？哪些只是观点、经历或营销承诺？",
+  "language": "zh-CN",
+  "source_boundary": "演示用的 1 份研究摘要、3 段视频字幕和 1 个课程销售页。全部来源均为虚构样本，只用于展示过滤流程，不构成真实学习建议。",
+  "sources": [
+    {
+      "source_id": "PAPER-1",
+      "title": "分散学习与集中学习：演示研究摘要",
+      "source_type": "RESEARCH",
+      "medium": "PAPER",
+      "locator": "demo://paper-1"
+    },
+    {
+      "source_id": "VIDEO-A",
+      "title": "讲师甲：不要背单词",
+      "source_type": "OPINION",
+      "medium": "VIDEO",
+      "locator": "demo://video-a#t=03:12"
+    },
+    {
+      "source_id": "VIDEO-B",
+      "title": "讲师乙：基础阶段仍要记词汇",
+      "source_type": "PRACTITIONER_EXPERIENCE",
+      "medium": "VIDEO",
+      "locator": "demo://video-b#t=05:40"
+    },
+    {
+      "source_id": "VIDEO-C",
+      "title": "学习者丙的三个月经历",
+      "source_type": "ANECDOTE",
+      "medium": "VIDEO",
+      "locator": "demo://video-c#t=00:48"
+    },
+    {
+      "source_id": "SALES-1",
+      "title": "三十天母语水平课程销售页",
+      "source_type": "MARKETING",
+      "medium": "ARTICLE",
+      "locator": "demo://sales-1"
+    }
+  ],
+  "records": [
+    {
+      "record_id": "DOC-001",
+      "topic": "复习安排",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "适用范围：研究：本综述纳入的词汇记忆任务。结论：分散安排复习的延迟测试成绩高于一次性集中复习。",
+      "explanation": "研究摘要直接支持这个较窄的比较结论。",
+      "source_ids": [
+        "PAPER-1"
+      ],
+      "conditions": [
+        "仅限该综述纳入的词汇记忆任务与延迟测试。"
+      ],
+      "limitations": [
+        "不能外推为口语效果，也不能外推到所有学习者。"
+      ],
+      "certificate_file": "certificates/LEARN-001.json"
+    },
+    {
+      "record_id": "DOC-002",
+      "topic": "背单词",
+      "layer": "PRACTICE_OR_VIEWPOINT",
+      "text": "讲师甲主张成年人绝对不应该背单词。",
+      "explanation": "证书只确认讲师甲说过这句话，不确认建议普遍正确。",
+      "source_ids": [
+        "VIDEO-A"
+      ],
+      "conditions": [],
+      "limitations": [
+        "这是个人主张，不是世界事实。"
+      ],
+      "certificate_file": "certificates/LEARN-002.json"
+    },
+    {
+      "record_id": "DOC-003",
+      "topic": "背单词",
+      "layer": "PRACTICE_OR_VIEWPOINT",
+      "text": "讲师乙主张基础词汇不足时仍需要系统记忆单词。",
+      "explanation": "证书只确认讲师乙提出了带条件的实践建议。",
+      "source_ids": [
+        "VIDEO-B"
+      ],
+      "conditions": [
+        "讲师乙把建议限定在基础词汇不足的情况。"
+      ],
+      "limitations": [
+        "从业经验不能单独证明对所有学习者有效。"
+      ],
+      "certificate_file": "certificates/LEARN-003.json"
+    },
+    {
+      "record_id": "DOC-004",
+      "topic": "学习结果",
+      "layer": "PRACTICE_OR_VIEWPOINT",
+      "text": "学习者丙自述自己在三个月内从零基础达到流利。",
+      "explanation": "证书确认这是学习者丙的自述，而不是可复制的普遍结果。",
+      "source_ids": [
+        "VIDEO-C"
+      ],
+      "conditions": [],
+      "limitations": [
+        "单一个人故事不能说明典型效果，也缺少独立验证。"
+      ],
+      "certificate_file": "certificates/LEARN-004.json"
+    },
+    {
+      "record_id": "DOC-005",
+      "topic": "背单词",
+      "layer": "DISPUTED_OR_UNRESOLVED",
+      "text": "成年人绝对不应该背单词。",
+      "explanation": "两段视频给出冲突主张，而且材料不足以裁定哪个适用于谁。",
+      "source_ids": [
+        "VIDEO-A",
+        "VIDEO-B"
+      ],
+      "conditions": [],
+      "limitations": [
+        "需要更强的研究证据和明确的人群、目标与基础条件。"
+      ],
+      "certificate_file": "certificates/LEARN-005.json"
+    },
+    {
+      "record_id": "DOC-006",
+      "topic": "课程效果",
+      "layer": "DISPUTED_OR_UNRESOLVED",
+      "text": "任何成年人每天学习十分钟都能在三十天达到母语水平。",
+      "explanation": "唯一依据是销售页重复自己的承诺，没有独立结果证据。",
+      "source_ids": [
+        "SALES-1"
+      ],
+      "conditions": [],
+      "limitations": [
+        "人群、母语水平定义、测量方法和失败案例均未知。"
+      ],
+      "certificate_file": "certificates/LEARN-006.json"
+    }
+  ],
+  "open_questions": [
+    "对不同英语基础与学习目标，分散复习的效果是否相同？",
+    "词汇记忆、阅读理解与口语表达需要怎样组合训练？",
+    "视频中关于背单词的冲突建议，是否能由更高质量研究裁定？"
+  ]
+}

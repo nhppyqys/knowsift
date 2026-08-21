@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-HOLD-001",
+    "source_text": "零基础用户学完一套AI短剧教程即可接单变现。",
+    "operator": "FACT",
+    "subject": "零基础用户",
+    "predicate": "学完一套AI短剧教程即可",
+    "object": "接单变现",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "零基础用户",
+        "start": 0,
+        "end": 5
+      },
+      "predicate": {
+        "text": "学完一套AI短剧教程即可",
+        "start": 5,
+        "end": 17
+      },
+      "object": {
+        "text": "接单变现",
+        "start": 17,
+        "end": 21
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-HOLD-001",
+      "source_id": "BILI-AI-COURSE",
+      "source_kind": "marketing_copy",
+      "source_text": "视频标题宣称零基础学完即可接单变现；课程目录覆盖剧本、角色、场景、分镜、视频、配音音效和剪辑。",
+      "quote": {
+        "text": "零基础学完即可接单变现",
+        "start": 6,
+        "end": 17
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-HOLD-001",
+      "evidence_id": "E-SD-HOLD-001",
+      "relation": "ENTAILS",
+      "claim_fragment": "零基础用户学完一套AI短剧教程即可接单变现",
+      "evidence_fragment": "零基础学完即可接单变现",
+      "missing_bridge": ""
+    }
+  ]
+}

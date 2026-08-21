@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-YT-004",
+    "source_text": "YouTube合作伙伴的粉丝资助净收入分成为百分之七十。",
+    "operator": "FACT",
+    "subject": "YouTube合作伙伴的粉丝资助净收入分成",
+    "predicate": "为",
+    "object": "百分之七十",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "YouTube合作伙伴的粉丝资助净收入分成",
+        "start": 0,
+        "end": 21
+      },
+      "predicate": {
+        "text": "为",
+        "start": 21,
+        "end": 22
+      },
+      "object": {
+        "text": "百分之七十",
+        "start": 22,
+        "end": 27
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-YT-004",
+      "source_id": "YT-REVENUE-SHARES",
+      "source_kind": "official_documentation",
+      "source_text": "Watch Page: 55% net. Shorts: 45% allocated. Fan funding: 70% net.",
+      "quote": {
+        "text": "Fan funding: 70% net",
+        "start": 44,
+        "end": 64
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-YT-004",
+      "evidence_id": "E-SD-YT-004",
+      "relation": "ENTAILS",
+      "claim_fragment": "YouTube合作伙伴的粉丝资助净收入分成为百分之七十",
+      "evidence_fragment": "Fan funding: 70% net",
+      "missing_bridge": ""
+    }
+  ]
+}

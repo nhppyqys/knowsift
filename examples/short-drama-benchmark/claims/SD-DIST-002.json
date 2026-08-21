@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-DIST-002",
+    "source_text": "DramaBox日本创作者页面所述的基本收益方式是最低保底加收入分成，具体条件以合同为准。",
+    "operator": "FACT",
+    "subject": "DramaBox日本创作者页面所述的基本收益方式",
+    "predicate": "是",
+    "object": "最低保底加收入分成，具体条件以合同为准",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "DramaBox日本创作者页面所述的基本收益方式",
+        "start": 0,
+        "end": 24
+      },
+      "predicate": {
+        "text": "是",
+        "start": 24,
+        "end": 25
+      },
+      "object": {
+        "text": "最低保底加收入分成，具体条件以合同为准",
+        "start": 25,
+        "end": 44
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-DIST-002",
+      "source_id": "DRAMABOX-JP-CREATORS",
+      "source_kind": "official_documentation",
+      "source_text": "募集対象は15-100話のショートドラマ。収益分配は基本的にMG+レベニューシェアで、詳細は契約による。",
+      "quote": {
+        "text": "収益分配は基本的にMG+レベニューシェアで、詳細は契約による",
+        "start": 21,
+        "end": 51
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-DIST-002",
+      "evidence_id": "E-SD-DIST-002",
+      "relation": "ENTAILS",
+      "claim_fragment": "DramaBox日本创作者页面所述的基本收益方式是最低保底加收入分成，具体条件以合同为准",
+      "evidence_fragment": "収益分配は基本的にMG+レベニューシェアで、詳細は契約による",
+      "missing_bridge": ""
+    }
+  ]
+}

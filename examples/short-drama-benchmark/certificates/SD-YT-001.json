@@ -1,0 +1,173 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "8c24644b2799ee5f291a73eb9aa7424d764f5da056eba7e5c7ff9d643248a8b5",
+  "claim_id": "SD-YT-001",
+  "claim_text": "YouTube完整广告分成门槛可以通过一千订阅加近十二个月四千小时公开观看时长，或一千订阅加近九十天一千万次有效Shorts公开观看达到。",
+  "canonical_claim": "YouTube完整广告分成门槛可以通过一千订阅加近十二个月四千小时公开观看时长，或一千订阅加近九十天一千万次有效Shorts公开观看达到。",
+  "normalized_ir": {
+    "claim_id": "SD-YT-001",
+    "source_text": "YouTube完整广告分成门槛可以通过一千订阅加近十二个月四千小时公开观看时长，或一千订阅加近九十天一千万次有效Shorts公开观看达到。",
+    "operator": "FACT",
+    "subject": "YouTube完整广告分成门槛",
+    "predicate": "可以通过",
+    "object": "一千订阅加近十二个月四千小时公开观看时长，或一千订阅加近九十天一千万次有效Shorts公开观看达到",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "YouTube完整广告分成门槛",
+        "start": 0,
+        "end": 15
+      },
+      "predicate": {
+        "text": "可以通过",
+        "start": 15,
+        "end": 19
+      },
+      "object": {
+        "text": "一千订阅加近十二个月四千小时公开观看时长，或一千订阅加近九十天一千万次有效Shorts公开观看达到",
+        "start": 19,
+        "end": 68
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-SD-YT-001"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-SD-YT-001": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-SD-YT-001"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-SD-YT-001"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "YT-YPP-ELIGIBILITY"
+    ],
+    "roots_by_source": {
+      "YT-YPP-ELIGIBILITY": [
+        "YT-YPP-ELIGIBILITY"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "YT-YPP-ELIGIBILITY": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-SD-YT-001"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-SD-YT-001",
+      "source_id": "YT-YPP-ELIGIBILITY",
+      "source_kind": "official_documentation",
+      "quote": {
+        "text": "1,000 subscribers plus 4,000 watch hours / 12 months, or 10 million Shorts views / 90 days",
+        "start": 25,
+        "end": 115
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

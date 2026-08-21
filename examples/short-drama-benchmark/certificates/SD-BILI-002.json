@@ -1,0 +1,173 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "8248af9dd8cf096664ccaa6ebbcda1760199085b0861f367552ec68babc4c5d0",
+  "claim_id": "SD-BILI-002",
+  "claim_text": "参与B站充电计划的UP主应拥有发布内容的合法权利或全部合法授权。",
+  "canonical_claim": "参与B站充电计划的UP主应拥有发布内容的合法权利或全部合法授权。",
+  "normalized_ir": {
+    "claim_id": "SD-BILI-002",
+    "source_text": "参与B站充电计划的UP主应拥有发布内容的合法权利或全部合法授权。",
+    "operator": "FACT",
+    "subject": "参与B站充电计划的UP主",
+    "predicate": "应拥有",
+    "object": "发布内容的合法权利或全部合法授权",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "参与B站充电计划的UP主",
+        "start": 0,
+        "end": 12
+      },
+      "predicate": {
+        "text": "应拥有",
+        "start": 12,
+        "end": 15
+      },
+      "object": {
+        "text": "发布内容的合法权利或全部合法授权",
+        "start": 15,
+        "end": 31
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-SD-BILI-002"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-SD-BILI-002": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-SD-BILI-002"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-SD-BILI-002"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "BILI-CHARGE-RULES"
+    ],
+    "roots_by_source": {
+      "BILI-CHARGE-RULES": [
+        "BILI-CHARGE-RULES"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "BILI-CHARGE-RULES": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-SD-BILI-002"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-SD-BILI-002",
+      "source_id": "BILI-CHARGE-RULES",
+      "source_kind": "official_documentation",
+      "quote": {
+        "text": "UP主应拥有发布内容的合法权利或全部合法授权",
+        "start": 20,
+        "end": 42
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

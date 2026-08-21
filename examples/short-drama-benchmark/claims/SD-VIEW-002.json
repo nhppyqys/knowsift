@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-VIEW-002",
+    "source_text": "B站教程发布者把短剧推广描述为授权后剪辑片段并发布，为指定应用拉新以赚取佣金。",
+    "operator": "OBSERVE",
+    "subject": "B站教程发布者",
+    "predicate": "把短剧推广描述为",
+    "object": "授权后剪辑片段并发布，为指定应用拉新以赚取佣金",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "B站教程发布者",
+        "start": 0,
+        "end": 7
+      },
+      "predicate": {
+        "text": "把短剧推广描述为",
+        "start": 7,
+        "end": 15
+      },
+      "object": {
+        "text": "授权后剪辑片段并发布，为指定应用拉新以赚取佣金",
+        "start": 15,
+        "end": 38
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-VIEW-002",
+      "source_id": "BILI-PROMOTION-TUTORIAL",
+      "source_kind": "primary_source",
+      "source_text": "发布者把短剧推广描述为：授权后剪辑片段并发布，为指定APP拉新以赚取佣金。",
+      "quote": {
+        "text": "授权后剪辑片段并发布，为指定APP拉新以赚取佣金",
+        "start": 12,
+        "end": 36
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-VIEW-002",
+      "evidence_id": "E-SD-VIEW-002",
+      "relation": "ENTAILS",
+      "claim_fragment": "B站教程发布者把短剧推广描述为授权后剪辑片段并发布，为指定应用拉新以赚取佣金",
+      "evidence_fragment": "授权后剪辑片段并发布，为指定APP拉新以赚取佣金",
+      "missing_bridge": ""
+    }
+  ]
+}

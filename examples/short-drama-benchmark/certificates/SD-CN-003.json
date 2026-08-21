@@ -1,0 +1,173 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "6caa13c65ec6608bcf9e5ae3171ce21e22c2377dc05676472f2b63f485f8ed8e",
+  "claim_id": "SD-CN-003",
+  "claim_text": "《微短剧发展管理办法》自二〇二六年九月一日起施行。",
+  "canonical_claim": "《微短剧发展管理办法》自二〇二六年九月一日起施行。",
+  "normalized_ir": {
+    "claim_id": "SD-CN-003",
+    "source_text": "《微短剧发展管理办法》自二〇二六年九月一日起施行。",
+    "operator": "FACT",
+    "subject": "《微短剧发展管理办法》",
+    "predicate": "自二〇二六年九月一日起",
+    "object": "施行",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "《微短剧发展管理办法》",
+        "start": 0,
+        "end": 11
+      },
+      "predicate": {
+        "text": "自二〇二六年九月一日起",
+        "start": 11,
+        "end": 22
+      },
+      "object": {
+        "text": "施行",
+        "start": 22,
+        "end": 24
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-SD-CN-003"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-SD-CN-003": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-SD-CN-003"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-SD-CN-003"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "NRTA-MEASURES-2026"
+    ],
+    "roots_by_source": {
+      "NRTA-MEASURES-2026": [
+        "NRTA-MEASURES-2026"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "NRTA-MEASURES-2026": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-SD-CN-003"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-SD-CN-003",
+      "source_id": "NRTA-MEASURES-2026",
+      "source_kind": "official_record",
+      "quote": {
+        "text": "本办法自2026年9月1日起施行",
+        "start": 27,
+        "end": 43
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

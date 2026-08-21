@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-YT-005",
+    "source_text": "YouTube把批量生产或重复内容归为不真实内容，并规定这类内容不符合变现条件。",
+    "operator": "FACT",
+    "subject": "YouTube",
+    "predicate": "把批量生产或重复内容归为",
+    "object": "不真实内容，并规定这类内容不符合变现条件",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "YouTube",
+        "start": 0,
+        "end": 7
+      },
+      "predicate": {
+        "text": "把批量生产或重复内容归为",
+        "start": 7,
+        "end": 19
+      },
+      "object": {
+        "text": "不真实内容，并规定这类内容不符合变现条件",
+        "start": 19,
+        "end": 39
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-YT-005",
+      "source_id": "YT-MONETIZATION-POLICY",
+      "source_kind": "official_documentation",
+      "source_text": "Mass-produced or repetitive content is inauthentic and has always been ineligible for monetization.",
+      "quote": {
+        "text": "Mass-produced or repetitive content is inauthentic and has always been ineligible for monetization",
+        "start": 0,
+        "end": 98
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-YT-005",
+      "evidence_id": "E-SD-YT-005",
+      "relation": "ENTAILS",
+      "claim_fragment": "YouTube把批量生产或重复内容归为不真实内容，并规定这类内容不符合变现条件",
+      "evidence_fragment": "Mass-produced or repetitive content is inauthentic and has always been ineligible for monetization",
+      "missing_bridge": ""
+    }
+  ]
+}

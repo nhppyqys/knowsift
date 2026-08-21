@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-VIEW-003",
+    "source_text": "B站视频发布者自述每天花一小时做海外短剧推广，当月多赚二千三百元以上。",
+    "operator": "OBSERVE",
+    "subject": "B站视频发布者",
+    "predicate": "自述",
+    "object": "每天花一小时做海外短剧推广，当月多赚二千三百元以上",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "B站视频发布者",
+        "start": 0,
+        "end": 7
+      },
+      "predicate": {
+        "text": "自述",
+        "start": 7,
+        "end": 9
+      },
+      "object": {
+        "text": "每天花一小时做海外短剧推广，当月多赚二千三百元以上",
+        "start": 9,
+        "end": 34
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-VIEW-003",
+      "source_id": "BILI-EARNING-2300",
+      "source_kind": "primary_source",
+      "source_text": "发布者自述：每天花1小时用电脑操作，这个月多赚2300+。",
+      "quote": {
+        "text": "每天花1小时用电脑操作，这个月多赚2300+",
+        "start": 6,
+        "end": 28
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-VIEW-003",
+      "evidence_id": "E-SD-VIEW-003",
+      "relation": "ENTAILS",
+      "claim_fragment": "B站视频发布者自述每天花一小时做海外短剧推广，当月多赚二千三百元以上",
+      "evidence_fragment": "每天花1小时用电脑操作，这个月多赚2300+",
+      "missing_bridge": ""
+    }
+  ]
+}

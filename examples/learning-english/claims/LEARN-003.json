@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "LEARN-003",
+    "source_text": "讲师乙主张基础词汇不足时仍需要系统记忆单词。",
+    "operator": "OBSERVE",
+    "subject": "讲师乙",
+    "predicate": "主张",
+    "object": "基础词汇不足时仍需要系统记忆单词",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "讲师乙",
+        "start": 0,
+        "end": 3
+      },
+      "predicate": {
+        "text": "主张",
+        "start": 3,
+        "end": 5
+      },
+      "object": {
+        "text": "基础词汇不足时仍需要系统记忆单词",
+        "start": 5,
+        "end": 21
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-VIDEO-2",
+      "source_id": "VIDEO-B",
+      "source_kind": "primary_source",
+      "source_text": "视频字幕：讲师乙主张基础词汇不足时仍需要系统记忆单词。",
+      "quote": {
+        "text": "讲师乙主张基础词汇不足时仍需要系统记忆单词",
+        "start": 5,
+        "end": 26
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "LEARN-003",
+      "evidence_id": "E-VIDEO-2",
+      "relation": "ENTAILS",
+      "claim_fragment": "讲师乙主张基础词汇不足时仍需要系统记忆单词",
+      "evidence_fragment": "讲师乙主张基础词汇不足时仍需要系统记忆单词",
+      "missing_bridge": ""
+    }
+  ]
+}

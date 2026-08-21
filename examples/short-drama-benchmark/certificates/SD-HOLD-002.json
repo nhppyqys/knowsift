@@ -1,0 +1,144 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "3ddbf759132112d807923e02fcb48519baf6aa58bda507a60d280c6d2aba1a67",
+  "claim_id": "SD-HOLD-002",
+  "claim_text": "短剧推广适合普通新手稳定月入二万元以上。",
+  "canonical_claim": null,
+  "normalized_ir": null,
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-SD-HOLD-002"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "HOLD",
+    "code": "NO_APPROPRIATE_SOURCE",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-SD-HOLD-002": "INSUFFICIENT_AS_SOLE_SOURCE"
+    },
+    "appropriate_evidence_ids": [],
+    "insufficient_evidence_ids": [
+      "E-SD-HOLD-002"
+    ],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "HOLD",
+      "code": "NO_APPROPRIATE_ENTAILING_EVIDENCE",
+      "missing": []
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "BILI-EARNING-20K"
+    ],
+    "roots_by_source": {
+      "BILI-EARNING-20K": [
+        "BILI-EARNING-20K"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "BILI-EARNING-20K": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-SD-HOLD-002"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-SD-HOLD-002",
+      "source_id": "BILI-EARNING-20K",
+      "source_kind": "marketing_copy",
+      "quote": {
+        "text": "短剧推广小白也可以月入2w+",
+        "start": 6,
+        "end": 20
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [
+    "source_authority:NO_APPROPRIATE_SOURCE",
+    "protocol:FACTUAL_RECORD:NO_APPROPRIATE_ENTAILING_EVIDENCE"
+  ],
+  "decisive_reasons": [
+    "SOURCE_AUTHORITY:NO_APPROPRIATE_SOURCE",
+    "PROTOCOL_HELD:FACTUAL_RECORD"
+  ],
+  "admission": "HOLD"
+}

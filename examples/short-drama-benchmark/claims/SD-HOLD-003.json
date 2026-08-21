@@ -1,0 +1,56 @@
+{
+  "claim_ir": {
+    "claim_id": "SD-HOLD-003",
+    "source_text": "普通人每天花一小时做海外短剧推广都能月赚二千三百元以上。",
+    "operator": "FACT",
+    "subject": "普通人",
+    "predicate": "每天花一小时做海外短剧推广都能",
+    "object": "月赚二千三百元以上",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "普通人",
+        "start": 0,
+        "end": 3
+      },
+      "predicate": {
+        "text": "每天花一小时做海外短剧推广都能",
+        "start": 3,
+        "end": 18
+      },
+      "object": {
+        "text": "月赚二千三百元以上",
+        "start": 18,
+        "end": 27
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-SD-HOLD-003",
+      "source_id": "BILI-EARNING-2300",
+      "source_kind": "unsupported_assertion",
+      "source_text": "发布者自述：每天花1小时用电脑操作，这个月多赚2300+。",
+      "quote": {
+        "text": "每天花1小时用电脑操作，这个月多赚2300+",
+        "start": 6,
+        "end": 28
+      },
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "SD-HOLD-003",
+      "evidence_id": "E-SD-HOLD-003",
+      "relation": "ENTAILS",
+      "claim_fragment": "普通人每天花一小时做海外短剧推广都能月赚二千三百元以上",
+      "evidence_fragment": "每天花1小时用电脑操作，这个月多赚2300+",
+      "missing_bridge": ""
+    }
+  ]
+}

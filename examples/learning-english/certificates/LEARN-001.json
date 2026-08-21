@@ -1,0 +1,184 @@
+{
+  "certificate_version": "4.0.0",
+  "input_digest": "f78b214e5d5cd7083b9732320612f4a3cbcca52488b3fb68d49d733587c646b4",
+  "claim_id": "LEARN-001",
+  "claim_text": "在本综述纳入的词汇记忆任务中，分散安排复习的延迟测试成绩高于一次性集中复习。",
+  "canonical_claim": "适用范围：研究：本综述纳入的词汇记忆任务。结论：分散安排复习的延迟测试成绩高于一次性集中复习。",
+  "normalized_ir": {
+    "claim_id": "LEARN-001",
+    "source_text": "在本综述纳入的词汇记忆任务中，分散安排复习的延迟测试成绩高于一次性集中复习。",
+    "operator": "FACT",
+    "subject": "分散安排复习的延迟测试成绩",
+    "predicate": "高于",
+    "object": "一次性集中复习",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {
+      "study": "本综述纳入的词汇记忆任务"
+    },
+    "anchors": {
+      "subject": {
+        "text": "分散安排复习的延迟测试成绩",
+        "start": 15,
+        "end": 28
+      },
+      "predicate": {
+        "text": "高于",
+        "start": 28,
+        "end": 30
+      },
+      "object": {
+        "text": "一次性集中复习",
+        "start": 30,
+        "end": 37
+      },
+      "scope": {
+        "text": "本综述纳入的词汇记忆任务",
+        "start": 1,
+        "end": 13
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {
+        "study": "本综述纳入的词汇记忆任务"
+      }
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-PAPER-1"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-PAPER-1": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-PAPER-1"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-PAPER-1"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "CLAIM_SCOPE_VERIFIED",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "PAPER-1"
+    ],
+    "roots_by_source": {
+      "PAPER-1": [
+        "PAPER-1"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "PAPER-1": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-PAPER-1"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-PAPER-1",
+      "source_id": "PAPER-1",
+      "source_kind": "peer_reviewed_study",
+      "quote": {
+        "text": "在本综述纳入的词汇记忆任务中，分散安排复习的延迟测试成绩高于一次性集中复习",
+        "start": 7,
+        "end": 44
+      },
+      "date": null,
+      "version": null,
+      "scope": {
+        "study": "本综述纳入的词汇记忆任务"
+      }
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}
