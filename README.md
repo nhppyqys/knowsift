@@ -248,3 +248,7 @@ python3 -m unittest discover -s tests -v
 KnowSift 可以机械保证最终文档不违反证书，但不能凭空判断世界真相。来源分类、说法拆分和证据关系仍需要宿主 Agent 或人工正确完成。
 
 它不是“真理机器”。它是一道知识质量门。
+
+## 许可证
+
+[MIT](LICENSE)

@@ -269,3 +269,7 @@ See [VALIDATION.md](VALIDATION.md) for the full validation record.
 KnowSift can mechanically prevent a final document from violating its certificates. It cannot determine ground truth from nothing. Source classification, claim extraction, evidence review, and retrieval completeness still depend on the upstream Agent or a qualified human.
 
 It is not a truth machine. It is a knowledge-quality gate.
+
+## License
+
+[MIT](LICENSE)
