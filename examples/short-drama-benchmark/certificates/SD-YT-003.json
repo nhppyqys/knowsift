@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.0.0",
+  "certificate_version": "4.1.0",
   "input_digest": "85a6d403574c544686ebfddabd25fb4bd2c1b5930cb597de47b837322e1ef3c0",
   "claim_id": "SD-YT-003",
   "claim_text": "YouTube合作伙伴获得分配后Shorts收入的百分之四十五。",
@@ -88,6 +88,17 @@
     ],
     "contradicting_evidence_ids": [],
     "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "SKIPPED",
+    "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
+    "policy": "optional",
+    "reviewer_ids": [],
+    "reviewed_evidence_ids": [],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [],
+    "falsifiers": [],
     "errors": []
   },
   "source_authority": {

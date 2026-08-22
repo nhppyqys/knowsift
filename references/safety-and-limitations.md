@@ -10,6 +10,17 @@ Treat source classification, claim extraction, and semantic review as substantiv
 
 An admitted `OBSERVE` claim may establish that a named source made a statement or reported an experience. It does not establish that the recommendation is effective, the personal outcome is typical, or the source's explanation is correct.
 
+## Agreement between models is not independence
+
+Adversarial review adds a second reading and holds the claim when the two
+readings differ. Two models trained on overlapping data fail in the same places,
+so agreement between them is weaker evidence than it looks. Prefer a reviewer
+from a different model family, and treat `what_would_falsify` as the part of the
+review a human should actually check.
+
+An admitted claim that passed adversarial review means two reviewers read the
+same passage the same way. It does not mean the passage is true.
+
 ## Frequency is not corroboration
 
 Multiple items may repeat one upstream source. Preserve `derived_from` and `cites` relationships and do not treat repetition as independent confirmation. Popularity and confidence-like scores are not admission evidence.

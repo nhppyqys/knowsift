@@ -172,6 +172,43 @@ flowchart LR
 | `DISPUTED_OR_UNRESOLVED` | 有冲突或缺少关键证据，暂时不下结论 |
 | `REJECTED` | 被决定性证据否定，或没有通过必要检查 |
 
+## 谁来复核第一遍判断
+
+整条链路上最软的一环，是「这句证据到底支不支持这个结论」——它由一个模型说了算。
+
+KnowSift 可以要求第二个**不同的**审阅者独立读一遍同一段原文，然后比对两次判断。运行时不裁决谁对：
+
+```text
+两边一致       → 放行
+两边不一致     → HOLD，两种读法都记录下来
+只有一个审阅者 → optional 下放行，required 下 HOLD
+```
+
+先看这台机器实际能用什么：
+
+```bash
+python3 scripts/adversarial_review.py detect
+```
+
+它会真的跑一遍探测，而不是看命令在不在 PATH 上——装了但跑不起来的 CLI 会被如实报成不可用。然后给出可用路线，从强到弱：
+
+- **外部 CLI，不同模型家族**（最强：训练数据不同，盲区也不同）
+- **外部 CLI，同家族不同模型**
+- **宿主 Agent 自己的 subagent**（不需要装第二个 CLI，副本看不到第一遍的结论）
+- **手动**：打印提示词，粘到任何一个聊天窗口，把 JSON 粘回来
+
+后两条在任何机器上都成立，所以「没装第二个 CLI」从来不是障碍。别的工具——本地模型、私有端点、另一个 Harness——设一个环境变量就能接进来：
+
+```bash
+export KNOWSIFT_REVIEWER_CMD="my-model-cli --quiet"
+```
+
+四条机械约束不讲情面：审阅者不能自己复核自己；引文必须逐字出现在原文里，改写一个字就作废；即使同意也必须写出最强的另一种读法；必须写出什么东西能推翻自己。
+
+严格程度取三者中最严的一个：payload 里的 `adversarial_policy`、环境变量 `KNOWSIFT_ADVERSARIAL_POLICY`、命令行 `--adversarial`。上游 Agent 提交的输入永远调不低宿主设定的门槛。
+
+细节见 [references/adversarial-review.md](references/adversarial-review.md)。
+
 ## 你会得到什么
 
 ```text
@@ -229,7 +266,7 @@ KnowSift 能保证的是：**证据支持到哪里，最后的结论就只写到
 python3 -m unittest discover -s tests -v
 ```
 
-当前 53 项测试同时通过 Python 3.9 与 Python 3.14，覆盖来源锚点、冲突、范围、版本、法律与统计协议、证书层级兼容、路径边界和最终 Markdown 的逐字节重建。
+当前 83 项测试同时通过 Python 3.9 与 Python 3.14，覆盖来源锚点、冲突、范围、版本、法律与统计协议、证书层级兼容、独立复核的一致与分歧、路径边界和最终 Markdown 的逐字节重建。
 
 完整结果见 [VALIDATION.md](VALIDATION.md)。
 
@@ -238,6 +275,7 @@ python3 -m unittest discover -s tests -v
 - [Skill 使用说明](SKILL.md)
 - [分层知识文档工作流](references/knowledge-document-mode.md)
 - [单条说法输入契约](references/runtime-contract.md)
+- [第二审阅者工作流](references/adversarial-review.md)
 - [产品接入方式](references/integration-patterns.md)
 - [安全边界](references/safety-and-limitations.md)
 - [真实短剧标杆案例](examples/short-drama-benchmark/README.md)
@@ -245,7 +283,7 @@ python3 -m unittest discover -s tests -v
 
 ## 当前边界
 
-KnowSift 可以机械保证最终文档不违反证书，但不能凭空判断世界真相。来源分类、说法拆分和证据关系仍需要宿主 Agent 或人工正确完成。
+KnowSift 可以机械保证最终文档不违反证书，但不能凭空判断世界真相。来源分类、说法拆分和证据关系仍需要宿主 Agent 或人工正确完成。第二审阅者能降低证据关系判错的概率，但两个训练数据重叠的模型会在同一些地方一起犯错——所以每条复核都必须写下「什么能推翻我」，那一项是人可以自己去查的。
 
 它不是“真理机器”。它是一道知识质量门。
 

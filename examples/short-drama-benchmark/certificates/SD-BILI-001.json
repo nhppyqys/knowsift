@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.0.0",
+  "certificate_version": "4.1.0",
   "input_digest": "1fdf81b97d011e4faad6268873034830a44a524071ec2255c2fcb0ad13cf6890",
   "claim_id": "SD-BILI-001",
   "claim_text": "B站充电计划允许用户在充电面板支付B币支持UP主。",
@@ -88,6 +88,17 @@
     ],
     "contradicting_evidence_ids": [],
     "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "SKIPPED",
+    "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
+    "policy": "optional",
+    "reviewer_ids": [],
+    "reviewed_evidence_ids": [],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [],
+    "falsifiers": [],
     "errors": []
   },
   "source_authority": {

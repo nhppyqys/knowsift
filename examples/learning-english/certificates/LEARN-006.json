@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.0.0",
+  "certificate_version": "4.1.0",
   "input_digest": "b283d33fa5903eda3d460c6f82186ab577ae1d7e0f8330294e408ad2db874ce9",
   "claim_id": "LEARN-006",
   "claim_text": "任何成年人每天学习十分钟都能在三十天达到母语水平。",
@@ -60,6 +60,17 @@
     ],
     "contradicting_evidence_ids": [],
     "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "SKIPPED",
+    "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
+    "policy": "optional",
+    "reviewer_ids": [],
+    "reviewed_evidence_ids": [],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [],
+    "falsifiers": [],
     "errors": []
   },
   "source_authority": {

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from typing import Any
 
 from .normalize import normalize_claim, render_canonical
@@ -12,6 +13,8 @@ from .provenance import summarize_provenance
 from .registry import load_runtime_resources
 from .validation import (
     classify_source_authority,
+    resolve_adversarial_policy,
+    validate_adversarial_reviews,
     validate_claim_ir,
     validate_components,
     validate_evidence,
@@ -22,7 +25,7 @@ from .validation import (
 )
 
 
-CERTIFICATE_VERSION = "4.0.0"
+CERTIFICATE_VERSION = "4.1.0"
 
 
 def _input_digest(payload: Any) -> str:
@@ -50,6 +53,7 @@ def _decide_admission(
     *,
     structural_failure: bool,
     semantic_summary: dict[str, Any],
+    adversarial_summary: dict[str, Any],
     source_authority: dict[str, Any],
     protocol_results: dict[str, dict[str, Any]],
     protocol_registry: dict[str, Any],
@@ -75,6 +79,14 @@ def _decide_admission(
     )
     if failed_protocols:
         return "REJECT", [f"PROTOCOL_FAILED:{name}" for name in failed_protocols]
+
+    # An unresolved second opinion blocks every admission state, including the
+    # components-only shortcut. The runtime never picks a winner between two
+    # reviewers; it only refuses to call a contested reading knowledge.
+    if adversarial_summary.get("status") == "HOLD":
+        return "HOLD", [
+            f"ADVERSARIAL_GATE:{adversarial_summary.get('code', 'UNRESOLVED')}"
+        ]
 
     held_protocols = sorted(
         name for name, result in protocol_results.items() if result.get("status") == "HOLD"
@@ -111,7 +123,11 @@ def _decide_admission(
     ]
 
 
-def compile_claim(payload: Any) -> dict[str, Any]:
+def compile_claim(
+    payload: Any,
+    *,
+    adversarial_policy: str | None = None,
+) -> dict[str, Any]:
     resources = load_runtime_resources()
     protocol_registry = resources["protocol_registry"]
     domain_registry = resources["domain_registry"]
@@ -133,6 +149,21 @@ def compile_claim(payload: Any) -> dict[str, Any]:
     semantic_summary, valid_reviews = validate_semantic_reviews(
         data.get("semantic_reviews"), ir, evidence_by_id
     )
+    host_policy = adversarial_policy
+    if host_policy is None:
+        host_policy = os.environ.get("KNOWSIFT_ADVERSARIAL_POLICY") or None
+    effective_policy, policy_errors = resolve_adversarial_policy(
+        data.get("adversarial_policy"), host_policy
+    )
+    adversarial_summary, _adversarial_reviews = validate_adversarial_reviews(
+        data.get("adversarial_reviews"), ir, evidence_by_id, valid_reviews, effective_policy
+    )
+    if policy_errors:
+        adversarial_summary["errors"] = sorted(
+            set(adversarial_summary["errors"]) | set(policy_errors)
+        )
+        adversarial_summary["status"] = "HOLD"
+        adversarial_summary["code"] = "INVALID_ADVERSARIAL_POLICY"
     scope_check = validate_linked_values(
         "verified_scope", data.get("verified_scope"), evidence_by_id
     )
@@ -163,6 +194,7 @@ def compile_claim(payload: Any) -> dict[str, Any]:
         "evidence_by_id": evidence_by_id,
         "valid_reviews": valid_reviews,
         "semantic_summary": semantic_summary,
+        "adversarial_summary": adversarial_summary,
         "source_authority": source_authority,
         "verified_scope": scope_check.get("plain", {}),
         "verified_conditions": conditions_check.get("plain", {}),
@@ -237,6 +269,7 @@ def compile_claim(payload: Any) -> dict[str, Any]:
     admission, decisive_reasons = _decide_admission(
         structural_failure=structural_failure,
         semantic_summary=semantic_summary,
+        adversarial_summary=adversarial_summary,
         source_authority=source_authority,
         protocol_results=protocol_results,
         protocol_registry=protocol_registry,
@@ -254,6 +287,19 @@ def compile_claim(payload: Any) -> dict[str, Any]:
         unresolved.append(f"semantic:{semantic_summary.get('code')}")
     if source_authority.get("status") != "PASS":
         unresolved.append(f"source_authority:{source_authority.get('code')}")
+    if adversarial_summary.get("status") == "HOLD":
+        unresolved.append(f"adversarial:{adversarial_summary.get('code')}")
+    unresolved.extend(
+        f"adversarial:{error}" for error in adversarial_summary.get("errors", [])
+    )
+    unresolved.extend(
+        "adversarial:disagreement:{evidence_id}:{first}->{second}".format(
+            evidence_id=item.get("evidence_id"),
+            first=item.get("first_pass_relation"),
+            second=item.get("adversarial_relation"),
+        )
+        for item in adversarial_summary.get("disagreements", [])
+    )
     for name, result in protocol_results.items():
         if result.get("status") == "HOLD":
             unresolved.append(f"protocol:{name}:{result.get('code')}")
@@ -288,6 +334,7 @@ def compile_claim(payload: Any) -> dict[str, Any]:
         "protocols_required": protocols_required,
         "machine_checks": structural_checks,
         "semantic_summary": semantic_summary,
+        "adversarial_summary": adversarial_summary,
         "source_authority": source_authority,
         "protocol_results": protocol_results,
         "provenance": provenance,

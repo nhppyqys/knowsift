@@ -3,7 +3,7 @@ name: knowsift
 description: Compile collected videos, articles, documents, and research into layered, traceable knowledge documents or fail-closed claim certificates. Use when a user needs research synthesis that separates supported knowledge, conditional findings, practitioner experience, viewpoints, anecdotes, disputes, and rejected claims; do not invoke for ordinary summaries that do not require evidence boundaries.
 metadata:
   short-description: Compile mixed sources into layered knowledge
-  version: "4.0.0"
+  version: "4.1.0"
 ---
 
 # KnowSift
@@ -33,6 +33,56 @@ python3 scripts/compile_claim.py path/to/input.json --pretty
 ```
 
 For automation that must stop unless a complete claim is admitted, add `--require-admission`.
+
+## Second reviewer
+
+The first-pass semantic review is the weakest joint in the pipeline: one model
+deciding whether one passage supports one claim. Offer the user a second,
+independent reading before compiling anything that matters.
+
+**Do not choose the route silently.** Detect what this machine can do, then ask:
+
+```bash
+python3 scripts/adversarial_review.py detect
+```
+
+Present the real options the detector returned, recommend the first one, and say
+plainly what each costs in independence:
+
+- **Route B, external CLI from a different model family** — strongest. Different
+  training data means different blind spots.
+- **Route B, external CLI from the same family** — a different model, same family.
+- **Route A, the host Agent's own subagent** — no second CLI needed. Weaker,
+  because the same family shares blind spots, but the subagent never sees the
+  first pass's conclusion.
+- **Manual** — print the prompt, paste it into any chat, paste the JSON back.
+  Works on any machine with nothing installed.
+- **Skip** — allowed, and the certificate records that it was skipped.
+
+Routes A and manual always exist, so never tell a user that a missing second CLI
+blocks them. If the session cannot ask a question, use the policy already set in
+the environment and state which route you took.
+
+Once a review exists, splice it in and compile:
+
+```bash
+python3 scripts/adversarial_review.py merge claim.json reviews.json \
+  --first-pass-reviewer-id <model that did the first read> --output reviewed-claim.json
+```
+
+Rules the runtime enforces, not you:
+
+- A reviewer may not review itself; `reviewer_id` must differ.
+- `evidence_fragment` must be literal, so a paraphrasing reviewer is discarded.
+- Two reviewers disagreeing is `HOLD`, never a casting vote for the louder one.
+- A disagreement blocks every admission state, including components-only.
+- An input may raise the policy but never lower one the host set.
+
+Never edit a review to make two reviewers agree. Report the disagreement, or go
+get the evidence that settles it.
+
+Full workflow, policies, and backend configuration:
+[references/adversarial-review.md](references/adversarial-review.md).
 
 ## Non-negotiable document rules
 
@@ -69,7 +119,7 @@ The renderer refuses to place a certificate in an incompatible layer. For exampl
 - `ADMIT`: the normalized claim passed every routed gate using appropriately classified evidence.
 - `ADMIT_SCOPED`: only the explicitly narrowed claim passed.
 - `ADMIT_COMPONENTS_ONLY`: only named components are supported; the complete callable claim remains null.
-- `HOLD`: evidence, authority, scope, protocol, or semantic conflict remains unresolved.
+- `HOLD`: evidence, authority, scope, protocol, semantic, or reviewer conflict remains unresolved.
 - `REJECT`: supplied evidence directly contradicts the claim or a decisive deterministic check fails.
 
 ## Resources
@@ -79,6 +129,7 @@ The renderer refuses to place a certificate in an incompatible layer. For exampl
 - Knowledge document plan schema: [references/knowledge-document-input.schema.json](references/knowledge-document-input.schema.json)
 - Single-claim input/output contract: [references/runtime-contract.md](references/runtime-contract.md)
 - Protocol requirements: [references/protocols.md](references/protocols.md)
+- Second-reviewer workflow: [references/adversarial-review.md](references/adversarial-review.md)
 - Domain routing and source-authority guidance: [references/domains.md](references/domains.md)
 - Product integration patterns: [references/integration-patterns.md](references/integration-patterns.md)
 - Real-world multi-source benchmark: `examples/short-drama-benchmark/`

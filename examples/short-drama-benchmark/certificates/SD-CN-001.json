@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.0.0",
+  "certificate_version": "4.1.0",
   "input_digest": "d9f745fb6304505a6332ceb9efdcc6cc08641cb33797c2da14ff04ea0ef49de5",
   "claim_id": "SD-CN-001",
   "claim_text": "在中国境内由网络视听平台、小程序或投流方播出、引流或推送的微短剧，须持有网络剧片发行许可证或完成相应上线报备登记程序。",
@@ -88,6 +88,17 @@
     ],
     "contradicting_evidence_ids": [],
     "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "SKIPPED",
+    "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
+    "policy": "optional",
+    "reviewer_ids": [],
+    "reviewed_evidence_ids": [],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [],
+    "falsifiers": [],
     "errors": []
   },
   "source_authority": {

@@ -26,6 +26,8 @@ The resulting document is intentionally not a popularity summary. Ten videos rep
 
 ## Agent memory firewall
 
+Set `KNOWSIFT_ADVERSARIAL_POLICY=required` in the environment that runs the compiler. A memory an Agent proposes about itself is the case where a single self-assessed semantic review is least trustworthy, and the environment variable is the one place an upstream Agent cannot edit.
+
 Before an Agent writes a durable factual or policy memory, compile the proposed memory against its source. Personal preferences and user-provided facts may be stored as explicitly scoped user context, but they must not be promoted to organization policy or world truth without appropriate evidence.
 
 At retrieval time, prefer admitted certificates over raw documents. If no admitted claim answers the question, report the gap instead of silently falling back to an unsupported memory.

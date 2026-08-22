@@ -7,9 +7,10 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Sequence
 
+from .compiler import CERTIFICATE_VERSION
+
 
 DOCUMENT_VERSION = "1.0"
-CERTIFICATE_VERSION = "4.0.0"
 
 SOURCE_TYPES = {
     "RESEARCH",

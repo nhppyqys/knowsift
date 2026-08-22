@@ -938,7 +938,7 @@ class AdditionalFailureModeTests(unittest.TestCase):
             with self.subTest(payload=payload):
                 certificate = compile_claim(payload)
                 self.assertEqual(certificate["admission"], "HOLD")
-                self.assertEqual(certificate["certificate_version"], "4.0.0")
+                self.assertEqual(certificate["certificate_version"], "4.1.0")
 
     def test_nonliteral_verified_scope_holds(self) -> None:
         payload = fact_payload()

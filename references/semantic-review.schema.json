@@ -1,16 +1,50 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "semantic-review.schema.json",
-  "title": "Knowledge Compiler Semantic Review 4.0",
+  "title": "Knowledge Compiler Semantic Review 4.1",
   "type": "object",
-  "required": ["claim_id", "evidence_id", "relation", "claim_fragment", "evidence_fragment", "missing_bridge"],
+  "required": [
+    "claim_id",
+    "evidence_id",
+    "relation",
+    "claim_fragment",
+    "evidence_fragment",
+    "missing_bridge"
+  ],
   "additionalProperties": false,
   "properties": {
-    "claim_id": {"type": "string", "minLength": 1},
-    "evidence_id": {"type": "string", "minLength": 1},
-    "relation": {"enum": ["ENTAILS", "CONTRADICTS", "PARTIAL", "UNRELATED", "AMBIGUOUS"]},
-    "claim_fragment": {"type": "string", "minLength": 1},
-    "evidence_fragment": {"type": "string", "minLength": 1},
-    "missing_bridge": {"type": "string"}
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "relation": {
+      "enum": [
+        "ENTAILS",
+        "CONTRADICTS",
+        "PARTIAL",
+        "UNRELATED",
+        "AMBIGUOUS"
+      ]
+    },
+    "claim_fragment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_fragment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "missing_bridge": {
+      "type": "string"
+    },
+    "reviewer_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Who produced this reading. Required when adversarial_policy is 'required', so independence from the adversarial reviewer can be checked."
+    }
   }
 }

@@ -184,6 +184,43 @@ If an upstream Agent tries to place a `HOLD` claim such as “reliably earn RMB 
 | `DISPUTED_OR_UNRESOLVED` | Evidence conflicts or a required piece is missing, so no conclusion is forced |
 | `REJECTED` | Decisive evidence contradicts the claim, or a mandatory check failed |
 
+## Who checks the first reading
+
+The softest joint in the whole chain is "does this evidence actually support this claim" — decided by one model.
+
+KnowSift can require a second, **different** reviewer to read the same passage independently, then compare the two readings. The runtime never picks a winner:
+
+```text
+the two agree      -> pass
+the two differ     -> HOLD, with both readings recorded
+only one reviewer  -> passes under `optional`, HOLD under `required`
+```
+
+Start by finding out what this machine can actually do:
+
+```bash
+python3 scripts/adversarial_review.py detect
+```
+
+It runs a real probe rather than checking `PATH`, so a CLI that is installed but broken is reported as unavailable. It then ranks the usable routes:
+
+- **External CLI from a different model family** - strongest; different training data, different blind spots.
+- **External CLI from the same family** - a different model at least.
+- **The host Agent's own subagent** - no second CLI needed, and it never sees the first pass's conclusion.
+- **Manual** - print the prompt, paste it into any chat, paste the JSON back.
+
+The last two work on any machine, so a missing second CLI never blocks you. Any other tool - a local model, a private endpoint, another harness - plugs in through one environment variable:
+
+```bash
+export KNOWSIFT_REVIEWER_CMD="my-model-cli --quiet"
+```
+
+Four mechanical rules are not negotiable: a reviewer may not review itself; the quote must appear byte for byte in the source, so a paraphrase is discarded; the strongest opposing reading must be stated even when the reviewer agrees; and every review must name something that would falsify it.
+
+Strictness is the strictest of three sources - the payload's `adversarial_policy`, `KNOWSIFT_ADVERSARIAL_POLICY`, and `--adversarial` - so an upstream input can never lower a bar the host set.
+
+Details in [references/adversarial-review.md](references/adversarial-review.md).
+
 ## What you get
 
 ```text
@@ -250,7 +287,7 @@ Read [Safety and limitations](references/safety-and-limitations.md) before using
 python3 -m unittest discover -s tests -v
 ```
 
-The current suite contains 53 tests and passes on Python 3.9 and Python 3.14. It covers literal source anchors, provenance, conflicts, scope, versions, legal and statistical protocols, certificate-layer compatibility, path boundaries, and byte-for-byte Markdown reconstruction.
+The current suite contains 83 tests and passes on Python 3.9 and Python 3.14. It covers literal source anchors, provenance, conflicts, scope, versions, legal and statistical protocols, certificate-layer compatibility, independent-reviewer agreement and disagreement, path boundaries, and byte-for-byte Markdown reconstruction.
 
 See [VALIDATION.md](VALIDATION.md) for the full validation record.
 
@@ -259,6 +296,7 @@ See [VALIDATION.md](VALIDATION.md) for the full validation record.
 - [Skill instructions](SKILL.md)
 - [Layered knowledge-document workflow](references/knowledge-document-mode.md)
 - [Single-claim runtime contract](references/runtime-contract.md)
+- [Second-reviewer workflow](references/adversarial-review.md)
 - [Integration patterns](references/integration-patterns.md)
 - [Safety and limitations](references/safety-and-limitations.md)
 - [Real-world short-drama benchmark](examples/short-drama-benchmark/README.md)
@@ -267,6 +305,8 @@ See [VALIDATION.md](VALIDATION.md) for the full validation record.
 ## Current boundary
 
 KnowSift can mechanically prevent a final document from violating its certificates. It cannot determine ground truth from nothing. Source classification, claim extraction, evidence review, and retrieval completeness still depend on the upstream Agent or a qualified human.
+
+A second reviewer lowers the odds of a misread passage, but two models with overlapping training data fail in the same places. That is why every review must name what would falsify it: a falsifier is checkable by a person without trusting either model.
 
 It is not a truth machine. It is a knowledge-quality gate.
 

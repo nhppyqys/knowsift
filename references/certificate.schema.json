@@ -1,28 +1,124 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "certificate.schema.json",
-  "title": "Knowledge Compiler Epistemic Certificate 4.0",
+  "title": "Knowledge Compiler Epistemic Certificate 4.1",
   "type": "object",
-  "required": ["certificate_version", "input_digest", "claim_id", "claim_text", "canonical_claim", "normalized_ir", "protocols_required", "machine_checks", "semantic_summary", "source_authority", "protocol_results", "provenance", "evidence_references", "transformations", "supported_components", "unresolved", "decisive_reasons", "admission"],
+  "required": [
+    "certificate_version",
+    "input_digest",
+    "claim_id",
+    "claim_text",
+    "canonical_claim",
+    "normalized_ir",
+    "protocols_required",
+    "machine_checks",
+    "semantic_summary",
+    "adversarial_summary",
+    "source_authority",
+    "protocol_results",
+    "provenance",
+    "evidence_references",
+    "transformations",
+    "supported_components",
+    "unresolved",
+    "decisive_reasons",
+    "admission"
+  ],
   "additionalProperties": false,
   "properties": {
-    "certificate_version": {"const": "4.0.0"},
-    "input_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-    "claim_id": {"type": ["string", "null"]},
-    "claim_text": {"type": ["string", "null"]},
-    "canonical_claim": {"type": ["string", "null"]},
-    "normalized_ir": {"type": ["object", "null"]},
-    "protocols_required": {"type": "array", "items": {"type": "string"}},
-    "machine_checks": {"type": "object"},
-    "semantic_summary": {"type": "object"},
-    "source_authority": {"type": "object"},
-    "protocol_results": {"type": "object"},
-    "provenance": {"type": "object"},
-    "evidence_references": {"type": "array", "items": {"type": "object"}},
-    "transformations": {"type": "array", "items": {"type": "string"}},
-    "supported_components": {"type": "array", "items": {"type": "object"}},
-    "unresolved": {"type": "array", "items": {"type": "string"}},
-    "decisive_reasons": {"type": "array", "items": {"type": "string"}},
-    "admission": {"enum": ["ADMIT", "ADMIT_SCOPED", "ADMIT_COMPONENTS_ONLY", "HOLD", "REJECT"]}
+    "certificate_version": {
+      "const": "4.1.0"
+    },
+    "input_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "claim_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "claim_text": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "canonical_claim": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "normalized_ir": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "protocols_required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "machine_checks": {
+      "type": "object"
+    },
+    "semantic_summary": {
+      "type": "object"
+    },
+    "adversarial_summary": {
+      "type": "object"
+    },
+    "source_authority": {
+      "type": "object"
+    },
+    "protocol_results": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "evidence_references": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "transformations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "supported_components": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decisive_reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "admission": {
+      "enum": [
+        "ADMIT",
+        "ADMIT_SCOPED",
+        "ADMIT_COMPONENTS_ONLY",
+        "HOLD",
+        "REJECT"
+      ]
+    }
   }
 }

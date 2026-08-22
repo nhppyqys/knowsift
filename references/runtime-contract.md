@@ -48,9 +48,22 @@ The complete machine-readable shape is in `compile-input.schema.json`. A runnabl
       "relation": "ENTAILS",
       "claim_fragment": "Widget 4.2 supports signed exports",
       "evidence_fragment": "Widget supports signed exports",
-      "missing_bridge": ""
+      "missing_bridge": "",
+      "reviewer_id": "first-pass-model"
     }
   ],
+  "adversarial_reviews": [
+    {
+      "claim_id": "C1",
+      "evidence_id": "E1",
+      "relation": "ENTAILS",
+      "reviewer_id": "second-pass-model",
+      "evidence_fragment": "Widget supports signed exports",
+      "strongest_counter_reading": "The page documents 4.2 and says nothing about earlier versions.",
+      "what_would_falsify": "Release notes showing signed exports removed in a 4.2 patch."
+    }
+  ],
+  "adversarial_policy": "required",
   "verified_scope": {
     "version": {
       "value": "4.2",
@@ -87,6 +100,10 @@ Offsets use Python slicing semantics: `source_text[start:end]` must exactly equa
 Every evidence item needs a stable `evidence_id`, a provenance-level `source_id`, a classified `source_kind`, full `source_text`, and an exact `quote`. `derived_from` and `cites` contain source IDs, not evidence IDs.
 
 Review fragments must be exact substrings of their respective texts. `ENTAILS` requires an empty `missing_bridge`; `PARTIAL` and `AMBIGUOUS` require a non-empty bridge. Confidence-like fields are forbidden.
+
+`adversarial_reviews` holds an independent second reading of the same evidence. Each entry needs its own `reviewer_id`, which must differ from the first pass's; a literal `evidence_fragment`; a `strongest_counter_reading` stated even when the reviewer agrees; and a concrete `what_would_falsify`. Two reviewers disagreeing produces `HOLD`, never a verdict for either side.
+
+`adversarial_policy` is `off`, `optional` (default), or `required`. The effective policy is the strictest of the payload value, `KNOWSIFT_ADVERSARIAL_POLICY`, and `--adversarial`, so an input can never relax a host requirement. See [adversarial-review.md](adversarial-review.md).
 
 Use `verified_scope`, `verified_conditions`, and `verified_exceptions` only for evidence-linked extractions. Each scope or condition value has this form:
 

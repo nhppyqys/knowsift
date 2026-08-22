@@ -15,6 +15,7 @@ REVIEW_FIELDS = {
     "evidence_fragment",
     "missing_bridge",
 }
+OPTIONAL_REVIEW_FIELDS = {"reviewer_id"}
 FORBIDDEN_REVIEW_FIELDS = {
     "confidence",
     "probability",
@@ -23,6 +24,18 @@ FORBIDDEN_REVIEW_FIELDS = {
     "source_reliability_score",
     "high_medium_low",
 }
+ADVERSARIAL_REVIEW_FIELDS = {
+    "claim_id",
+    "evidence_id",
+    "relation",
+    "reviewer_id",
+    "evidence_fragment",
+    "strongest_counter_reading",
+    "what_would_falsify",
+}
+ADVERSARIAL_POLICIES = ("off", "optional", "required")
+_POLICY_RANK = {name: rank for rank, name in enumerate(ADVERSARIAL_POLICIES)}
+_POLICY_BY_RANK = {rank: name for name, rank in _POLICY_RANK.items()}
 
 
 def _missing(value: Any) -> bool:
@@ -206,8 +219,12 @@ def validate_semantic_reviews(
             continue
         missing = sorted(REVIEW_FIELDS - set(review))
         local_errors.extend(f"{path}:missing:{key}" for key in missing)
-        extra = sorted(set(review) - REVIEW_FIELDS)
+        extra = sorted(set(review) - REVIEW_FIELDS - OPTIONAL_REVIEW_FIELDS)
         local_errors.extend(f"{path}:unknown_or_forbidden_field:{key}" for key in extra)
+        if "reviewer_id" in review:
+            reviewer_id = review.get("reviewer_id")
+            if not isinstance(reviewer_id, str) or not reviewer_id.strip():
+                local_errors.append(f"{path}:empty_reviewer_id")
         local_errors.extend(
             f"{path}:forbidden_field:{key}"
             for key in sorted(set(review) & FORBIDDEN_REVIEW_FIELDS)
@@ -495,3 +512,195 @@ def classify_source_authority(
         "insufficient_evidence_ids": weak,
         "unclassified_evidence_ids": unknown,
     }
+
+
+def resolve_adversarial_policy(payload_value: Any, host_value: Any) -> tuple[str, list[str]]:
+    """Resolve the effective adversarial policy.
+
+    The strictest supplied value wins, so a payload can never relax a policy the
+    host environment requires. Absent both, the default is ``optional``.
+    """
+    errors: list[str] = []
+    ranks: list[int] = []
+    for label, value in (("payload", payload_value), ("host", host_value)):
+        if value is None:
+            continue
+        if not isinstance(value, str) or value not in ADVERSARIAL_POLICIES:
+            errors.append(f"adversarial_policy:invalid_{label}_value:{value}")
+            continue
+        ranks.append(_POLICY_RANK[value])
+    resolved = _POLICY_BY_RANK[max(ranks)] if ranks else "optional"
+    return resolved, errors
+
+
+def _adversarial_summary(policy: str, status: str, code: str, **extra: Any) -> dict[str, Any]:
+    summary = {
+        "status": status,
+        "code": code,
+        "policy": policy,
+        "reviewer_ids": [],
+        "reviewed_evidence_ids": [],
+        "unreviewed_evidence_ids": [],
+        "disagreements": [],
+        "falsifiers": [],
+        "errors": [],
+    }
+    summary.update(extra)
+    return summary
+
+
+def validate_adversarial_reviews(
+    reviews: Any,
+    ir: dict[str, Any],
+    evidence_by_id: dict[str, dict[str, Any]],
+    semantic_reviews: list[dict[str, Any]],
+    policy: str,
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    """Check an independent second pass over the same claim and evidence.
+
+    The runtime never judges which reviewer is right. It only checks that a
+    second reviewer exists, is a different reviewer, anchored its reading in the
+    same evidence text, and reached the same relation. Disagreement is an
+    unresolved state, not a verdict.
+    """
+    if policy == "off":
+        return _adversarial_summary(policy, "SKIPPED", "ADVERSARIAL_REVIEW_DISABLED"), []
+    if reviews is None:
+        if policy == "required":
+            return _adversarial_summary(policy, "HOLD", "ADVERSARIAL_REVIEW_REQUIRED"), []
+        return _adversarial_summary(policy, "SKIPPED", "ADVERSARIAL_REVIEW_NOT_SUPPLIED"), []
+    if not isinstance(reviews, list):
+        return (
+            _adversarial_summary(
+                policy,
+                "HOLD",
+                "INVALID_ADVERSARIAL_REVIEW",
+                errors=["adversarial_reviews:must_be_array"],
+            ),
+            [],
+        )
+
+    errors: list[str] = []
+    valid: list[dict[str, Any]] = []
+    seen_evidence: set[str] = set()
+    for index, review in enumerate(reviews):
+        path = f"adversarial_reviews[{index}]"
+        if not isinstance(review, dict):
+            errors.append(f"{path}:must_be_object")
+            continue
+        local_errors: list[str] = []
+        local_errors.extend(
+            f"{path}:missing:{key}"
+            for key in sorted(ADVERSARIAL_REVIEW_FIELDS - set(review))
+        )
+        local_errors.extend(
+            f"{path}:unknown_or_forbidden_field:{key}"
+            for key in sorted(set(review) - ADVERSARIAL_REVIEW_FIELDS)
+        )
+        local_errors.extend(
+            f"{path}:forbidden_field:{key}"
+            for key in sorted(set(review) & FORBIDDEN_REVIEW_FIELDS)
+        )
+
+        if review.get("relation") not in ALLOWED_RELATIONS:
+            local_errors.append(f"{path}:invalid_relation:{review.get('relation')}")
+        if review.get("claim_id") != ir.get("claim_id"):
+            local_errors.append(f"{path}:claim_id_mismatch")
+
+        evidence_id = review.get("evidence_id")
+        evidence = evidence_by_id.get(evidence_id)
+        if evidence is None:
+            local_errors.append(f"{path}:unknown_evidence_id:{evidence_id}")
+        elif evidence_id in seen_evidence:
+            local_errors.append(f"{path}:duplicate_review_for_evidence:{evidence_id}")
+
+        reviewer_id = review.get("reviewer_id")
+        if not isinstance(reviewer_id, str) or not reviewer_id.strip():
+            local_errors.append(f"{path}:empty_reviewer_id")
+
+        fragment = review.get("evidence_fragment")
+        if not isinstance(fragment, str) or not fragment.strip():
+            local_errors.append(f"{path}:empty_evidence_fragment")
+        elif evidence is not None and fragment not in evidence.get("source_text", ""):
+            local_errors.append(f"{path}:evidence_fragment_not_literal")
+
+        for key in ("strongest_counter_reading", "what_would_falsify"):
+            value = review.get(key)
+            if not isinstance(value, str) or not value.strip():
+                local_errors.append(f"{path}:empty_{key}")
+
+        if local_errors:
+            errors.extend(local_errors)
+        else:
+            valid.append(review)
+            seen_evidence.add(evidence_id)
+
+    by_evidence = {review["evidence_id"]: review for review in valid}
+    first_pass = {
+        review["evidence_id"]: review
+        for review in semantic_reviews
+        if isinstance(review, dict) and isinstance(review.get("evidence_id"), str)
+    }
+
+    disagreements: list[dict[str, Any]] = []
+    unreviewed: list[str] = []
+    for evidence_id in sorted(first_pass):
+        original = first_pass[evidence_id]
+        counter = by_evidence.get(evidence_id)
+        if counter is None:
+            unreviewed.append(evidence_id)
+            continue
+        original_reviewer = original.get("reviewer_id")
+        if isinstance(original_reviewer, str) and original_reviewer.strip():
+            if original_reviewer == counter["reviewer_id"]:
+                errors.append(
+                    f"adversarial_reviews:reviewer_not_independent:{evidence_id}"
+                )
+        elif policy == "required":
+            errors.append(f"semantic_reviews:missing_reviewer_id:{evidence_id}")
+        if original.get("relation") != counter.get("relation"):
+            disagreements.append(
+                {
+                    "evidence_id": evidence_id,
+                    "first_pass_relation": original.get("relation"),
+                    "adversarial_relation": counter.get("relation"),
+                    "adversarial_reviewer_id": counter.get("reviewer_id"),
+                    "strongest_counter_reading": counter.get("strongest_counter_reading"),
+                }
+            )
+
+    errors.extend(
+        f"adversarial_reviews:no_matching_semantic_review:{evidence_id}"
+        for evidence_id in sorted(set(by_evidence) - set(first_pass))
+    )
+
+    summary = _adversarial_summary(
+        policy,
+        "PASS",
+        "INDEPENDENT_REVIEW_AGREES",
+        reviewer_ids=sorted({review["reviewer_id"] for review in valid}),
+        reviewed_evidence_ids=sorted(by_evidence),
+        unreviewed_evidence_ids=unreviewed,
+        disagreements=disagreements,
+        falsifiers=[
+            {
+                "evidence_id": review["evidence_id"],
+                "what_would_falsify": review["what_would_falsify"],
+            }
+            for review in sorted(valid, key=lambda item: item["evidence_id"])
+        ],
+        errors=sorted(set(errors)),
+    )
+
+    if summary["errors"]:
+        summary["status"], summary["code"] = "HOLD", "INVALID_ADVERSARIAL_REVIEW"
+    elif disagreements:
+        summary["status"], summary["code"] = "HOLD", "REVIEWER_DISAGREEMENT"
+    elif policy == "required" and unreviewed:
+        summary["status"], summary["code"] = "HOLD", "ADVERSARIAL_REVIEW_INCOMPLETE"
+    elif not valid:
+        if policy == "required":
+            summary["status"], summary["code"] = "HOLD", "ADVERSARIAL_REVIEW_REQUIRED"
+        else:
+            summary["status"], summary["code"] = "SKIPPED", "ADVERSARIAL_REVIEW_NOT_SUPPLIED"
+    return summary, valid

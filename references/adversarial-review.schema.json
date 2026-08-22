@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "adversarial-review.schema.json",
+  "title": "Knowledge Compiler Adversarial Review 4.1",
+  "type": "object",
+  "required": [
+    "claim_id",
+    "evidence_id",
+    "relation",
+    "reviewer_id",
+    "evidence_fragment",
+    "strongest_counter_reading",
+    "what_would_falsify"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "relation": {
+      "enum": [
+        "ENTAILS",
+        "CONTRADICTS",
+        "PARTIAL",
+        "UNRELATED",
+        "AMBIGUOUS"
+      ]
+    },
+    "reviewer_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable identifier of the reviewer, normally a model id. Must differ from the first-pass reviewer_id."
+    },
+    "evidence_fragment": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Must appear literally in the evidence source_text."
+    },
+    "strongest_counter_reading": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The strongest alternative reading of this evidence, stated even when the reviewer agrees with the first pass."
+    },
+    "what_would_falsify": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A concrete observation that would overturn this reading. Written for a human to check without trusting either model."
+    }
+  }
+}

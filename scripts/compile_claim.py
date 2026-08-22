@@ -22,6 +22,15 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Exit 3 unless admission is ADMIT or ADMIT_SCOPED",
     )
+    parser.add_argument(
+        "--adversarial",
+        choices=["off", "optional", "required"],
+        help=(
+            "Host-side adversarial review policy. The strictest of this flag, "
+            "KNOWSIFT_ADVERSARIAL_POLICY, and the payload's adversarial_policy wins, "
+            "so an input can never relax what the host requires."
+        ),
+    )
     return parser
 
 
@@ -34,7 +43,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"knowsift: {error}", file=sys.stderr)
         return 2
 
-    certificate = compile_claim(payload)
+    certificate = compile_claim(payload, adversarial_policy=args.adversarial)
     indent = 2 if args.pretty else None
     serialized = json.dumps(
         certificate,

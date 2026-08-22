@@ -1,6 +1,6 @@
 # Validation
 
-Validation date: 2026-08-21
+Validation date: 2026-08-22
 
 ## Automated tests
 
@@ -8,8 +8,8 @@ The complete suite passes on both supported runtimes:
 
 | Runtime | Tests | Result |
 |---|---:|---|
-| Python 3.9.6 | 53 | Pass |
-| Python 3.14.6 | 53 | Pass |
+| Python 3.9.6 | 83 | Pass |
+| Python 3.14.6 | 83 | Pass |
 
 Run it with:
 
@@ -25,6 +25,8 @@ The suite covers:
 - source authority and provenance cycles;
 - scope, version, legal, causal, statistical, predictive, and other protocol routing;
 - component-only admission without leaking the broader claim;
+- independent second-reviewer agreement, disagreement, self-review, invented quotes, and policy escalation;
+- reviewer-route detection reporting an installed-but-unrunnable CLI as unavailable;
 - source-bundle structure and path containment;
 - certificate-to-document layer compatibility;
 - `HOLD` claims being blocked from knowledge sections;

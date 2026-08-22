@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.0.0",
+  "certificate_version": "4.1.0",
   "input_digest": "af1e2d9819f504f14a3efead0681e532f81cb79cc1a39ba1d9c97abb0029c7a8",
   "claim_id": "SD-BILI-003",
   "claim_text": "B站花火当前要求个人UP主实名认证且年满十八岁、粉丝不少于一万、近三十天发布过原创视频，并达到规定的电磁力分数。",
@@ -88,6 +88,17 @@
     ],
     "contradicting_evidence_ids": [],
     "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "SKIPPED",
+    "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
+    "policy": "optional",
+    "reviewer_ids": [],
+    "reviewed_evidence_ids": [],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [],
+    "falsifiers": [],
     "errors": []
   },
   "source_authority": {

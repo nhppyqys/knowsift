@@ -24,5 +24,7 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Rebuild real-world benchmark
         run: python examples/short-drama-benchmark/generate_benchmark.py
+      - name: Rebuild minimal demo
+        run: python examples/learning-english/generate_demo.py
       - name: Verify generated document is committed
         run: git diff --exit-code

@@ -1,0 +1,75 @@
+{
+  "version": "1.0.0",
+  "note": "Backend argv lines are editable data, not guarantees. CLI flags drift between releases; run `adversarial_review.py detect --deep` to find out whether a line still works in your environment instead of trusting this file.",
+  "host_markers": {
+    "anthropic": ["CLAUDECODE", "CLAUDE_CODE_ENTRYPOINT"],
+    "openai": ["CODEX_SANDBOX", "CODEX_HOME", "CODEX_THREAD_ID"],
+    "google": ["GEMINI_CLI", "GEMINI_SANDBOX"]
+  },
+  "backends": [
+    {
+      "id": "claude-cli",
+      "label": "Claude Code CLI",
+      "family": "anthropic",
+      "executable": "claude",
+      "probe": ["claude", "--version"],
+      "argv": ["claude", "-p", "--output-format", "text", "--model", "{model}"],
+      "stdin": true,
+      "default_model": "claude-sonnet-5",
+      "verified": "argv confirmed against Claude Code CLI help output"
+    },
+    {
+      "id": "codex-cli",
+      "label": "OpenAI Codex CLI",
+      "family": "openai",
+      "executable": "codex",
+      "probe": ["codex", "--version"],
+      "argv": ["codex", "exec", "--skip-git-repo-check", "-"],
+      "stdin": true,
+      "default_model": null,
+      "verified": "argv NOT verified; check `codex exec --help` and edit this entry if it fails"
+    },
+    {
+      "id": "gemini-cli",
+      "label": "Gemini CLI",
+      "family": "google",
+      "executable": "gemini",
+      "probe": ["gemini", "--version"],
+      "argv": ["gemini", "-p", "-"],
+      "stdin": true,
+      "default_model": null,
+      "verified": "argv NOT verified; check `gemini --help` and edit this entry if it fails"
+    },
+    {
+      "id": "ollama",
+      "label": "Local model via ollama",
+      "family": "local",
+      "executable": "ollama",
+      "probe": ["ollama", "--version"],
+      "argv": ["ollama", "run", "{model}"],
+      "stdin": true,
+      "default_model": "llama3.1",
+      "verified": "argv NOT verified; set the model with --model"
+    },
+    {
+      "id": "llm-cli",
+      "label": "simonw/llm (any provider it is configured for)",
+      "family": "unknown",
+      "executable": "llm",
+      "probe": ["llm", "--version"],
+      "argv": ["llm", "-m", "{model}"],
+      "stdin": true,
+      "default_model": null,
+      "verified": "argv NOT verified"
+    },
+    {
+      "id": "custom",
+      "label": "Custom command from KNOWSIFT_REVIEWER_CMD",
+      "family": "unknown",
+      "argv_from_env": "KNOWSIFT_REVIEWER_CMD",
+      "stdin": true,
+      "default_model": null,
+      "verified": "user supplied; reads the prompt on stdin and must print JSON on stdout"
+    }
+  ]
+}
