@@ -8,8 +8,8 @@ The complete suite passes on both supported runtimes:
 
 | Runtime | Tests | Result |
 |---|---:|---|
-| Python 3.9.6 | 83 | Pass |
-| Python 3.14.6 | 83 | Pass |
+| Python 3.9.6 | 111 | Pass |
+| Python 3.14.6 | 111 | Pass |
 
 Run it with:
 
@@ -26,6 +26,8 @@ The suite covers:
 - scope, version, legal, causal, statistical, predictive, and other protocol routing;
 - component-only admission without leaking the broader claim;
 - independent second-reviewer agreement, disagreement, self-review, invented quotes, and policy escalation;
+- locator authority: host and path rules, subdomain inheritance, blog demotion, unknown hosts held rather than assumed, and no contradiction across the 17 shipped real sources;
+- snapshot integrity: digest mismatch, text added after capture, path escape, missing file, and non-UTF-8 captures;
 - reviewer-route detection reporting an installed-but-unrunnable CLI as unavailable;
 - source-bundle structure and path containment;
 - certificate-to-document layer compatibility;

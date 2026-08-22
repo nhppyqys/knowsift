@@ -14,7 +14,10 @@ from .registry import load_runtime_resources
 from .validation import (
     classify_source_authority,
     resolve_adversarial_policy,
+    resolve_policy,
     validate_adversarial_reviews,
+    validate_locator_authority,
+    validate_snapshots,
     validate_claim_ir,
     validate_components,
     validate_evidence,
@@ -25,7 +28,7 @@ from .validation import (
 )
 
 
-CERTIFICATE_VERSION = "4.1.0"
+CERTIFICATE_VERSION = "4.2.0"
 
 
 def _input_digest(payload: Any) -> str:
@@ -53,6 +56,8 @@ def _decide_admission(
     *,
     structural_failure: bool,
     semantic_summary: dict[str, Any],
+    locator_authority: dict[str, Any],
+    snapshot_integrity: dict[str, Any],
     adversarial_summary: dict[str, Any],
     source_authority: dict[str, Any],
     protocol_results: dict[str, dict[str, Any]],
@@ -79,6 +84,13 @@ def _decide_admission(
     )
     if failed_protocols:
         return "REJECT", [f"PROTOCOL_FAILED:{name}" for name in failed_protocols]
+
+    # A source that cannot be what it claims to be, or a quote that is not in the
+    # captured bytes, blocks admission before anyone argues about the reading.
+    if locator_authority.get("status") == "HOLD":
+        return "HOLD", [f"LOCATOR_GATE:{locator_authority.get('code', 'UNRESOLVED')}"]
+    if snapshot_integrity.get("status") == "HOLD":
+        return "HOLD", [f"SNAPSHOT_GATE:{snapshot_integrity.get('code', 'UNRESOLVED')}"]
 
     # An unresolved second opinion blocks every admission state, including the
     # components-only shortcut. The runtime never picks a winner between two
@@ -127,6 +139,9 @@ def compile_claim(
     payload: Any,
     *,
     adversarial_policy: str | None = None,
+    locator_policy: str | None = None,
+    snapshot_policy: str | None = None,
+    snapshot_root: Any = None,
 ) -> dict[str, Any]:
     resources = load_runtime_resources()
     protocol_registry = resources["protocol_registry"]
@@ -164,6 +179,42 @@ def compile_claim(
         )
         adversarial_summary["status"] = "HOLD"
         adversarial_summary["code"] = "INVALID_ADVERSARIAL_POLICY"
+
+    locator_effective, locator_policy_errors = resolve_policy(
+        data.get("locator_policy"),
+        locator_policy
+        if locator_policy is not None
+        else os.environ.get("KNOWSIFT_LOCATOR_POLICY") or None,
+        "locator_policy",
+    )
+    locator_authority = validate_locator_authority(
+        evidence_input, resources["source_kind_registry"], locator_effective
+    )
+    if locator_policy_errors:
+        locator_authority["errors"] = sorted(
+            set(locator_authority["errors"]) | set(locator_policy_errors)
+        )
+        locator_authority["status"] = "HOLD"
+        locator_authority["code"] = "INVALID_LOCATOR_POLICY"
+
+    snapshot_effective, snapshot_policy_errors = resolve_policy(
+        data.get("snapshot_policy"),
+        snapshot_policy
+        if snapshot_policy is not None
+        else os.environ.get("KNOWSIFT_SNAPSHOT_POLICY") or None,
+        "snapshot_policy",
+    )
+    snapshot_integrity = validate_snapshots(
+        evidence_input,
+        snapshot_root if snapshot_root is not None else os.environ.get("KNOWSIFT_SNAPSHOT_ROOT"),
+        snapshot_effective,
+    )
+    if snapshot_policy_errors:
+        snapshot_integrity["errors"] = sorted(
+            set(snapshot_integrity["errors"]) | set(snapshot_policy_errors)
+        )
+        snapshot_integrity["status"] = "HOLD"
+        snapshot_integrity["code"] = "INVALID_SNAPSHOT_POLICY"
     scope_check = validate_linked_values(
         "verified_scope", data.get("verified_scope"), evidence_by_id
     )
@@ -195,6 +246,8 @@ def compile_claim(
         "valid_reviews": valid_reviews,
         "semantic_summary": semantic_summary,
         "adversarial_summary": adversarial_summary,
+        "locator_authority": locator_authority,
+        "snapshot_integrity": snapshot_integrity,
         "source_authority": source_authority,
         "verified_scope": scope_check.get("plain", {}),
         "verified_conditions": conditions_check.get("plain", {}),
@@ -269,6 +322,8 @@ def compile_claim(
     admission, decisive_reasons = _decide_admission(
         structural_failure=structural_failure,
         semantic_summary=semantic_summary,
+        locator_authority=locator_authority,
+        snapshot_integrity=snapshot_integrity,
         adversarial_summary=adversarial_summary,
         source_authority=source_authority,
         protocol_results=protocol_results,
@@ -287,6 +342,20 @@ def compile_claim(
         unresolved.append(f"semantic:{semantic_summary.get('code')}")
     if source_authority.get("status") != "PASS":
         unresolved.append(f"source_authority:{source_authority.get('code')}")
+    if locator_authority.get("status") == "HOLD":
+        unresolved.append(f"locator:{locator_authority.get('code')}")
+    unresolved.extend(f"locator:{error}" for error in locator_authority.get("errors", []))
+    unresolved.extend(
+        "locator:contradicted:{evidence_id}:{kind}:not_available_from:{rule}".format(
+            evidence_id=item.get("evidence_id"),
+            kind=item.get("source_kind"),
+            rule=item.get("rule"),
+        )
+        for item in locator_authority.get("violations", [])
+    )
+    if snapshot_integrity.get("status") == "HOLD":
+        unresolved.append(f"snapshot:{snapshot_integrity.get('code')}")
+    unresolved.extend(f"snapshot:{error}" for error in snapshot_integrity.get("errors", []))
     if adversarial_summary.get("status") == "HOLD":
         unresolved.append(f"adversarial:{adversarial_summary.get('code')}")
     unresolved.extend(
@@ -335,6 +404,8 @@ def compile_claim(
         "machine_checks": structural_checks,
         "semantic_summary": semantic_summary,
         "adversarial_summary": adversarial_summary,
+        "locator_authority": locator_authority,
+        "snapshot_integrity": snapshot_integrity,
         "source_authority": source_authority,
         "protocol_results": protocol_results,
         "provenance": provenance,

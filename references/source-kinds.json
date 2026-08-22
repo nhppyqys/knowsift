@@ -1,0 +1,532 @@
+{
+  "version": "1.0.0",
+  "note": "Maps a locator to the roles that locator can legitimately play, so an upstream Agent cannot promote a source by asserting a source_kind. Unknown hosts are reported as unverifiable rather than assumed innocent or guilty. Rule matching picks the single most specific rule: host_suffix plus the longest matching path_prefix.",
+  "kind_classes": {
+    "OFFICIAL": [
+      "official_documentation",
+      "official_policy",
+      "official_record",
+      "official_rule",
+      "platform_documentation",
+      "statute",
+      "regulation",
+      "regulator_filing",
+      "constitution",
+      "binding_case",
+      "official_statistics",
+      "release_notes",
+      "measurement_standard",
+      "food_safety_authority",
+      "public_health_guideline",
+      "clinical_guideline",
+      "archival_record",
+      "primary_document",
+      "index_provider",
+      "fund_report",
+      "audited_data",
+      "league_record",
+      "meta_official_docs",
+      "meta_official_policy",
+      "meta_api_docs"
+    ],
+    "SCHOLARLY": [
+      "peer_reviewed_study",
+      "peer_reviewed_history",
+      "meta_analysis",
+      "systematic_review",
+      "randomized_trial",
+      "research_paper",
+      "replication_study",
+      "independent_study",
+      "identified_empirical_study",
+      "experimental_study",
+      "mechanistic_study",
+      "validated_measurement_study",
+      "controlled_experiment",
+      "critical_edition",
+      "law_review",
+      "randomized_lift_test"
+    ],
+    "GUIDANCE": [
+      "treatise",
+      "unofficial_guidance",
+      "secondary_summary",
+      "opinion_piece",
+      "expert_opinion_without_evidence",
+      "popular_explanation",
+      "legal_blog",
+      "agency_blog",
+      "blog_post",
+      "documented_model",
+      "model_with_assumptions",
+      "scenario_analysis",
+      "historical_distribution"
+    ],
+    "USER": [
+      "primary_source",
+      "practitioner_assertion",
+      "forum_post",
+      "anonymous_post",
+      "influencer_claim",
+      "influencer_video",
+      "fan_opinion",
+      "merchant_anecdote",
+      "modern_anecdote",
+      "recipe_anecdote",
+      "teacher_anecdote",
+      "learner_preference",
+      "preference",
+      "single_case",
+      "single_country_anecdote",
+      "single_highlight",
+      "single_uncontrolled_observation",
+      "unsourced_retelling",
+      "unsourced_ranking",
+      "unsupported_assertion",
+      "folk_mechanism",
+      "correlation_without_method",
+      "historical_average_alone",
+      "backtest_without_method",
+      "single_benchmark_claim"
+    ],
+    "MARKETING": [
+      "marketing_copy",
+      "vendor_marketing",
+      "platform_marketing",
+      "meta_marketing_copy"
+    ],
+    "DATA": [
+      "primary_dataset",
+      "account_level_data",
+      "reproducible_benchmark",
+      "reproducible_test",
+      "reproducible_analysis",
+      "source_code",
+      "production_measurement",
+      "merchant_experiment",
+      "reported_roas"
+    ]
+  },
+  "rules": [
+    {
+      "host_suffix": ".gov",
+      "permits": [
+        "OFFICIAL"
+      ],
+      "label": "government domain"
+    },
+    {
+      "host_suffix": ".gov.cn",
+      "permits": [
+        "OFFICIAL"
+      ],
+      "label": "government domain"
+    },
+    {
+      "host_suffix": ".gov.uk",
+      "permits": [
+        "OFFICIAL"
+      ],
+      "label": "government domain"
+    },
+    {
+      "host_suffix": ".gob.es",
+      "permits": [
+        "OFFICIAL"
+      ],
+      "label": "government domain"
+    },
+    {
+      "host_suffix": "europa.eu",
+      "permits": [
+        "OFFICIAL"
+      ],
+      "label": "EU institutions"
+    },
+    {
+      "host_suffix": ".nih.gov",
+      "permits": [
+        "OFFICIAL",
+        "SCHOLARLY"
+      ],
+      "label": "US federal science domain"
+    },
+    {
+      "host_suffix": "support.google.com",
+      "permits": [
+        "OFFICIAL",
+        "GUIDANCE"
+      ],
+      "label": "Google help centre"
+    },
+    {
+      "host_suffix": "developers.google.com",
+      "permits": [
+        "OFFICIAL",
+        "GUIDANCE"
+      ],
+      "label": "Google developer docs"
+    },
+    {
+      "host_suffix": "developer.apple.com",
+      "permits": [
+        "OFFICIAL",
+        "GUIDANCE"
+      ],
+      "label": "Apple developer docs"
+    },
+    {
+      "host_suffix": "developers.facebook.com",
+      "permits": [
+        "OFFICIAL",
+        "GUIDANCE"
+      ],
+      "label": "Meta developer docs"
+    },
+    {
+      "host_suffix": "developer.mozilla.org",
+      "permits": [
+        "OFFICIAL",
+        "GUIDANCE"
+      ],
+      "label": "MDN"
+    },
+    {
+      "host_suffix": "docs.github.com",
+      "permits": [
+        "OFFICIAL",
+        "GUIDANCE"
+      ],
+      "label": "GitHub docs"
+    },
+    {
+      "host_suffix": "docs.claude.com",
+      "permits": [
+        "OFFICIAL",
+        "GUIDANCE"
+      ],
+      "label": "Anthropic docs"
+    },
+    {
+      "host_suffix": "platform.openai.com",
+      "permits": [
+        "OFFICIAL",
+        "GUIDANCE"
+      ],
+      "label": "OpenAI platform docs"
+    },
+    {
+      "host_suffix": ".readthedocs.io",
+      "permits": [
+        "OFFICIAL",
+        "GUIDANCE"
+      ],
+      "label": "project documentation host"
+    },
+    {
+      "host_suffix": "arxiv.org",
+      "permits": [
+        "SCHOLARLY"
+      ],
+      "label": "preprint server"
+    },
+    {
+      "host_suffix": "doi.org",
+      "permits": [
+        "SCHOLARLY"
+      ],
+      "label": "DOI resolver"
+    },
+    {
+      "host_suffix": "pubmed.ncbi.nlm.nih.gov",
+      "permits": [
+        "SCHOLARLY"
+      ],
+      "label": "PubMed"
+    },
+    {
+      "host_suffix": "ncbi.nlm.nih.gov",
+      "permits": [
+        "SCHOLARLY",
+        "OFFICIAL"
+      ],
+      "label": "NCBI"
+    },
+    {
+      "host_suffix": "github.com",
+      "permits": [
+        "DATA",
+        "USER",
+        "GUIDANCE"
+      ],
+      "label": "code host"
+    },
+    {
+      "host_suffix": "gitlab.com",
+      "permits": [
+        "DATA",
+        "USER",
+        "GUIDANCE"
+      ],
+      "label": "code host"
+    },
+    {
+      "host_suffix": "bilibili.com",
+      "path_prefix": "/blackboard/",
+      "permits": [
+        "OFFICIAL"
+      ],
+      "label": "Bilibili platform rules"
+    },
+    {
+      "host_suffix": "bilibili.com",
+      "path_prefix": "/video/",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "Bilibili uploaded video"
+    },
+    {
+      "host_suffix": "bilibili.com",
+      "path_prefix": "/opus/",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "Bilibili user article"
+    },
+    {
+      "host_suffix": "space.bilibili.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "Bilibili user space"
+    },
+    {
+      "host_suffix": "bilibili.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "Bilibili, unrecognised path"
+    },
+    {
+      "host_suffix": "youtube.com",
+      "path_prefix": "/watch",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "YouTube uploaded video"
+    },
+    {
+      "host_suffix": "youtube.com",
+      "path_prefix": "/shorts/",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "YouTube short"
+    },
+    {
+      "host_suffix": "youtube.com",
+      "path_prefix": "/@",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "YouTube channel"
+    },
+    {
+      "host_suffix": "youtube.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "YouTube, unrecognised path"
+    },
+    {
+      "host_suffix": "medium.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "substack.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "zhihu.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "xiaohongshu.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "weibo.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "x.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "twitter.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "reddit.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "news.ycombinator.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "quora.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "douyin.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "tiktok.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "instagram.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "facebook.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "linkedin.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "stackoverflow.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "juejin.cn",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "csdn.net",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "jianshu.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    },
+    {
+      "host_suffix": "toutiao.com",
+      "permits": [
+        "USER",
+        "MARKETING"
+      ],
+      "label": "user-generated platform"
+    }
+  ],
+  "demotions": [
+    {
+      "path_contains": "/blog/",
+      "remove": [
+        "OFFICIAL"
+      ],
+      "reason": "a blog post is editorial, not the organisation's rule text"
+    },
+    {
+      "path_contains": "/news/",
+      "remove": [
+        "OFFICIAL"
+      ],
+      "reason": "a news item reports a rule, it is not the rule"
+    },
+    {
+      "path_contains": "/pricing",
+      "remove": [],
+      "reason": "pricing pages are official but also promotional; recorded, not blocked"
+    }
+  ]
+}

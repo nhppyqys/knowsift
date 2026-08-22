@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.1.0",
+  "certificate_version": "4.2.0",
   "input_digest": "28a9c9d97801c2d114945de7d1e534ec60fc2639a3f86473dda2268bcb42f86b",
   "claim_id": "SD-YT-002",
   "claim_text": "YouTube合作伙伴的观看页广告净收入分成为百分之五十五。",
@@ -99,6 +99,37 @@
     "unreviewed_evidence_ids": [],
     "disagreements": [],
     "falsifiers": [],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "SKIPPED",
+    "code": "NO_LOCATOR_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {
+      "E-SD-YT-002": {
+        "locator_status": "UNVERIFIABLE",
+        "locator_code": "NO_LOCATOR",
+        "source_kind": "official_documentation",
+        "declared_class": "OFFICIAL",
+        "permits": null,
+        "rule": null,
+        "verdict": "UNVERIFIABLE"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [
+      "E-SD-YT-002"
+    ],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-SD-YT-002"
+    ],
     "errors": []
   },
   "source_authority": {

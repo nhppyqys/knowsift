@@ -10,6 +10,23 @@ Treat source classification, claim extraction, and semantic review as substantiv
 
 An admitted `OBSERVE` claim may establish that a named source made a statement or reported an experience. It does not establish that the recommendation is effective, the personal outcome is typical, or the source's explanation is correct.
 
+## A verified locator is not a verified fact
+
+The locator gate checks who is entitled to speak at an address, not whether they
+were right. An official page can be outdated, mistaken, or later retracted, and
+an admitted certificate will carry it anyway.
+
+The host registry is deliberately small. An unrecognised host is reported as
+unverifiable, never as acceptable. Under `required` that is a `HOLD` until
+someone writes a rule for it, and a rule a person wrote is the point: it is
+auditable in a way a model's assertion is not.
+
+## A snapshot proves capture, not service
+
+Snapshot verification proves the quoted text came out of the bytes on disk. It
+does not prove those bytes are what the server returned, or that the page still
+says so. Capture-time honesty still rests on whoever ran the capture.
+
 ## Agreement between models is not independence
 
 Adversarial review adds a second reading and holds the claim when the two

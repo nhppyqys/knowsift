@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.1.0",
+  "certificate_version": "4.2.0",
   "input_digest": "28314a2d46356c5da4868419b95fb3c179fd96c4517616575c64f10ce5f0c9ac",
   "claim_id": "SD-YT-005",
   "claim_text": "YouTube把批量生产或重复内容归为不真实内容，并规定这类内容不符合变现条件。",
@@ -99,6 +99,37 @@
     "unreviewed_evidence_ids": [],
     "disagreements": [],
     "falsifiers": [],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "SKIPPED",
+    "code": "NO_LOCATOR_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {
+      "E-SD-YT-005": {
+        "locator_status": "UNVERIFIABLE",
+        "locator_code": "NO_LOCATOR",
+        "source_kind": "official_documentation",
+        "declared_class": "OFFICIAL",
+        "permits": null,
+        "rule": null,
+        "verdict": "UNVERIFIABLE"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [
+      "E-SD-YT-005"
+    ],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-SD-YT-005"
+    ],
     "errors": []
   },
   "source_authority": {

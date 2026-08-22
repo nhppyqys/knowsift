@@ -27,4 +27,5 @@ def load_runtime_resources() -> dict[str, dict[str, Any]]:
         "causal_designs": load_json("causal-designs.json"),
         "claim_schema": load_json("claim-ir.schema.json"),
         "compile_schema": load_json("compile-input.schema.json"),
+        "source_kind_registry": load_json("source-kinds.json"),
     }

@@ -704,3 +704,265 @@ def validate_adversarial_reviews(
         else:
             summary["status"], summary["code"] = "SKIPPED", "ADVERSARIAL_REVIEW_NOT_SUPPLIED"
     return summary, valid
+
+
+def resolve_policy(payload_value: Any, host_value: Any, name: str) -> tuple[str, list[str]]:
+    """Resolve a three-state policy. The strictest supplied value wins.
+
+    A payload can never relax a policy the host environment requires, which is
+    what makes an environment variable a usable enforcement point.
+    """
+    errors: list[str] = []
+    ranks: list[int] = []
+    for label, value in (("payload", payload_value), ("host", host_value)):
+        if value is None:
+            continue
+        if not isinstance(value, str) or value not in ADVERSARIAL_POLICIES:
+            errors.append(f"{name}:invalid_{label}_value:{value}")
+            continue
+        ranks.append(_POLICY_RANK[value])
+    return (_POLICY_BY_RANK[max(ranks)] if ranks else "optional"), errors
+
+
+def _split_locator(locator: str) -> tuple[str, str] | None:
+    from urllib.parse import urlsplit
+
+    parts = urlsplit(locator.strip())
+    if parts.scheme not in {"http", "https"} or not parts.netloc:
+        return None
+    host = parts.netloc.split("@")[-1].split(":")[0].lower()
+    if host.startswith("www."):
+        host = host[4:]
+    return host, parts.path or "/"
+
+
+def classify_locator(locator: Any, registry: dict[str, Any]) -> dict[str, Any]:
+    """Work out which roles a locator can legitimately support.
+
+    An unknown host is reported as unverifiable. Guessing in either direction
+    would be worse than saying so.
+    """
+    if not isinstance(locator, str) or not locator.strip():
+        return {"status": "UNVERIFIABLE", "code": "NO_LOCATOR", "permits": None}
+    split = _split_locator(locator)
+    if split is None:
+        return {"status": "UNVERIFIABLE", "code": "NOT_AN_HTTP_LOCATOR", "permits": None}
+    host, path = split
+
+    best: dict[str, Any] | None = None
+    best_key = (-1, -1)
+    for rule in registry.get("rules", []):
+        suffix = rule.get("host_suffix")
+        if not suffix:
+            continue
+        suffix = suffix.lower().lstrip(".")
+        if host != suffix and not host.endswith("." + suffix):
+            continue
+        prefix = rule.get("path_prefix")
+        if prefix and not path.startswith(prefix):
+            continue
+        key = (len(suffix), len(prefix or ""))
+        if key > best_key:
+            best, best_key = rule, key
+
+    if best is None:
+        return {
+            "status": "UNVERIFIABLE",
+            "code": "UNKNOWN_HOST",
+            "host": host,
+            "permits": None,
+        }
+
+    permits = list(best.get("permits", []))
+    applied: list[str] = []
+    for demotion in registry.get("demotions", []):
+        needle = demotion.get("path_contains")
+        if needle and needle in path and demotion.get("remove"):
+            removed = [item for item in demotion["remove"] if item in permits]
+            if removed:
+                permits = [item for item in permits if item not in removed]
+                applied.append(demotion.get("reason", needle))
+    return {
+        "status": "CLASSIFIED",
+        "code": "LOCATOR_CLASSIFIED",
+        "host": host,
+        "rule": best.get("label"),
+        "permits": sorted(permits),
+        "demotions_applied": applied,
+    }
+
+
+def validate_locator_authority(
+    evidence: list[dict[str, Any]],
+    registry: dict[str, Any],
+    policy: str,
+) -> dict[str, Any]:
+    """Check declared source_kind against what the locator can actually support."""
+    summary = {
+        "status": "SKIPPED",
+        "code": "LOCATOR_CHECK_DISABLED",
+        "policy": policy,
+        "by_evidence": {},
+        "violations": [],
+        "unverifiable_evidence_ids": [],
+        "errors": [],
+    }
+    if policy == "off":
+        return summary
+
+    class_of: dict[str, str] = {}
+    for name, kinds in registry.get("kind_classes", {}).items():
+        for kind in kinds:
+            class_of[kind] = name
+
+    checked = 0
+    for item in evidence:
+        if not isinstance(item, dict):
+            continue
+        evidence_id = item.get("evidence_id")
+        if not isinstance(evidence_id, str):
+            continue
+        verdict = classify_locator(item.get("locator"), registry)
+        kind = item.get("source_kind")
+        declared_class = class_of.get(kind)
+        entry = {
+            "locator_status": verdict["status"],
+            "locator_code": verdict["code"],
+            "source_kind": kind,
+            "declared_class": declared_class,
+            "permits": verdict.get("permits"),
+            "rule": verdict.get("rule"),
+        }
+        if verdict["status"] != "CLASSIFIED":
+            summary["unverifiable_evidence_ids"].append(evidence_id)
+            entry["verdict"] = "UNVERIFIABLE"
+        elif declared_class is None:
+            summary["errors"].append(
+                f"locator_authority:unclassified_source_kind:{evidence_id}:{kind}"
+            )
+            entry["verdict"] = "UNCLASSIFIED_KIND"
+        elif declared_class not in (verdict.get("permits") or []):
+            summary["violations"].append(
+                {
+                    "evidence_id": evidence_id,
+                    "source_kind": kind,
+                    "declared_class": declared_class,
+                    "locator_permits": verdict.get("permits"),
+                    "rule": verdict.get("rule"),
+                }
+            )
+            entry["verdict"] = "CONTRADICTED_BY_LOCATOR"
+            checked += 1
+        else:
+            entry["verdict"] = "CONSISTENT"
+            checked += 1
+        summary["by_evidence"][evidence_id] = entry
+
+    summary["unverifiable_evidence_ids"] = sorted(summary["unverifiable_evidence_ids"])
+    summary["errors"] = sorted(set(summary["errors"]))
+    if summary["errors"]:
+        summary["status"], summary["code"] = "HOLD", "INVALID_LOCATOR_INPUT"
+    elif summary["violations"]:
+        summary["status"], summary["code"] = "HOLD", "SOURCE_KIND_CONTRADICTED_BY_LOCATOR"
+    elif policy == "required" and summary["unverifiable_evidence_ids"]:
+        summary["status"], summary["code"] = "HOLD", "LOCATOR_NOT_VERIFIABLE"
+    elif checked:
+        summary["status"], summary["code"] = "PASS", "LOCATOR_SUPPORTS_DECLARED_ROLE"
+    else:
+        summary["status"], summary["code"] = "SKIPPED", "NO_LOCATOR_SUPPLIED"
+    return summary
+
+
+def validate_snapshots(
+    evidence: list[dict[str, Any]],
+    snapshot_root: Any,
+    policy: str,
+) -> dict[str, Any]:
+    """Verify that quoted source_text really came out of the captured bytes.
+
+    Without this the whole anchor chain terminates at a summary somebody wrote,
+    not at the page it claims to quote.
+    """
+    import hashlib
+    from pathlib import Path
+
+    summary = {
+        "status": "SKIPPED",
+        "code": "SNAPSHOT_CHECK_DISABLED",
+        "policy": policy,
+        "by_evidence": {},
+        "unsnapshotted_evidence_ids": [],
+        "errors": [],
+    }
+    if policy == "off":
+        return summary
+
+    root = Path(snapshot_root).resolve() if snapshot_root else None
+    verified = 0
+    for item in evidence:
+        if not isinstance(item, dict):
+            continue
+        evidence_id = item.get("evidence_id")
+        if not isinstance(evidence_id, str):
+            continue
+        snapshot = item.get("snapshot")
+        if snapshot is None:
+            summary["unsnapshotted_evidence_ids"].append(evidence_id)
+            continue
+        path_key = f"snapshot:{evidence_id}"
+        if not isinstance(snapshot, dict) or set(snapshot) != {"path", "sha256"}:
+            summary["errors"].append(f"{path_key}:fields_must_be_path_and_sha256")
+            continue
+        relative = snapshot.get("path")
+        digest = snapshot.get("sha256")
+        if not isinstance(relative, str) or not relative.strip():
+            summary["errors"].append(f"{path_key}:path_must_be_nonempty_string")
+            continue
+        if not isinstance(digest, str) or len(digest) != 64:
+            summary["errors"].append(f"{path_key}:sha256_must_be_64_hex_chars")
+            continue
+        if root is None:
+            summary["errors"].append(f"{path_key}:no_snapshot_root_configured")
+            continue
+        candidate = (root / relative).resolve()
+        try:
+            candidate.relative_to(root)
+        except ValueError:
+            summary["errors"].append(f"{path_key}:path_escapes_snapshot_root")
+            continue
+        try:
+            raw = candidate.read_bytes()
+        except OSError:
+            summary["errors"].append(f"{path_key}:file_not_found:{relative}")
+            continue
+        actual = hashlib.sha256(raw).hexdigest()
+        if actual != digest:
+            summary["errors"].append(f"{path_key}:sha256_mismatch")
+            continue
+        try:
+            text = raw.decode("utf-8")
+        except UnicodeDecodeError:
+            summary["errors"].append(f"{path_key}:snapshot_not_utf8")
+            continue
+        source_text = item.get("source_text")
+        if not isinstance(source_text, str) or source_text not in text:
+            summary["errors"].append(f"{path_key}:source_text_not_in_snapshot")
+            continue
+        summary["by_evidence"][evidence_id] = {
+            "path": relative,
+            "sha256": digest,
+            "verdict": "SOURCE_TEXT_FOUND_IN_CAPTURED_BYTES",
+        }
+        verified += 1
+
+    summary["unsnapshotted_evidence_ids"] = sorted(summary["unsnapshotted_evidence_ids"])
+    summary["errors"] = sorted(set(summary["errors"]))
+    if summary["errors"]:
+        summary["status"], summary["code"] = "HOLD", "SNAPSHOT_VERIFICATION_FAILED"
+    elif policy == "required" and summary["unsnapshotted_evidence_ids"]:
+        summary["status"], summary["code"] = "HOLD", "SNAPSHOT_REQUIRED"
+    elif verified:
+        summary["status"], summary["code"] = "PASS", "QUOTED_TEXT_MATCHES_CAPTURE"
+    else:
+        summary["status"], summary["code"] = "SKIPPED", "NO_SNAPSHOT_SUPPLIED"
+    return summary

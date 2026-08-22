@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.1.0",
+  "certificate_version": "4.2.0",
   "input_digest": "8c24644b2799ee5f291a73eb9aa7424d764f5da056eba7e5c7ff9d643248a8b5",
   "claim_id": "SD-YT-001",
   "claim_text": "YouTube完整广告分成门槛可以通过一千订阅加近十二个月四千小时公开观看时长，或一千订阅加近九十天一千万次有效Shorts公开观看达到。",
@@ -99,6 +99,37 @@
     "unreviewed_evidence_ids": [],
     "disagreements": [],
     "falsifiers": [],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "SKIPPED",
+    "code": "NO_LOCATOR_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {
+      "E-SD-YT-001": {
+        "locator_status": "UNVERIFIABLE",
+        "locator_code": "NO_LOCATOR",
+        "source_kind": "official_documentation",
+        "declared_class": "OFFICIAL",
+        "permits": null,
+        "rule": null,
+        "verdict": "UNVERIFIABLE"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [
+      "E-SD-YT-001"
+    ],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-SD-YT-001"
+    ],
     "errors": []
   },
   "source_authority": {

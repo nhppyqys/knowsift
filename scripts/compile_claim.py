@@ -23,6 +23,21 @@ def build_parser() -> argparse.ArgumentParser:
         help="Exit 3 unless admission is ADMIT or ADMIT_SCOPED",
     )
     parser.add_argument(
+        "--locator",
+        choices=["off", "optional", "required"],
+        help="Host-side locator policy: must a URL corroborate the declared source_kind?",
+    )
+    parser.add_argument(
+        "--snapshot",
+        choices=["off", "optional", "required"],
+        help="Host-side snapshot policy: must source_text be found in hashed captured bytes?",
+    )
+    parser.add_argument(
+        "--snapshot-root",
+        type=Path,
+        help="Directory holding captured snapshots; snapshot paths may not escape it",
+    )
+    parser.add_argument(
         "--adversarial",
         choices=["off", "optional", "required"],
         help=(
@@ -43,7 +58,13 @@ def main(argv: list[str] | None = None) -> int:
         print(f"knowsift: {error}", file=sys.stderr)
         return 2
 
-    certificate = compile_claim(payload, adversarial_policy=args.adversarial)
+    certificate = compile_claim(
+        payload,
+        adversarial_policy=args.adversarial,
+        locator_policy=args.locator,
+        snapshot_policy=args.snapshot,
+        snapshot_root=args.snapshot_root,
+    )
     indent = 2 if args.pretty else None
     serialized = json.dumps(
         certificate,

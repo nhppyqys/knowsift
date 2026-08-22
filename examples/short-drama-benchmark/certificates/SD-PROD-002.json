@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.1.0",
+  "certificate_version": "4.2.0",
   "input_digest": "43f150a21c98ead88b80268df16ba35ce6884398ec0d753849f1bb21389271c6",
   "claim_id": "SD-PROD-002",
   "claim_text": "短片前期制作包括拆分剧本、准备镜头清单或分镜、排期、组建演员与团队以及落实场地。",
@@ -99,6 +99,37 @@
     "unreviewed_evidence_ids": [],
     "disagreements": [],
     "falsifiers": [],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "SKIPPED",
+    "code": "NO_LOCATOR_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {
+      "E-SD-PROD-002": {
+        "locator_status": "UNVERIFIABLE",
+        "locator_code": "NO_LOCATOR",
+        "source_kind": "primary_source",
+        "declared_class": "USER",
+        "permits": null,
+        "rule": null,
+        "verdict": "UNVERIFIABLE"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [
+      "E-SD-PROD-002"
+    ],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-SD-PROD-002"
+    ],
     "errors": []
   },
   "source_authority": {

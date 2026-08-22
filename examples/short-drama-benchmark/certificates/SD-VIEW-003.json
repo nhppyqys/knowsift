@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.1.0",
+  "certificate_version": "4.2.0",
   "input_digest": "4e2f1407b7121a7b5a69e4d2c9073e22c94bcec0734a1627cb4a8a8d23cf50ce",
   "claim_id": "SD-VIEW-003",
   "claim_text": "B站视频发布者自述每天花一小时做海外短剧推广，当月多赚二千三百元以上。",
@@ -99,6 +99,37 @@
     "unreviewed_evidence_ids": [],
     "disagreements": [],
     "falsifiers": [],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "SKIPPED",
+    "code": "NO_LOCATOR_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {
+      "E-SD-VIEW-003": {
+        "locator_status": "UNVERIFIABLE",
+        "locator_code": "NO_LOCATOR",
+        "source_kind": "primary_source",
+        "declared_class": "USER",
+        "permits": null,
+        "rule": null,
+        "verdict": "UNVERIFIABLE"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [
+      "E-SD-VIEW-003"
+    ],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-SD-VIEW-003"
+    ],
     "errors": []
   },
   "source_authority": {

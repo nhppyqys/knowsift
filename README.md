@@ -172,6 +172,38 @@ flowchart LR
 | `DISPUTED_OR_UNRESOLVED` | 有冲突或缺少关键证据，暂时不下结论 |
 | `REJECTED` | 被决定性证据否定，或没有通过必要检查 |
 
+## 来源是不是它自称的那个东西
+
+`source_kind` 以前是上游 Agent 自己填的一个字符串——整条链路上最容易填错、也最容易被钻空子的地方。改一个词，一个卖课页面就变成官方文档：
+
+```text
+"source_kind": "marketing_copy"          -> HOLD
+"source_kind": "official_documentation"  -> ADMIT
+```
+
+证据一个字没变，只有标签变了。
+
+现在给证据加一个 `locator`，运行时会算出这个地址**有资格扮演哪些角色**，再去比对声明的 `source_kind`。看的是主机加路径，不只是域名：
+
+- `bilibili.com/blackboard/…` 可以是 `official_documentation`（平台自己的规则页）
+- `bilibili.com/video/BV…` 不可以，那只是某个账号上传的东西
+- 不认识的主机报成**无法核验**，既不算通过也不算违规
+
+92 个 source_kind 归成六类：`OFFICIAL` / `SCHOLARLY` / `GUIDANCE` / `USER` / `MARKETING` / `DATA`。有测试保证：往 domain-registry 里加了新的 kind 却没归类，测试就红。
+
+再给一个 `snapshot`（`{path, sha256}`），运行时会去校验抓取文件的哈希，并确认 `source_text` 逐字出现在里面。没有这一步，锚点链条终点是你自己写的那份摘要，而不是它声称引用的那个网页。
+
+```bash
+python3 scripts/compile_claim.py claim.json \
+  --locator required --snapshot required --snapshot-root ./captures
+```
+
+两个都默认 `optional`，都取 payload 字段、环境变量、命令行三者中最严的。
+
+要说清楚的是：locator 只管**谁有资格说话**，不管说得对不对——官方页面一样会过时、会写错。snapshot 只证明引文出自磁盘上那些字节，不证明那些字节就是服务器当时返回的。递归只是被缩短了，没有被消灭：以前终点是「一个模型说它是官方的」，现在终点是「一条我自己写的规则说这个域名可以是官方的，一个我自己抓的文件里有这句话」——后面这两样，人能自己去查。
+
+细节见 [references/source-provenance.md](references/source-provenance.md)。
+
 ## 谁来复核第一遍判断
 
 整条链路上最软的一环，是「这句证据到底支不支持这个结论」——它由一个模型说了算。
@@ -266,7 +298,7 @@ KnowSift 能保证的是：**证据支持到哪里，最后的结论就只写到
 python3 -m unittest discover -s tests -v
 ```
 
-当前 83 项测试同时通过 Python 3.9 与 Python 3.14，覆盖来源锚点、冲突、范围、版本、法律与统计协议、证书层级兼容、独立复核的一致与分歧、路径边界和最终 Markdown 的逐字节重建。
+当前 111 项测试同时通过 Python 3.9 与 Python 3.14，覆盖来源锚点、冲突、范围、版本、法律与统计协议、证书层级兼容、独立复核的一致与分歧、来源地址与抓取快照的核验、路径边界和最终 Markdown 的逐字节重建。
 
 完整结果见 [VALIDATION.md](VALIDATION.md)。
 
@@ -276,6 +308,7 @@ python3 -m unittest discover -s tests -v
 - [分层知识文档工作流](references/knowledge-document-mode.md)
 - [单条说法输入契约](references/runtime-contract.md)
 - [第二审阅者工作流](references/adversarial-review.md)
+- [来源地址与快照核验](references/source-provenance.md)
 - [产品接入方式](references/integration-patterns.md)
 - [安全边界](references/safety-and-limitations.md)
 - [真实短剧标杆案例](examples/short-drama-benchmark/README.md)

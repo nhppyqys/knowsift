@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.1.0",
+  "certificate_version": "4.2.0",
   "input_digest": "e806856285c7c7668cadc889f6e82e602b6dfb0750ddcd37b6215a86677e306c",
   "claim_id": "LEARN-005",
   "claim_text": "成年人绝对不应该背单词。",
@@ -73,6 +73,48 @@
     "unreviewed_evidence_ids": [],
     "disagreements": [],
     "falsifiers": [],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "SKIPPED",
+    "code": "NO_LOCATOR_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {
+      "E-DISPUTE-A": {
+        "locator_status": "UNVERIFIABLE",
+        "locator_code": "NO_LOCATOR",
+        "source_kind": "primary_source",
+        "declared_class": "USER",
+        "permits": null,
+        "rule": null,
+        "verdict": "UNVERIFIABLE"
+      },
+      "E-DISPUTE-B": {
+        "locator_status": "UNVERIFIABLE",
+        "locator_code": "NO_LOCATOR",
+        "source_kind": "primary_source",
+        "declared_class": "USER",
+        "permits": null,
+        "rule": null,
+        "verdict": "UNVERIFIABLE"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [
+      "E-DISPUTE-A",
+      "E-DISPUTE-B"
+    ],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-DISPUTE-A",
+      "E-DISPUTE-B"
+    ],
     "errors": []
   },
   "source_authority": {

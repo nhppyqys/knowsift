@@ -209,6 +209,9 @@ def render_detect(report: dict[str, Any]) -> str:
         mark = "ok  " if entry.get("available") and entry.get("usable", True) else "no  "
         lines.append(f"  {mark}{entry['id']:<12} {entry['label']}")
         lines.append(f"      {entry['reason']}")
+        verified = entry.get("verified") or ""
+        if entry.get("available") and "NOT verified" in verified:
+            lines.append("      argv unverified in this build: confirm with --deep before relying on it")
         if entry.get("available") and entry["independence"] == "same_family_as_host":
             lines.append("      same family as the host: weaker independence")
     lines.extend(["", "usable routes, best first:"])

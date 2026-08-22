@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "compile-input.schema.json",
-  "title": "Knowledge Compiler Input 4.1",
+  "title": "Knowledge Compiler Input 4.2",
   "type": "object",
   "required": [
     "claim_ir",
@@ -50,6 +50,22 @@
         "required"
       ],
       "description": "Requested strictness. The host may only raise it, never lower it."
+    },
+    "locator_policy": {
+      "enum": [
+        "off",
+        "optional",
+        "required"
+      ],
+      "description": "Whether each evidence locator must corroborate its declared source_kind."
+    },
+    "snapshot_policy": {
+      "enum": [
+        "off",
+        "optional",
+        "required"
+      ],
+      "description": "Whether each evidence source_text must be found inside a hashed capture."
     },
     "verified_scope": {
       "$ref": "#/$defs/linkedValues"
@@ -119,12 +135,43 @@
           "type": "string",
           "minLength": 1
         },
+        "locator": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Where this evidence came from. An http(s) URL lets the runtime check that the host can legitimately play the declared source_kind's role."
+        },
         "source_text": {
           "type": "string",
           "minLength": 1
         },
         "quote": {
           "$ref": "#/$defs/anchor"
+        },
+        "snapshot": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Path to the captured bytes, relative to the snapshot root."
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$",
+              "description": "Digest of the captured file as stored."
+            }
+          },
+          "description": "Ties source_text to the bytes that were actually captured, so the anchor chain does not terminate at a summary somebody wrote."
         },
         "date": {
           "type": [

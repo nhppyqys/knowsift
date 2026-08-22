@@ -3,7 +3,7 @@ name: knowsift
 description: Compile collected videos, articles, documents, and research into layered, traceable knowledge documents or fail-closed claim certificates. Use when a user needs research synthesis that separates supported knowledge, conditional findings, practitioner experience, viewpoints, anecdotes, disputes, and rejected claims; do not invoke for ordinary summaries that do not require evidence boundaries.
 metadata:
   short-description: Compile mixed sources into layered knowledge
-  version: "4.1.0"
+  version: "4.2.0"
 ---
 
 # KnowSift
@@ -33,6 +33,36 @@ python3 scripts/compile_claim.py path/to/input.json --pretty
 ```
 
 For automation that must stop unless a complete claim is admitted, add `--require-admission`.
+
+## Source provenance
+
+`source_kind` used to be a string the upstream Agent wrote about itself, which
+made it the easiest thing in the pipeline to get wrong or to game. Two gates now
+check it against something outside the Agent's own say-so.
+
+Give every evidence item a `locator`. The runtime checks that the address can
+legitimately play the declared role, using the host and the path together:
+
+- `bilibili.com/blackboard/…` may be `official_documentation`
+- `bilibili.com/video/BV…` may not; it is whatever an account uploaded
+- an unknown host is reported as **unverifiable**, never as acceptable
+
+Give it a `snapshot` of `{path, sha256}` and the runtime hashes the captured
+file and checks that `source_text` appears literally inside it. Without this the
+anchor chain ends at a summary someone wrote, not at the page it quotes.
+
+```bash
+python3 scripts/compile_claim.py claim.json \
+  --locator required --snapshot required --snapshot-root ./captures
+```
+
+Both default to `optional`, and both resolve to the strictest of the payload
+field, the environment variable, and the flag. Never relabel a `source_kind` to
+clear a locator violation: fix the locator, or record the source as what it
+actually is.
+
+Full rules, host registry, and residual limits:
+[references/source-provenance.md](references/source-provenance.md).
 
 ## Second reviewer
 
@@ -119,7 +149,7 @@ The renderer refuses to place a certificate in an incompatible layer. For exampl
 - `ADMIT`: the normalized claim passed every routed gate using appropriately classified evidence.
 - `ADMIT_SCOPED`: only the explicitly narrowed claim passed.
 - `ADMIT_COMPONENTS_ONLY`: only named components are supported; the complete callable claim remains null.
-- `HOLD`: evidence, authority, scope, protocol, semantic, or reviewer conflict remains unresolved.
+- `HOLD`: evidence, authority, provenance, scope, protocol, semantic, or reviewer conflict remains unresolved.
 - `REJECT`: supplied evidence directly contradicts the claim or a decisive deterministic check fails.
 
 ## Resources
@@ -130,6 +160,7 @@ The renderer refuses to place a certificate in an incompatible layer. For exampl
 - Single-claim input/output contract: [references/runtime-contract.md](references/runtime-contract.md)
 - Protocol requirements: [references/protocols.md](references/protocols.md)
 - Second-reviewer workflow: [references/adversarial-review.md](references/adversarial-review.md)
+- Locator and snapshot gates: [references/source-provenance.md](references/source-provenance.md)
 - Domain routing and source-authority guidance: [references/domains.md](references/domains.md)
 - Product integration patterns: [references/integration-patterns.md](references/integration-patterns.md)
 - Real-world multi-source benchmark: `examples/short-drama-benchmark/`

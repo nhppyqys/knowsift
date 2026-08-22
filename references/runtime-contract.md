@@ -33,7 +33,9 @@ The complete machine-readable shape is in `compile-input.schema.json`. A runnabl
       "evidence_id": "E1",
       "source_id": "DOC-42",
       "source_kind": "official_documentation",
+      "locator": "https://docs.example.gov/widget/4.2",
       "source_text": "In version 4.2, Widget supports signed exports.",
+      "snapshot": {"path": "captures/widget-4.2.txt", "sha256": "<64 hex chars>"},
       "quote": {"text": "Widget supports signed exports", "start": 16, "end": 46},
       "version": "4.2",
       "scope": {"version": "4.2"},
@@ -64,6 +66,8 @@ The complete machine-readable shape is in `compile-input.schema.json`. A runnabl
     }
   ],
   "adversarial_policy": "required",
+  "locator_policy": "required",
+  "snapshot_policy": "required",
   "verified_scope": {
     "version": {
       "value": "4.2",
@@ -98,6 +102,8 @@ Offsets use Python slicing semantics: `source_text[start:end]` must exactly equa
 ## Evidence and semantic reviews
 
 Every evidence item needs a stable `evidence_id`, a provenance-level `source_id`, a classified `source_kind`, full `source_text`, and an exact `quote`. `derived_from` and `cites` contain source IDs, not evidence IDs.
+
+`locator` and `snapshot` are optional but check the two things `source_kind` alone cannot. A `locator` lets the runtime confirm the address can legitimately play the declared role — a platform's rules page may be `official_documentation`, a video upload on the same host may not — with unknown hosts reported as unverifiable rather than accepted. A `snapshot` of `{path, sha256}` ties `source_text` to captured bytes, so the anchor chain does not terminate at a summary. See [source-provenance.md](source-provenance.md).
 
 Review fragments must be exact substrings of their respective texts. `ENTAILS` requires an empty `missing_bridge`; `PARTIAL` and `AMBIGUOUS` require a non-empty bridge. Confidence-like fields are forbidden.
 

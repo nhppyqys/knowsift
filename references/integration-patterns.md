@@ -16,7 +16,7 @@ The resulting document is intentionally not a popularity summary. Ten videos rep
 
 ## Certified knowledge base
 
-1. Ingest documents into a source store with stable source IDs and immutable text snapshots.
+1. Ingest documents into a source store with stable source IDs and immutable text snapshots. Record each item's `locator` and a `snapshot` of `{path, sha256}`, then run the compiler with `--locator required --snapshot required --snapshot-root <store>` so a mislabelled or un-captured source cannot enter the base at all.
 2. Extract independently checkable claims and evidence anchors.
 3. Compile each claim separately.
 4. Store `ADMIT` and `ADMIT_SCOPED` certificates as usable knowledge.

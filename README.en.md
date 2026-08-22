@@ -184,6 +184,38 @@ If an upstream Agent tries to place a `HOLD` claim such as “reliably earn RMB 
 | `DISPUTED_OR_UNRESOLVED` | Evidence conflicts or a required piece is missing, so no conclusion is forced |
 | `REJECTED` | Decisive evidence contradicts the claim, or a mandatory check failed |
 
+## Is the source what it says it is
+
+`source_kind` used to be a string the upstream Agent wrote about itself — the easiest thing in the pipeline to get wrong or to game. Change one word and a course sales page becomes official documentation:
+
+```text
+"source_kind": "marketing_copy"          -> HOLD
+"source_kind": "official_documentation"  -> ADMIT
+```
+
+The evidence never changed. Only the label did.
+
+Give evidence a `locator` and the runtime works out which roles that address can legitimately play, then checks the declared kind against them. Host and path together, not just the domain:
+
+- `bilibili.com/blackboard/...` may be `official_documentation` - the platform's own rules
+- `bilibili.com/video/BV...` may not; it is whatever an account uploaded
+- an unknown host is reported as **unverifiable**, never as acceptable
+
+The 92 source kinds map onto six classes: `OFFICIAL`, `SCHOLARLY`, `GUIDANCE`, `USER`, `MARKETING`, `DATA`. A test fails if a kind is added to the domain registry without being classified.
+
+Give it a `snapshot` of `{path, sha256}` and the runtime hashes the captured file and checks that `source_text` appears literally inside it. Without that, the anchor chain terminates at a summary somebody wrote rather than the page it claims to quote.
+
+```bash
+python3 scripts/compile_claim.py claim.json \
+  --locator required --snapshot required --snapshot-root ./captures
+```
+
+Both default to `optional`, and both resolve to the strictest of the payload field, the environment variable, and the flag.
+
+What this still does not prove: a locator rule says who may speak at an address, not whether they were right, and a snapshot proves the quote came out of the bytes on disk, not that those bytes are what the server returned. The regress is shortened, not removed - it used to end at "a model said this was official", and now ends at "a rule I wrote allows this host, and a file I captured contains this sentence". Those are things a person can inspect.
+
+Details in [references/source-provenance.md](references/source-provenance.md).
+
 ## Who checks the first reading
 
 The softest joint in the whole chain is "does this evidence actually support this claim" — decided by one model.
@@ -287,7 +319,7 @@ Read [Safety and limitations](references/safety-and-limitations.md) before using
 python3 -m unittest discover -s tests -v
 ```
 
-The current suite contains 83 tests and passes on Python 3.9 and Python 3.14. It covers literal source anchors, provenance, conflicts, scope, versions, legal and statistical protocols, certificate-layer compatibility, independent-reviewer agreement and disagreement, path boundaries, and byte-for-byte Markdown reconstruction.
+The current suite contains 111 tests and passes on Python 3.9 and Python 3.14. It covers literal source anchors, provenance, conflicts, scope, versions, legal and statistical protocols, certificate-layer compatibility, independent-reviewer agreement and disagreement, locator and snapshot verification, path boundaries, and byte-for-byte Markdown reconstruction.
 
 See [VALIDATION.md](VALIDATION.md) for the full validation record.
 
@@ -297,6 +329,7 @@ See [VALIDATION.md](VALIDATION.md) for the full validation record.
 - [Layered knowledge-document workflow](references/knowledge-document-mode.md)
 - [Single-claim runtime contract](references/runtime-contract.md)
 - [Second-reviewer workflow](references/adversarial-review.md)
+- [Locator and snapshot gates](references/source-provenance.md)
 - [Integration patterns](references/integration-patterns.md)
 - [Safety and limitations](references/safety-and-limitations.md)
 - [Real-world short-drama benchmark](examples/short-drama-benchmark/README.md)
