@@ -2,346 +2,257 @@
 
 English | [简体中文](README.md)
 
-> AI retrieves the material. KnowSift decides what deserves to become knowledge.
+> Of everything you just retrieved, what can you actually use?
 
-Give an Agent a collection of YouTube videos, Bilibili videos, web pages, papers, transcripts, or local documents. KnowSift separates **supported knowledge, conditional findings, practitioner experience, personal anecdotes, viewpoints, marketing claims, unresolved disputes, and rejected claims**, then produces a traceable Markdown knowledge document.
+Hand videos, articles, papers, official documentation, courses, and local notes to your Agent. KnowSift separates the **knowledge, conditional findings, practitioner experience, personal anecdotes, marketing promises, and plain errors** that arrive mixed together, labels each one with what it is actually worth, and produces a knowledge document you can trace back to the source text.
 
-It works with Codex, Claude Code, and other Agent Skills-compatible tools.
+Works with Claude Code, Codex, and other tools that support Agent Skills.
 
-[Quick start](#quick-start) · [Real-world benchmark](#real-world-benchmark-can-you-make-money-with-short-dramas) · [Use cases](#where-knowsift-fits) · [How it works](#how-knowsift-works) · [Documentation](#documentation)
+[Quick start](#quick-start) · [What it does for your role](#what-it-does-for-your-role) · [Real benchmark](#real-benchmark-how-do-you-actually-make-money-from-short-dramas) · [Three ways to use it](#three-ways-to-use-it) · [Docs](#documentation)
 
-## Why KnowSift exists
+## What actually changes
 
-Finding information is becoming cheap. Deciding what should survive the search process is still hard.
+The same pile of material, summarised normally versus compiled by KnowSift:
 
-| What an Agent finds | A normal summary may say | What the evidence may actually show |
+| What the material contains | A normal summary says | KnowSift says |
 |---|---|---|
-| Ten videos repeat the same method | “This is an industry consensus” | Ten repetitions of one unsupported claim |
-| One creator shows an income screenshot | “Anyone can reproduce this result” | One unverifiable personal outcome |
-| A course promises monetization | “This is a proven business model” | A marketing claim |
-| An official page lists an eligibility threshold | “Meeting the threshold guarantees income” | A requirement, not an earnings guarantee |
-| Old and new platform rules appear together | “The current rule is...” | Conflicting versions with no effective date |
+| Ten videos describing one method | "the industry-standard method" | ten retellings, possibly of one upstream source |
+| A creator posting income screenshots | "anyone can replicate this" | one person's account, not verifiable |
+| A course page promising results | "the complete path to income" | a marketing promise, unverified |
+| An official page listing a threshold | "hit the threshold and you earn" | an eligibility condition, not a revenue guarantee |
+| Old and new rules appearing together | "the current rule is…" | both, with versions and effective dates |
 
-KnowSift makes every claim pass a separate evidence gate. It asks:
+**It is not there to filter out the fakes. It is there to put the right price tag on every piece.** You still read everything — you just know which line is written into platform policy, which line is one person's luck, and which line is someone selling you a course.
 
-- Where did this claim come from?
-- What does the source actually say?
-- Is the source qualified to support this kind of claim?
-- Does the claim apply universally, or only under stated conditions?
-- Are there conflicting sources, versions, or dates?
-- What evidence is still missing?
+## What it does for your role
+
+### Learning a new field from scratch
+
+You have forty bookmarked videos and a dozen articles, and the more you read the less certain you are. Everyone contradicts everyone, and everyone sounds reasonable.
+
+**You get** a layered study document: real methodology, findings that hold only under stated conditions, an instructor's personal style, and claims nobody has ever demonstrated — each in its own section. Plus a list of the specific evidence still missing, so you know what to go and check next.
 
 ```text
-“Someone said it”       != “It is true”
-“Many people repeat it” != “It is independently corroborated”
-“One person earned it”  != “A typical user can reproduce it”
+Search YouTube, the web, and reliable sources for content about XXX, keeping
+source links, original text, dates, and versions. Then use $knowsift to build a
+knowledge document: separate supported knowledge, conditions, creator experience,
+personal income claims, conflicting statements, and unverified promises.
+Do not treat repetition, view counts, or income screenshots as proof.
 ```
 
-## Real-world benchmark: can you make money with short dramas?
+### E-commerce, ads, and platform operations
 
-We asked an Agent to research Bilibili, YouTube, platform rules, regulatory documents, and professional distribution material around a question that could cost a beginner real money:
+Platform rules change every quarter, tutorials are everywhere, and you need to tell the threshold an official page states from the folklore an agency repeats. Getting it wrong costs money and sometimes the account.
 
-> I want to make short dramas and earn money from them. Which online tutorials can I trust?
+**You get** official rules in their own section with effective dates, versions, scope, and exceptions; practitioner experience in its own section, labelled with who achieved it under what conditions; and conflicting claims shown side by side rather than resolved for you. When a rule changes, only the affected entries need rechecking.
 
-### What happened to the search results
+```text
+Use $knowsift on this material to answer "what are the current rules for
+<platform> <category>". Keep official documentation, agency tutorials, and
+merchant accounts separate. Tag every rule with its effective date and version,
+and when old and new rules conflict, keep both and say so.
+```
+
+### Content creators and publishers
+
+You are about to cite a statistic, a policy, or a case study on camera. Get it wrong once and the comments will not let it go.
+
+**You get** every quotable line carrying its source text and link, ready to drop into a footnote; anything shakier held back in "unverified" so it cannot slip into your script as fact; and a record of what was excluded, so you can explain why you did not repeat the popular claim.
+
+```text
+Use $knowsift to check which claims in this material I can state on camera.
+For the ones I can, give me the source text and link. For the ones I cannot,
+tell me exactly what evidence is missing.
+```
+
+### Investment research and due diligence
+
+In front of you: a prospectus, audited statements, a pitch deck, industry newsletters, and expert-call notes, all mixed together.
+
+**You get** audited data, regulatory filings, company statements, sell-side opinion, and market chatter kept apart. Historical performance and forward expectations run through different evidence standards — the first needs audited data, the second needs a model with stated assumptions. A past average never quietly becomes an expected return.
+
+```text
+Use $knowsift on this material to answer "which conclusions about this company
+or sector have hard evidence". Keep audited and regulatory sources separate from
+company statements and sell-side views. Treat historical performance and forward
+expectations separately, and require stated assumptions for any expectation.
+```
+
+### Legal, compliance, and policy research
+
+On one question, the statute, the regulation, the local implementing rule, an official FAQ, and a law-firm note may all say different things, each with its own effective date.
+
+**You get** sources ordered by authority, each carrying jurisdiction, effective date, version, and exceptions. Where a lower rule conflicts with a higher one, the conflict is recorded rather than smoothed over. A law-firm blog post never gets treated as the statute.
+
+```text
+Use $knowsift on these documents to answer "what is the current rule for X in Y".
+Order sources by authority and tag jurisdiction, effective date, and exceptions.
+Where a subordinate rule conflicts with a superior one, state the conflict rather
+than reconciling it for me.
+```
+
+### Internal knowledge bases and enablement
+
+Three years of meeting notes, documents from people who have left, purchased courses, and vendor white papers sitting in a shared drive. You want something a new hire can actually rely on.
+
+**You get** a document fit to enter the knowledge base, every entry carrying its source and scope. Internal experience keeps its identity as "how we do it" instead of being written up as industry practice, and stale material surfaces because its version no longer matches.
+
+```text
+Use $knowsift on this folder of notes, documents, courses, and external material
+to answer "what have we actually settled on for X". Keep internal practice
+separate from general industry practice, and list anything stale or
+version-conflicting on its own.
+```
+
+### AI product and Agent developers
+
+Your Agent writes search results into long-term memory. One wrong memory poisons every later answer, and it is very hard to notice.
+
+**You get** an admission gate you can put in front of the write. Only certified content enters memory; `HOLD` goes back for more evidence; `REJECT` is kept as conflict history. When a source changes, a reverse index tells you exactly which entries to recompile. The whole process is auditable, reproducible, and deterministic down to the byte.
+
+```text
+Before writing this into long-term memory, compile it against its source with
+$knowsift. Anything that does not come back ADMIT must not be stored as fact.
+```
+
+### Consultants and researchers
+
+Your deliverable has to survive a client asking, line by line, "where did you get that?"
+
+**You get** a readable conclusions document plus a complete audit table: why every claim was kept, narrowed, held, or excluded. The client can open any line they want.
+
+```text
+Use $knowsift to produce the deliverable and keep every claim's certificate and
+source list. The conclusions document is for reading; the audit table is for
+checking.
+```
+
+## Real benchmark: how do you actually make money from short dramas?
+
+We pointed an Agent at Bilibili, YouTube, platform rules, regulator documents, and professional distribution pages, to answer a question people really do spend money getting wrong.
 
 ```mermaid
 flowchart LR
-    A[17 sources<br/>videos, articles, official rules] --> B[27 atomic claims]
-    B --> C[17 knowledge claims]
-    B --> D[5 experiences and viewpoints]
-    B --> E[3 unresolved promises]
-    B --> F[2 rejected claims]
-    C --> G[An actionable, traceable knowledge base]
+    A[17 sources<br/>videos, articles, official rules] --> B[27 independent claims]
+    B --> C[17 knowledge]
+    B --> D[5 experience and anecdote]
+    B --> E[3 unverified promises]
+    B --> F[2 rejected]
+    C --> G[a knowledge base you can act on]
     D --> G
     E --> G
     F --> G
 ```
 
-### What KnowSift changed
-
-| Claim found online | Result | Why |
+| A claim found online | Compiled result | Why |
 |---|---|---|
-| “Finish an AI short-drama course and you can start taking paid jobs” | **Unresolved** | The evidence was a course sales page, not orders, pricing, acquisition costs, or failure rates |
-| “Beginners can reliably earn RMB 20,000 per month promoting short dramas” | **Unresolved** | No auditable account data or net-profit sample |
-| “One hour a day added more than RMB 2,300 to my monthly income” | **Personal report** | The source supports that the creator made the statement, not that others can reproduce it |
-| “You can monetize edits of other people's dramas without permission” | **Rejected** | Conflicts with Bilibili's lawful-rights and authorization requirements |
-| “Mass-produced template-based AI dramas reliably qualify for YouTube monetization” | **Rejected** | Conflicts with YouTube's originality and non-repetitious-content requirements |
-| “Short dramas can earn money through platform revenue, audience support, sponsorships, or distribution contracts” | **Conditionally retained** | These channels exist, but each has different requirements and none guarantees income |
+| "Finish the AI short-drama course and you can take orders" | **Unverified** | only a course sales page: no orders, rates, acquisition cost, or failure rate |
+| "Beginners reliably earn 20k/month promoting short dramas" | **Unverified** | no auditable dashboard, no net-profit sample |
+| "One hour a day, 2300+ extra this month" | **Personal account** | confirms the poster said it, not that others can repeat it |
+| "You can monetise other people's dramas without a licence" | **Rejected** | conflicts with Bilibili's rights and full-authorisation requirement |
+| "Mass-produced templated AI dramas reliably monetise on YouTube" | **Rejected** | conflicts with YouTube's originality and non-repetitious content rules |
+| "Short dramas earn via platform revenue, tips, brand deals, or distribution" | **Conditional** | the channels are real, each has different thresholds, none guarantees income |
 
-The result is not a “get rich with short dramas” guide. It is a set of documents that preserves what is known, what is merely reported, and what still needs verification:
+The result is not a get-rich guide. It is five documents you can act on:
 
-- [Start here: is short drama worth testing?](examples/short-drama-benchmark/01-先看结论.md)
-- [How a short drama is made](examples/short-drama-benchmark/02-怎么做短剧.md)
-- [How short dramas actually make money](examples/short-drama-benchmark/03-怎么赚钱.md)
-- [Risks, traps, and misleading claims](examples/short-drama-benchmark/04-风险与骗局.md)
+- [Is it worth doing at all](examples/short-drama-benchmark/01-先看结论.md)
+- [How to actually make one](examples/short-drama-benchmark/02-怎么做短剧.md)
+- [Where the money really comes from](examples/short-drama-benchmark/03-怎么赚钱.md)
+- [The traps and the scams](examples/short-drama-benchmark/04-风险与骗局.md)
 - [A 90-day validation plan for one person](examples/short-drama-benchmark/05-90天验证方案.md)
 
-You can audit the full chain:
-
-- [All 27 claims and their decisions](examples/short-drama-benchmark/CLAIM-AUDIT.md)
-- [The 17-source boundary](examples/short-drama-benchmark/SOURCES.md)
-- [The certificate-backed knowledge document](examples/short-drama-benchmark/RESULT.md)
-- [One certificate per claim](examples/short-drama-benchmark/certificates/)
+To check whether the filtering was honest: [full audit of 27 claims](examples/short-drama-benchmark/CLAIM-AUDIT.md) · [17 sources](examples/short-drama-benchmark/SOURCES.md) · [per-claim certificates](examples/short-drama-benchmark/certificates/)
 
 ## Quick start
-
-### Install
 
 ```bash
 npx -y skills add nhppyqys/knowsift -g --all
 ```
 
-You can also clone this repository and give the whole directory to an Agent that supports Agent Skills.
+Or clone the repository and hand the whole directory to any Skills-capable Agent.
 
-### The simplest prompt
+You do not need to understand the evidence protocol first. Give it a question and the material it may use.
 
-After installation, tell your Agent:
+## Three ways to use it
 
-```text
-Search Bilibili, YouTube, and reliable web sources for material about
-“how to make short dramas and make money from them.” Preserve source URLs,
-verbatim passages, dates, and versions.
-
-Then use $knowsift to create a layered knowledge document. Separate supported
-knowledge, conditions, creator experience, personal income reports, conflicting
-claims, and marketing promises that lack evidence. Do not treat repetition,
-view counts, or earnings screenshots as proof.
-```
-
-KnowSift does not require you to understand an evidence protocol first. Give the Agent a question and define the source boundary.
-
-### When you already have a folder of material
+**Research a topic from nothing** — let the Agent search, then compile:
 
 ```text
-Use $knowsift to organize the courses, meeting notes, papers, and web excerpts
-in this folder. Answer: “Which learning methods are supported?” Keep personal
-experience and instructor viewpoints separate. Do not force a conclusion when
-sources conflict.
+Search Bilibili, YouTube, and reliable pages for how to make short dramas and
+how people earn from them, keeping links, original text, dates, and versions.
+Then use $knowsift to build a knowledge document.
 ```
 
-### When you only need to check one claim
+**You already have the files**:
 
 ```text
-Use $knowsift to decide whether this sentence can enter our team knowledge base:
-“Once a YouTube channel reaches the view threshold, it is guaranteed stable
-advertising income.”
+Use $knowsift on the courses, meeting notes, papers, and web excerpts in this
+folder to answer "which study methods are actually supported". List personal
+experience and instructor opinion separately, and do not pick a side for me
+when sources conflict.
 ```
 
-## Where KnowSift fits
-
-| Your task | What KnowSift produces |
-|---|---|
-| Learn a new field from dozens of videos | Separate knowledge, instructor opinions, personal experience, and unresolved claims |
-| Move deep research into a team knowledge base | Knowledge documents with sources, scope, dates, and versions |
-| Let an Agent write search results into long-term memory | An evidence gate that admits only compatible claim types |
-| Research an industry, platform, or business model | A map of rules, practitioner experience, income claims, conflicts, and unknowns |
-| Combine policies, product documentation, and historical versions | Effective dates, applicable scope, exceptions, and version boundaries |
-| Reconcile several experts who disagree | A record of who said what without automatically siding with the loudest voice |
-
-KnowSift is unnecessary for ordinary summarization, rewriting, or translation. Those tasks do not need an evidence-admission boundary.
-
-## How KnowSift works
-
-KnowSift sits between collection and use. It does not replace search, transcription, or your knowledge base.
-
-```mermaid
-flowchart LR
-    A[Collect<br/>search, transcripts, OCR, local files] --> B[KnowSift<br/>filter and compile knowledge]
-    B --> C[Use<br/>reports, knowledge bases, Agent memory]
-
-    style B fill:#fff3bf,stroke:#e67700,stroke-width:2px
-```
-
-A complete run has five stages:
-
-1. **Preserve the material**: keep the source, URL, verbatim passage, date, and version.
-2. **Split claims**: turn broad conclusions into atomic claims that can be checked separately.
-3. **Classify source roles**: an official policy may support a platform rule; a personal video usually supports only what its creator said or experienced.
-4. **Compile each claim**: check literal support, authority, scope, conflicts, and required evidence protocols.
-5. **Render the document**: allow each claim to enter only the layer permitted by its certificate.
-
-The final writer cannot overrule the certificate:
+**You just want one sentence checked**:
 
 ```text
-ADMIT                  -> supported knowledge
-ADMIT_SCOPED           -> conditional knowledge, with the full scope preserved
-ADMIT_COMPONENTS_ONLY  -> only the explicitly supported components
-HOLD                   -> disputed or unresolved material
-REJECT                 -> excluded-claim audit only
+Use $knowsift to check whether this belongs in the team knowledge base:
+"Once a channel passes YouTube's view threshold, stable ad revenue follows."
 ```
-
-If an upstream Agent tries to place a `HOLD` claim such as “reliably earn RMB 20,000 per month” into the supported-knowledge section, document generation fails.
 
 ## The six output layers
 
-| Layer | Plain-language meaning |
+| Layer | In plain terms |
 |---|---|
-| `SUPPORTED_KNOWLEDGE` | The supplied evidence currently supports the claim |
-| `CONDITIONAL_KNOWLEDGE` | The claim holds only within the complete stated conditions and scope |
-| `SUPPORTED_COMPONENT` | The original claim was too broad; only named components survived |
-| `PRACTICE_OR_VIEWPOINT` | A source's experience, viewpoint, or self-report is preserved as such |
-| `DISPUTED_OR_UNRESOLVED` | Evidence conflicts or a required piece is missing, so no conclusion is forced |
-| `REJECTED` | Decisive evidence contradicts the claim, or a mandatory check failed |
+| `SUPPORTED_KNOWLEDGE` | current evidence supports it; usable as knowledge |
+| `CONDITIONAL_KNOWLEDGE` | holds only within the stated conditions and scope |
+| `SUPPORTED_COMPONENT` | the original claim was too broad; only the supported part survives |
+| `PRACTICE_OR_VIEWPOINT` | confirms someone's experience, view, or account |
+| `DISPUTED_OR_UNRESOLVED` | conflicting or missing key evidence; no conclusion yet |
+| `REJECTED` | contradicted by decisive evidence, or failed a required check |
 
-## Is the source what it says it is
+The load-bearing rule: **the final writer cannot go past the certificate.** Even if an upstream Agent wants to put an unverified "20k a month" claim into the knowledge section, document generation fails.
 
-`source_kind` used to be a string the upstream Agent wrote about itself — the easiest thing in the pipeline to get wrong or to game. Change one word and a course sales page becomes official documentation:
-
-```text
-"source_kind": "marketing_copy"          -> HOLD
-"source_kind": "official_documentation"  -> ADMIT
-```
-
-The evidence never changed. Only the label did.
-
-Give evidence a `locator` and the runtime works out which roles that address can legitimately play, then checks the declared kind against them. Host and path together, not just the domain:
-
-- `bilibili.com/blackboard/...` may be `official_documentation` - the platform's own rules
-- `bilibili.com/video/BV...` may not; it is whatever an account uploaded
-- an unknown host is reported as **unverifiable**, never as acceptable
-
-The 92 source kinds map onto six classes: `OFFICIAL`, `SCHOLARLY`, `GUIDANCE`, `USER`, `MARKETING`, `DATA`. A test fails if a kind is added to the domain registry without being classified.
-
-Give it a `snapshot` of `{path, sha256}` and the runtime hashes the captured file and checks that `source_text` appears literally inside it. Without that, the anchor chain terminates at a summary somebody wrote rather than the page it claims to quote.
-
-```bash
-python3 scripts/compile_claim.py claim.json \
-  --locator required --snapshot required --snapshot-root ./captures
-```
-
-Both default to `optional`, and both resolve to the strictest of the payload field, the environment variable, and the flag.
-
-What this still does not prove: a locator rule says who may speak at an address, not whether they were right, and a snapshot proves the quote came out of the bytes on disk, not that those bytes are what the server returned. The regress is shortened, not removed - it used to end at "a model said this was official", and now ends at "a rule I wrote allows this host, and a file I captured contains this sentence". Those are things a person can inspect.
-
-Details in [references/source-provenance.md](references/source-provenance.md).
-
-## Who checks the first reading
-
-The softest joint in the whole chain is "does this evidence actually support this claim" — decided by one model.
-
-KnowSift can require a second, **different** reviewer to read the same passage independently, then compare the two readings. The runtime never picks a winner:
+## What you get
 
 ```text
-the two agree      -> pass
-the two differ     -> HOLD, with both readings recorded
-only one reviewer  -> passes under `optional`, HOLD under `required`
+source-bundle.json          what material was collected
+claims/*.json               what claims were extracted from it
+certificates/*.json         why each claim was kept, narrowed, held, or excluded
+RESULT.md                   the layered knowledge document, for humans
 ```
 
-### Does a model reviewing itself count
+Just want the answer? Read `RESULT.md`. Want to audit the Agent's judgement? Open the certificate.
 
-Yes, provided it says which tier it is. There are four:
+## Want it stricter? Three gates you can switch on
 
-- `CROSS_FAMILY` - another vendor's model. Different training data, different blind spots.
-- `SAME_FAMILY` - a different model from the same vendor.
-- `SAME_MODEL` - the same model, fresh context, never shown the first conclusion.
-- `SAME_CONTEXT` - the same model continuing the same conversation. **Never accepted.**
+The defaults are fine for most work. When the stakes are higher, turn them up one at a time.
 
-**Same-model review counts, as long as the context is fresh.** That matters, because plenty of machines only have one model available. A second pass that has not seen the first conclusion still catches real mistakes: a misread quantifier, a silently widened scope, an entailment that does not hold. What it cannot catch is anything the model gets wrong for reasons built into the model - which is why it is the weakest admissible tier rather than a refused one.
-
-`SAME_CONTEXT` is refused because a model asked to check what it just said is not reviewing, it is agreeing.
-
-**The declared tier is checked, not trusted.** The runtime derives a ceiling from the two reviewer ids and rejects anything above it:
-
-```text
-claude-opus-5  vs claude-opus-5      -> ceiling SAME_MODEL
-claude-opus-5  vs claude-haiku-4-5   -> ceiling SAME_FAMILY
-claude-opus-5  vs gpt-5-codex        -> ceiling CROSS_FAMILY
-claude-opus-5  vs my-private-model   -> ceiling SAME_FAMILY   (unrecognised id)
-```
-
-Under-claim freely; never over-claim. One field is not mechanically checkable: whether the context really was fresh. Nothing in a JSON payload can prove that, which is the honest boundary of this gate and why `SAME_MODEL` is a floor rather than something to lean on.
-
-A host can raise the floor:
-
-```bash
-python3 scripts/compile_claim.py claim.json --min-independence CROSS_FAMILY
-```
-
-Start by finding out what this machine can actually do:
+**Have a second model review the reading independently.** It runs in a fresh context that is never shown the first conclusion, and holds the claim when the two disagree. It first detects what your machine can actually do — another vendor's CLI, the host Agent's own subagent, or simply printing the prompt for you to paste anywhere. **One model installed is enough.**
 
 ```bash
 python3 scripts/adversarial_review.py detect
 ```
 
-It runs a real probe rather than checking `PATH`, so a CLI that is installed but broken is reported as unavailable. It then ranks the usable routes:
+**Make the source address prove its own role.** Add a URL to each piece of evidence and the runtime checks whether that address can legitimately play the role it claims — a platform's rules page may be official documentation; a video uploaded by an account on the same site may not. This closes the "an upstream Agent labelled a sales page as official documentation" problem.
 
-- **External CLI from a different model family** - strongest; different training data, different blind spots.
-- **External CLI from the same family** - a different model at least.
-- **The host Agent's own subagent** - no second CLI needed, and it never sees the first pass's conclusion.
-- **Manual** - print the prompt, paste it into any chat, paste the JSON back.
-
-The last two work on any machine, so a missing second CLI never blocks you. Any other tool - a local model, a private endpoint, another harness - plugs in through one environment variable:
+**Make quotes trace back to the capture.** Add the hash of the captured file and the runtime confirms the quoted sentence appears byte for byte in the bytes you actually captured, rather than in somebody's paraphrase.
 
 ```bash
-export KNOWSIFT_REVIEWER_CMD="my-model-cli --quiet"
+python3 scripts/compile_claim.py claim.json \
+  --adversarial required --locator required --snapshot required --snapshot-root ./captures
 ```
 
-Four mechanical rules are not negotiable: an independence tier may be under-claimed but never over-claimed; the quote must appear byte for byte in the source, so a paraphrase is discarded; the strongest opposing reading must be stated even when the reviewer agrees; and every review must name something that would falsify it.
+All three can be switched on organisation-wide through environment variables, and an upstream input cannot turn them back down.
 
-Strictness is the strictest of three sources - the payload's `adversarial_policy`, `KNOWSIFT_ADVERSARIAL_POLICY`, and `--adversarial` - so an upstream input can never lower a bar the host set.
+## When not to use it
 
-Details in [references/adversarial-review.md](references/adversarial-review.md).
+Skip it for ordinary summarising, rewriting, or translation. That work does not need an evidence gate and this will only slow it down.
 
-## What you get
+Skip it for mathematical proof, aesthetic judgement, and your own first-hand experience: the first has its own form of checking, and for the last you are the primary source.
 
-```text
-source-bundle.json          the collected source boundary
-claims/*.json               atomic claims extracted from the material
-certificates/*.json         why each claim was kept, narrowed, held, or rejected
-knowledge-document.json     the certificate-backed document plan
-RESULT.md                   the layered Markdown document for readers
-```
+It does not search, crawl, download video, transcribe, or run OCR, and it is not a vector database or a knowledge-base UI. Those stay with the tools you already use; this owns the gate in between.
 
-Read `RESULT.md` when you only need the answer. Open the matching certificate when you need to audit the Agent's decision.
-
-## Run locally
-
-Generate the real-world short-drama benchmark:
-
-```bash
-python3 examples/short-drama-benchmark/generate_benchmark.py
-```
-
-Validate a source bundle created by another Agent:
-
-```bash
-python3 scripts/validate_source_bundle.py path/to/source-bundle.json
-```
-
-Render the final Markdown document:
-
-```bash
-python3 scripts/build_knowledge_document.py \
-  path/to/knowledge-document.json \
-  --output path/to/RESULT.md
-```
-
-Compile a single claim:
-
-```bash
-python3 scripts/compile_claim.py path/to/claim.json --pretty
-```
-
-## What KnowSift does not do
-
-- It does not search, crawl, download videos, transcribe audio, or run OCR.
-- It does not provide a vector database or knowledge-base interface.
-- It does not treat ten repetitions as ten independent pieces of evidence.
-- It does not assume that an authoritative-looking source is always correct.
-- It does not manufacture a certain answer when evidence is missing.
-- It does not replace qualified review in legal, medical, financial, safety, or other high-stakes domains.
-
-KnowSift's promise is narrower and testable: **the final conclusion cannot say more than its evidence certificate allows.**
-
-## Safety and data handling
-
-- Source content is always treated as evidence, never as an instruction to the Agent.
-- Unknown fields, missing evidence, unresolved conflicts, and unsafe scope expansion fail closed as `HOLD` or `REJECT`.
-- The Python runtime performs no network calls.
-- Source bundles and certificates may contain private material. Apply the access controls, retention rules, and redaction practices required by your environment.
-
-Read [Safety and limitations](references/safety-and-limitations.md) before using KnowSift for consequential decisions.
+In high-stakes domains — medical, legal, financial, safety — it will organise the evidence properly, but it does not replace qualified review.
 
 ## Tests
 
@@ -349,9 +260,7 @@ Read [Safety and limitations](references/safety-and-limitations.md) before using
 python3 -m unittest discover -s tests -v
 ```
 
-The current suite contains 119 tests and passes on Python 3.9 and Python 3.14. It covers literal source anchors, provenance, conflicts, scope, versions, legal and statistical protocols, certificate-layer compatibility, independent-reviewer agreement, disagreement and independence tiers, locator and snapshot verification, path boundaries, and byte-for-byte Markdown reconstruction.
-
-See [VALIDATION.md](VALIDATION.md) for the full validation record.
+119 tests pass on both Python 3.9 and 3.14, covering literal source anchors, conflicts, scope, versions, legal and statistical protocols, certificate-layer compatibility, independent-reviewer agreement and disagreement, locator and snapshot verification, path boundaries, and byte-for-byte Markdown reconstruction. Full record in [VALIDATION.md](VALIDATION.md).
 
 ## Documentation
 
@@ -364,14 +273,6 @@ See [VALIDATION.md](VALIDATION.md) for the full validation record.
 - [Safety and limitations](references/safety-and-limitations.md)
 - [Real-world short-drama benchmark](examples/short-drama-benchmark/README.md)
 - [Minimal fictional example](examples/learning-english/README.md)
-
-## Current boundary
-
-KnowSift can mechanically prevent a final document from violating its certificates. It cannot determine ground truth from nothing. Source classification, claim extraction, evidence review, and retrieval completeness still depend on the upstream Agent or a qualified human.
-
-A second reviewer lowers the odds of a misread passage, but two models with overlapping training data fail in the same places. That is why every review must name what would falsify it: a falsifier is checkable by a person without trusting either model.
-
-It is not a truth machine. It is a knowledge-quality gate.
 
 ## License
 
