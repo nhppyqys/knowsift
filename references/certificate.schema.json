@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "certificate.schema.json",
-  "title": "Knowledge Compiler Epistemic Certificate 4.2",
+  "title": "Knowledge Compiler Epistemic Certificate 4.3",
   "type": "object",
   "required": [
     "certificate_version",
@@ -29,7 +29,7 @@
   "additionalProperties": false,
   "properties": {
     "certificate_version": {
-      "const": "4.2.0"
+      "const": "4.3.0"
     },
     "input_digest": {
       "type": "string",

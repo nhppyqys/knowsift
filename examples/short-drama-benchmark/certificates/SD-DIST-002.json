@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "0115953f0313eb9dc50e2251a9287eba77371c7ba1380449a03d927f7dd3c7cb",
   "claim_id": "SD-DIST-002",
   "claim_text": "DramaBox日本创作者页面所述的基本收益方式是最低保底加收入分成，具体条件以合同为准。",
@@ -95,6 +95,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],

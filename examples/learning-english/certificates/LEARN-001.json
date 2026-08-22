@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "f78b214e5d5cd7083b9732320612f4a3cbcca52488b3fb68d49d733587c646b4",
   "claim_id": "LEARN-001",
   "claim_text": "在本综述纳入的词汇记忆任务中，分散安排复习的延迟测试成绩高于一次性集中复习。",
@@ -104,6 +104,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],

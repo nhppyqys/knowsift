@@ -216,6 +216,36 @@ KnowSift 可以要求第二个**不同的**审阅者独立读一遍同一段原�
 只有一个审阅者 → optional 下放行，required 下 HOLD
 ```
 
+### 自己复核自己，算不算数
+
+算，但必须标明是哪一档。四个等级：
+
+- `CROSS_FAMILY` —— 另一家厂商的模型。训练数据不同，盲区不同。
+- `SAME_FAMILY` —— 同厂商的另一个模型。
+- `SAME_MODEL` —— 同一个模型，全新上下文，没被告知第一遍的结论。
+- `SAME_CONTEXT` —— 同一个模型接着同一段对话往下说。**永远不接受。**
+
+**同一个模型复核自己是算数的，前提是上下文全新。** 这点很重要，因为很多机器上就只有一个模型可用。一个没看过第一遍结论的第二遍，确实能抓出真错误：量词读错了、范围被悄悄放大了、蕴含关系其实不成立。它抓不住的，是那些因为模型本身的成因而犯的错——所以它是**最弱的可接受档**，而不是被拒之门外。
+
+`SAME_CONTEXT` 被拒绝，是因为让一个模型检查自己刚说完的话，那不叫复核，那叫附和。
+
+**声明的等级会被核对，不是被相信。** 运行时从两个 reviewer_id 推出一个天花板，超过就报错：
+
+```text
+claude-opus-5  vs claude-opus-5      -> 上限 SAME_MODEL
+claude-opus-5  vs claude-haiku-4-5   -> 上限 SAME_FAMILY
+claude-opus-5  vs gpt-5-codex        -> 上限 CROSS_FAMILY
+claude-opus-5  vs my-private-model   -> 上限 SAME_FAMILY（认不出的 id 不给信任）
+```
+
+可以往低了报，不能往高了报。有一个字段是机械核不了的：上下文到底是不是全新的。JSON 里没有任何东西能证明这件事——这是这道门诚实的边界，也正是为什么 `SAME_MODEL` 是地板而不是可以依赖的东西。
+
+宿主可以抬高地板：
+
+```bash
+python3 scripts/compile_claim.py claim.json --min-independence CROSS_FAMILY
+```
+
 先看这台机器实际能用什么：
 
 ```bash
@@ -235,7 +265,7 @@ python3 scripts/adversarial_review.py detect
 export KNOWSIFT_REVIEWER_CMD="my-model-cli --quiet"
 ```
 
-四条机械约束不讲情面：审阅者不能自己复核自己；引文必须逐字出现在原文里，改写一个字就作废；即使同意也必须写出最强的另一种读法；必须写出什么东西能推翻自己。
+四条机械约束不讲情面：独立性等级只能往低报不能往高报；引文必须逐字出现在原文里，改写一个字就作废；即使同意也必须写出最强的另一种读法；必须写出什么东西能推翻自己。
 
 严格程度取三者中最严的一个：payload 里的 `adversarial_policy`、环境变量 `KNOWSIFT_ADVERSARIAL_POLICY`、命令行 `--adversarial`。上游 Agent 提交的输入永远调不低宿主设定的门槛。
 
@@ -298,7 +328,7 @@ KnowSift 能保证的是：**证据支持到哪里，最后的结论就只写到
 python3 -m unittest discover -s tests -v
 ```
 
-当前 111 项测试同时通过 Python 3.9 与 Python 3.14，覆盖来源锚点、冲突、范围、版本、法律与统计协议、证书层级兼容、独立复核的一致与分歧、来源地址与抓取快照的核验、路径边界和最终 Markdown 的逐字节重建。
+当前 119 项测试同时通过 Python 3.9 与 Python 3.14，覆盖来源锚点、冲突、范围、版本、法律与统计协议、证书层级兼容、独立复核的一致、分歧与独立性分级、来源地址与抓取快照的核验、路径边界和最终 Markdown 的逐字节重建。
 
 完整结果见 [VALIDATION.md](VALIDATION.md)。
 

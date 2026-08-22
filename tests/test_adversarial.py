@@ -32,7 +32,8 @@ def counter_review(**overrides: object) -> dict[str, object]:
         "claim_id": "FACT-1",
         "evidence_id": "E1",
         "relation": "ENTAILS",
-        "reviewer_id": "reviewer-b",
+        "reviewer_id": "gpt-5-review",
+        "independence": "CROSS_FAMILY",
         "evidence_fragment": FRAGMENT,
         "strongest_counter_reading": "The record reports a capability, not its reliability.",
         "what_would_falsify": "A later revision of the same record dropping signed exports.",
@@ -43,7 +44,7 @@ def counter_review(**overrides: object) -> dict[str, object]:
 
 def reviewed_payload(**overrides: object) -> dict[str, object]:
     payload = fact_payload()
-    payload["semantic_reviews"][0]["reviewer_id"] = "reviewer-a"
+    payload["semantic_reviews"][0]["reviewer_id"] = "claude-opus-5"
     payload["adversarial_reviews"] = [counter_review(**overrides)]
     return payload
 
@@ -87,7 +88,8 @@ class AdversarialGateTests(unittest.TestCase):
         certificate = compile_claim(reviewed_payload(), adversarial_policy="required")
         self.assertEqual(certificate["admission"], "ADMIT")
         self.assertEqual(certificate["adversarial_summary"]["code"], "INDEPENDENT_REVIEW_AGREES")
-        self.assertEqual(certificate["adversarial_summary"]["reviewer_ids"], ["reviewer-b"])
+        self.assertEqual(certificate["adversarial_summary"]["reviewer_ids"], ["gpt-5-review"])
+        self.assertEqual(certificate["adversarial_summary"]["weakest_independence"], "CROSS_FAMILY")
 
     def test_disagreement_holds_even_when_review_is_optional(self) -> None:
         certificate = compile_claim(reviewed_payload(relation="PARTIAL"))
@@ -99,13 +101,67 @@ class AdversarialGateTests(unittest.TestCase):
         self.assertEqual(disagreement["first_pass_relation"], "ENTAILS")
         self.assertEqual(disagreement["adversarial_relation"], "PARTIAL")
 
-    def test_a_reviewer_cannot_review_itself(self) -> None:
-        certificate = compile_claim(reviewed_payload(reviewer_id="reviewer-a"))
+    def test_same_model_fresh_context_is_allowed_but_labelled(self) -> None:
+        certificate = compile_claim(
+            reviewed_payload(reviewer_id="claude-opus-5", independence="SAME_MODEL")
+        )
+        self.assertEqual(certificate["admission"], "ADMIT")
+        self.assertEqual(
+            certificate["adversarial_summary"]["weakest_independence"], "SAME_MODEL"
+        )
+
+    def test_a_reviewer_cannot_overclaim_its_own_independence(self) -> None:
+        certificate = compile_claim(
+            reviewed_payload(reviewer_id="claude-opus-5", independence="CROSS_FAMILY")
+        )
         self.assertEqual(certificate["admission"], "HOLD")
         self.assertIn(
-            "adversarial_reviews:reviewer_not_independent:E1",
+            "adversarial_reviews:independence_overclaimed:E1:CROSS_FAMILY_above_SAME_MODEL",
             certificate["adversarial_summary"]["errors"],
         )
+
+    def test_same_family_cannot_pass_as_cross_family(self) -> None:
+        certificate = compile_claim(
+            reviewed_payload(reviewer_id="claude-haiku-4-5", independence="CROSS_FAMILY")
+        )
+        self.assertEqual(certificate["admission"], "HOLD")
+
+    def test_an_unrecognised_model_id_caps_at_same_family(self) -> None:
+        certificate = compile_claim(
+            reviewed_payload(reviewer_id="my-private-model", independence="CROSS_FAMILY")
+        )
+        self.assertEqual(certificate["admission"], "HOLD")
+        self.assertEqual(
+            compile_claim(
+                reviewed_payload(reviewer_id="my-private-model", independence="SAME_FAMILY")
+            )["admission"],
+            "ADMIT",
+        )
+
+    def test_host_can_demand_a_stronger_tier(self) -> None:
+        payload = reviewed_payload(reviewer_id="claude-opus-5", independence="SAME_MODEL")
+        certificate = compile_claim(payload, adversarial_min_independence="CROSS_FAMILY")
+        self.assertEqual(certificate["admission"], "HOLD")
+        self.assertEqual(
+            certificate["decisive_reasons"],
+            ["ADVERSARIAL_GATE:ADVERSARIAL_INDEPENDENCE_BELOW_MINIMUM"],
+        )
+
+    def test_same_context_is_never_review(self) -> None:
+        certificate = compile_claim(
+            reviewed_payload(reviewer_id="claude-opus-5", independence="SAME_CONTEXT")
+        )
+        self.assertEqual(certificate["admission"], "HOLD")
+        self.assertIn(
+            "adversarial_reviews[0]:same_context_is_not_review",
+            certificate["adversarial_summary"]["errors"],
+        )
+
+    def test_independence_must_be_declared(self) -> None:
+        payload = reviewed_payload()
+        del payload["adversarial_reviews"][0]["independence"]
+        certificate = compile_claim(payload)
+        self.assertEqual(certificate["admission"], "HOLD")
 
     def test_invented_quote_never_admits(self) -> None:
         certificate = compile_claim(reviewed_payload(evidence_fragment="a line I made up"))
@@ -178,7 +234,7 @@ class AdversarialGateTests(unittest.TestCase):
 
     def test_disagreement_blocks_the_components_shortcut(self) -> None:
         payload = fact_payload()
-        payload["semantic_reviews"][0]["reviewer_id"] = "reviewer-a"
+        payload["semantic_reviews"][0]["reviewer_id"] = "claude-opus-5"
         payload["semantic_reviews"][0]["relation"] = "PARTIAL"
         payload["semantic_reviews"][0]["missing_bridge"] = "support is limited to signed exports"
         payload["supported_components"] = [
@@ -213,7 +269,7 @@ class ReviewerRuntimeTests(unittest.TestCase):
         prompt = adversarial_review.build_prompt(reviewed_payload())
         self.assertIn(EVIDENCE_TEXT, prompt)
         self.assertIn("E1", prompt)
-        self.assertNotIn("reviewer-a", prompt)
+        self.assertNotIn("claude-opus-5", prompt)
         self.assertNotIn("missing_bridge", prompt)
 
     def test_json_survives_prose_and_fences(self) -> None:
@@ -233,9 +289,12 @@ class ReviewerRuntimeTests(unittest.TestCase):
 
     def test_finalize_stamps_identity_without_repairing_judgements(self) -> None:
         raw = [{"evidence_id": "E1", "relation": "NONSENSE", "evidence_fragment": "x"}]
-        finalized = adversarial_review.finalize_reviews(raw, fact_payload(), "reviewer-b")
+        finalized = adversarial_review.finalize_reviews(
+            raw, fact_payload(), "reviewer-b", "SAME_FAMILY"
+        )
         self.assertEqual(finalized[0]["claim_id"], "FACT-1")
         self.assertEqual(finalized[0]["reviewer_id"], "reviewer-b")
+        self.assertEqual(finalized[0]["independence"], "SAME_FAMILY")
         self.assertEqual(finalized[0]["relation"], "NONSENSE")
         self.assertIsNone(finalized[0]["what_would_falsify"])
 
@@ -275,10 +334,36 @@ class ReviewerRuntimeTests(unittest.TestCase):
             finally:
                 del os.environ["KNOWSIFT_REVIEWER_CMD"]
         self.assertEqual(reviews[0]["reviewer_id"], "stub-model")
+        self.assertEqual(reviews[0]["independence"], "SAME_FAMILY")
         payload = fact_payload()
-        payload["semantic_reviews"][0]["reviewer_id"] = "reviewer-a"
+        payload["semantic_reviews"][0]["reviewer_id"] = "claude-opus-5"
         payload["adversarial_reviews"] = reviews
         self.assertEqual(compile_claim(payload)["admission"], "HOLD")
+
+    def test_independence_is_derived_not_asserted(self) -> None:
+        cases = [
+            ("claude-opus-5", "claude-opus-5", "CROSS_FAMILY", "SAME_MODEL"),
+            ("claude-opus-5", "claude-haiku-4-5", "CROSS_FAMILY", "SAME_FAMILY"),
+            ("claude-opus-5", "gpt-5-codex", None, "CROSS_FAMILY"),
+            ("claude-opus-5", "gpt-5-codex", "SAME_MODEL", "SAME_MODEL"),
+            (None, "gpt-5-codex", "CROSS_FAMILY", "SAME_FAMILY"),
+        ]
+        for first, second, declared, expected in cases:
+            with self.subTest(first=first, second=second, declared=declared):
+                self.assertEqual(
+                    adversarial_review.resolve_independence(first, second, declared),
+                    expected,
+                )
+
+    def test_child_env_drops_parent_session_credentials(self) -> None:
+        backend = {"scrub_env": ["ANTHROPIC_AUTH_TOKEN", "ANTHROPIC_BASE_URL"]}
+        os.environ["ANTHROPIC_AUTH_TOKEN"] = "parent-session-token"
+        try:
+            env = adversarial_review.child_env(backend)
+        finally:
+            del os.environ["ANTHROPIC_AUTH_TOKEN"]
+        self.assertNotIn("ANTHROPIC_AUTH_TOKEN", env)
+        self.assertIn("PATH", env)
 
     def test_cli_flag_raises_the_policy(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

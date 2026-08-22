@@ -3,7 +3,7 @@ name: knowsift
 description: Compile collected videos, articles, documents, and research into layered, traceable knowledge documents or fail-closed claim certificates. Use when a user needs research synthesis that separates supported knowledge, conditional findings, practitioner experience, viewpoints, anecdotes, disputes, and rejected claims; do not invoke for ordinary summaries that do not require evidence boundaries.
 metadata:
   short-description: Compile mixed sources into layered knowledge
-  version: "4.2.0"
+  version: "4.3.0"
 ---
 
 # KnowSift
@@ -82,9 +82,9 @@ plainly what each costs in independence:
 - **Route B, external CLI from a different model family** — strongest. Different
   training data means different blind spots.
 - **Route B, external CLI from the same family** — a different model, same family.
-- **Route A, the host Agent's own subagent** — no second CLI needed. Weaker,
-  because the same family shares blind spots, but the subagent never sees the
-  first pass's conclusion.
+- **Route A, the host Agent's own subagent** — no second CLI needed. Works even
+  when only one model is available: a fresh context that never saw the first
+  conclusion is `SAME_MODEL`, the weakest admissible tier, and is labelled so.
 - **Manual** — print the prompt, paste it into any chat, paste the JSON back.
   Works on any machine with nothing installed.
 - **Skip** — allowed, and the certificate records that it was skipped.
@@ -102,7 +102,10 @@ python3 scripts/adversarial_review.py merge claim.json reviews.json \
 
 Rules the runtime enforces, not you:
 
-- A reviewer may not review itself; `reviewer_id` must differ.
+- Every review declares an `independence` tier, and the runtime derives a ceiling
+  from the two reviewer ids: a tier can be under-claimed, never over-claimed.
+- The same model in a fresh context is admissible and recorded as `SAME_MODEL`.
+  The same model continuing the same conversation is not review and is refused.
 - `evidence_fragment` must be literal, so a paraphrasing reviewer is discarded.
 - Two reviewers disagreeing is `HOLD`, never a casting vote for the louder one.
 - A disagreement blocks every admission state, including components-only.

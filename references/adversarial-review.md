@@ -62,9 +62,8 @@ Four checks are mechanical and cannot be argued with:
 
 - `evidence_fragment` must appear byte for byte in that evidence's `source_text`.
   A reviewer that paraphrases the source is discarded.
-- `reviewer_id` must differ from the first pass's `reviewer_id`. A model cannot
-  review itself. Under `required`, the first pass must declare its own
-  `reviewer_id` so independence is checkable at all.
+- `independence` must be declared, and the runtime derives a ceiling from the two
+  `reviewer_id` values. A tier may be under-claimed but never over-claimed.
 - `strongest_counter_reading` is required **even when the reviewer agrees**.
   Agreement that cannot articulate the opposing reading is not worth much.
 - `what_would_falsify` must be present. This is the field a human can check
@@ -73,6 +72,57 @@ Four checks are mechanical and cannot be argued with:
 
 Confidence numbers, probabilities, and reliability scores are rejected here for
 the same reason they are rejected everywhere else in this runtime.
+
+## How independent is independent
+
+There are four tiers, and a review has to name which one it is:
+
+| Tier | What it means |
+|---|---|
+| `CROSS_FAMILY` | A different vendor's model. Different training data, different blind spots. |
+| `SAME_FAMILY` | A different model from the same vendor. |
+| `SAME_MODEL` | The same model, fresh context, never shown the first conclusion. |
+| `SAME_CONTEXT` | The same model continuing the same conversation. Never accepted. |
+
+**Yes, a model reviewing itself counts — as long as the context is fresh.** This
+matters, because plenty of machines only have one model available. A second pass
+that has not seen the first conclusion still catches real mistakes: a misread
+quantifier, a scope that was silently widened, an entailment that does not hold.
+What it cannot catch is anything the model gets wrong for reasons built into the
+model, which is why it is the weakest admissible tier rather than a refused one.
+
+`SAME_CONTEXT` is refused because a model asked to check what it just said is not
+reviewing, it is agreeing.
+
+### The claim is checked, not trusted
+
+The runtime derives the strongest tier two reviewer ids could honestly support
+and rejects anything above it:
+
+```text
+claude-opus-5   vs claude-opus-5              -> ceiling SAME_MODEL
+claude-opus-5   vs claude-haiku-4-5           -> ceiling SAME_FAMILY
+claude-opus-5   vs gpt-5-codex                -> ceiling CROSS_FAMILY
+claude-opus-5   vs my-private-model           -> ceiling SAME_FAMILY   (unrecognised id)
+```
+
+An unrecognised model id caps at `SAME_FAMILY` rather than being taken at its
+word. Add prefixes to `model_families` in `references/reviewers.json` for models
+you use.
+
+One field is not mechanically checkable: whether the context really was fresh.
+Nothing in a JSON payload can prove that. It is the honest boundary of this gate,
+and it is why `SAME_MODEL` is the floor rather than something to rely on.
+
+### Setting a floor
+
+```bash
+python3 scripts/compile_claim.py claim.json --min-independence CROSS_FAMILY
+```
+
+Payload field `adversarial_min_independence`, environment variable
+`KNOWSIFT_ADVERSARIAL_MIN_INDEPENDENCE`, and the flag resolve to the strictest.
+Default floor is `SAME_MODEL`: everything except a model agreeing with itself.
 
 ## Choosing a route
 
@@ -112,6 +162,21 @@ export KNOWSIFT_REVIEWER_CMD="my-model-cli --quiet"
 python3 scripts/adversarial_review.py run claim.json --backend custom --model my-model-v2
 ```
 
+### Nested calls and inherited credentials
+
+A parent harness injects credentials scoped to its own session. A reviewer
+spawned as a child process inherits them and then authenticates as the parent, or
+fails outright — which looks exactly like the CLI being broken:
+
+```text
+inheriting the parent session's ANTHROPIC_*   -> 401 Invalid bearer token
+with those keys removed                       -> works
+```
+
+Each backend names the variables to drop in `scrub_env`, so the child uses the
+tool's own stored credentials. If a backend fails to authenticate only when
+nested, that list is the first thing to extend.
+
 ### Route A — the host Agent's own subagent
 
 No second CLI needed. The host runs the same prompt in an isolated subagent
@@ -124,9 +189,9 @@ python3 scripts/adversarial_review.py prompt claim.json
 Give that output to the subagent verbatim, take back the JSON, then `merge` it
 with `--reviewer-id` set to the model that actually ran.
 
-This is weaker than route B: the same family shares training data and tends to
-share blind spots. It is still much better than nothing, because the subagent
-does not see the first pass's conclusion.
+Pass `--first-pass-reviewer-id` so the tier is derived rather than asserted. If
+the subagent runs the same model as the first pass, that is `SAME_MODEL`, which
+is admissible under the default floor and recorded as what it is.
 
 Host mechanics differ. Claude Code takes `context: fork` with `agent:` and
 `model:` in skill frontmatter, or a Task-tool subagent. Codex uses custom agents
@@ -155,3 +220,7 @@ correlation; it does not remove it.
 That is why `what_would_falsify` is mandatory rather than nice to have. A
 falsifier is checkable by a person without trusting any model, so it is the one
 part of this gate that does not degrade when the models are correlated.
+
+The tiers exist so this degradation is visible instead of hidden. A certificate
+records `weakest_independence`, so a reader can tell the difference between two
+vendors agreeing and one model agreeing with itself twice.

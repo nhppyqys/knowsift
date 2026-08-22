@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "3ddbf759132112d807923e02fcb48519baf6aa58bda507a60d280c6d2aba1a67",
   "claim_id": "SD-HOLD-002",
   "claim_text": "短剧推广适合普通新手稳定月入二万元以上。",
@@ -67,6 +67,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],

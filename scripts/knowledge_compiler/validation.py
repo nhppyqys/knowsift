@@ -29,11 +29,17 @@ ADVERSARIAL_REVIEW_FIELDS = {
     "evidence_id",
     "relation",
     "reviewer_id",
+    "independence",
     "evidence_fragment",
     "strongest_counter_reading",
     "what_would_falsify",
 }
 ADVERSARIAL_POLICIES = ("off", "optional", "required")
+# Weakest to strongest. SAME_CONTEXT is a model agreeing with what it just said,
+# which is not review at all, so it is never admissible.
+INDEPENDENCE_TIERS = ("SAME_CONTEXT", "SAME_MODEL", "SAME_FAMILY", "CROSS_FAMILY")
+_TIER_RANK = {name: rank for rank, name in enumerate(INDEPENDENCE_TIERS)}
+DEFAULT_MIN_INDEPENDENCE = "SAME_MODEL"
 _POLICY_RANK = {name: rank for rank, name in enumerate(ADVERSARIAL_POLICIES)}
 _POLICY_BY_RANK = {rank: name for name, rank in _POLICY_RANK.items()}
 
@@ -533,12 +539,63 @@ def resolve_adversarial_policy(payload_value: Any, host_value: Any) -> tuple[str
     return resolved, errors
 
 
+def derive_model_family(reviewer_id: Any, registry: dict[str, Any]) -> str | None:
+    """Best-effort vendor family for a model id, by prefix."""
+    if not isinstance(reviewer_id, str):
+        return None
+    lowered = reviewer_id.lower()
+    for family, prefixes in (registry.get("model_families") or {}).items():
+        for prefix in prefixes:
+            if prefix in lowered:
+                return family
+    return None
+
+
+def independence_ceiling(
+    first_reviewer: Any, second_reviewer: Any, registry: dict[str, Any]
+) -> str:
+    """The strongest tier these two reviewer ids could honestly support.
+
+    A reviewer may under-claim its independence. It may never over-claim it, and
+    an unrecognised model id caps the claim rather than being taken on trust.
+    """
+    if not isinstance(first_reviewer, str) or not first_reviewer.strip():
+        return "SAME_FAMILY"
+    if first_reviewer == second_reviewer:
+        return "SAME_MODEL"
+    first_family = derive_model_family(first_reviewer, registry)
+    second_family = derive_model_family(second_reviewer, registry)
+    if first_family and second_family and first_family != second_family:
+        return "CROSS_FAMILY"
+    return "SAME_FAMILY"
+
+
+def resolve_min_independence(payload_value: Any, host_value: Any) -> tuple[str, list[str]]:
+    errors: list[str] = []
+    ranks: list[int] = []
+    for label, value in (("payload", payload_value), ("host", host_value)):
+        if value is None:
+            continue
+        if not isinstance(value, str) or value not in INDEPENDENCE_TIERS:
+            errors.append(f"adversarial_min_independence:invalid_{label}_value:{value}")
+            continue
+        ranks.append(_TIER_RANK[value])
+    resolved = INDEPENDENCE_TIERS[max(ranks)] if ranks else DEFAULT_MIN_INDEPENDENCE
+    if resolved == "SAME_CONTEXT":
+        resolved = DEFAULT_MIN_INDEPENDENCE
+        errors.append("adversarial_min_independence:same_context_is_never_review")
+    return resolved, errors
+
+
 def _adversarial_summary(policy: str, status: str, code: str, **extra: Any) -> dict[str, Any]:
     summary = {
         "status": status,
         "code": code,
         "policy": policy,
         "reviewer_ids": [],
+        "independence": {},
+        "weakest_independence": None,
+        "min_independence": None,
         "reviewed_evidence_ids": [],
         "unreviewed_evidence_ids": [],
         "disagreements": [],
@@ -555,6 +612,8 @@ def validate_adversarial_reviews(
     evidence_by_id: dict[str, dict[str, Any]],
     semantic_reviews: list[dict[str, Any]],
     policy: str,
+    registry: dict[str, Any] | None = None,
+    min_independence: str = DEFAULT_MIN_INDEPENDENCE,
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     """Check an independent second pass over the same claim and evidence.
 
@@ -563,6 +622,7 @@ def validate_adversarial_reviews(
     same evidence text, and reached the same relation. Disagreement is an
     unresolved state, not a verdict.
     """
+    registry = registry or {}
     if policy == "off":
         return _adversarial_summary(policy, "SKIPPED", "ADVERSARIAL_REVIEW_DISABLED"), []
     if reviews is None:
@@ -618,6 +678,12 @@ def validate_adversarial_reviews(
         if not isinstance(reviewer_id, str) or not reviewer_id.strip():
             local_errors.append(f"{path}:empty_reviewer_id")
 
+        declared = review.get("independence")
+        if declared not in INDEPENDENCE_TIERS:
+            local_errors.append(f"{path}:invalid_independence:{declared}")
+        elif declared == "SAME_CONTEXT":
+            local_errors.append(f"{path}:same_context_is_not_review")
+
         fragment = review.get("evidence_fragment")
         if not isinstance(fragment, str) or not fragment.strip():
             local_errors.append(f"{path}:empty_evidence_fragment")
@@ -644,6 +710,7 @@ def validate_adversarial_reviews(
 
     disagreements: list[dict[str, Any]] = []
     unreviewed: list[str] = []
+    independence: dict[str, dict[str, str]] = {}
     for evidence_id in sorted(first_pass):
         original = first_pass[evidence_id]
         counter = by_evidence.get(evidence_id)
@@ -651,13 +718,20 @@ def validate_adversarial_reviews(
             unreviewed.append(evidence_id)
             continue
         original_reviewer = original.get("reviewer_id")
-        if isinstance(original_reviewer, str) and original_reviewer.strip():
-            if original_reviewer == counter["reviewer_id"]:
-                errors.append(
-                    f"adversarial_reviews:reviewer_not_independent:{evidence_id}"
-                )
-        elif policy == "required":
-            errors.append(f"semantic_reviews:missing_reviewer_id:{evidence_id}")
+        if not (isinstance(original_reviewer, str) and original_reviewer.strip()):
+            if policy == "required":
+                errors.append(f"semantic_reviews:missing_reviewer_id:{evidence_id}")
+        ceiling = independence_ceiling(
+            original_reviewer, counter.get("reviewer_id"), registry
+        )
+        declared = counter.get("independence")
+        if declared in INDEPENDENCE_TIERS and _TIER_RANK[declared] > _TIER_RANK[ceiling]:
+            errors.append(
+                f"adversarial_reviews:independence_overclaimed:{evidence_id}:"
+                f"{declared}_above_{ceiling}"
+            )
+        elif declared in INDEPENDENCE_TIERS:
+            independence[evidence_id] = {"declared": declared, "verifiable_ceiling": ceiling}
         if original.get("relation") != counter.get("relation"):
             disagreements.append(
                 {
@@ -679,6 +753,16 @@ def validate_adversarial_reviews(
         "PASS",
         "INDEPENDENT_REVIEW_AGREES",
         reviewer_ids=sorted({review["reviewer_id"] for review in valid}),
+        independence=independence,
+        weakest_independence=(
+            min(
+                (entry["declared"] for entry in independence.values()),
+                key=lambda tier: _TIER_RANK[tier],
+            )
+            if independence
+            else None
+        ),
+        min_independence=min_independence,
         reviewed_evidence_ids=sorted(by_evidence),
         unreviewed_evidence_ids=unreviewed,
         disagreements=disagreements,
@@ -698,6 +782,13 @@ def validate_adversarial_reviews(
         summary["status"], summary["code"] = "HOLD", "REVIEWER_DISAGREEMENT"
     elif policy == "required" and unreviewed:
         summary["status"], summary["code"] = "HOLD", "ADVERSARIAL_REVIEW_INCOMPLETE"
+    elif summary["weakest_independence"] and (
+        _TIER_RANK[summary["weakest_independence"]] < _TIER_RANK[min_independence]
+    ):
+        summary["status"], summary["code"] = (
+            "HOLD",
+            "ADVERSARIAL_INDEPENDENCE_BELOW_MINIMUM",
+        )
     elif not valid:
         if policy == "required":
             summary["status"], summary["code"] = "HOLD", "ADVERSARIAL_REVIEW_REQUIRED"

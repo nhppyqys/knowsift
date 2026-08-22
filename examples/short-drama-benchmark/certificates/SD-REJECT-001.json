@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "88d2d23a2b5e02f7ec39b88ce9c2da1e62bda2c0d2a427048b323bc3ef68e346",
   "claim_id": "SD-REJECT-001",
   "claim_text": "无需获得版权或授权也可以剪辑他人短剧并在B站发布获利。",
@@ -67,6 +67,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],

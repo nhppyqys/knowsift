@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "1689727ac1b50534b34b6fff5f1c68d68a87b050c7d3c5a43f4b42ddd8422a50",
   "claim_id": "SD-REJECT-002",
   "claim_text": "批量生成重复模板化AI短剧就能稳定通过YouTube频道变现审核。",
@@ -67,6 +67,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],

@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "2c3e529bb4906fe31520c5bfca04227e3cb9a40b3a827f19d2a9557a1a361902",
   "claim_id": "LEARN-004",
   "claim_text": "学习者丙自述自己在三个月内从零基础达到流利。",
@@ -95,6 +95,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],

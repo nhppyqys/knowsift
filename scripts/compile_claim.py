@@ -23,6 +23,14 @@ def build_parser() -> argparse.ArgumentParser:
         help="Exit 3 unless admission is ADMIT or ADMIT_SCOPED",
     )
     parser.add_argument(
+        "--min-independence",
+        choices=["SAME_MODEL", "SAME_FAMILY", "CROSS_FAMILY"],
+        help=(
+            "Weakest adversarial review this host will accept. SAME_MODEL means the "
+            "same model in a fresh context that never saw the first conclusion."
+        ),
+    )
+    parser.add_argument(
         "--locator",
         choices=["off", "optional", "required"],
         help="Host-side locator policy: must a URL corroborate the declared source_kind?",
@@ -61,6 +69,7 @@ def main(argv: list[str] | None = None) -> int:
     certificate = compile_claim(
         payload,
         adversarial_policy=args.adversarial,
+        adversarial_min_independence=args.min_independence,
         locator_policy=args.locator,
         snapshot_policy=args.snapshot,
         snapshot_root=args.snapshot_root,

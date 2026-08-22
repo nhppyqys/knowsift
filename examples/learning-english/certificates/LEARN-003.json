@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "74d49a7f914fd06f0340e67def9f7534cfb04b2e0caef4bc004037a085989db6",
   "claim_id": "LEARN-003",
   "claim_text": "讲师乙主张基础词汇不足时仍需要系统记忆单词。",
@@ -95,6 +95,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],

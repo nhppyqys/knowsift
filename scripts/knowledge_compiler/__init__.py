@@ -9,4 +9,4 @@ __all__ = [
     "validate_document_plan",
     "validate_source_bundle",
 ]
-__version__ = "4.2.0"
+__version__ = "4.3.0"

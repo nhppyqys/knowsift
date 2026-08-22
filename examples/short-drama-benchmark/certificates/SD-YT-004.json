@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "8a0730c83be14554e109999afbec604b1670d9bffbb97fc3df93c6cf6ae0f4ae",
   "claim_id": "SD-YT-004",
   "claim_text": "YouTube合作伙伴的粉丝资助净收入分成为百分之七十。",
@@ -95,6 +95,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],

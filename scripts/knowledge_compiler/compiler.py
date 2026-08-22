@@ -10,10 +10,11 @@ from typing import Any
 from .normalize import normalize_claim, render_canonical
 from .protocols import route_protocols, run_protocols
 from .provenance import summarize_provenance
-from .registry import load_runtime_resources
+from .registry import load_json, load_runtime_resources
 from .validation import (
     classify_source_authority,
     resolve_adversarial_policy,
+    resolve_min_independence,
     resolve_policy,
     validate_adversarial_reviews,
     validate_locator_authority,
@@ -28,7 +29,15 @@ from .validation import (
 )
 
 
-CERTIFICATE_VERSION = "4.2.0"
+CERTIFICATE_VERSION = "4.3.0"
+
+
+def load_json_reviewers() -> dict[str, Any]:
+    """Reviewer registry, used only to sanity-check declared independence."""
+    try:
+        return load_json("reviewers.json")
+    except (OSError, ValueError):
+        return {}
 
 
 def _input_digest(payload: Any) -> str:
@@ -139,6 +148,7 @@ def compile_claim(
     payload: Any,
     *,
     adversarial_policy: str | None = None,
+    adversarial_min_independence: str | None = None,
     locator_policy: str | None = None,
     snapshot_policy: str | None = None,
     snapshot_root: Any = None,
@@ -170,9 +180,23 @@ def compile_claim(
     effective_policy, policy_errors = resolve_adversarial_policy(
         data.get("adversarial_policy"), host_policy
     )
-    adversarial_summary, _adversarial_reviews = validate_adversarial_reviews(
-        data.get("adversarial_reviews"), ir, evidence_by_id, valid_reviews, effective_policy
+    reviewer_registry = load_json_reviewers()
+    min_tier, tier_errors = resolve_min_independence(
+        data.get("adversarial_min_independence"),
+        adversarial_min_independence
+        if adversarial_min_independence is not None
+        else os.environ.get("KNOWSIFT_ADVERSARIAL_MIN_INDEPENDENCE") or None,
     )
+    adversarial_summary, _adversarial_reviews = validate_adversarial_reviews(
+        data.get("adversarial_reviews"),
+        ir,
+        evidence_by_id,
+        valid_reviews,
+        effective_policy,
+        reviewer_registry,
+        min_tier,
+    )
+    policy_errors = list(policy_errors) + tier_errors
     if policy_errors:
         adversarial_summary["errors"] = sorted(
             set(adversarial_summary["errors"]) | set(policy_errors)

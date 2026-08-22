@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "f338a0e09beb3de50cc69bc347e1bf5be42138395e449a9249b23089810feead",
   "claim_id": "SD-CN-002",
   "claim_text": "《微短剧发展管理办法》规定未取得发行许可证、批准文件或节目编号的微短剧不得播出。",
@@ -95,6 +95,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],

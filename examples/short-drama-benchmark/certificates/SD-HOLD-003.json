@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "39c2093738c3c3171d473f1ee0a9b1868b126ec7977b203fdc95237e97a2f0c2",
   "claim_id": "SD-HOLD-003",
   "claim_text": "普通人每天花一小时做海外短剧推广都能月赚二千三百元以上。",
@@ -67,6 +67,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],

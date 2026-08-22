@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "728557e0670ee45681ddafec0d1fdebf0be73d22ef822783ec284ca135b3088a",
   "claim_id": "SD-PROD-001",
   "claim_text": "短片前期计划的三份基础文件是剧本、拍摄计划和预算。",
@@ -95,6 +95,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],

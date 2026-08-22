@@ -1,13 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "adversarial-review.schema.json",
-  "title": "Knowledge Compiler Adversarial Review 4.1",
+  "title": "Knowledge Compiler Adversarial Review 4.3",
   "type": "object",
   "required": [
     "claim_id",
     "evidence_id",
     "relation",
     "reviewer_id",
+    "independence",
     "evidence_fragment",
     "strongest_counter_reading",
     "what_would_falsify"
@@ -35,6 +36,15 @@
       "type": "string",
       "minLength": 1,
       "description": "Stable identifier of the reviewer, normally a model id. Must differ from the first-pass reviewer_id."
+    },
+    "independence": {
+      "enum": [
+        "SAME_CONTEXT",
+        "SAME_MODEL",
+        "SAME_FAMILY",
+        "CROSS_FAMILY"
+      ],
+      "description": "How independent this reading actually was. SAME_CONTEXT is never accepted. SAME_MODEL means the same model in a fresh context that was not shown the first conclusion. A tier may be under-claimed but never over-claimed: the runtime derives a ceiling from the two reviewer ids."
     },
     "evidence_fragment": {
       "type": "string",

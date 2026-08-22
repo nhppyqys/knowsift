@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "ce7296e7fa682934b8d8c6aa56449b3debcc7b1fe226b3e86728ce5a4e1bf6e5",
   "claim_id": "SD-YT-006",
   "claim_text": "YouTube要求披露看起来真实的AI生成内容或经过实质性AI修改的内容。",
@@ -95,6 +95,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],

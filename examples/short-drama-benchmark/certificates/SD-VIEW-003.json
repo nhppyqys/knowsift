@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "4e2f1407b7121a7b5a69e4d2c9073e22c94bcec0734a1627cb4a8a8d23cf50ce",
   "claim_id": "SD-VIEW-003",
   "claim_text": "B站视频发布者自述每天花一小时做海外短剧推广，当月多赚二千三百元以上。",
@@ -95,6 +95,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],

@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "28a9c9d97801c2d114945de7d1e534ec60fc2639a3f86473dda2268bcb42f86b",
   "claim_id": "SD-YT-002",
   "claim_text": "YouTube合作伙伴的观看页广告净收入分成为百分之五十五。",
@@ -95,6 +95,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],

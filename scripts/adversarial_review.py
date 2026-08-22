@@ -29,6 +29,7 @@ sys.path.insert(0, str(SKILL_ROOT / "scripts"))
 
 REGISTRY_PATH = SKILL_ROOT / "references" / "reviewers.json"
 ALLOWED_RELATIONS = ("ENTAILS", "CONTRADICTS", "PARTIAL", "UNRELATED", "AMBIGUOUS")
+INDEPENDENCE_TIERS = ("SAME_MODEL", "SAME_FAMILY", "CROSS_FAMILY")
 
 PROMPT_TEMPLATE = """\
 You are a second, independent reviewer. Another reviewer has already read this \
@@ -86,6 +87,19 @@ def detect_host_family(registry: dict[str, Any]) -> tuple[str, str]:
     return "unknown", "no marker found"
 
 
+def child_env(backend: dict[str, Any]) -> dict[str, str]:
+    """Environment for a nested reviewer call.
+
+    A parent harness injects credentials scoped to its own session. Inheriting
+    them makes the child authenticate as the parent, or fail outright, so the
+    keys a backend names are removed and the tool uses its own credentials.
+    """
+    env = dict(os.environ)
+    for key in backend.get("scrub_env", []):
+        env.pop(key, None)
+    return env
+
+
 def _probe(backend: dict[str, Any]) -> dict[str, Any]:
     env_key = backend.get("argv_from_env")
     if env_key:
@@ -102,7 +116,8 @@ def _probe(backend: dict[str, Any]) -> dict[str, Any]:
         return {"available": True, "reason": f"{executable} found on PATH"}
     try:
         done = subprocess.run(
-            probe, capture_output=True, text=True, timeout=20, check=False
+            probe, capture_output=True, text=True, timeout=20, check=False,
+            env=child_env(backend),
         )
     except (OSError, subprocess.SubprocessError) as error:
         return {"available": False, "reason": f"probe failed: {error}"}
@@ -126,6 +141,7 @@ def _deep_probe(backend: dict[str, Any], model: str | None) -> dict[str, Any]:
             text=True,
             timeout=180,
             check=False,
+            env=child_env(backend),
         )
     except (OSError, subprocess.SubprocessError) as error:
         return {"usable": False, "reason": f"call failed: {error}"}
@@ -317,7 +333,12 @@ def build_argv(backend: dict[str, Any], model: str | None) -> tuple[list[str], s
 
 
 def run_backend(
-    payload: dict[str, Any], backend_id: str, model: str | None, timeout: int
+    payload: dict[str, Any],
+    backend_id: str,
+    model: str | None,
+    timeout: int,
+    first_pass_reviewer_id: str | None = None,
+    independence: str | None = None,
 ) -> list[dict[str, Any]]:
     registry = load_registry()
     backend = next(
@@ -328,7 +349,13 @@ def run_backend(
     argv, chosen_model = build_argv(backend, model)
     prompt = build_prompt(payload)
     done = subprocess.run(
-        argv, input=prompt, capture_output=True, text=True, timeout=timeout, check=False
+        argv,
+        input=prompt,
+        capture_output=True,
+        text=True,
+        timeout=timeout,
+        check=False,
+        env=child_env(backend),
     )
     if done.returncode != 0:
         detail = (done.stderr or done.stdout or "").strip()
@@ -339,11 +366,46 @@ def run_backend(
             f"{backend_id} returned no usable JSON. First 400 chars:\n{done.stdout[:400]}"
         )
     reviewer_id = chosen_model or f"{backend_id}:unspecified-model"
-    return finalize_reviews(parsed["reviews"], payload, reviewer_id)
+    tier = resolve_independence(first_pass_reviewer_id, reviewer_id, independence)
+    return finalize_reviews(parsed["reviews"], payload, reviewer_id, tier)
+
+
+def resolve_independence(
+    first_pass_reviewer_id: str | None,
+    reviewer_id: str,
+    declared: str | None,
+) -> str:
+    """Claim exactly what the two reviewer ids can support, never more."""
+    registry = load_registry()
+    families = registry.get("model_families") or {}
+
+    def family(model_id: str | None) -> str | None:
+        if not model_id:
+            return None
+        lowered = model_id.lower()
+        for name, prefixes in families.items():
+            if any(prefix in lowered for prefix in prefixes):
+                return name
+        return None
+
+    if not first_pass_reviewer_id:
+        ceiling = "SAME_FAMILY"
+    elif first_pass_reviewer_id == reviewer_id:
+        ceiling = "SAME_MODEL"
+    else:
+        first, second = family(first_pass_reviewer_id), family(reviewer_id)
+        ceiling = "CROSS_FAMILY" if first and second and first != second else "SAME_FAMILY"
+    if declared and declared in INDEPENDENCE_TIERS:
+        if INDEPENDENCE_TIERS.index(declared) <= INDEPENDENCE_TIERS.index(ceiling):
+            return declared
+    return ceiling
 
 
 def finalize_reviews(
-    reviews: Any, payload: dict[str, Any], reviewer_id: str
+    reviews: Any,
+    payload: dict[str, Any],
+    reviewer_id: str,
+    independence: str = "SAME_FAMILY",
 ) -> list[dict[str, Any]]:
     """Stamp claim_id and reviewer_id; leave every judgement untouched.
 
@@ -361,6 +423,7 @@ def finalize_reviews(
                 "evidence_id": review.get("evidence_id"),
                 "relation": review.get("relation"),
                 "reviewer_id": reviewer_id,
+                "independence": independence,
                 "evidence_fragment": review.get("evidence_fragment"),
                 "strongest_counter_reading": review.get("strongest_counter_reading"),
                 "what_would_falsify": review.get("what_would_falsify"),
@@ -394,12 +457,15 @@ def build_parser() -> argparse.ArgumentParser:
     run_cmd.add_argument("--backend", required=True)
     run_cmd.add_argument("--model")
     run_cmd.add_argument("--timeout", type=int, default=300)
+    run_cmd.add_argument("--first-pass-reviewer-id", help="Model that produced the first reading")
+    run_cmd.add_argument("--independence", choices=list(INDEPENDENCE_TIERS))
     run_cmd.add_argument("--output", type=Path)
 
     merge_cmd = sub.add_parser("merge", help="Splice reviews into a claim payload")
     merge_cmd.add_argument("claim", type=Path)
     merge_cmd.add_argument("reviews", type=Path, help="JSON array, or the object printed by `run`")
     merge_cmd.add_argument("--reviewer-id", help="Stamp this reviewer_id (routes A and manual)")
+    merge_cmd.add_argument("--independence", choices=list(INDEPENDENCE_TIERS))
     merge_cmd.add_argument("--first-pass-reviewer-id", help="Stamp the first pass reviewer_id")
     merge_cmd.add_argument("--policy", choices=["off", "optional", "required"])
     merge_cmd.add_argument("--output", type=Path)
@@ -428,7 +494,14 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "run":
         payload = load_payload(args.claim)
         try:
-            reviews = run_backend(payload, args.backend, args.model, args.timeout)
+            reviews = run_backend(
+                payload,
+                args.backend,
+                args.model,
+                args.timeout,
+                args.first_pass_reviewer_id,
+                args.independence,
+            )
         except (ValueError, RuntimeError, OSError, subprocess.SubprocessError) as error:
             print(f"knowsift: {error}", file=sys.stderr)
             return 2
@@ -443,7 +516,10 @@ def main(argv: list[str] | None = None) -> int:
             print("knowsift: reviews file must hold a JSON array or {\"reviews\": [...]}", file=sys.stderr)
             return 2
         if args.reviewer_id:
-            reviews = finalize_reviews(reviews, payload, args.reviewer_id)
+            tier = resolve_independence(
+                args.first_pass_reviewer_id, args.reviewer_id, args.independence
+            )
+            reviews = finalize_reviews(reviews, payload, args.reviewer_id, tier)
         payload["adversarial_reviews"] = reviews
         if args.first_pass_reviewer_id:
             for review in payload.get("semantic_reviews") or []:

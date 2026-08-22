@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "e806856285c7c7668cadc889f6e82e602b6dfb0750ddcd37b6215a86677e306c",
   "claim_id": "LEARN-005",
   "claim_text": "成年人绝对不应该背单词。",
@@ -69,6 +69,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],

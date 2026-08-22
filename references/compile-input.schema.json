@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "compile-input.schema.json",
-  "title": "Knowledge Compiler Input 4.2",
+  "title": "Knowledge Compiler Input 4.3",
   "type": "object",
   "required": [
     "claim_ir",
@@ -50,6 +50,14 @@
         "required"
       ],
       "description": "Requested strictness. The host may only raise it, never lower it."
+    },
+    "adversarial_min_independence": {
+      "enum": [
+        "SAME_MODEL",
+        "SAME_FAMILY",
+        "CROSS_FAMILY"
+      ],
+      "description": "Weakest adversarial review this input will accept. The host may only raise it."
     },
     "locator_policy": {
       "enum": [

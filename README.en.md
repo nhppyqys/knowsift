@@ -228,6 +228,36 @@ the two differ     -> HOLD, with both readings recorded
 only one reviewer  -> passes under `optional`, HOLD under `required`
 ```
 
+### Does a model reviewing itself count
+
+Yes, provided it says which tier it is. There are four:
+
+- `CROSS_FAMILY` - another vendor's model. Different training data, different blind spots.
+- `SAME_FAMILY` - a different model from the same vendor.
+- `SAME_MODEL` - the same model, fresh context, never shown the first conclusion.
+- `SAME_CONTEXT` - the same model continuing the same conversation. **Never accepted.**
+
+**Same-model review counts, as long as the context is fresh.** That matters, because plenty of machines only have one model available. A second pass that has not seen the first conclusion still catches real mistakes: a misread quantifier, a silently widened scope, an entailment that does not hold. What it cannot catch is anything the model gets wrong for reasons built into the model - which is why it is the weakest admissible tier rather than a refused one.
+
+`SAME_CONTEXT` is refused because a model asked to check what it just said is not reviewing, it is agreeing.
+
+**The declared tier is checked, not trusted.** The runtime derives a ceiling from the two reviewer ids and rejects anything above it:
+
+```text
+claude-opus-5  vs claude-opus-5      -> ceiling SAME_MODEL
+claude-opus-5  vs claude-haiku-4-5   -> ceiling SAME_FAMILY
+claude-opus-5  vs gpt-5-codex        -> ceiling CROSS_FAMILY
+claude-opus-5  vs my-private-model   -> ceiling SAME_FAMILY   (unrecognised id)
+```
+
+Under-claim freely; never over-claim. One field is not mechanically checkable: whether the context really was fresh. Nothing in a JSON payload can prove that, which is the honest boundary of this gate and why `SAME_MODEL` is a floor rather than something to lean on.
+
+A host can raise the floor:
+
+```bash
+python3 scripts/compile_claim.py claim.json --min-independence CROSS_FAMILY
+```
+
 Start by finding out what this machine can actually do:
 
 ```bash
@@ -247,7 +277,7 @@ The last two work on any machine, so a missing second CLI never blocks you. Any 
 export KNOWSIFT_REVIEWER_CMD="my-model-cli --quiet"
 ```
 
-Four mechanical rules are not negotiable: a reviewer may not review itself; the quote must appear byte for byte in the source, so a paraphrase is discarded; the strongest opposing reading must be stated even when the reviewer agrees; and every review must name something that would falsify it.
+Four mechanical rules are not negotiable: an independence tier may be under-claimed but never over-claimed; the quote must appear byte for byte in the source, so a paraphrase is discarded; the strongest opposing reading must be stated even when the reviewer agrees; and every review must name something that would falsify it.
 
 Strictness is the strictest of three sources - the payload's `adversarial_policy`, `KNOWSIFT_ADVERSARIAL_POLICY`, and `--adversarial` - so an upstream input can never lower a bar the host set.
 
@@ -319,7 +349,7 @@ Read [Safety and limitations](references/safety-and-limitations.md) before using
 python3 -m unittest discover -s tests -v
 ```
 
-The current suite contains 111 tests and passes on Python 3.9 and Python 3.14. It covers literal source anchors, provenance, conflicts, scope, versions, legal and statistical protocols, certificate-layer compatibility, independent-reviewer agreement and disagreement, locator and snapshot verification, path boundaries, and byte-for-byte Markdown reconstruction.
+The current suite contains 119 tests and passes on Python 3.9 and Python 3.14. It covers literal source anchors, provenance, conflicts, scope, versions, legal and statistical protocols, certificate-layer compatibility, independent-reviewer agreement, disagreement and independence tiers, locator and snapshot verification, path boundaries, and byte-for-byte Markdown reconstruction.
 
 See [VALIDATION.md](VALIDATION.md) for the full validation record.
 

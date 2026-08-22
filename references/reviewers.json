@@ -2,9 +2,19 @@
   "version": "1.0.0",
   "note": "Backend argv lines are editable data, not guarantees. CLI flags drift between releases; run `adversarial_review.py detect --deep` to find out whether a line still works in your environment instead of trusting this file.",
   "host_markers": {
-    "anthropic": ["CLAUDECODE", "CLAUDE_CODE_ENTRYPOINT"],
-    "openai": ["CODEX_SANDBOX", "CODEX_HOME", "CODEX_THREAD_ID"],
-    "google": ["GEMINI_CLI", "GEMINI_SANDBOX"]
+    "anthropic": [
+      "CLAUDECODE",
+      "CLAUDE_CODE_ENTRYPOINT"
+    ],
+    "openai": [
+      "CODEX_SANDBOX",
+      "CODEX_HOME",
+      "CODEX_THREAD_ID"
+    ],
+    "google": [
+      "GEMINI_CLI",
+      "GEMINI_SANDBOX"
+    ]
   },
   "backends": [
     {
@@ -12,21 +22,58 @@
       "label": "Claude Code CLI",
       "family": "anthropic",
       "executable": "claude",
-      "probe": ["claude", "--version"],
-      "argv": ["claude", "-p", "--output-format", "text", "--model", "{model}"],
+      "probe": [
+        "claude",
+        "--version"
+      ],
+      "argv": [
+        "claude",
+        "-p",
+        "--output-format",
+        "text",
+        "--model",
+        "{model}"
+      ],
       "stdin": true,
       "default_model": "claude-sonnet-5",
-      "verified": "argv confirmed against Claude Code CLI help output"
+      "scrub_env": [
+        "ANTHROPIC_AUTH_TOKEN",
+        "ANTHROPIC_API_KEY",
+        "ANTHROPIC_BASE_URL",
+        "ANTHROPIC_MODEL",
+        "ANTHROPIC_DEFAULT_OPUS_MODEL",
+        "ANTHROPIC_DEFAULT_SONNET_MODEL",
+        "ANTHROPIC_DEFAULT_HAIKU_MODEL",
+        "ANTHROPIC_DEFAULT_FABLE_MODEL",
+        "CLAUDE_CODE_SESSION_ID",
+        "CLAUDE_CODE_ENTRYPOINT",
+        "CLAUDECODE"
+      ],
+      "verified": "argv and a live end-to-end call both confirmed; needs scrub_env when nested inside Claude Code"
     },
     {
       "id": "codex-cli",
       "label": "OpenAI Codex CLI",
       "family": "openai",
       "executable": "codex",
-      "probe": ["codex", "--version"],
-      "argv": ["codex", "exec", "--skip-git-repo-check", "-"],
+      "probe": [
+        "codex",
+        "--version"
+      ],
+      "argv": [
+        "codex",
+        "exec",
+        "--skip-git-repo-check",
+        "-"
+      ],
       "stdin": true,
       "default_model": null,
+      "scrub_env": [
+        "OPENAI_API_KEY",
+        "OPENAI_BASE_URL",
+        "CODEX_HOME",
+        "CODEX_THREAD_ID"
+      ],
       "verified": "argv NOT verified; check `codex exec --help` and edit this entry if it fails"
     },
     {
@@ -34,10 +81,21 @@
       "label": "Gemini CLI",
       "family": "google",
       "executable": "gemini",
-      "probe": ["gemini", "--version"],
-      "argv": ["gemini", "-p", "-"],
+      "probe": [
+        "gemini",
+        "--version"
+      ],
+      "argv": [
+        "gemini",
+        "-p",
+        "-"
+      ],
       "stdin": true,
       "default_model": null,
+      "scrub_env": [
+        "GEMINI_API_KEY",
+        "GOOGLE_API_KEY"
+      ],
       "verified": "argv NOT verified; check `gemini --help` and edit this entry if it fails"
     },
     {
@@ -45,10 +103,18 @@
       "label": "Local model via ollama",
       "family": "local",
       "executable": "ollama",
-      "probe": ["ollama", "--version"],
-      "argv": ["ollama", "run", "{model}"],
+      "probe": [
+        "ollama",
+        "--version"
+      ],
+      "argv": [
+        "ollama",
+        "run",
+        "{model}"
+      ],
       "stdin": true,
       "default_model": "llama3.1",
+      "scrub_env": [],
       "verified": "argv NOT verified; set the model with --model"
     },
     {
@@ -56,10 +122,18 @@
       "label": "simonw/llm (any provider it is configured for)",
       "family": "unknown",
       "executable": "llm",
-      "probe": ["llm", "--version"],
-      "argv": ["llm", "-m", "{model}"],
+      "probe": [
+        "llm",
+        "--version"
+      ],
+      "argv": [
+        "llm",
+        "-m",
+        "{model}"
+      ],
       "stdin": true,
       "default_model": null,
+      "scrub_env": [],
       "verified": "argv NOT verified"
     },
     {
@@ -69,7 +143,61 @@
       "argv_from_env": "KNOWSIFT_REVIEWER_CMD",
       "stdin": true,
       "default_model": null,
+      "scrub_env": [],
       "verified": "user supplied; reads the prompt on stdin and must print JSON on stdout"
     }
-  ]
+  ],
+  "model_families": {
+    "anthropic": [
+      "claude-",
+      "claude_",
+      "opus",
+      "sonnet",
+      "haiku",
+      "fable"
+    ],
+    "openai": [
+      "gpt-",
+      "gpt4",
+      "o1-",
+      "o3-",
+      "o4-",
+      "codex",
+      "chatgpt"
+    ],
+    "google": [
+      "gemini",
+      "gemma",
+      "palm"
+    ],
+    "meta": [
+      "llama",
+      "code-llama"
+    ],
+    "mistral": [
+      "mistral",
+      "mixtral",
+      "codestral"
+    ],
+    "alibaba": [
+      "qwen"
+    ],
+    "deepseek": [
+      "deepseek"
+    ],
+    "xai": [
+      "grok"
+    ],
+    "nous": [
+      "hermes"
+    ],
+    "zhipu": [
+      "glm"
+    ],
+    "moonshot": [
+      "kimi",
+      "moonshot"
+    ]
+  },
+  "model_family_note": "Prefix match on reviewer_id, lowercased. Used only to catch an overclaimed independence tier: an unrecognised id caps the verifiable tier at SAME_FAMILY rather than being trusted as cross-family."
 }

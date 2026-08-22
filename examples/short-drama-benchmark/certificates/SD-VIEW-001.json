@@ -1,5 +1,5 @@
 {
-  "certificate_version": "4.2.0",
+  "certificate_version": "4.3.0",
   "input_digest": "aa8558ce31d0b8002c00897517b355c2aedba349ae7f2096b702d750245e2bf5",
   "claim_id": "SD-VIEW-001",
   "claim_text": "B站创作者把画面、运镜、景别、时长、台词、声音、转场和道具列为拍摄脚本字段。",
@@ -95,6 +95,9 @@
     "code": "ADVERSARIAL_REVIEW_NOT_SUPPLIED",
     "policy": "optional",
     "reviewer_ids": [],
+    "independence": {},
+    "weakest_independence": null,
+    "min_independence": null,
     "reviewed_evidence_ids": [],
     "unreviewed_evidence_ids": [],
     "disagreements": [],
