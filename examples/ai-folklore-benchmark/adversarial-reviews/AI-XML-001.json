@@ -1,0 +1,12 @@
+[
+  {
+    "claim_id": "AI-XML-001",
+    "evidence_id": "E-AI-XML-001-1",
+    "relation": "ENTAILS",
+    "reviewer_id": "claude-haiku-4-5-20251001",
+    "independence": "SAME_FAMILY",
+    "evidence_fragment": "Wrapping each type of content in its own tag (for example, <instructions>, <context>, <input>) reduces misinterpretation.",
+    "strongest_counter_reading": "The evidence asserts a correlation between XML tag separation and reduced misinterpretation, but could be interpreted as describing observed behavior rather than providing causal evidence. One might argue the benefit comes from structural clarity generally, not specifically from XML syntax.",
+    "what_would_falsify": "Controlled experiments comparing Claude's interpretation accuracy on identical prompts with and without XML tag separation, showing no statistically significant difference in misinterpretation rates. Alternatively, official Claude documentation being updated to retract or qualify the statement."
+  }
+]

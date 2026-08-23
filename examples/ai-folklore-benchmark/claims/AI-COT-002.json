@@ -1,0 +1,72 @@
+{
+  "claim_ir": {
+    "claim_id": "AI-COT-002",
+    "source_text": "思维链提示能普遍提升大模型在各类任务上的表现。",
+    "operator": "FACT",
+    "subject": "思维链提示",
+    "predicate": "能普遍提升",
+    "object": "大模型在各类任务上的表现",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "思维链提示",
+        "start": 0,
+        "end": 5
+      },
+      "predicate": {
+        "text": "能普遍提升",
+        "start": 5,
+        "end": 10
+      },
+      "object": {
+        "text": "大模型在各类任务上的表现",
+        "start": 10,
+        "end": 22
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-AI-COT-002-1",
+      "source_id": "PAPER-COT-METAANALYSIS",
+      "source_kind": "research_paper",
+      "locator": "https://arxiv.org/abs/2409.12183",
+      "source_text": "Chain-of-thought (CoT) via prompting is the de facto method for eliciting reasoning capabilities from large language models (LLMs). But for what kinds of tasks is this extra thinking really helpful? To analyze this, we conducted a quantitative meta-analysis covering over 100 papers using CoT and ran our own evaluations of 20 datasets across 14 models. Our results show that CoT gives strong performance benefits primarily on tasks involving math or logic, with much smaller gains on other types of tasks. On MMLU, directly generating the answer without CoT leads to almost identical accuracy as CoT unless the question or model's response contains an equals sign, indicating symbolic operations and reasoning.",
+      "quote": {
+        "text": "CoT gives strong performance benefits primarily on tasks involving math or logic, with much smaller gains on other types of tasks",
+        "start": 376,
+        "end": 505
+      },
+      "date": "2024-09-18",
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "AI-COT-002",
+      "evidence_id": "E-AI-COT-002-1",
+      "relation": "CONTRADICTS",
+      "reviewer_id": "claude-opus-5",
+      "claim_fragment": "思维链提示能普遍提升大模型在各类任务上的表现",
+      "evidence_fragment": "CoT gives strong performance benefits primarily on tasks involving math or logic, with much smaller gains on other types of tasks",
+      "missing_bridge": ""
+    }
+  ],
+  "adversarial_reviews": [
+    {
+      "claim_id": "AI-COT-002",
+      "evidence_id": "E-AI-COT-002-1",
+      "relation": "CONTRADICTS",
+      "reviewer_id": "claude-haiku-4-5-20251001",
+      "independence": "SAME_FAMILY",
+      "evidence_fragment": "Our results show that CoT gives strong performance benefits primarily on tasks involving math or logic, with much smaller gains on other types of tasks.",
+      "strongest_counter_reading": "A reader might argue that CoT still produces gains (even if smaller) across all task categories, so it does universally improve performance, just with variable magnitude. The evidence shows the effect exists everywhere, merely to different degrees.",
+      "what_would_falsify": "A replication study analyzing the same 100+ papers and finding that performance improvements are roughly equal across all task types, or detailed inspection showing the original meta-analysis systematically excluded or downweighted non-math/logic tasks in its data aggregation."
+    }
+  ],
+  "adversarial_policy": "required"
+}

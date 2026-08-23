@@ -1,0 +1,232 @@
+{
+  "certificate_version": "4.3.0",
+  "input_digest": "0cd91a630094d6c33cb0d19d123c5a892d4bf74eecc8ead079b3c80c3e27b22f",
+  "claim_id": "AI-COT-004",
+  "claim_text": "思维链带来的推理能力提升出现在足够大的语言模型上。",
+  "canonical_claim": "思维链带来的推理能力提升出现在足够大的语言模型上。",
+  "normalized_ir": {
+    "claim_id": "AI-COT-004",
+    "source_text": "思维链带来的推理能力提升出现在足够大的语言模型上。",
+    "operator": "FACT",
+    "subject": "思维链带来的推理能力提升",
+    "predicate": "出现在",
+    "object": "足够大的语言模型上",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "思维链带来的推理能力提升",
+        "start": 0,
+        "end": 12
+      },
+      "predicate": {
+        "text": "出现在",
+        "start": 12,
+        "end": 15
+      },
+      "object": {
+        "text": "足够大的语言模型上",
+        "start": 15,
+        "end": 24
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-AI-COT-004-1"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "PASS",
+    "code": "INDEPENDENT_REVIEW_AGREES",
+    "policy": "required",
+    "reviewer_ids": [
+      "claude-haiku-4-5-20251001"
+    ],
+    "independence": {
+      "E-AI-COT-004-1": {
+        "declared": "SAME_FAMILY",
+        "verifiable_ceiling": "SAME_FAMILY"
+      }
+    },
+    "weakest_independence": "SAME_FAMILY",
+    "min_independence": "SAME_MODEL",
+    "reviewed_evidence_ids": [
+      "E-AI-COT-004-1"
+    ],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [],
+    "falsifiers": [
+      {
+        "evidence_id": "E-AI-COT-004-1",
+        "what_would_falsify": "Empirical demonstration that chain of thought prompting produces comparable reasoning improvements on small language models (e.g., models with under 10 billion parameters) compared to the improvements shown on large models."
+      }
+    ],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "PASS",
+    "code": "LOCATOR_SUPPORTS_DECLARED_ROLE",
+    "policy": "required",
+    "by_evidence": {
+      "E-AI-COT-004-1": {
+        "locator_status": "CLASSIFIED",
+        "locator_code": "LOCATOR_CLASSIFIED",
+        "source_kind": "research_paper",
+        "declared_class": "SCHOLARLY",
+        "permits": [
+          "SCHOLARLY"
+        ],
+        "rule": "preprint server",
+        "verdict": "CONSISTENT"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-AI-COT-004-1"
+    ],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-AI-COT-004-1": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-AI-COT-004-1"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-AI-COT-004-1"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "PAPER-COT-WEI"
+    ],
+    "roots_by_source": {
+      "PAPER-COT-WEI": [
+        "PAPER-COT-WEI"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "PAPER-COT-WEI": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-AI-COT-004-1"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-AI-COT-004-1",
+      "source_id": "PAPER-COT-WEI",
+      "source_kind": "research_paper",
+      "quote": {
+        "text": "such reasoning abilities emerge naturally in sufficiently large language models",
+        "start": 209,
+        "end": 288
+      },
+      "date": "2022-01-28",
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

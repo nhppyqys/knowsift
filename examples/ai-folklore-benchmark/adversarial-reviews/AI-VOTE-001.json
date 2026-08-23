@@ -1,0 +1,12 @@
+[
+  {
+    "claim_id": "AI-VOTE-001",
+    "evidence_id": "E-AI-VOTE-001-1",
+    "relation": "ENTAILS",
+    "reviewer_id": "claude-haiku-4-5-20251001",
+    "independence": "SAME_FAMILY",
+    "evidence_fragment": "It first samples a diverse set of reasoning paths instead of only taking the greedy one, and then selects the most consistent answer by marginalizing out the sampled reasoning paths. Our extensive empirical evaluation shows that self-consistency boosts the performance of chain-of-thought prompting with a striking margin on a range of popular arithmetic and commonsense reasoning benchmarks, including GSM8K (+17.9%), SVAMP (+11.0%), AQuA (+12.2%), StrategyQA (+6.4%) and ARC-challenge (+3.9%).",
+    "strongest_counter_reading": "The improvements could be attributable to factors other than the sampling-and-consistency mechanism itself—such as differences in model scale, prompting format, decoding parameters, or the specific benchmark implementations. The gains, while stated as 'striking,' are heterogeneous across benchmarks (3.9% to 17.9%), which could suggest the effect is task-dependent rather than a general principle.",
+    "what_would_falsify": "An ablation study showing that removing the consistency-based selection mechanism (while keeping multiple-path sampling) produces the same improvements; or a replication study on held-out arithmetic/commonsense benchmarks showing no improvement; or clarification that the baseline or evaluation setup differed from standard benchmark specifications."
+  }
+]

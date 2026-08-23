@@ -1,0 +1,72 @@
+{
+  "claim_ir": {
+    "claim_id": "AI-COT-004",
+    "source_text": "思维链带来的推理能力提升出现在足够大的语言模型上。",
+    "operator": "FACT",
+    "subject": "思维链带来的推理能力提升",
+    "predicate": "出现在",
+    "object": "足够大的语言模型上",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "思维链带来的推理能力提升",
+        "start": 0,
+        "end": 12
+      },
+      "predicate": {
+        "text": "出现在",
+        "start": 12,
+        "end": 15
+      },
+      "object": {
+        "text": "足够大的语言模型上",
+        "start": 15,
+        "end": 24
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-AI-COT-004-1",
+      "source_id": "PAPER-COT-WEI",
+      "source_kind": "research_paper",
+      "locator": "https://arxiv.org/abs/2201.11903",
+      "source_text": "We explore how generating a chain of thought -- a series of intermediate reasoning steps -- significantly improves the ability of large language models to perform complex reasoning. In particular, we show how such reasoning abilities emerge naturally in sufficiently large language models via a simple method called chain of thought prompting, where a few chain of thought demonstrations are provided as exemplars in prompting. Experiments on three large language models show that chain of thought prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks.",
+      "quote": {
+        "text": "such reasoning abilities emerge naturally in sufficiently large language models",
+        "start": 209,
+        "end": 288
+      },
+      "date": "2022-01-28",
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "AI-COT-004",
+      "evidence_id": "E-AI-COT-004-1",
+      "relation": "ENTAILS",
+      "reviewer_id": "claude-opus-5",
+      "claim_fragment": "思维链带来的推理能力提升出现在足够大的语言模型上",
+      "evidence_fragment": "such reasoning abilities emerge naturally in sufficiently large language models",
+      "missing_bridge": ""
+    }
+  ],
+  "adversarial_reviews": [
+    {
+      "claim_id": "AI-COT-004",
+      "evidence_id": "E-AI-COT-004-1",
+      "relation": "ENTAILS",
+      "reviewer_id": "claude-haiku-4-5-20251001",
+      "independence": "SAME_FAMILY",
+      "evidence_fragment": "such reasoning abilities emerge naturally in sufficiently large language models via a simple method called chain of thought prompting",
+      "strongest_counter_reading": "The evidence demonstrates that chain of thought works on the three tested large language models, but does not establish a clear threshold or prove that it fails on smaller models. The phrase 'sufficiently large' could be interpreted as merely descriptive of the models tested rather than establishing a size requirement.",
+      "what_would_falsify": "Empirical demonstration that chain of thought prompting produces comparable reasoning improvements on small language models (e.g., models with under 10 billion parameters) compared to the improvements shown on large models."
+    }
+  ],
+  "adversarial_policy": "required"
+}

@@ -1,0 +1,178 @@
+"""Verbatim captured text for the AI folklore benchmark.
+
+Every string below is quoted exactly as it appeared at the locator on the
+capture date. Nothing here is paraphrased, because every anchor in the
+benchmark is checked byte for byte against these strings.
+"""
+
+CAPTURE_DATE = "2026-08-23"
+
+SOURCES = {
+    "PAPER-COT-WEI": {
+        "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+        "locator": "https://arxiv.org/abs/2201.11903",
+        "published_at": "2022-01-28",
+        "text": (
+            "We explore how generating a chain of thought -- a series of intermediate "
+            "reasoning steps -- significantly improves the ability of large language models "
+            "to perform complex reasoning. In particular, we show how such reasoning "
+            "abilities emerge naturally in sufficiently large language models via a simple "
+            "method called chain of thought prompting, where a few chain of thought "
+            "demonstrations are provided as exemplars in prompting. Experiments on three "
+            "large language models show that chain of thought prompting improves performance "
+            "on a range of arithmetic, commonsense, and symbolic reasoning tasks."
+        ),
+    },
+    "PAPER-COT-ZEROSHOT": {
+        "title": "Large Language Models are Zero-Shot Reasoners",
+        "locator": "https://arxiv.org/abs/2205.11916",
+        "published_at": "2022-05-24",
+        "text": (
+            "While these successes are often attributed to LLMs' ability for few-shot "
+            "learning, we show that LLMs are decent zero-shot reasoners by simply adding "
+            "\"Let's think step by step\" before each answer. Experimental results demonstrate "
+            "that our Zero-shot-CoT, using the same single prompt template, significantly "
+            "outperforms zero-shot LLM performances on diverse benchmark reasoning tasks "
+            "including arithmetics (MultiArith, GSM8K, AQUA-RAT, SVAMP), symbolic reasoning "
+            "(Last Letter, Coin Flip), and other logical reasoning tasks (Date Understanding, "
+            "Tracking Shuffled Objects), without any hand-crafted few-shot examples, e.g. "
+            "increasing the accuracy on MultiArith from 17.7% to 78.7% and GSM8K from 10.4% "
+            "to 40.7% with large InstructGPT model (text-davinci-002), as well as similar "
+            "magnitudes of improvements with another off-the-shelf large model, 540B "
+            "parameter PaLM."
+        ),
+    },
+    "PAPER-COT-METAANALYSIS": {
+        "title": "To CoT or not to CoT? Chain-of-thought helps mainly on math and symbolic reasoning",
+        "locator": "https://arxiv.org/abs/2409.12183",
+        "published_at": "2024-09-18",
+        "text": (
+            "Chain-of-thought (CoT) via prompting is the de facto method for eliciting "
+            "reasoning capabilities from large language models (LLMs). But for what kinds of "
+            "tasks is this extra thinking really helpful? To analyze this, we conducted a "
+            "quantitative meta-analysis covering over 100 papers using CoT and ran our own "
+            "evaluations of 20 datasets across 14 models. Our results show that CoT gives "
+            "strong performance benefits primarily on tasks involving math or logic, with "
+            "much smaller gains on other types of tasks. On MMLU, directly generating the "
+            "answer without CoT leads to almost identical accuracy as CoT unless the question "
+            "or model's response contains an equals sign, indicating symbolic operations and "
+            "reasoning."
+        ),
+    },
+    "PAPER-LOST-MIDDLE": {
+        "title": "Lost in the Middle: How Language Models Use Long Contexts",
+        "locator": "https://arxiv.org/abs/2307.03172",
+        "published_at": "2023-07-06",
+        "text": (
+            "We analyze the performance of language models on two tasks that require "
+            "identifying relevant information in their input contexts: multi-document question "
+            "answering and key-value retrieval. We find that performance can degrade "
+            "significantly when changing the position of relevant information, indicating that "
+            "current language models do not robustly make use of information in long input "
+            "contexts. In particular, we observe that performance is often highest when "
+            "relevant information occurs at the beginning or end of the input context, and "
+            "significantly degrades when models must access relevant information in the middle "
+            "of long contexts, even for explicitly long-context models."
+        ),
+    },
+    "PAPER-SELF-CONSISTENCY": {
+        "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+        "locator": "https://arxiv.org/abs/2203.11171",
+        "published_at": "2022-03-21",
+        "text": (
+            "In this paper, we propose a new decoding strategy, self-consistency, to replace "
+            "the naive greedy decoding used in chain-of-thought prompting. It first samples a "
+            "diverse set of reasoning paths instead of only taking the greedy one, and then "
+            "selects the most consistent answer by marginalizing out the sampled reasoning "
+            "paths. Our extensive empirical evaluation shows that self-consistency boosts the "
+            "performance of chain-of-thought prompting with a striking margin on a range of "
+            "popular arithmetic and commonsense reasoning benchmarks, including GSM8K (+17.9%), "
+            "SVAMP (+11.0%), AQuA (+12.2%), StrategyQA (+6.4%) and ARC-challenge (+3.9%)."
+        ),
+    },
+    "PAPER-SELF-REFINE": {
+        "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+        "locator": "https://arxiv.org/abs/2303.17651",
+        "published_at": "2023-03-30",
+        "text": (
+            "Motivated by how humans refine their written text, we introduce Self-Refine, an "
+            "approach for improving initial outputs from LLMs through iterative feedback and "
+            "refinement. The main idea is to generate an initial output using an LLMs; then, "
+            "the same LLMs provides feedback for its output and uses it to refine itself, "
+            "iteratively. We evaluate Self-Refine across 7 diverse tasks, ranging from dialog "
+            "response generation to mathematical reasoning, using state-of-the-art (GPT-3.5, "
+            "ChatGPT, and GPT-4) LLMs. Across all evaluated tasks, outputs generated with "
+            "Self-Refine are preferred by humans and automatic metrics over those generated "
+            "with the same LLM using conventional one-step generation, improving by ~20% "
+            "absolute on average in task performance."
+        ),
+    },
+    "PAPER-NO-SELF-CORRECT": {
+        "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+        "locator": "https://arxiv.org/abs/2310.01798",
+        "published_at": "2023-10-03",
+        "text": (
+            "Central to our investigation is the notion of intrinsic self-correction, whereby "
+            "an LLM attempts to correct its initial responses based solely on its inherent "
+            "capabilities, without the crutch of external feedback. In the context of "
+            "reasoning, our research indicates that LLMs struggle to self-correct their "
+            "responses without external feedback, and at times, their performance even "
+            "degrades after self-correction."
+        ),
+    },
+    "PAPER-EMOTION-PROMPT": {
+        "title": "Large Language Models Understand and Can be Enhanced by Emotional Stimuli",
+        "locator": "https://arxiv.org/abs/2307.11760",
+        "published_at": "2023-07-14",
+        "text": (
+            "To this end, we first conduct automatic experiments on 45 tasks using various "
+            "LLMs, including Flan-T5-Large, Vicuna, Llama 2, BLOOM, ChatGPT, and GPT-4. Our "
+            "automatic experiments show that LLMs have a grasp of emotional intelligence, and "
+            "their performance can be improved with emotional prompts (which we call "
+            "\"EmotionPrompt\" that combines the original prompt with emotional stimuli), e.g. "
+            "8.00% relative performance improvement in Instruction Induction and 115% in "
+            "BIG-Bench."
+        ),
+    },
+    "PAPER-CLASHEVAL": {
+        "title": "ClashEval: Quantifying the tug-of-war between an LLM's internal prior and external evidence",
+        "locator": "https://arxiv.org/abs/2404.10198",
+        "published_at": "2024-04-16",
+        "text": (
+            "Retrieval augmented generation (RAG) is frequently used to mitigate hallucinations "
+            "and provide up-to-date knowledge for large language models (LLMs). However, given "
+            "that document retrieval is an imprecise task and sometimes results in erroneous or "
+            "even harmful content being presented in context, this raises the question of how "
+            "LLMs handle retrieved information. We benchmark six top-performing LLMs, including "
+            "GPT-4o, on this dataset and find that LLMs are susceptible to adopting incorrect "
+            "retrieved content, overriding their own correct prior knowledge over 60% of the "
+            "time."
+        ),
+    },
+    "DOC-PROMPT-CACHING": {
+        "title": "Prompt caching — Claude Platform Docs",
+        "locator": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+        "published_at": None,
+        "text": (
+            "On the Claude API, Claude Platform on AWS, Google Cloud, and Microsoft Foundry, "
+            "the minimum cacheable prompt length is: 512 tokens for Claude Opus 5, Claude "
+            "Fable 5, and Claude Mythos 5; 1,024 tokens for Claude Opus 4.8, Claude Sonnet 5, "
+            "Claude Sonnet 4.6, Claude Sonnet 4.5. By default, the cache has a 5-minute "
+            "lifetime. The previous table reflects the following pricing multipliers for "
+            "prompt caching: 5-minute cache write tokens are 1.25 times the base input tokens "
+            "price; 1-hour cache write tokens are 2 times the base input tokens price; Cache "
+            "read tokens are 0.1 times the base input tokens price."
+        ),
+    },
+    "DOC-PROMPTING-BEST-PRACTICES": {
+        "title": "Prompting best practices — Claude Platform Docs",
+        "locator": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+        "published_at": None,
+        "text": (
+            "XML tags help Claude parse complex prompts unambiguously, especially when your "
+            "prompt mixes instructions, context, examples, and variable inputs. Wrapping each "
+            "type of content in its own tag (for example, <instructions>, <context>, <input>) "
+            "reduces misinterpretation."
+        ),
+    },
+}

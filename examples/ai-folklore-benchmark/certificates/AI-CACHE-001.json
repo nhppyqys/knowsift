@@ -1,0 +1,202 @@
+{
+  "certificate_version": "4.3.0",
+  "input_digest": "d9f6e03c2e6fe320130aa09bcd98d076e7ffc706a198c0548d4d881cd0d5ce63",
+  "claim_id": "AI-CACHE-001",
+  "claim_text": "只要开启提示缓存就一定比不开更便宜。",
+  "canonical_claim": null,
+  "normalized_ir": null,
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "FAIL",
+    "code": "EVIDENCE_CONTRADICTS_CLAIM",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 1,
+      "ENTAILS": 0,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [],
+    "contradicting_evidence_ids": [
+      "E-AI-CACHE-001-1"
+    ],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "PASS",
+    "code": "INDEPENDENT_REVIEW_AGREES",
+    "policy": "required",
+    "reviewer_ids": [
+      "claude-haiku-4-5-20251001"
+    ],
+    "independence": {
+      "E-AI-CACHE-001-1": {
+        "declared": "SAME_FAMILY",
+        "verifiable_ceiling": "SAME_FAMILY"
+      }
+    },
+    "weakest_independence": "SAME_FAMILY",
+    "min_independence": "SAME_MODEL",
+    "reviewed_evidence_ids": [
+      "E-AI-CACHE-001-1"
+    ],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [],
+    "falsifiers": [
+      {
+        "evidence_id": "E-AI-CACHE-001-1",
+        "what_would_falsify": "Calculate the total cost of a single request with caching (1.25x write overhead) versus without caching (1x base input cost). Or run an actual API usage scenario with one or two requests and show that enabling caching increased the bill rather than decreased it."
+      }
+    ],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "PASS",
+    "code": "LOCATOR_SUPPORTS_DECLARED_ROLE",
+    "policy": "required",
+    "by_evidence": {
+      "E-AI-CACHE-001-1": {
+        "locator_status": "CLASSIFIED",
+        "locator_code": "LOCATOR_CLASSIFIED",
+        "source_kind": "official_documentation",
+        "declared_class": "OFFICIAL",
+        "permits": [
+          "GUIDANCE",
+          "OFFICIAL"
+        ],
+        "rule": "Claude platform docs",
+        "verdict": "CONSISTENT"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-AI-CACHE-001-1"
+    ],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-AI-CACHE-001-1": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-AI-CACHE-001-1"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "FAIL",
+      "code": "APPROPRIATE_EVIDENCE_CONTRADICTS_CLAIM",
+      "missing": []
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "DOC-PROMPT-CACHING"
+    ],
+    "roots_by_source": {
+      "DOC-PROMPT-CACHING": [
+        "DOC-PROMPT-CACHING"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "DOC-PROMPT-CACHING": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-AI-CACHE-001-1"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-AI-CACHE-001-1",
+      "source_id": "DOC-PROMPT-CACHING",
+      "source_kind": "official_documentation",
+      "quote": {
+        "text": "5-minute cache write tokens are 1.25 times the base input tokens price",
+        "start": 405,
+        "end": 475
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [
+    "CLAIM_CONTRADICTED_BY_SUPPLIED_EVIDENCE"
+  ],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "APPROPRIATE_EVIDENCE_CONTRADICTS_CLAIM"
+  ],
+  "admission": "REJECT"
+}

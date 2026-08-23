@@ -3,153 +3,400 @@
   "default": {
     "version_sensitive": false,
     "required_protocols": [],
-    "preferred_sources": ["primary_source", "official_record", "official_documentation", "peer_reviewed_study", "reproducible_test"],
-    "insufficient_as_sole_source": ["anonymous_post", "marketing_copy", "unsupported_assertion"]
+    "preferred_sources": [
+      "primary_source",
+      "official_record",
+      "official_documentation",
+      "research_paper",
+      "peer_reviewed_study",
+      "reproducible_test"
+    ],
+    "insufficient_as_sole_source": [
+      "anonymous_post",
+      "marketing_copy",
+      "unsupported_assertion"
+    ]
   },
   "domains": {
     "AI_AGENTS": {
       "version_sensitive": true,
       "required_protocols": [],
-      "preferred_sources": ["official_documentation", "release_notes", "source_code", "research_paper", "reproducible_benchmark"],
-      "insufficient_as_sole_source": ["vendor_marketing", "single_benchmark_claim", "forum_post"]
+      "preferred_sources": [
+        "official_documentation",
+        "release_notes",
+        "source_code",
+        "research_paper",
+        "reproducible_benchmark"
+      ],
+      "insufficient_as_sole_source": [
+        "vendor_marketing",
+        "single_benchmark_claim",
+        "forum_post"
+      ]
     },
     "ECOMMERCE": {
       "version_sensitive": true,
       "required_protocols": [],
-      "preferred_sources": ["platform_documentation", "merchant_experiment", "account_level_data", "official_policy"],
-      "insufficient_as_sole_source": ["merchant_anecdote", "platform_marketing", "agency_blog"]
+      "preferred_sources": [
+        "platform_documentation",
+        "merchant_experiment",
+        "account_level_data",
+        "official_policy"
+      ],
+      "insufficient_as_sole_source": [
+        "merchant_anecdote",
+        "platform_marketing",
+        "agency_blog"
+      ]
     },
     "EDUCATION_PSYCHOLOGY": {
       "version_sensitive": false,
       "required_protocols": [],
-      "preferred_sources": ["systematic_review", "meta_analysis", "randomized_trial", "validated_measurement_study"],
-      "insufficient_as_sole_source": ["learner_preference", "teacher_anecdote", "popular_explanation"]
+      "preferred_sources": [
+        "systematic_review",
+        "meta_analysis",
+        "randomized_trial",
+        "validated_measurement_study"
+      ],
+      "insufficient_as_sole_source": [
+        "learner_preference",
+        "teacher_anecdote",
+        "popular_explanation"
+      ]
     },
     "FINANCE_INVESTING": {
       "version_sensitive": false,
       "required_protocols": [],
-      "preferred_sources": ["audited_data", "regulator_filing", "index_provider", "fund_report", "model_with_assumptions", "historical_distribution", "scenario_analysis"],
-      "insufficient_as_sole_source": ["influencer_claim", "historical_average_alone", "backtest_without_method"],
+      "preferred_sources": [
+        "audited_data",
+        "regulator_filing",
+        "index_provider",
+        "fund_report",
+        "model_with_assumptions",
+        "historical_distribution",
+        "scenario_analysis"
+      ],
+      "insufficient_as_sole_source": [
+        "influencer_claim",
+        "historical_average_alone",
+        "backtest_without_method"
+      ],
       "claim_classes": {
         "HISTORICAL_PERFORMANCE": {
-          "preferred_sources": ["audited_data", "regulator_filing", "index_provider", "fund_report"],
-          "insufficient_as_sole_source": ["influencer_claim", "backtest_without_method"]
+          "preferred_sources": [
+            "audited_data",
+            "regulator_filing",
+            "index_provider",
+            "fund_report"
+          ],
+          "insufficient_as_sole_source": [
+            "influencer_claim",
+            "backtest_without_method"
+          ]
         },
         "FUTURE_EXPECTATION": {
-          "preferred_sources": ["model_with_assumptions", "historical_distribution", "scenario_analysis"],
-          "insufficient_as_sole_source": ["historical_average_alone", "influencer_claim"]
+          "preferred_sources": [
+            "model_with_assumptions",
+            "historical_distribution",
+            "scenario_analysis"
+          ],
+          "insufficient_as_sole_source": [
+            "historical_average_alone",
+            "influencer_claim"
+          ]
         }
       }
     },
     "FOOD_COOKING": {
       "version_sensitive": false,
       "required_protocols": [],
-      "preferred_sources": ["food_safety_authority", "controlled_experiment", "primary_source", "reproducible_test"],
-      "insufficient_as_sole_source": ["recipe_anecdote", "folk_mechanism", "preference"]
+      "preferred_sources": [
+        "food_safety_authority",
+        "controlled_experiment",
+        "primary_source",
+        "reproducible_test"
+      ],
+      "insufficient_as_sole_source": [
+        "recipe_anecdote",
+        "folk_mechanism",
+        "preference"
+      ]
     },
     "HISTORY": {
       "version_sensitive": false,
-      "required_protocols": ["HISTORICAL_SOURCE_CRITICISM"],
-      "preferred_sources": ["primary_document", "archival_record", "critical_edition", "peer_reviewed_history"],
-      "insufficient_as_sole_source": ["unsourced_retelling", "modern_anecdote", "anonymous_post"]
+      "required_protocols": [
+        "HISTORICAL_SOURCE_CRITICISM"
+      ],
+      "preferred_sources": [
+        "primary_document",
+        "archival_record",
+        "critical_edition",
+        "peer_reviewed_history"
+      ],
+      "insufficient_as_sole_source": [
+        "unsourced_retelling",
+        "modern_anecdote",
+        "anonymous_post"
+      ]
     },
     "LAW": {
       "version_sensitive": true,
-      "required_protocols": ["LEGAL_AUTHORITY"],
-      "preferred_sources": ["statute", "regulation", "binding_case", "official_rule", "constitution", "treatise", "law_review"],
-      "insufficient_as_sole_source": ["legal_blog", "secondary_summary", "unofficial_guidance"],
+      "required_protocols": [
+        "LEGAL_AUTHORITY"
+      ],
+      "preferred_sources": [
+        "statute",
+        "regulation",
+        "binding_case",
+        "official_rule",
+        "constitution",
+        "treatise",
+        "law_review"
+      ],
+      "insufficient_as_sole_source": [
+        "legal_blog",
+        "secondary_summary",
+        "unofficial_guidance"
+      ],
       "claim_classes": {
         "BINDING_RULE": {
-          "preferred_sources": ["statute", "regulation", "binding_case", "official_rule", "constitution"],
-          "insufficient_as_sole_source": ["legal_blog", "secondary_summary", "unofficial_guidance"]
+          "preferred_sources": [
+            "statute",
+            "regulation",
+            "binding_case",
+            "official_rule",
+            "constitution"
+          ],
+          "insufficient_as_sole_source": [
+            "legal_blog",
+            "secondary_summary",
+            "unofficial_guidance"
+          ]
         },
         "GENERAL_EXPLANATION": {
-          "preferred_sources": ["official_rule", "binding_case", "treatise", "law_review"],
-          "insufficient_as_sole_source": ["legal_blog"]
+          "preferred_sources": [
+            "official_rule",
+            "binding_case",
+            "treatise",
+            "law_review"
+          ],
+          "insufficient_as_sole_source": [
+            "legal_blog"
+          ]
         }
       }
     },
     "MEDICINE_HEALTH": {
       "version_sensitive": true,
       "required_protocols": [],
-      "preferred_sources": ["clinical_guideline", "public_health_guideline", "systematic_review", "meta_analysis", "randomized_trial", "mechanistic_study", "experimental_study"],
-      "insufficient_as_sole_source": ["influencer_video", "single_case", "expert_opinion_without_evidence"],
+      "preferred_sources": [
+        "clinical_guideline",
+        "public_health_guideline",
+        "systematic_review",
+        "meta_analysis",
+        "randomized_trial",
+        "mechanistic_study",
+        "experimental_study"
+      ],
+      "insufficient_as_sole_source": [
+        "influencer_video",
+        "single_case",
+        "expert_opinion_without_evidence"
+      ],
       "claim_classes": {
         "SAFETY_RECOMMENDATION": {
-          "preferred_sources": ["clinical_guideline", "public_health_guideline", "systematic_review"],
-          "insufficient_as_sole_source": ["influencer_video", "single_case"]
+          "preferred_sources": [
+            "clinical_guideline",
+            "public_health_guideline",
+            "systematic_review"
+          ],
+          "insufficient_as_sole_source": [
+            "influencer_video",
+            "single_case"
+          ]
         },
         "TREATMENT_EFFECT": {
-          "preferred_sources": ["systematic_review", "meta_analysis", "randomized_trial"],
-          "insufficient_as_sole_source": ["expert_opinion_without_evidence", "single_case"]
+          "preferred_sources": [
+            "systematic_review",
+            "meta_analysis",
+            "randomized_trial"
+          ],
+          "insufficient_as_sole_source": [
+            "expert_opinion_without_evidence",
+            "single_case"
+          ]
         },
         "MECHANISM": {
-          "preferred_sources": ["mechanistic_study", "experimental_study", "systematic_review"],
-          "insufficient_as_sole_source": ["influencer_video", "expert_opinion_without_evidence"]
+          "preferred_sources": [
+            "mechanistic_study",
+            "experimental_study",
+            "systematic_review"
+          ],
+          "insufficient_as_sole_source": [
+            "influencer_video",
+            "expert_opinion_without_evidence"
+          ]
         }
       }
     },
     "META_ADS": {
       "version_sensitive": true,
       "required_protocols": [],
-      "preferred_sources": ["meta_official_docs", "meta_api_docs", "meta_official_policy", "randomized_lift_test", "merchant_experiment", "account_level_data", "independent_study"],
-      "insufficient_as_sole_source": ["meta_marketing_copy", "reported_roas", "practitioner_assertion", "agency_blog"],
+      "preferred_sources": [
+        "meta_official_docs",
+        "meta_api_docs",
+        "meta_official_policy",
+        "randomized_lift_test",
+        "merchant_experiment",
+        "account_level_data",
+        "independent_study"
+      ],
+      "insufficient_as_sole_source": [
+        "meta_marketing_copy",
+        "reported_roas",
+        "practitioner_assertion",
+        "agency_blog"
+      ],
       "claim_classes": {
         "PLATFORM_CAPABILITY": {
-          "preferred_sources": ["meta_official_docs", "meta_api_docs"],
-          "insufficient_as_sole_source": ["agency_blog", "practitioner_assertion"]
+          "preferred_sources": [
+            "meta_official_docs",
+            "meta_api_docs"
+          ],
+          "insufficient_as_sole_source": [
+            "agency_blog",
+            "practitioner_assertion"
+          ]
         },
         "API_SCHEMA": {
-          "preferred_sources": ["meta_api_docs"],
-          "insufficient_as_sole_source": ["agency_blog", "practitioner_assertion"]
+          "preferred_sources": [
+            "meta_api_docs"
+          ],
+          "insufficient_as_sole_source": [
+            "agency_blog",
+            "practitioner_assertion"
+          ]
         },
         "POLICY": {
-          "preferred_sources": ["meta_official_policy", "meta_official_docs"],
-          "insufficient_as_sole_source": ["agency_blog", "practitioner_assertion"]
+          "preferred_sources": [
+            "meta_official_policy",
+            "meta_official_docs"
+          ],
+          "insufficient_as_sole_source": [
+            "agency_blog",
+            "practitioner_assertion"
+          ]
         },
         "AD_EFFECTIVENESS": {
-          "preferred_sources": ["merchant_experiment", "account_level_data", "independent_study"],
-          "insufficient_as_sole_source": ["meta_marketing_copy", "practitioner_assertion"]
+          "preferred_sources": [
+            "merchant_experiment",
+            "account_level_data",
+            "independent_study"
+          ],
+          "insufficient_as_sole_source": [
+            "meta_marketing_copy",
+            "practitioner_assertion"
+          ]
         },
         "INCREMENTALITY": {
-          "preferred_sources": ["randomized_lift_test", "merchant_experiment"],
-          "insufficient_as_sole_source": ["reported_roas", "meta_marketing_copy"]
+          "preferred_sources": [
+            "randomized_lift_test",
+            "merchant_experiment"
+          ],
+          "insufficient_as_sole_source": [
+            "reported_roas",
+            "meta_marketing_copy"
+          ]
         }
       }
     },
     "NATURAL_SCIENCE": {
       "version_sensitive": false,
       "required_protocols": [],
-      "preferred_sources": ["peer_reviewed_study", "replication_study", "measurement_standard", "primary_dataset"],
-      "insufficient_as_sole_source": ["popular_explanation", "single_uncontrolled_observation", "folk_mechanism"]
+      "preferred_sources": [
+        "peer_reviewed_study",
+        "replication_study",
+        "measurement_standard",
+        "primary_dataset"
+      ],
+      "insufficient_as_sole_source": [
+        "popular_explanation",
+        "single_uncontrolled_observation",
+        "folk_mechanism"
+      ]
     },
     "SOCIAL_SCIENCE_ECONOMICS": {
       "version_sensitive": false,
       "required_protocols": [],
-      "preferred_sources": ["identified_empirical_study", "official_statistics", "systematic_review", "primary_dataset"],
-      "insufficient_as_sole_source": ["single_country_anecdote", "opinion_piece", "correlation_without_method"]
+      "preferred_sources": [
+        "identified_empirical_study",
+        "official_statistics",
+        "systematic_review",
+        "primary_dataset"
+      ],
+      "insufficient_as_sole_source": [
+        "single_country_anecdote",
+        "opinion_piece",
+        "correlation_without_method"
+      ]
     },
     "SOFTWARE": {
       "version_sensitive": true,
       "required_protocols": [],
-      "preferred_sources": ["official_documentation", "release_notes", "source_code", "reproducible_test", "reproducible_benchmark", "production_measurement"],
-      "insufficient_as_sole_source": ["blog_post", "forum_post", "vendor_marketing"],
+      "preferred_sources": [
+        "official_documentation",
+        "release_notes",
+        "source_code",
+        "reproducible_test",
+        "reproducible_benchmark",
+        "production_measurement"
+      ],
+      "insufficient_as_sole_source": [
+        "blog_post",
+        "forum_post",
+        "vendor_marketing"
+      ],
       "claim_classes": {
         "API_BEHAVIOR": {
-          "preferred_sources": ["official_documentation", "release_notes", "source_code", "reproducible_test"],
-          "insufficient_as_sole_source": ["blog_post", "forum_post", "vendor_marketing"]
+          "preferred_sources": [
+            "official_documentation",
+            "release_notes",
+            "source_code",
+            "reproducible_test"
+          ],
+          "insufficient_as_sole_source": [
+            "blog_post",
+            "forum_post",
+            "vendor_marketing"
+          ]
         },
         "PERFORMANCE": {
-          "preferred_sources": ["reproducible_benchmark", "production_measurement"],
-          "insufficient_as_sole_source": ["official_documentation", "blog_post", "vendor_marketing"]
+          "preferred_sources": [
+            "reproducible_benchmark",
+            "production_measurement"
+          ],
+          "insufficient_as_sole_source": [
+            "official_documentation",
+            "blog_post",
+            "vendor_marketing"
+          ]
         }
       }
     },
     "SPORTS": {
       "version_sensitive": false,
       "required_protocols": [],
-      "preferred_sources": ["official_statistics", "league_record", "documented_model", "reproducible_analysis"],
-      "insufficient_as_sole_source": ["fan_opinion", "single_highlight", "unsourced_ranking"]
+      "preferred_sources": [
+        "official_statistics",
+        "league_record",
+        "documented_model",
+        "reproducible_analysis"
+      ],
+      "insufficient_as_sole_source": [
+        "fan_opinion",
+        "single_highlight",
+        "unsourced_ranking"
+      ]
     }
   }
 }

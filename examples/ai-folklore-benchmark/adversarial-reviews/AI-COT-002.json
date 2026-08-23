@@ -1,0 +1,12 @@
+[
+  {
+    "claim_id": "AI-COT-002",
+    "evidence_id": "E-AI-COT-002-1",
+    "relation": "CONTRADICTS",
+    "reviewer_id": "claude-haiku-4-5-20251001",
+    "independence": "SAME_FAMILY",
+    "evidence_fragment": "Our results show that CoT gives strong performance benefits primarily on tasks involving math or logic, with much smaller gains on other types of tasks.",
+    "strongest_counter_reading": "A reader might argue that CoT still produces gains (even if smaller) across all task categories, so it does universally improve performance, just with variable magnitude. The evidence shows the effect exists everywhere, merely to different degrees.",
+    "what_would_falsify": "A replication study analyzing the same 100+ papers and finding that performance improvements are roughly equal across all task types, or detailed inspection showing the original meta-analysis systematically excluded or downweighted non-math/logic tasks in its data aggregation."
+  }
+]

@@ -163,6 +163,25 @@ The result is not a get-rich guide. It is five documents you can act on:
 
 To check whether the filtering was honest: [full audit of 27 claims](examples/short-drama-benchmark/CLAIM-AUDIT.md) · [17 sources](examples/short-drama-benchmark/SOURCES.md) · [per-claim certificates](examples/short-drama-benchmark/certificates/)
 
+## A second benchmark: what the AI field says about itself
+
+We compiled 17 widely repeated prompting and retrieval claims against the verbatim abstracts of 9 papers and 2 pages of official platform documentation.
+
+**Result: only 7 survive as usable knowledge. 6 are contradicted outright, 4 are unresolved.**
+
+| A claim you have probably seen | What the original source actually says |
+|---|---|
+| Chain-of-thought improves performance broadly | A meta-analysis of 100+ papers: gains are **primarily** on math and logic, much smaller elsewhere |
+| RAG eliminates hallucination | When retrieved content is wrong, models override their own correct answer **over 60%** of the time |
+| Prompt caching saves money | Official pricing: a cache **write** costs **1.25x** base input — unused, it is a net loss |
+| Letting a model check its own work always helps | **Two papers give opposite evidence**; the tool does not pick a side |
+
+We ran the gate on ourselves too. The first reading came from claude-opus-5; claude-haiku-4-5 then read the same source text in a fresh context, never told the first conclusion. They disagreed on 4 of 18 evidence relations — **all four on claims containing a universal quantifier**, both models giving the same reason: the evidence tests a handful of specific models and cannot support "for any model". Those three claims dropped from conditional knowledge to unresolved.
+
+Every word the second reviewer wrote is in the repository for you to check.
+
+[Full case and all certificates](examples/ai-folklore-benchmark/README.md)
+
 ## Quick start
 
 ```bash
@@ -272,6 +291,7 @@ python3 -m unittest discover -s tests -v
 - [Integration patterns](references/integration-patterns.md)
 - [Safety and limitations](references/safety-and-limitations.md)
 - [Real-world short-drama benchmark](examples/short-drama-benchmark/README.md)
+- [AI folklore audit](examples/ai-folklore-benchmark/README.md)
 - [Minimal fictional example](examples/learning-english/README.md)
 
 ## License

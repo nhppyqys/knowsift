@@ -1,0 +1,12 @@
+[
+  {
+    "claim_id": "AI-SELF-002",
+    "evidence_id": "E-AI-SELF-002-1",
+    "relation": "CONTRADICTS",
+    "reviewer_id": "claude-haiku-4-5-20251001",
+    "independence": "SAME_FAMILY",
+    "evidence_fragment": "LLMs struggle to self-correct their responses without external feedback, and at times, their performance even degrades after self-correction.",
+    "strongest_counter_reading": "The evidence states that intrinsic self-correction is something LLMs 'attempt,' which could be read as acknowledging that models possess some self-correction capability, even if imperfect. 'Struggle' could mean they achieve it with difficulty rather than categorically failing, and the phrase 'at times' suggests degradation is not universal.",
+    "what_would_falsify": "A controlled benchmark where the same LLM successfully corrects its own reasoning errors (as measured by accuracy improvement) in a majority of test cases without external feedback, across multiple reasoning domains."
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "claim_id": "AI-CACHE-003",
+    "evidence_id": "E-AI-CACHE-003-1",
+    "relation": "CONTRADICTS",
+    "reviewer_id": "claude-haiku-4-5-20251001",
+    "independence": "SAME_FAMILY",
+    "evidence_fragment": "the minimum cacheable prompt length is: 512 tokens for Claude Opus 5, Claude Fable 5, and Claude Mythos 5; 1,024 tokens for Claude Opus 4.8, Claude Sonnet 5, Claude Sonnet 4.6, Claude Sonnet 4.5",
+    "strongest_counter_reading": "The evidence describes current implementation minimums but does not logically preclude that arbitrarily short prompts could theoretically be cached in principle; these minimums might be economic or engineering constraints rather than fundamental limitations.",
+    "what_would_falsify": "Attempt to cache prompts shorter than 512 tokens on Claude Opus 5 through the official API and observe whether the API accepts and caches them successfully, or whether it returns an error rejecting the request as below the minimum."
+  }
+]

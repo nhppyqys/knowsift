@@ -1,0 +1,201 @@
+{
+  "certificate_version": "4.3.0",
+  "input_digest": "7d5575828b844b942cc5761f889e660896a513791bb723d8b3ca940a568ed95b",
+  "claim_id": "AI-CTX-001",
+  "claim_text": "大模型能够稳定利用超长上下文中任意位置的信息。",
+  "canonical_claim": null,
+  "normalized_ir": null,
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "FAIL",
+    "code": "EVIDENCE_CONTRADICTS_CLAIM",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 1,
+      "ENTAILS": 0,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [],
+    "contradicting_evidence_ids": [
+      "E-AI-CTX-001-1"
+    ],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "PASS",
+    "code": "INDEPENDENT_REVIEW_AGREES",
+    "policy": "required",
+    "reviewer_ids": [
+      "claude-haiku-4-5-20251001"
+    ],
+    "independence": {
+      "E-AI-CTX-001-1": {
+        "declared": "SAME_FAMILY",
+        "verifiable_ceiling": "SAME_FAMILY"
+      }
+    },
+    "weakest_independence": "SAME_FAMILY",
+    "min_independence": "SAME_MODEL",
+    "reviewed_evidence_ids": [
+      "E-AI-CTX-001-1"
+    ],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [],
+    "falsifiers": [
+      {
+        "evidence_id": "E-AI-CTX-001-1",
+        "what_would_falsify": "Benchmark results demonstrating that a state-of-the-art language model achieves within 5% performance variance when retrieving information from beginning, middle, and end positions across long contexts (100K+ tokens) on standardized multi-document QA and key-value retrieval tasks."
+      }
+    ],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "PASS",
+    "code": "LOCATOR_SUPPORTS_DECLARED_ROLE",
+    "policy": "required",
+    "by_evidence": {
+      "E-AI-CTX-001-1": {
+        "locator_status": "CLASSIFIED",
+        "locator_code": "LOCATOR_CLASSIFIED",
+        "source_kind": "research_paper",
+        "declared_class": "SCHOLARLY",
+        "permits": [
+          "SCHOLARLY"
+        ],
+        "rule": "preprint server",
+        "verdict": "CONSISTENT"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-AI-CTX-001-1"
+    ],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-AI-CTX-001-1": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-AI-CTX-001-1"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "FAIL",
+      "code": "APPROPRIATE_EVIDENCE_CONTRADICTS_CLAIM",
+      "missing": []
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "PAPER-LOST-MIDDLE"
+    ],
+    "roots_by_source": {
+      "PAPER-LOST-MIDDLE": [
+        "PAPER-LOST-MIDDLE"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "PAPER-LOST-MIDDLE": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-AI-CTX-001-1"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-AI-CTX-001-1",
+      "source_id": "PAPER-LOST-MIDDLE",
+      "source_kind": "research_paper",
+      "quote": {
+        "text": "current language models do not robustly make use of information in long input contexts",
+        "start": 308,
+        "end": 394
+      },
+      "date": "2023-07-06",
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [
+    "CLAIM_CONTRADICTED_BY_SUPPLIED_EVIDENCE"
+  ],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "APPROPRIATE_EVIDENCE_CONTRADICTS_CLAIM"
+  ],
+  "admission": "REJECT"
+}

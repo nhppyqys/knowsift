@@ -1,0 +1,12 @@
+[
+  {
+    "claim_id": "AI-CTX-002",
+    "evidence_id": "E-AI-CTX-002-1",
+    "relation": "ENTAILS",
+    "reviewer_id": "claude-haiku-4-5-20251001",
+    "independence": "SAME_FAMILY",
+    "evidence_fragment": "In particular, we observe that performance is often highest when relevant information occurs at the beginning or end of the input context, and significantly degrades when models must access relevant information in the middle of long contexts, even for explicitly long-context models.",
+    "strongest_counter_reading": "The evidence uses qualified language ('often highest', 'significantly degrades') that could allow for exceptions or smaller effect sizes than the claim suggests. Additionally, the finding is limited to two specific task types (multi-document QA and key-value retrieval), so one could argue the generalizability to all model behaviors is not established by this excerpt alone.",
+    "what_would_falsify": "Reviewing the full paper to find quantitative results showing that the position effect is negligible, inconsistent across tasks, or that middle positions sometimes outperform beginning/end positions; or finding that the paper's actual data tables contradict the summary statement in this excerpt."
+  }
+]

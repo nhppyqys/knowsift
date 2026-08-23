@@ -1,0 +1,201 @@
+{
+  "certificate_version": "4.3.0",
+  "input_digest": "c89ba93496d8cd0f6bbd3b1f654103b61900f461a72691c6d4facc0776a55c14",
+  "claim_id": "AI-RAG-001",
+  "claim_text": "接上检索增强就能消除大模型的幻觉。",
+  "canonical_claim": null,
+  "normalized_ir": null,
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "FAIL",
+    "code": "EVIDENCE_CONTRADICTS_CLAIM",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 1,
+      "ENTAILS": 0,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [],
+    "contradicting_evidence_ids": [
+      "E-AI-RAG-001-1"
+    ],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "PASS",
+    "code": "INDEPENDENT_REVIEW_AGREES",
+    "policy": "required",
+    "reviewer_ids": [
+      "claude-haiku-4-5-20251001"
+    ],
+    "independence": {
+      "E-AI-RAG-001-1": {
+        "declared": "SAME_FAMILY",
+        "verifiable_ceiling": "SAME_FAMILY"
+      }
+    },
+    "weakest_independence": "SAME_FAMILY",
+    "min_independence": "SAME_MODEL",
+    "reviewed_evidence_ids": [
+      "E-AI-RAG-001-1"
+    ],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [],
+    "falsifiers": [
+      {
+        "evidence_id": "E-AI-RAG-001-1",
+        "what_would_falsify": "Empirical results showing that RAG systems with high-quality retrieval (e.g., >95% retrieval accuracy) achieve near-zero hallucination rates compared to baseline LLMs, or longitudinal data from production RAG systems demonstrating hallucination elimination in practice."
+      }
+    ],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "PASS",
+    "code": "LOCATOR_SUPPORTS_DECLARED_ROLE",
+    "policy": "required",
+    "by_evidence": {
+      "E-AI-RAG-001-1": {
+        "locator_status": "CLASSIFIED",
+        "locator_code": "LOCATOR_CLASSIFIED",
+        "source_kind": "research_paper",
+        "declared_class": "SCHOLARLY",
+        "permits": [
+          "SCHOLARLY"
+        ],
+        "rule": "preprint server",
+        "verdict": "CONSISTENT"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-AI-RAG-001-1"
+    ],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-AI-RAG-001-1": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-AI-RAG-001-1"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "FAIL",
+      "code": "APPROPRIATE_EVIDENCE_CONTRADICTS_CLAIM",
+      "missing": []
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "PAPER-CLASHEVAL"
+    ],
+    "roots_by_source": {
+      "PAPER-CLASHEVAL": [
+        "PAPER-CLASHEVAL"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "PAPER-CLASHEVAL": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-AI-RAG-001-1"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-AI-RAG-001-1",
+      "source_id": "PAPER-CLASHEVAL",
+      "source_kind": "research_paper",
+      "quote": {
+        "text": "LLMs are susceptible to adopting incorrect retrieved content, overriding their own correct prior knowledge over 60% of the time",
+        "start": 450,
+        "end": 577
+      },
+      "date": "2024-04-16",
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [
+    "CLAIM_CONTRADICTED_BY_SUPPLIED_EVIDENCE"
+  ],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "APPROPRIATE_EVIDENCE_CONTRADICTS_CLAIM"
+  ],
+  "admission": "REJECT"
+}

@@ -1,0 +1,232 @@
+{
+  "certificate_version": "4.3.0",
+  "input_digest": "6f3ca5b09dd65d54933c1126e867f23cf7dc7261510a08a62ea688b0b8908c60",
+  "claim_id": "AI-VOTE-001",
+  "claim_text": "对同一问题采样多条推理路径再取最一致的答案，能提升思维链在算术与常识推理基准上的表现。",
+  "canonical_claim": "对同一问题采样多条推理路径再取最一致的答案能提升思维链在算术与常识推理基准上的表现。",
+  "normalized_ir": {
+    "claim_id": "AI-VOTE-001",
+    "source_text": "对同一问题采样多条推理路径再取最一致的答案，能提升思维链在算术与常识推理基准上的表现。",
+    "operator": "FACT",
+    "subject": "对同一问题采样多条推理路径再取最一致的答案",
+    "predicate": "能提升",
+    "object": "思维链在算术与常识推理基准上的表现",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "对同一问题采样多条推理路径再取最一致的答案",
+        "start": 0,
+        "end": 21
+      },
+      "predicate": {
+        "text": "能提升",
+        "start": 22,
+        "end": 25
+      },
+      "object": {
+        "text": "思维链在算术与常识推理基准上的表现",
+        "start": 25,
+        "end": 42
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-AI-VOTE-001-1"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "PASS",
+    "code": "INDEPENDENT_REVIEW_AGREES",
+    "policy": "required",
+    "reviewer_ids": [
+      "claude-haiku-4-5-20251001"
+    ],
+    "independence": {
+      "E-AI-VOTE-001-1": {
+        "declared": "SAME_FAMILY",
+        "verifiable_ceiling": "SAME_FAMILY"
+      }
+    },
+    "weakest_independence": "SAME_FAMILY",
+    "min_independence": "SAME_MODEL",
+    "reviewed_evidence_ids": [
+      "E-AI-VOTE-001-1"
+    ],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [],
+    "falsifiers": [
+      {
+        "evidence_id": "E-AI-VOTE-001-1",
+        "what_would_falsify": "An ablation study showing that removing the consistency-based selection mechanism (while keeping multiple-path sampling) produces the same improvements; or a replication study on held-out arithmetic/commonsense benchmarks showing no improvement; or clarification that the baseline or evaluation setup differed from standard benchmark specifications."
+      }
+    ],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "PASS",
+    "code": "LOCATOR_SUPPORTS_DECLARED_ROLE",
+    "policy": "required",
+    "by_evidence": {
+      "E-AI-VOTE-001-1": {
+        "locator_status": "CLASSIFIED",
+        "locator_code": "LOCATOR_CLASSIFIED",
+        "source_kind": "research_paper",
+        "declared_class": "SCHOLARLY",
+        "permits": [
+          "SCHOLARLY"
+        ],
+        "rule": "preprint server",
+        "verdict": "CONSISTENT"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-AI-VOTE-001-1"
+    ],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-AI-VOTE-001-1": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-AI-VOTE-001-1"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-AI-VOTE-001-1"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "PAPER-SELF-CONSISTENCY"
+    ],
+    "roots_by_source": {
+      "PAPER-SELF-CONSISTENCY": [
+        "PAPER-SELF-CONSISTENCY"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "PAPER-SELF-CONSISTENCY": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-AI-VOTE-001-1"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-AI-VOTE-001-1",
+      "source_id": "PAPER-SELF-CONSISTENCY",
+      "source_kind": "research_paper",
+      "quote": {
+        "text": "self-consistency boosts the performance of chain-of-thought prompting with a striking margin on a range of popular arithmetic and commonsense reasoning benchmarks",
+        "start": 371,
+        "end": 533
+      },
+      "date": "2022-03-21",
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

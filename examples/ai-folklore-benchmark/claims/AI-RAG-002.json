@@ -1,0 +1,72 @@
+{
+  "claim_ir": {
+    "claim_id": "AI-RAG-002",
+    "source_text": "检索到的内容出错时，模型有很高比例会跟着错，而不是坚持自己原本正确的答案。",
+    "operator": "FACT",
+    "subject": "检索到的内容出错时",
+    "predicate": "模型有很高比例会跟着错",
+    "object": "而不是坚持自己原本正确的答案",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "检索到的内容出错时",
+        "start": 0,
+        "end": 9
+      },
+      "predicate": {
+        "text": "模型有很高比例会跟着错",
+        "start": 10,
+        "end": 21
+      },
+      "object": {
+        "text": "而不是坚持自己原本正确的答案",
+        "start": 22,
+        "end": 36
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-AI-RAG-002-1",
+      "source_id": "PAPER-CLASHEVAL",
+      "source_kind": "research_paper",
+      "locator": "https://arxiv.org/abs/2404.10198",
+      "source_text": "Retrieval augmented generation (RAG) is frequently used to mitigate hallucinations and provide up-to-date knowledge for large language models (LLMs). However, given that document retrieval is an imprecise task and sometimes results in erroneous or even harmful content being presented in context, this raises the question of how LLMs handle retrieved information. We benchmark six top-performing LLMs, including GPT-4o, on this dataset and find that LLMs are susceptible to adopting incorrect retrieved content, overriding their own correct prior knowledge over 60% of the time.",
+      "quote": {
+        "text": "overriding their own correct prior knowledge over 60% of the time",
+        "start": 512,
+        "end": 577
+      },
+      "date": "2024-04-16",
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "AI-RAG-002",
+      "evidence_id": "E-AI-RAG-002-1",
+      "relation": "ENTAILS",
+      "reviewer_id": "claude-opus-5",
+      "claim_fragment": "检索到的内容出错时，模型有很高比例会跟着错，而不是坚持自己原本正确的答案",
+      "evidence_fragment": "overriding their own correct prior knowledge over 60% of the time",
+      "missing_bridge": ""
+    }
+  ],
+  "adversarial_reviews": [
+    {
+      "claim_id": "AI-RAG-002",
+      "evidence_id": "E-AI-RAG-002-1",
+      "relation": "ENTAILS",
+      "reviewer_id": "claude-haiku-4-5-20251001",
+      "independence": "SAME_FAMILY",
+      "evidence_fragment": "LLMs are susceptible to adopting incorrect retrieved content, overriding their own correct prior knowledge over 60% of the time.",
+      "strongest_counter_reading": "The evidence reports a specific finding from one benchmark study under controlled conditions; the claim generalizes this as a broad phenomenon about model behavior. The 60% figure may be dependent on the specific test setup, evaluation metrics, or model selection and may not hold universally across all scenarios or model types.",
+      "what_would_falsify": "Access to the original study to verify that the 60% figure does not actually represent the stated finding, or finding that in subsequent independent studies, LLMs successfully reject incorrect retrieved content more often than they adopt it (i.e., success rate above 50%)."
+    }
+  ],
+  "adversarial_policy": "required"
+}

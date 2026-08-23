@@ -1,0 +1,12 @@
+[
+  {
+    "claim_id": "AI-RAG-002",
+    "evidence_id": "E-AI-RAG-002-1",
+    "relation": "ENTAILS",
+    "reviewer_id": "claude-haiku-4-5-20251001",
+    "independence": "SAME_FAMILY",
+    "evidence_fragment": "LLMs are susceptible to adopting incorrect retrieved content, overriding their own correct prior knowledge over 60% of the time.",
+    "strongest_counter_reading": "The evidence reports a specific finding from one benchmark study under controlled conditions; the claim generalizes this as a broad phenomenon about model behavior. The 60% figure may be dependent on the specific test setup, evaluation metrics, or model selection and may not hold universally across all scenarios or model types.",
+    "what_would_falsify": "Access to the original study to verify that the 60% figure does not actually represent the stated finding, or finding that in subsequent independent studies, LLMs successfully reject incorrect retrieved content more often than they adopt it (i.e., success rate above 50%)."
+  }
+]

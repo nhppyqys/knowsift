@@ -156,6 +156,25 @@ flowchart LR
 
 想检查筛选是否诚实：[27 条说法审计表](examples/short-drama-benchmark/CLAIM-AUDIT.md) · [17 份来源清单](examples/short-drama-benchmark/SOURCES.md) · [每条说法的证书](examples/short-drama-benchmark/certificates/)
 
+## 另一个真实案例：AI 圈自己的流行说法
+
+我们把 17 条被反复转述的提示与检索技巧,对着 9 篇论文的摘要原文和 2 页官方文档编译了一遍。
+
+**结果:只有 7 条可以照搬。6 条被证据直接否定,4 条悬而未决。**
+
+| 你大概见过的说法 | 原始来源实际怎么说 |
+|---|---|
+| 思维链能普遍提升各类任务 | 100+ 篇论文的元分析:收益**主要**在数学与逻辑,其他类型小得多 |
+| 接上 RAG 就不幻觉了 | 检索内容出错时,模型有**超过 60%** 的比例推翻自己正确的答案跟着错 |
+| 开了提示缓存就省钱 | 官方定价:缓存**写入**是基础输入的 **1.25 倍**,不复用就是净亏 |
+| 让模型自己检查一遍总会更好 | **两篇论文给出相反证据**,工具不替你选边 |
+
+我们对自己也用了同一道门:第一遍由 claude-opus-5 判断,再让 claude-haiku-4-5 在全新上下文里独立读一遍同样的原文。18 条证据关系里不一致 4 条——**正好全是带「对任意模型」这种全称量词的说法**,两个模型给的理由一致:证据只测了几个具体模型,撑不起全称。这 3 条因此从「有条件成立」降为「悬而未决」。
+
+第二个模型说的每一句都留在仓库里,可以自己打开核对。
+
+[完整案例与全部证书](examples/ai-folklore-benchmark/README.md)
+
 ## 快速开始
 
 ```bash
@@ -263,6 +282,7 @@ python3 -m unittest discover -s tests -v
 - [产品接入方式](references/integration-patterns.md)
 - [安全边界](references/safety-and-limitations.md)
 - [真实短剧标杆案例](examples/short-drama-benchmark/README.md)
+- [AI 圈流行说法核验](examples/ai-folklore-benchmark/README.md)
 - [最小虚构演示](examples/learning-english/README.md)
 
 ## 许可证

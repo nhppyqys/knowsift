@@ -1,0 +1,12 @@
+[
+  {
+    "claim_id": "AI-EMO-001",
+    "evidence_id": "E-AI-EMO-001-1",
+    "relation": "PARTIAL",
+    "reviewer_id": "claude-haiku-4-5-20251001",
+    "independence": "SAME_FAMILY",
+    "evidence_fragment": "Our automatic experiments show that LLMs have a grasp of emotional intelligence, and their performance can be improved with emotional prompts (which we call \"EmotionPrompt\" that combines the original prompt with emotional stimuli), e.g. 8.00% relative performance improvement in Instruction Induction and 115% in BIG-Bench.",
+    "strongest_counter_reading": "The evidence tests six specific LLM models across 45 tasks. A reasonable interpretation is that this demonstrates broad, generalizable improvements across diverse models and tasks, suggesting the effect may hold universally. The diversity of models tested (from Flan-T5-Large to GPT-4) across different scales and architectures strengthens the claim of general applicability.",
+    "what_would_falsify": "Testing a major class of language models (e.g., encoder-only models, multimodal models, or models trained with different objectives) where emotional prompts consistently fail to produce improvements, or finding that performance improvements are highly inconsistent within the tested model family across different task types."
+  }
+]

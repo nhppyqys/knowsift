@@ -1,0 +1,232 @@
+{
+  "certificate_version": "4.3.0",
+  "input_digest": "6052654a5b1ffdc425880f1dea591f7a38213056d6b04c10480a87084de09d50",
+  "claim_id": "AI-CTX-002",
+  "claim_text": "相关信息出现在上下文开头或结尾时模型表现最好，出现在中间时明显下降。",
+  "canonical_claim": "相关信息出现在上下文开头或结尾时模型表现最好出现在中间时明显下降。",
+  "normalized_ir": {
+    "claim_id": "AI-CTX-002",
+    "source_text": "相关信息出现在上下文开头或结尾时模型表现最好，出现在中间时明显下降。",
+    "operator": "FACT",
+    "subject": "相关信息出现在上下文开头或结尾时模型表现最好",
+    "predicate": "出现在中间时",
+    "object": "明显下降",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "相关信息出现在上下文开头或结尾时模型表现最好",
+        "start": 0,
+        "end": 22
+      },
+      "predicate": {
+        "text": "出现在中间时",
+        "start": 23,
+        "end": 29
+      },
+      "object": {
+        "text": "明显下降",
+        "start": 29,
+        "end": 33
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-AI-CTX-002-1"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "PASS",
+    "code": "INDEPENDENT_REVIEW_AGREES",
+    "policy": "required",
+    "reviewer_ids": [
+      "claude-haiku-4-5-20251001"
+    ],
+    "independence": {
+      "E-AI-CTX-002-1": {
+        "declared": "SAME_FAMILY",
+        "verifiable_ceiling": "SAME_FAMILY"
+      }
+    },
+    "weakest_independence": "SAME_FAMILY",
+    "min_independence": "SAME_MODEL",
+    "reviewed_evidence_ids": [
+      "E-AI-CTX-002-1"
+    ],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [],
+    "falsifiers": [
+      {
+        "evidence_id": "E-AI-CTX-002-1",
+        "what_would_falsify": "Reviewing the full paper to find quantitative results showing that the position effect is negligible, inconsistent across tasks, or that middle positions sometimes outperform beginning/end positions; or finding that the paper's actual data tables contradict the summary statement in this excerpt."
+      }
+    ],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "PASS",
+    "code": "LOCATOR_SUPPORTS_DECLARED_ROLE",
+    "policy": "required",
+    "by_evidence": {
+      "E-AI-CTX-002-1": {
+        "locator_status": "CLASSIFIED",
+        "locator_code": "LOCATOR_CLASSIFIED",
+        "source_kind": "research_paper",
+        "declared_class": "SCHOLARLY",
+        "permits": [
+          "SCHOLARLY"
+        ],
+        "rule": "preprint server",
+        "verdict": "CONSISTENT"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-AI-CTX-002-1"
+    ],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-AI-CTX-002-1": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-AI-CTX-002-1"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-AI-CTX-002-1"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "PAPER-LOST-MIDDLE"
+    ],
+    "roots_by_source": {
+      "PAPER-LOST-MIDDLE": [
+        "PAPER-LOST-MIDDLE"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "PAPER-LOST-MIDDLE": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-AI-CTX-002-1"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-AI-CTX-002-1",
+      "source_id": "PAPER-LOST-MIDDLE",
+      "source_kind": "research_paper",
+      "quote": {
+        "text": "performance is often highest when relevant information occurs at the beginning or end of the input context, and significantly degrades when models must access relevant information in the middle of long contexts",
+        "start": 427,
+        "end": 637
+      },
+      "date": "2023-07-06",
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

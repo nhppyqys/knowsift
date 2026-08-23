@@ -1,0 +1,90 @@
+{
+  "claim_ir": {
+    "claim_id": "AI-SELF-001",
+    "source_text": "对任意模型，让它对自己的输出给出反馈并迭代修改，产出都会优于一次成文。",
+    "operator": "FACT",
+    "subject": "让它对自己的输出给出反馈并迭代修改",
+    "predicate": "产出都会优于",
+    "object": "一次成文",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {
+      "version": "任意模型"
+    },
+    "anchors": {
+      "subject": {
+        "text": "让它对自己的输出给出反馈并迭代修改",
+        "start": 6,
+        "end": 23
+      },
+      "predicate": {
+        "text": "产出都会优于",
+        "start": 24,
+        "end": 30
+      },
+      "object": {
+        "text": "一次成文",
+        "start": 30,
+        "end": 34
+      },
+      "scope": {
+        "text": "任意模型",
+        "start": 1,
+        "end": 5
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-AI-SELF-001-1",
+      "source_id": "PAPER-SELF-REFINE",
+      "source_kind": "research_paper",
+      "locator": "https://arxiv.org/abs/2303.17651",
+      "source_text": "Motivated by how humans refine their written text, we introduce Self-Refine, an approach for improving initial outputs from LLMs through iterative feedback and refinement. The main idea is to generate an initial output using an LLMs; then, the same LLMs provides feedback for its output and uses it to refine itself, iteratively. We evaluate Self-Refine across 7 diverse tasks, ranging from dialog response generation to mathematical reasoning, using state-of-the-art (GPT-3.5, ChatGPT, and GPT-4) LLMs. Across all evaluated tasks, outputs generated with Self-Refine are preferred by humans and automatic metrics over those generated with the same LLM using conventional one-step generation, improving by ~20% absolute on average in task performance.",
+      "quote": {
+        "text": "outputs generated with Self-Refine are preferred by humans and automatic metrics over those generated with the same LLM using conventional one-step generation",
+        "start": 532,
+        "end": 690
+      },
+      "date": "2023-03-30",
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "AI-SELF-001",
+      "evidence_id": "E-AI-SELF-001-1",
+      "relation": "ENTAILS",
+      "reviewer_id": "claude-opus-5",
+      "claim_fragment": "对任意模型，让它对自己的输出给出反馈并迭代修改，产出都会优于一次成文",
+      "evidence_fragment": "outputs generated with Self-Refine are preferred by humans and automatic metrics over those generated with the same LLM using conventional one-step generation",
+      "missing_bridge": ""
+    }
+  ],
+  "adversarial_reviews": [
+    {
+      "claim_id": "AI-SELF-001",
+      "evidence_id": "E-AI-SELF-001-1",
+      "relation": "PARTIAL",
+      "reviewer_id": "claude-haiku-4-5-20251001",
+      "independence": "SAME_FAMILY",
+      "evidence_fragment": "Across all evaluated tasks, outputs generated with Self-Refine are preferred by humans and automatic metrics over those generated with the same LLM using conventional one-step generation, improving by ~20% absolute on average in task performance.",
+      "strongest_counter_reading": "The evidence tests only three specific OpenAI models (GPT-3.5, ChatGPT, GPT-4) on seven tasks. It does not test the claim's universal quantifier 'for any model'—smaller models, different architectures, or non-OpenAI LLMs could behave differently. The evidence supports the mechanism works for state-of-the-art models on diverse tasks, but cannot establish whether it holds universally across all possible models.",
+      "what_would_falsify": "Testing self-feedback iteration on a range of model families and sizes (e.g., open-source smaller models, models from other providers, instruction-tuned vs. base models) and finding measurable cases where iterative self-refinement fails to improve or degrades output quality."
+    }
+  ],
+  "adversarial_policy": "required",
+  "verified_scope": {
+    "version": {
+      "value": "GPT-3.5、ChatGPT 与 GPT-4，7 类任务，2023 年测得",
+      "evidence_ids": [
+        "E-AI-SELF-001-1"
+      ],
+      "evidence_fragments": {
+        "E-AI-SELF-001-1": "(GPT-3.5, ChatGPT, and GPT-4)"
+      }
+    }
+  }
+}

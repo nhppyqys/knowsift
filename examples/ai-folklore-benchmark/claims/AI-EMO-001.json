@@ -1,0 +1,90 @@
+{
+  "claim_ir": {
+    "claim_id": "AI-EMO-001",
+    "source_text": "对任意模型，在提示词里加入情绪化表达都可以提升它的表现。",
+    "operator": "FACT",
+    "subject": "在提示词里加入情绪化表达",
+    "predicate": "都可以提升",
+    "object": "它的表现",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {
+      "version": "任意模型"
+    },
+    "anchors": {
+      "subject": {
+        "text": "在提示词里加入情绪化表达",
+        "start": 6,
+        "end": 18
+      },
+      "predicate": {
+        "text": "都可以提升",
+        "start": 18,
+        "end": 23
+      },
+      "object": {
+        "text": "它的表现",
+        "start": 23,
+        "end": 27
+      },
+      "scope": {
+        "text": "任意模型",
+        "start": 1,
+        "end": 5
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-AI-EMO-001-1",
+      "source_id": "PAPER-EMOTION-PROMPT",
+      "source_kind": "research_paper",
+      "locator": "https://arxiv.org/abs/2307.11760",
+      "source_text": "To this end, we first conduct automatic experiments on 45 tasks using various LLMs, including Flan-T5-Large, Vicuna, Llama 2, BLOOM, ChatGPT, and GPT-4. Our automatic experiments show that LLMs have a grasp of emotional intelligence, and their performance can be improved with emotional prompts (which we call \"EmotionPrompt\" that combines the original prompt with emotional stimuli), e.g. 8.00% relative performance improvement in Instruction Induction and 115% in BIG-Bench.",
+      "quote": {
+        "text": "their performance can be improved with emotional prompts",
+        "start": 238,
+        "end": 294
+      },
+      "date": "2023-07-14",
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "AI-EMO-001",
+      "evidence_id": "E-AI-EMO-001-1",
+      "relation": "ENTAILS",
+      "reviewer_id": "claude-opus-5",
+      "claim_fragment": "对任意模型，在提示词里加入情绪化表达都可以提升它的表现",
+      "evidence_fragment": "their performance can be improved with emotional prompts",
+      "missing_bridge": ""
+    }
+  ],
+  "adversarial_reviews": [
+    {
+      "claim_id": "AI-EMO-001",
+      "evidence_id": "E-AI-EMO-001-1",
+      "relation": "PARTIAL",
+      "reviewer_id": "claude-haiku-4-5-20251001",
+      "independence": "SAME_FAMILY",
+      "evidence_fragment": "Our automatic experiments show that LLMs have a grasp of emotional intelligence, and their performance can be improved with emotional prompts (which we call \"EmotionPrompt\" that combines the original prompt with emotional stimuli), e.g. 8.00% relative performance improvement in Instruction Induction and 115% in BIG-Bench.",
+      "strongest_counter_reading": "The evidence tests six specific LLM models across 45 tasks. A reasonable interpretation is that this demonstrates broad, generalizable improvements across diverse models and tasks, suggesting the effect may hold universally. The diversity of models tested (from Flan-T5-Large to GPT-4) across different scales and architectures strengthens the claim of general applicability.",
+      "what_would_falsify": "Testing a major class of language models (e.g., encoder-only models, multimodal models, or models trained with different objectives) where emotional prompts consistently fail to produce improvements, or finding that performance improvements are highly inconsistent within the tested model family across different task types."
+    }
+  ],
+  "adversarial_policy": "required",
+  "verified_scope": {
+    "version": {
+      "value": "Flan-T5-Large、Vicuna、Llama 2、BLOOM、ChatGPT 与 GPT-4，45 项任务，2023 年测得",
+      "evidence_ids": [
+        "E-AI-EMO-001-1"
+      ],
+      "evidence_fragments": {
+        "E-AI-EMO-001-1": "Flan-T5-Large, Vicuna, Llama 2, BLOOM, ChatGPT, and GPT-4"
+      }
+    }
+  }
+}

@@ -1,0 +1,356 @@
+{
+  "document_version": "1.0",
+  "title": "AI 圈流行说法核验：哪些有证据，哪些只是互相抄",
+  "question": "AI 圈流传最广的那些提示与检索技巧，哪些有论文或官方文档支持，哪些只是互相抄？",
+  "language": "zh-CN",
+  "source_boundary": "检索日为2026-08-23。来源为 9 篇 arXiv 论文的摘要原文与 2 页 Claude 平台官方文档，全部按逐字原文捕获，未做改写。只使用摘要与文档正文，未读全文，因此论文正文中可能存在的更细致条件不在本次核验范围内。",
+  "sources": [
+    {
+      "source_id": "PAPER-COT-WEI",
+      "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "source_type": "RESEARCH",
+      "medium": "PAPER",
+      "locator": "https://arxiv.org/abs/2201.11903"
+    },
+    {
+      "source_id": "PAPER-COT-ZEROSHOT",
+      "title": "Large Language Models are Zero-Shot Reasoners",
+      "source_type": "RESEARCH",
+      "medium": "PAPER",
+      "locator": "https://arxiv.org/abs/2205.11916"
+    },
+    {
+      "source_id": "PAPER-COT-METAANALYSIS",
+      "title": "To CoT or not to CoT? Chain-of-thought helps mainly on math and symbolic reasoning",
+      "source_type": "RESEARCH",
+      "medium": "PAPER",
+      "locator": "https://arxiv.org/abs/2409.12183"
+    },
+    {
+      "source_id": "PAPER-LOST-MIDDLE",
+      "title": "Lost in the Middle: How Language Models Use Long Contexts",
+      "source_type": "RESEARCH",
+      "medium": "PAPER",
+      "locator": "https://arxiv.org/abs/2307.03172"
+    },
+    {
+      "source_id": "PAPER-SELF-CONSISTENCY",
+      "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+      "source_type": "RESEARCH",
+      "medium": "PAPER",
+      "locator": "https://arxiv.org/abs/2203.11171"
+    },
+    {
+      "source_id": "PAPER-SELF-REFINE",
+      "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+      "source_type": "RESEARCH",
+      "medium": "PAPER",
+      "locator": "https://arxiv.org/abs/2303.17651"
+    },
+    {
+      "source_id": "PAPER-NO-SELF-CORRECT",
+      "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+      "source_type": "RESEARCH",
+      "medium": "PAPER",
+      "locator": "https://arxiv.org/abs/2310.01798"
+    },
+    {
+      "source_id": "PAPER-EMOTION-PROMPT",
+      "title": "Large Language Models Understand and Can be Enhanced by Emotional Stimuli",
+      "source_type": "RESEARCH",
+      "medium": "PAPER",
+      "locator": "https://arxiv.org/abs/2307.11760"
+    },
+    {
+      "source_id": "PAPER-CLASHEVAL",
+      "title": "ClashEval: Quantifying the tug-of-war between an LLM's internal prior and external evidence",
+      "source_type": "RESEARCH",
+      "medium": "PAPER",
+      "locator": "https://arxiv.org/abs/2404.10198"
+    },
+    {
+      "source_id": "DOC-PROMPT-CACHING",
+      "title": "Prompt caching — Claude Platform Docs",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "DOCUMENT",
+      "locator": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching"
+    },
+    {
+      "source_id": "DOC-PROMPTING-BEST-PRACTICES",
+      "title": "Prompting best practices — Claude Platform Docs",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "medium": "DOCUMENT",
+      "locator": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+    }
+  ],
+  "records": [
+    {
+      "record_id": "DOC-AI-COT-001",
+      "topic": "思维链",
+      "layer": "DISPUTED_OR_UNRESOLVED",
+      "text": "对任意大模型，加一句「Let's think step by step」都能显著提升算术与符号推理的零样本准确率。",
+      "explanation": "零样本思维链论文报告了这一提升。",
+      "source_ids": [
+        "PAPER-COT-ZEROSHOT"
+      ],
+      "conditions": [
+        "只在论文测试的模型与基准上验证过。"
+      ],
+      "limitations": [
+        "2022 年的模型；换成今天的推理模型结论未必成立。"
+      ],
+      "certificate_file": "certificates/AI-COT-001.json"
+    },
+    {
+      "record_id": "DOC-AI-COT-002",
+      "topic": "思维链",
+      "layer": "REJECTED",
+      "text": "思维链提示能普遍提升大模型在各类任务上的表现。",
+      "explanation": "覆盖 100 多篇论文的元分析与「普遍提升」直接冲突。",
+      "source_ids": [
+        "PAPER-COT-METAANALYSIS"
+      ],
+      "conditions": [],
+      "limitations": [
+        "元分析并不否定思维链有用，只否定它对各类任务普遍有用。"
+      ],
+      "certificate_file": "certificates/AI-COT-002.json"
+    },
+    {
+      "record_id": "DOC-AI-COT-003",
+      "topic": "思维链",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "思维链主要在数学与逻辑类任务上带来明显收益在其他类型任务上收益小得多。",
+      "explanation": "元分析给出的正是这个范围。",
+      "source_ids": [
+        "PAPER-COT-METAANALYSIS"
+      ],
+      "conditions": [],
+      "limitations": [
+        "基于摘要中给出的结论，未读全文的分任务细节。"
+      ],
+      "certificate_file": "certificates/AI-COT-003.json"
+    },
+    {
+      "record_id": "DOC-AI-COT-004",
+      "topic": "思维链",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "思维链带来的推理能力提升出现在足够大的语言模型上。",
+      "explanation": "原始论文明确把这种能力的出现绑定在足够大的模型上。",
+      "source_ids": [
+        "PAPER-COT-WEI"
+      ],
+      "conditions": [],
+      "limitations": [
+        "「足够大」在论文里没有给出统一阈值。"
+      ],
+      "certificate_file": "certificates/AI-COT-004.json"
+    },
+    {
+      "record_id": "DOC-AI-CTX-001",
+      "topic": "长上下文",
+      "layer": "REJECTED",
+      "text": "大模型能够稳定利用超长上下文中任意位置的信息。",
+      "explanation": "长上下文论文与「任意位置都能稳定利用」直接冲突。",
+      "source_ids": [
+        "PAPER-LOST-MIDDLE"
+      ],
+      "conditions": [],
+      "limitations": [
+        "测的是多文档问答与键值检索两类任务。"
+      ],
+      "certificate_file": "certificates/AI-CTX-001.json"
+    },
+    {
+      "record_id": "DOC-AI-CTX-002",
+      "topic": "长上下文",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "相关信息出现在上下文开头或结尾时模型表现最好出现在中间时明显下降。",
+      "explanation": "论文给出的正是这个位置效应。",
+      "source_ids": [
+        "PAPER-LOST-MIDDLE"
+      ],
+      "conditions": [],
+      "limitations": [
+        "不同模型的下降幅度不同，论文包含明确长上下文模型。"
+      ],
+      "certificate_file": "certificates/AI-CTX-002.json"
+    },
+    {
+      "record_id": "DOC-AI-VOTE-001",
+      "topic": "采样与投票",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "对同一问题采样多条推理路径再取最一致的答案能提升思维链在算术与常识推理基准上的表现。",
+      "explanation": "自一致性论文报告了这个提升。",
+      "source_ids": [
+        "PAPER-SELF-CONSISTENCY"
+      ],
+      "conditions": [],
+      "limitations": [
+        "需要多次采样，成本相应上升。"
+      ],
+      "certificate_file": "certificates/AI-VOTE-001.json"
+    },
+    {
+      "record_id": "DOC-AI-SELF-001",
+      "topic": "自我修改",
+      "layer": "DISPUTED_OR_UNRESOLVED",
+      "text": "对任意模型，让它对自己的输出给出反馈并迭代修改，产出都会优于一次成文。",
+      "explanation": "Self-Refine 论文报告产出优于一次成文。",
+      "source_ids": [
+        "PAPER-SELF-REFINE"
+      ],
+      "conditions": [
+        "只在论文测试的模型与 7 类任务上验证过。"
+      ],
+      "limitations": [
+        "评测由人类偏好与自动指标给出，任务范围含对话生成。"
+      ],
+      "certificate_file": "certificates/AI-SELF-001.json"
+    },
+    {
+      "record_id": "DOC-AI-SELF-002",
+      "topic": "自我修改",
+      "layer": "REJECTED",
+      "text": "模型在没有外部反馈时能够自我纠正推理错误。",
+      "explanation": "另一篇论文与「无外部反馈也能自我纠错」直接冲突。",
+      "source_ids": [
+        "PAPER-NO-SELF-CORRECT"
+      ],
+      "conditions": [],
+      "limitations": [
+        "该结论限定在推理任务与内在自我纠正。"
+      ],
+      "certificate_file": "certificates/AI-SELF-002.json"
+    },
+    {
+      "record_id": "DOC-AI-SELF-003",
+      "topic": "自我修改",
+      "layer": "DISPUTED_OR_UNRESOLVED",
+      "text": "让模型自己检查一遍并修改，总能得到更好的结果。",
+      "explanation": "两篇论文对同一说法给出相反证据，本工具不替读者选边。",
+      "source_ids": [
+        "PAPER-SELF-REFINE",
+        "PAPER-NO-SELF-CORRECT"
+      ],
+      "conditions": [],
+      "limitations": [
+        "两者范围并不完全重叠：一篇覆盖 7 类任务，一篇限定推理任务且不许外部反馈。差异本身就是答案的一部分。"
+      ],
+      "certificate_file": "certificates/AI-SELF-003.json"
+    },
+    {
+      "record_id": "DOC-AI-EMO-001",
+      "topic": "情绪化提示",
+      "layer": "DISPUTED_OR_UNRESOLVED",
+      "text": "对任意模型，在提示词里加入情绪化表达都可以提升它的表现。",
+      "explanation": "EmotionPrompt 论文报告了这个提升。",
+      "source_ids": [
+        "PAPER-EMOTION-PROMPT"
+      ],
+      "conditions": [
+        "只在论文列出的模型与 45 项任务上验证过。"
+      ],
+      "limitations": [
+        "2023 年的模型；相对提升幅度按任务差异很大。"
+      ],
+      "certificate_file": "certificates/AI-EMO-001.json"
+    },
+    {
+      "record_id": "DOC-AI-RAG-001",
+      "topic": "检索增强",
+      "layer": "REJECTED",
+      "text": "接上检索增强就能消除大模型的幻觉。",
+      "explanation": "ClashEval 与「消除幻觉」直接冲突。",
+      "source_ids": [
+        "PAPER-CLASHEVAL"
+      ],
+      "conditions": [],
+      "limitations": [
+        "不否定 RAG 有用，只否定它能消除幻觉。"
+      ],
+      "certificate_file": "certificates/AI-RAG-001.json"
+    },
+    {
+      "record_id": "DOC-AI-RAG-002",
+      "topic": "检索增强",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "检索到的内容出错时模型有很高比例会跟着错而不是坚持自己原本正确的答案。",
+      "explanation": "ClashEval 给出的正是这个比例。",
+      "source_ids": [
+        "PAPER-CLASHEVAL"
+      ],
+      "conditions": [],
+      "limitations": [
+        "在该论文构造的冲突数据集上测得。"
+      ],
+      "certificate_file": "certificates/AI-RAG-002.json"
+    },
+    {
+      "record_id": "DOC-AI-CACHE-001",
+      "topic": "提示缓存",
+      "layer": "REJECTED",
+      "text": "只要开启提示缓存就一定比不开更便宜。",
+      "explanation": "官方定价与「一定更便宜」直接冲突：写入比基础输入更贵。",
+      "source_ids": [
+        "DOC-PROMPT-CACHING"
+      ],
+      "conditions": [],
+      "limitations": [
+        "缓存要被复用足够次数才划算，用一次就是净亏。"
+      ],
+      "certificate_file": "certificates/AI-CACHE-001.json"
+    },
+    {
+      "record_id": "DOC-AI-CACHE-002",
+      "topic": "提示缓存",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "命中缓存的读取按基础输入价格的十分之一计费。",
+      "explanation": "官方文档给出这个倍率。",
+      "source_ids": [
+        "DOC-PROMPT-CACHING"
+      ],
+      "conditions": [],
+      "limitations": [
+        "倍率会变，用前应重新核对官方页面。"
+      ],
+      "certificate_file": "certificates/AI-CACHE-002.json"
+    },
+    {
+      "record_id": "DOC-AI-CACHE-003",
+      "topic": "提示缓存",
+      "layer": "REJECTED",
+      "text": "任意长度的提示词都可以被缓存。",
+      "explanation": "官方文档规定了最小可缓存长度，与「任意长度」冲突。",
+      "source_ids": [
+        "DOC-PROMPT-CACHING"
+      ],
+      "conditions": [],
+      "limitations": [
+        "不同模型的最小长度不同。"
+      ],
+      "certificate_file": "certificates/AI-CACHE-003.json"
+    },
+    {
+      "record_id": "DOC-AI-XML-001",
+      "topic": "提示结构",
+      "layer": "SUPPORTED_KNOWLEDGE",
+      "text": "用XML标签把提示词里不同类型的内容分开可以减少模型的误解。",
+      "explanation": "官方提示工程文档直接给出这个建议。",
+      "source_ids": [
+        "DOC-PROMPTING-BEST-PRACTICES"
+      ],
+      "conditions": [],
+      "limitations": [
+        "这是 Claude 官方对自家模型的说明，不自动适用于其他厂商的模型。"
+      ],
+      "certificate_file": "certificates/AI-XML-001.json"
+    }
+  ],
+  "open_questions": [
+    "这些 2022–2024 年的结论，在 2026 年的推理模型上还成立吗？多数论文没有被重测。",
+    "思维链、自一致性、情绪化提示的收益，在扣除额外 token 成本后是否仍然为正？",
+    "自我修改在什么条件下有效、什么条件下有害？两篇论文的范围差异需要一个直接对照实验来解决。",
+    "RAG 在检索内容正确时的收益，与检索出错时的损害，净值是多少？"
+  ]
+}

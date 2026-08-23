@@ -1,0 +1,233 @@
+{
+  "certificate_version": "4.3.0",
+  "input_digest": "acfc3d303eda149147a4476b38aa62f54e24ee223a690cc881c597eeac3a08b3",
+  "claim_id": "AI-XML-001",
+  "claim_text": "用XML标签把提示词里不同类型的内容分开可以减少模型的误解。",
+  "canonical_claim": "用XML标签把提示词里不同类型的内容分开可以减少模型的误解。",
+  "normalized_ir": {
+    "claim_id": "AI-XML-001",
+    "source_text": "用XML标签把提示词里不同类型的内容分开可以减少模型的误解。",
+    "operator": "FACT",
+    "subject": "用XML标签把提示词里不同类型的内容分开",
+    "predicate": "可以减少",
+    "object": "模型的误解",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "用XML标签把提示词里不同类型的内容分开",
+        "start": 0,
+        "end": 20
+      },
+      "predicate": {
+        "text": "可以减少",
+        "start": 20,
+        "end": 24
+      },
+      "object": {
+        "text": "模型的误解",
+        "start": 24,
+        "end": 29
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-AI-XML-001-1"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "PASS",
+    "code": "INDEPENDENT_REVIEW_AGREES",
+    "policy": "required",
+    "reviewer_ids": [
+      "claude-haiku-4-5-20251001"
+    ],
+    "independence": {
+      "E-AI-XML-001-1": {
+        "declared": "SAME_FAMILY",
+        "verifiable_ceiling": "SAME_FAMILY"
+      }
+    },
+    "weakest_independence": "SAME_FAMILY",
+    "min_independence": "SAME_MODEL",
+    "reviewed_evidence_ids": [
+      "E-AI-XML-001-1"
+    ],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [],
+    "falsifiers": [
+      {
+        "evidence_id": "E-AI-XML-001-1",
+        "what_would_falsify": "Controlled experiments comparing Claude's interpretation accuracy on identical prompts with and without XML tag separation, showing no statistically significant difference in misinterpretation rates. Alternatively, official Claude documentation being updated to retract or qualify the statement."
+      }
+    ],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "PASS",
+    "code": "LOCATOR_SUPPORTS_DECLARED_ROLE",
+    "policy": "required",
+    "by_evidence": {
+      "E-AI-XML-001-1": {
+        "locator_status": "CLASSIFIED",
+        "locator_code": "LOCATOR_CLASSIFIED",
+        "source_kind": "official_documentation",
+        "declared_class": "OFFICIAL",
+        "permits": [
+          "GUIDANCE",
+          "OFFICIAL"
+        ],
+        "rule": "Claude platform docs",
+        "verdict": "CONSISTENT"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-AI-XML-001-1"
+    ],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-AI-XML-001-1": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-AI-XML-001-1"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-AI-XML-001-1"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "DOC-PROMPTING-BEST-PRACTICES"
+    ],
+    "roots_by_source": {
+      "DOC-PROMPTING-BEST-PRACTICES": [
+        "DOC-PROMPTING-BEST-PRACTICES"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "DOC-PROMPTING-BEST-PRACTICES": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-AI-XML-001-1"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-AI-XML-001-1",
+      "source_id": "DOC-PROMPTING-BEST-PRACTICES",
+      "source_kind": "official_documentation",
+      "quote": {
+        "text": "Wrapping each type of content in its own tag (for example, <instructions>, <context>, <input>) reduces misinterpretation",
+        "start": 146,
+        "end": 266
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

@@ -1,0 +1,72 @@
+{
+  "claim_ir": {
+    "claim_id": "AI-VOTE-001",
+    "source_text": "对同一问题采样多条推理路径再取最一致的答案，能提升思维链在算术与常识推理基准上的表现。",
+    "operator": "FACT",
+    "subject": "对同一问题采样多条推理路径再取最一致的答案",
+    "predicate": "能提升",
+    "object": "思维链在算术与常识推理基准上的表现",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "对同一问题采样多条推理路径再取最一致的答案",
+        "start": 0,
+        "end": 21
+      },
+      "predicate": {
+        "text": "能提升",
+        "start": 22,
+        "end": 25
+      },
+      "object": {
+        "text": "思维链在算术与常识推理基准上的表现",
+        "start": 25,
+        "end": 42
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-AI-VOTE-001-1",
+      "source_id": "PAPER-SELF-CONSISTENCY",
+      "source_kind": "research_paper",
+      "locator": "https://arxiv.org/abs/2203.11171",
+      "source_text": "In this paper, we propose a new decoding strategy, self-consistency, to replace the naive greedy decoding used in chain-of-thought prompting. It first samples a diverse set of reasoning paths instead of only taking the greedy one, and then selects the most consistent answer by marginalizing out the sampled reasoning paths. Our extensive empirical evaluation shows that self-consistency boosts the performance of chain-of-thought prompting with a striking margin on a range of popular arithmetic and commonsense reasoning benchmarks, including GSM8K (+17.9%), SVAMP (+11.0%), AQuA (+12.2%), StrategyQA (+6.4%) and ARC-challenge (+3.9%).",
+      "quote": {
+        "text": "self-consistency boosts the performance of chain-of-thought prompting with a striking margin on a range of popular arithmetic and commonsense reasoning benchmarks",
+        "start": 371,
+        "end": 533
+      },
+      "date": "2022-03-21",
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "AI-VOTE-001",
+      "evidence_id": "E-AI-VOTE-001-1",
+      "relation": "ENTAILS",
+      "reviewer_id": "claude-opus-5",
+      "claim_fragment": "对同一问题采样多条推理路径再取最一致的答案，能提升思维链在算术与常识推理基准上的表现",
+      "evidence_fragment": "self-consistency boosts the performance of chain-of-thought prompting with a striking margin on a range of popular arithmetic and commonsense reasoning benchmarks",
+      "missing_bridge": ""
+    }
+  ],
+  "adversarial_reviews": [
+    {
+      "claim_id": "AI-VOTE-001",
+      "evidence_id": "E-AI-VOTE-001-1",
+      "relation": "ENTAILS",
+      "reviewer_id": "claude-haiku-4-5-20251001",
+      "independence": "SAME_FAMILY",
+      "evidence_fragment": "It first samples a diverse set of reasoning paths instead of only taking the greedy one, and then selects the most consistent answer by marginalizing out the sampled reasoning paths. Our extensive empirical evaluation shows that self-consistency boosts the performance of chain-of-thought prompting with a striking margin on a range of popular arithmetic and commonsense reasoning benchmarks, including GSM8K (+17.9%), SVAMP (+11.0%), AQuA (+12.2%), StrategyQA (+6.4%) and ARC-challenge (+3.9%).",
+      "strongest_counter_reading": "The improvements could be attributable to factors other than the sampling-and-consistency mechanism itself—such as differences in model scale, prompting format, decoding parameters, or the specific benchmark implementations. The gains, while stated as 'striking,' are heterogeneous across benchmarks (3.9% to 17.9%), which could suggest the effect is task-dependent rather than a general principle.",
+      "what_would_falsify": "An ablation study showing that removing the consistency-based selection mechanism (while keeping multiple-path sampling) produces the same improvements; or a replication study on held-out arithmetic/commonsense benchmarks showing no improvement; or clarification that the baseline or evaluation setup differed from standard benchmark specifications."
+    }
+  ],
+  "adversarial_policy": "required"
+}

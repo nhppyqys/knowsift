@@ -1,0 +1,232 @@
+{
+  "certificate_version": "4.3.0",
+  "input_digest": "321d3aaf46f4a5704ff653b083c512132afa8596fe5afdd536b337310248ead9",
+  "claim_id": "AI-COT-003",
+  "claim_text": "思维链主要在数学与逻辑类任务上带来明显收益，在其他类型任务上收益小得多。",
+  "canonical_claim": "思维链主要在数学与逻辑类任务上带来明显收益在其他类型任务上收益小得多。",
+  "normalized_ir": {
+    "claim_id": "AI-COT-003",
+    "source_text": "思维链主要在数学与逻辑类任务上带来明显收益，在其他类型任务上收益小得多。",
+    "operator": "FACT",
+    "subject": "思维链",
+    "predicate": "主要在数学与逻辑类任务上带来明显收益",
+    "object": "在其他类型任务上收益小得多",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "思维链",
+        "start": 0,
+        "end": 3
+      },
+      "predicate": {
+        "text": "主要在数学与逻辑类任务上带来明显收益",
+        "start": 3,
+        "end": 21
+      },
+      "object": {
+        "text": "在其他类型任务上收益小得多",
+        "start": 22,
+        "end": 35
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-AI-COT-003-1"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "PASS",
+    "code": "INDEPENDENT_REVIEW_AGREES",
+    "policy": "required",
+    "reviewer_ids": [
+      "claude-haiku-4-5-20251001"
+    ],
+    "independence": {
+      "E-AI-COT-003-1": {
+        "declared": "SAME_FAMILY",
+        "verifiable_ceiling": "SAME_FAMILY"
+      }
+    },
+    "weakest_independence": "SAME_FAMILY",
+    "min_independence": "SAME_MODEL",
+    "reviewed_evidence_ids": [
+      "E-AI-COT-003-1"
+    ],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [],
+    "falsifiers": [
+      {
+        "evidence_id": "E-AI-COT-003-1",
+        "what_would_falsify": "A systematic evaluation showing comparable percentage-point improvements in accuracy or performance from CoT across diverse non-math, non-logic tasks (e.g., summarization, translation, open-ended question answering, sentiment analysis) at the same scale as the improvements observed on math and logic tasks."
+      }
+    ],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "PASS",
+    "code": "LOCATOR_SUPPORTS_DECLARED_ROLE",
+    "policy": "required",
+    "by_evidence": {
+      "E-AI-COT-003-1": {
+        "locator_status": "CLASSIFIED",
+        "locator_code": "LOCATOR_CLASSIFIED",
+        "source_kind": "research_paper",
+        "declared_class": "SCHOLARLY",
+        "permits": [
+          "SCHOLARLY"
+        ],
+        "rule": "preprint server",
+        "verdict": "CONSISTENT"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-AI-COT-003-1"
+    ],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-AI-COT-003-1": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-AI-COT-003-1"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-AI-COT-003-1"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "PAPER-COT-METAANALYSIS"
+    ],
+    "roots_by_source": {
+      "PAPER-COT-METAANALYSIS": [
+        "PAPER-COT-METAANALYSIS"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "PAPER-COT-METAANALYSIS": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-AI-COT-003-1"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-AI-COT-003-1",
+      "source_id": "PAPER-COT-METAANALYSIS",
+      "source_kind": "research_paper",
+      "quote": {
+        "text": "CoT gives strong performance benefits primarily on tasks involving math or logic, with much smaller gains on other types of tasks",
+        "start": 376,
+        "end": 505
+      },
+      "date": "2024-09-18",
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

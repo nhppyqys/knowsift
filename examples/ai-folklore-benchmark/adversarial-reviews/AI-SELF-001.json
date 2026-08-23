@@ -1,0 +1,12 @@
+[
+  {
+    "claim_id": "AI-SELF-001",
+    "evidence_id": "E-AI-SELF-001-1",
+    "relation": "PARTIAL",
+    "reviewer_id": "claude-haiku-4-5-20251001",
+    "independence": "SAME_FAMILY",
+    "evidence_fragment": "Across all evaluated tasks, outputs generated with Self-Refine are preferred by humans and automatic metrics over those generated with the same LLM using conventional one-step generation, improving by ~20% absolute on average in task performance.",
+    "strongest_counter_reading": "The evidence tests only three specific OpenAI models (GPT-3.5, ChatGPT, GPT-4) on seven tasks. It does not test the claim's universal quantifier 'for any model'—smaller models, different architectures, or non-OpenAI LLMs could behave differently. The evidence supports the mechanism works for state-of-the-art models on diverse tasks, but cannot establish whether it holds universally across all possible models.",
+    "what_would_falsify": "Testing self-feedback iteration on a range of model families and sizes (e.g., open-source smaller models, models from other providers, instruction-tuned vs. base models) and finding measurable cases where iterative self-refinement fails to improve or degrades output quality."
+  }
+]

@@ -1,0 +1,90 @@
+{
+  "claim_ir": {
+    "claim_id": "AI-COT-001",
+    "source_text": "对任意大模型，加一句「Let's think step by step」都能显著提升算术与符号推理的零样本准确率。",
+    "operator": "FACT",
+    "subject": "加一句「Let's think step by step」",
+    "predicate": "都能显著提升",
+    "object": "算术与符号推理的零样本准确率",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {
+      "version": "任意大模型"
+    },
+    "anchors": {
+      "subject": {
+        "text": "加一句「Let's think step by step」",
+        "start": 7,
+        "end": 36
+      },
+      "predicate": {
+        "text": "都能显著提升",
+        "start": 36,
+        "end": 42
+      },
+      "object": {
+        "text": "算术与符号推理的零样本准确率",
+        "start": 42,
+        "end": 56
+      },
+      "scope": {
+        "text": "任意大模型",
+        "start": 1,
+        "end": 6
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-AI-COT-001-1",
+      "source_id": "PAPER-COT-ZEROSHOT",
+      "source_kind": "research_paper",
+      "locator": "https://arxiv.org/abs/2205.11916",
+      "source_text": "While these successes are often attributed to LLMs' ability for few-shot learning, we show that LLMs are decent zero-shot reasoners by simply adding \"Let's think step by step\" before each answer. Experimental results demonstrate that our Zero-shot-CoT, using the same single prompt template, significantly outperforms zero-shot LLM performances on diverse benchmark reasoning tasks including arithmetics (MultiArith, GSM8K, AQUA-RAT, SVAMP), symbolic reasoning (Last Letter, Coin Flip), and other logical reasoning tasks (Date Understanding, Tracking Shuffled Objects), without any hand-crafted few-shot examples, e.g. increasing the accuracy on MultiArith from 17.7% to 78.7% and GSM8K from 10.4% to 40.7% with large InstructGPT model (text-davinci-002), as well as similar magnitudes of improvements with another off-the-shelf large model, 540B parameter PaLM.",
+      "quote": {
+        "text": "significantly outperforms zero-shot LLM performances on diverse benchmark reasoning tasks",
+        "start": 292,
+        "end": 381
+      },
+      "date": "2022-05-24",
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "AI-COT-001",
+      "evidence_id": "E-AI-COT-001-1",
+      "relation": "ENTAILS",
+      "reviewer_id": "claude-opus-5",
+      "claim_fragment": "对任意大模型，加一句「Let's think step by step」都能显著提升算术与符号推理的零样本准确率",
+      "evidence_fragment": "significantly outperforms zero-shot LLM performances on diverse benchmark reasoning tasks",
+      "missing_bridge": ""
+    }
+  ],
+  "adversarial_reviews": [
+    {
+      "claim_id": "AI-COT-001",
+      "evidence_id": "E-AI-COT-001-1",
+      "relation": "PARTIAL",
+      "reviewer_id": "claude-haiku-4-5-20251001",
+      "independence": "SAME_FAMILY",
+      "evidence_fragment": "we show that LLMs are decent zero-shot reasoners by simply adding \"Let's think step by step\" before each answer. Experimental results demonstrate that our Zero-shot-CoT, using the same single prompt template, significantly outperforms zero-shot LLM performances on diverse benchmark reasoning tasks including arithmetics (MultiArith, GSM8K, AQUA-RAT, SVAMP), symbolic reasoning (Last Letter, Coin Flip)",
+      "strongest_counter_reading": "The evidence tests only two specific models (InstructGPT/text-davinci-002 and 540B PaLM), demonstrating the technique works for these instances. The claim asserts the effect holds for 'any' large language model—a universal statement that requires broader evidence across model families, architectures, sizes, and training approaches to fully support. The evidence shows the effect exists but does not establish it is universal.",
+      "what_would_falsify": "Test the 'Let's think step by step' prompt on a diverse set of large language models (different architectures, sizes, training objectives) and find that a significant proportion fail to show improvement on arithmetic and symbolic reasoning tasks, or show negligible or inconsistent improvements."
+    }
+  ],
+  "adversarial_policy": "required",
+  "verified_scope": {
+    "version": {
+      "value": "text-davinci-002 与 540B PaLM，2022 年测得",
+      "evidence_ids": [
+        "E-AI-COT-001-1"
+      ],
+      "evidence_fragments": {
+        "E-AI-COT-001-1": "large InstructGPT model (text-davinci-002)"
+      }
+    }
+  }
+}

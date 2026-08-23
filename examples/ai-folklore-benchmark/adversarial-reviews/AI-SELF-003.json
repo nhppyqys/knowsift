@@ -1,0 +1,22 @@
+[
+  {
+    "claim_id": "AI-SELF-003",
+    "evidence_id": "E-AI-SELF-003-1",
+    "relation": "PARTIAL",
+    "reviewer_id": "claude-haiku-4-5-20251001",
+    "independence": "SAME_FAMILY",
+    "evidence_fragment": "Across all evaluated tasks, outputs generated with Self-Refine are preferred by humans and automatic metrics over those generated with the same LLM using conventional one-step generation, improving by ~20% absolute on average in task performance.",
+    "strongest_counter_reading": "The evidence shows improvement on average across 7 tested tasks, but does not demonstrate improvement is universal or inevitable. The claim states self-checking 'always' (总能) produces better results; the evidence shows it did so in these 7 specific tasks with average gains, leaving open the possibility of tasks where improvement is negligible or variable. Additionally, Self-Refine involves structured feedback generation, not mere self-checking.",
+    "what_would_falsify": "Run Self-Refine on additional diverse tasks and find at least one where performance does not improve compared to one-step generation, or show that improvement rates vary substantially by task type."
+  },
+  {
+    "claim_id": "AI-SELF-003",
+    "evidence_id": "E-AI-SELF-003-2",
+    "relation": "CONTRADICTS",
+    "reviewer_id": "claude-haiku-4-5-20251001",
+    "independence": "SAME_FAMILY",
+    "evidence_fragment": "LLMs struggle to self-correct their responses without external feedback, and at times, their performance even degrades after self-correction.",
+    "strongest_counter_reading": "This could be narrowly read as applying only to 'intrinsic self-correction' (correction without external feedback), while the original claim might implicitly allow for other refinement mechanisms. However, the phrase 'at times, their performance even degrades' directly contradicts the claim's assertion that self-checking 'always' leads to better results—degradation is the opposite of improvement.",
+    "what_would_falsify": "Demonstrate that in all intrinsic self-correction trials conducted in that research, performance never degraded and always improved, contradicting the reported finding of performance degradation."
+  }
+]

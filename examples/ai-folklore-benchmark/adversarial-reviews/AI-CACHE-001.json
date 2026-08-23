@@ -1,0 +1,12 @@
+[
+  {
+    "claim_id": "AI-CACHE-001",
+    "evidence_id": "E-AI-CACHE-001-1",
+    "relation": "CONTRADICTS",
+    "reviewer_id": "claude-haiku-4-5-20251001",
+    "independence": "SAME_FAMILY",
+    "evidence_fragment": "5-minute cache write tokens are 1.25 times the base input tokens price; 1-hour cache write tokens are 2 times the base input tokens price; Cache read tokens are 0.1 times the base input tokens price.",
+    "strongest_counter_reading": "The evidence only describes pricing tiers without explaining cumulative costs across multiple requests. One could argue the evidence is incomplete rather than contradictory—perhaps the cost per request drops low enough that total cost is always cheaper even with write overhead.",
+    "what_would_falsify": "Calculate the total cost of a single request with caching (1.25x write overhead) versus without caching (1x base input cost). Or run an actual API usage scenario with one or two requests and show that enabling caching increased the bill rather than decreased it."
+  }
+]

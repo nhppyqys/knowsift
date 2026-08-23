@@ -1,0 +1,12 @@
+[
+  {
+    "claim_id": "AI-CTX-001",
+    "evidence_id": "E-AI-CTX-001-1",
+    "relation": "CONTRADICTS",
+    "reviewer_id": "claude-haiku-4-5-20251001",
+    "independence": "SAME_FAMILY",
+    "evidence_fragment": "We find that performance can degrade significantly when changing the position of relevant information, indicating that current language models do not robustly make use of information in long input contexts.",
+    "strongest_counter_reading": "The evidence describes current empirical limitations in tested models but does not prove fundamental impossibility. Future architectures, training approaches, or models not included in this study might overcome these position-dependent performance gaps. The evidence shows what existing models struggle with, not what large models are inherently incapable of achieving.",
+    "what_would_falsify": "Benchmark results demonstrating that a state-of-the-art language model achieves within 5% performance variance when retrieving information from beginning, middle, and end positions across long contexts (100K+ tokens) on standardized multi-document QA and key-value retrieval tasks."
+  }
+]

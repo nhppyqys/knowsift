@@ -1,6 +1,6 @@
 # Validation
 
-Validation date: 2026-08-22
+Validation date: 2026-08-23
 
 ## Automated tests
 
@@ -8,8 +8,8 @@ The complete suite passes on both supported runtimes:
 
 | Runtime | Tests | Result |
 |---|---:|---|
-| Python 3.9.6 | 119 | Pass |
-| Python 3.14.6 | 119 | Pass |
+| Python 3.9.6 | 127 | Pass |
+| Python 3.14.6 | 127 | Pass |
 
 Run it with:
 
@@ -36,6 +36,7 @@ The suite covers:
 - `HOLD` claims being blocked from knowledge sections;
 - arbitrary text being blocked from reusing an unrelated `HOLD` certificate;
 - the complete learning-English demo and byte-for-byte Markdown regeneration;
+- the 11-source AI folklore benchmark: 17 claims compiling to exact 7 / 4 / 6 layer boundaries, every locator corroborating its declared source_kind, a real second-model review on all 18 evidence relations, and the four recorded reviewer disagreements;
 - the 17-source short-drama benchmark, all 27 certificates, exact 17 / 5 / 3 / 2 layer boundaries, and byte-for-byte Markdown regeneration.
 
 ## Schema checks

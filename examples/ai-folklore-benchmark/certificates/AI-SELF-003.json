@@ -1,0 +1,262 @@
+{
+  "certificate_version": "4.3.0",
+  "input_digest": "092dc402cf8278afffa46727928f59696609957807d61b94a29f86b1b932f9f4",
+  "claim_id": "AI-SELF-003",
+  "claim_text": "让模型自己检查一遍并修改，总能得到更好的结果。",
+  "canonical_claim": null,
+  "normalized_ir": null,
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "HOLD",
+    "code": "SEMANTIC_CONFLICT",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 1,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-AI-SELF-003-1"
+    ],
+    "contradicting_evidence_ids": [
+      "E-AI-SELF-003-2"
+    ],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "HOLD",
+    "code": "REVIEWER_DISAGREEMENT",
+    "policy": "required",
+    "reviewer_ids": [
+      "claude-haiku-4-5-20251001"
+    ],
+    "independence": {
+      "E-AI-SELF-003-1": {
+        "declared": "SAME_FAMILY",
+        "verifiable_ceiling": "SAME_FAMILY"
+      },
+      "E-AI-SELF-003-2": {
+        "declared": "SAME_FAMILY",
+        "verifiable_ceiling": "SAME_FAMILY"
+      }
+    },
+    "weakest_independence": "SAME_FAMILY",
+    "min_independence": "SAME_MODEL",
+    "reviewed_evidence_ids": [
+      "E-AI-SELF-003-1",
+      "E-AI-SELF-003-2"
+    ],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [
+      {
+        "evidence_id": "E-AI-SELF-003-1",
+        "first_pass_relation": "ENTAILS",
+        "adversarial_relation": "PARTIAL",
+        "adversarial_reviewer_id": "claude-haiku-4-5-20251001",
+        "strongest_counter_reading": "The evidence shows improvement on average across 7 tested tasks, but does not demonstrate improvement is universal or inevitable. The claim states self-checking 'always' (总能) produces better results; the evidence shows it did so in these 7 specific tasks with average gains, leaving open the possibility of tasks where improvement is negligible or variable. Additionally, Self-Refine involves structured feedback generation, not mere self-checking."
+      }
+    ],
+    "falsifiers": [
+      {
+        "evidence_id": "E-AI-SELF-003-1",
+        "what_would_falsify": "Run Self-Refine on additional diverse tasks and find at least one where performance does not improve compared to one-step generation, or show that improvement rates vary substantially by task type."
+      },
+      {
+        "evidence_id": "E-AI-SELF-003-2",
+        "what_would_falsify": "Demonstrate that in all intrinsic self-correction trials conducted in that research, performance never degraded and always improved, contradicting the reported finding of performance degradation."
+      }
+    ],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "PASS",
+    "code": "LOCATOR_SUPPORTS_DECLARED_ROLE",
+    "policy": "required",
+    "by_evidence": {
+      "E-AI-SELF-003-1": {
+        "locator_status": "CLASSIFIED",
+        "locator_code": "LOCATOR_CLASSIFIED",
+        "source_kind": "research_paper",
+        "declared_class": "SCHOLARLY",
+        "permits": [
+          "SCHOLARLY"
+        ],
+        "rule": "preprint server",
+        "verdict": "CONSISTENT"
+      },
+      "E-AI-SELF-003-2": {
+        "locator_status": "CLASSIFIED",
+        "locator_code": "LOCATOR_CLASSIFIED",
+        "source_kind": "research_paper",
+        "declared_class": "SCHOLARLY",
+        "permits": [
+          "SCHOLARLY"
+        ],
+        "rule": "preprint server",
+        "verdict": "CONSISTENT"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-AI-SELF-003-1",
+      "E-AI-SELF-003-2"
+    ],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-AI-SELF-003-1": "APPROPRIATE",
+      "E-AI-SELF-003-2": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-AI-SELF-003-1",
+      "E-AI-SELF-003-2"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "HOLD",
+      "code": "SEMANTIC_SUPPORT_UNRESOLVED",
+      "missing": []
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 2,
+    "source_count": 2,
+    "independent_root_count": 2,
+    "independent_provenance_roots": [
+      "PAPER-NO-SELF-CORRECT",
+      "PAPER-SELF-REFINE"
+    ],
+    "roots_by_source": {
+      "PAPER-NO-SELF-CORRECT": [
+        "PAPER-NO-SELF-CORRECT"
+      ],
+      "PAPER-SELF-REFINE": [
+        "PAPER-SELF-REFINE"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "PAPER-NO-SELF-CORRECT": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-AI-SELF-003-2"
+        ]
+      },
+      "PAPER-SELF-REFINE": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-AI-SELF-003-1"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-AI-SELF-003-1",
+      "source_id": "PAPER-SELF-REFINE",
+      "source_kind": "research_paper",
+      "quote": {
+        "text": "improving by ~20% absolute on average in task performance",
+        "start": 692,
+        "end": 749
+      },
+      "date": "2023-03-30",
+      "version": null,
+      "scope": {}
+    },
+    {
+      "evidence_id": "E-AI-SELF-003-2",
+      "source_id": "PAPER-NO-SELF-CORRECT",
+      "source_kind": "research_paper",
+      "quote": {
+        "text": "their performance even degrades after self-correction",
+        "start": 358,
+        "end": 411
+      },
+      "date": "2023-10-03",
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [
+    "semantic:SEMANTIC_CONFLICT",
+    "adversarial:REVIEWER_DISAGREEMENT",
+    "adversarial:disagreement:E-AI-SELF-003-1:ENTAILS->PARTIAL",
+    "protocol:FACTUAL_RECORD:SEMANTIC_SUPPORT_UNRESOLVED"
+  ],
+  "decisive_reasons": [
+    "APPROPRIATE_EVIDENCE_CONFLICT"
+  ],
+  "admission": "HOLD"
+}

@@ -1,0 +1,72 @@
+{
+  "claim_ir": {
+    "claim_id": "AI-RAG-001",
+    "source_text": "接上检索增强就能消除大模型的幻觉。",
+    "operator": "FACT",
+    "subject": "接上检索增强",
+    "predicate": "就能消除",
+    "object": "大模型的幻觉",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "接上检索增强",
+        "start": 0,
+        "end": 6
+      },
+      "predicate": {
+        "text": "就能消除",
+        "start": 6,
+        "end": 10
+      },
+      "object": {
+        "text": "大模型的幻觉",
+        "start": 10,
+        "end": 16
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-AI-RAG-001-1",
+      "source_id": "PAPER-CLASHEVAL",
+      "source_kind": "research_paper",
+      "locator": "https://arxiv.org/abs/2404.10198",
+      "source_text": "Retrieval augmented generation (RAG) is frequently used to mitigate hallucinations and provide up-to-date knowledge for large language models (LLMs). However, given that document retrieval is an imprecise task and sometimes results in erroneous or even harmful content being presented in context, this raises the question of how LLMs handle retrieved information. We benchmark six top-performing LLMs, including GPT-4o, on this dataset and find that LLMs are susceptible to adopting incorrect retrieved content, overriding their own correct prior knowledge over 60% of the time.",
+      "quote": {
+        "text": "LLMs are susceptible to adopting incorrect retrieved content, overriding their own correct prior knowledge over 60% of the time",
+        "start": 450,
+        "end": 577
+      },
+      "date": "2024-04-16",
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "AI-RAG-001",
+      "evidence_id": "E-AI-RAG-001-1",
+      "relation": "CONTRADICTS",
+      "reviewer_id": "claude-opus-5",
+      "claim_fragment": "接上检索增强就能消除大模型的幻觉",
+      "evidence_fragment": "LLMs are susceptible to adopting incorrect retrieved content, overriding their own correct prior knowledge over 60% of the time",
+      "missing_bridge": ""
+    }
+  ],
+  "adversarial_reviews": [
+    {
+      "claim_id": "AI-RAG-001",
+      "evidence_id": "E-AI-RAG-001-1",
+      "relation": "CONTRADICTS",
+      "reviewer_id": "claude-haiku-4-5-20251001",
+      "independence": "SAME_FAMILY",
+      "evidence_fragment": "LLMs are susceptible to adopting incorrect retrieved content, overriding their own correct prior knowledge over 60% of the time.",
+      "strongest_counter_reading": "The evidence opens by noting RAG is 'frequently used to mitigate hallucinations,' which could be read as supporting the idea that RAG helps with hallucinations generally. One might argue the evidence only describes a specific failure mode rather than refuting RAG's overall effectiveness.",
+      "what_would_falsify": "Empirical results showing that RAG systems with high-quality retrieval (e.g., >95% retrieval accuracy) achieve near-zero hallucination rates compared to baseline LLMs, or longitudinal data from production RAG systems demonstrating hallucination elimination in practice."
+    }
+  ],
+  "adversarial_policy": "required"
+}

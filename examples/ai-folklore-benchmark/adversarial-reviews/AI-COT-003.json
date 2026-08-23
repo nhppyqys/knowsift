@@ -1,0 +1,12 @@
+[
+  {
+    "claim_id": "AI-COT-003",
+    "evidence_id": "E-AI-COT-003-1",
+    "relation": "ENTAILS",
+    "reviewer_id": "claude-haiku-4-5-20251001",
+    "independence": "SAME_FAMILY",
+    "evidence_fragment": "CoT gives strong performance benefits primarily on tasks involving math or logic, with much smaller gains on other types of tasks",
+    "strongest_counter_reading": "The evidence distinguishes 'strong' from 'much smaller' gains but does not quantify the absolute magnitude of improvement. One could argue that 'much smaller gains' still represent meaningful improvements across all task types, making CoT broadly beneficial rather than narrowly task-specific—the categorization of benefit magnitude might be misleading rather than predictive of actual utility.",
+    "what_would_falsify": "A systematic evaluation showing comparable percentage-point improvements in accuracy or performance from CoT across diverse non-math, non-logic tasks (e.g., summarization, translation, open-ended question answering, sentiment analysis) at the same scale as the improvements observed on math and logic tasks."
+  }
+]

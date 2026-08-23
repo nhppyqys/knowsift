@@ -1,0 +1,233 @@
+{
+  "certificate_version": "4.3.0",
+  "input_digest": "0e4d9bdaf84e45e23117aec18529570848efe6350154f58afbcef89e3bab0cdf",
+  "claim_id": "AI-CACHE-002",
+  "claim_text": "命中缓存的读取按基础输入价格的十分之一计费。",
+  "canonical_claim": "命中缓存的读取按基础输入价格的十分之一计费。",
+  "normalized_ir": {
+    "claim_id": "AI-CACHE-002",
+    "source_text": "命中缓存的读取按基础输入价格的十分之一计费。",
+    "operator": "FACT",
+    "subject": "命中缓存的读取",
+    "predicate": "按基础输入价格的十分之一",
+    "object": "计费",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "命中缓存的读取",
+        "start": 0,
+        "end": 7
+      },
+      "predicate": {
+        "text": "按基础输入价格的十分之一",
+        "start": 7,
+        "end": 19
+      },
+      "object": {
+        "text": "计费",
+        "start": 19,
+        "end": 21
+      }
+    }
+  },
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-AI-CACHE-002-1"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "PASS",
+    "code": "INDEPENDENT_REVIEW_AGREES",
+    "policy": "required",
+    "reviewer_ids": [
+      "claude-haiku-4-5-20251001"
+    ],
+    "independence": {
+      "E-AI-CACHE-002-1": {
+        "declared": "SAME_FAMILY",
+        "verifiable_ceiling": "SAME_FAMILY"
+      }
+    },
+    "weakest_independence": "SAME_FAMILY",
+    "min_independence": "SAME_MODEL",
+    "reviewed_evidence_ids": [
+      "E-AI-CACHE-002-1"
+    ],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [],
+    "falsifiers": [
+      {
+        "evidence_id": "E-AI-CACHE-002-1",
+        "what_would_falsify": "Check the current Claude API pricing page (api.anthropic.com/pricing or the official documentation URL cited in the source) to verify whether cache read tokens are charged at a different multiplier than 0.1x, or whether the multiplier varies by platform, model, or cache duration."
+      }
+    ],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "PASS",
+    "code": "LOCATOR_SUPPORTS_DECLARED_ROLE",
+    "policy": "required",
+    "by_evidence": {
+      "E-AI-CACHE-002-1": {
+        "locator_status": "CLASSIFIED",
+        "locator_code": "LOCATOR_CLASSIFIED",
+        "source_kind": "official_documentation",
+        "declared_class": "OFFICIAL",
+        "permits": [
+          "GUIDANCE",
+          "OFFICIAL"
+        ],
+        "rule": "Claude platform docs",
+        "verdict": "CONSISTENT"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-AI-CACHE-002-1"
+    ],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-AI-CACHE-002-1": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-AI-CACHE-002-1"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-AI-CACHE-002-1"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS",
+      "code": "NO_EXPLICIT_CLAIM_SCOPE",
+      "missing": []
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "DOC-PROMPT-CACHING"
+    ],
+    "roots_by_source": {
+      "DOC-PROMPT-CACHING": [
+        "DOC-PROMPT-CACHING"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "DOC-PROMPT-CACHING": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-AI-CACHE-002-1"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-AI-CACHE-002-1",
+      "source_id": "DOC-PROMPT-CACHING",
+      "source_kind": "official_documentation",
+      "quote": {
+        "text": "Cache read tokens are 0.1 times the base input tokens price",
+        "start": 544,
+        "end": 603
+      },
+      "date": null,
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [],
+  "supported_components": [],
+  "unresolved": [],
+  "decisive_reasons": [
+    "ALL_GATES_PASSED"
+  ],
+  "admission": "ADMIT"
+}

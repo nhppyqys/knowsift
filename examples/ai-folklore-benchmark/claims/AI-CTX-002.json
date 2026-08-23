@@ -1,0 +1,72 @@
+{
+  "claim_ir": {
+    "claim_id": "AI-CTX-002",
+    "source_text": "相关信息出现在上下文开头或结尾时模型表现最好，出现在中间时明显下降。",
+    "operator": "FACT",
+    "subject": "相关信息出现在上下文开头或结尾时模型表现最好",
+    "predicate": "出现在中间时",
+    "object": "明显下降",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "相关信息出现在上下文开头或结尾时模型表现最好",
+        "start": 0,
+        "end": 22
+      },
+      "predicate": {
+        "text": "出现在中间时",
+        "start": 23,
+        "end": 29
+      },
+      "object": {
+        "text": "明显下降",
+        "start": 29,
+        "end": 33
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-AI-CTX-002-1",
+      "source_id": "PAPER-LOST-MIDDLE",
+      "source_kind": "research_paper",
+      "locator": "https://arxiv.org/abs/2307.03172",
+      "source_text": "We analyze the performance of language models on two tasks that require identifying relevant information in their input contexts: multi-document question answering and key-value retrieval. We find that performance can degrade significantly when changing the position of relevant information, indicating that current language models do not robustly make use of information in long input contexts. In particular, we observe that performance is often highest when relevant information occurs at the beginning or end of the input context, and significantly degrades when models must access relevant information in the middle of long contexts, even for explicitly long-context models.",
+      "quote": {
+        "text": "performance is often highest when relevant information occurs at the beginning or end of the input context, and significantly degrades when models must access relevant information in the middle of long contexts",
+        "start": 427,
+        "end": 637
+      },
+      "date": "2023-07-06",
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "AI-CTX-002",
+      "evidence_id": "E-AI-CTX-002-1",
+      "relation": "ENTAILS",
+      "reviewer_id": "claude-opus-5",
+      "claim_fragment": "相关信息出现在上下文开头或结尾时模型表现最好，出现在中间时明显下降",
+      "evidence_fragment": "performance is often highest when relevant information occurs at the beginning or end of the input context, and significantly degrades when models must access relevant information in the middle of long contexts",
+      "missing_bridge": ""
+    }
+  ],
+  "adversarial_reviews": [
+    {
+      "claim_id": "AI-CTX-002",
+      "evidence_id": "E-AI-CTX-002-1",
+      "relation": "ENTAILS",
+      "reviewer_id": "claude-haiku-4-5-20251001",
+      "independence": "SAME_FAMILY",
+      "evidence_fragment": "In particular, we observe that performance is often highest when relevant information occurs at the beginning or end of the input context, and significantly degrades when models must access relevant information in the middle of long contexts, even for explicitly long-context models.",
+      "strongest_counter_reading": "The evidence uses qualified language ('often highest', 'significantly degrades') that could allow for exceptions or smaller effect sizes than the claim suggests. Additionally, the finding is limited to two specific task types (multi-document QA and key-value retrieval), so one could argue the generalizability to all model behaviors is not established by this excerpt alone.",
+      "what_would_falsify": "Reviewing the full paper to find quantitative results showing that the position effect is negligible, inconsistent across tasks, or that middle positions sometimes outperform beginning/end positions; or finding that the paper's actual data tables contradict the summary statement in this excerpt."
+    }
+  ],
+  "adversarial_policy": "required"
+}

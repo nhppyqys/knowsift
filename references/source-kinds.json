@@ -208,6 +208,30 @@
       "label": "Anthropic docs"
     },
     {
+      "host_suffix": "docs.anthropic.com",
+      "permits": [
+        "OFFICIAL",
+        "GUIDANCE"
+      ],
+      "label": "Anthropic docs"
+    },
+    {
+      "host_suffix": "code.claude.com",
+      "permits": [
+        "OFFICIAL",
+        "GUIDANCE"
+      ],
+      "label": "Claude Code docs"
+    },
+    {
+      "host_suffix": "platform.claude.com",
+      "permits": [
+        "OFFICIAL",
+        "GUIDANCE"
+      ],
+      "label": "Claude platform docs"
+    },
+    {
       "host_suffix": "platform.openai.com",
       "permits": [
         "OFFICIAL",

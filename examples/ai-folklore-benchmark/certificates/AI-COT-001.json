@@ -1,0 +1,224 @@
+{
+  "certificate_version": "4.3.0",
+  "input_digest": "9f8df671227caebaeac642f7cd9c1e90a21995f2264145f6c8b552b11052027d",
+  "claim_id": "AI-COT-001",
+  "claim_text": "对任意大模型，加一句「Let's think step by step」都能显著提升算术与符号推理的零样本准确率。",
+  "canonical_claim": null,
+  "normalized_ir": null,
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {
+        "version": "text-davinci-002 与 540B PaLM，2022 年测得"
+      }
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-AI-COT-001-1"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "HOLD",
+    "code": "REVIEWER_DISAGREEMENT",
+    "policy": "required",
+    "reviewer_ids": [
+      "claude-haiku-4-5-20251001"
+    ],
+    "independence": {
+      "E-AI-COT-001-1": {
+        "declared": "SAME_FAMILY",
+        "verifiable_ceiling": "SAME_FAMILY"
+      }
+    },
+    "weakest_independence": "SAME_FAMILY",
+    "min_independence": "SAME_MODEL",
+    "reviewed_evidence_ids": [
+      "E-AI-COT-001-1"
+    ],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [
+      {
+        "evidence_id": "E-AI-COT-001-1",
+        "first_pass_relation": "ENTAILS",
+        "adversarial_relation": "PARTIAL",
+        "adversarial_reviewer_id": "claude-haiku-4-5-20251001",
+        "strongest_counter_reading": "The evidence tests only two specific models (InstructGPT/text-davinci-002 and 540B PaLM), demonstrating the technique works for these instances. The claim asserts the effect holds for 'any' large language model—a universal statement that requires broader evidence across model families, architectures, sizes, and training approaches to fully support. The evidence shows the effect exists but does not establish it is universal."
+      }
+    ],
+    "falsifiers": [
+      {
+        "evidence_id": "E-AI-COT-001-1",
+        "what_would_falsify": "Test the 'Let's think step by step' prompt on a diverse set of large language models (different architectures, sizes, training objectives) and find that a significant proportion fail to show improvement on arithmetic and symbolic reasoning tasks, or show negligible or inconsistent improvements."
+      }
+    ],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "PASS",
+    "code": "LOCATOR_SUPPORTS_DECLARED_ROLE",
+    "policy": "required",
+    "by_evidence": {
+      "E-AI-COT-001-1": {
+        "locator_status": "CLASSIFIED",
+        "locator_code": "LOCATOR_CLASSIFIED",
+        "source_kind": "research_paper",
+        "declared_class": "SCHOLARLY",
+        "permits": [
+          "SCHOLARLY"
+        ],
+        "rule": "preprint server",
+        "verdict": "CONSISTENT"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-AI-COT-001-1"
+    ],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-AI-COT-001-1": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-AI-COT-001-1"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-AI-COT-001-1"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS_SCOPED",
+      "code": "CLAIM_SCOPE_NARROWED_TO_VERIFIED_SCOPE",
+      "missing": [],
+      "details": {
+        "mismatched_fields": [
+          "version"
+        ]
+      }
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "PAPER-COT-ZEROSHOT"
+    ],
+    "roots_by_source": {
+      "PAPER-COT-ZEROSHOT": [
+        "PAPER-COT-ZEROSHOT"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "PAPER-COT-ZEROSHOT": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-AI-COT-001-1"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-AI-COT-001-1",
+      "source_id": "PAPER-COT-ZEROSHOT",
+      "source_kind": "research_paper",
+      "quote": {
+        "text": "significantly outperforms zero-shot LLM performances on diverse benchmark reasoning tasks",
+        "start": 292,
+        "end": 381
+      },
+      "date": "2022-05-24",
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [
+    "ALIGN_TO_VERIFIED_SCOPE"
+  ],
+  "supported_components": [],
+  "unresolved": [
+    "adversarial:REVIEWER_DISAGREEMENT",
+    "adversarial:disagreement:E-AI-COT-001-1:ENTAILS->PARTIAL"
+  ],
+  "decisive_reasons": [
+    "ADVERSARIAL_GATE:REVIEWER_DISAGREEMENT"
+  ],
+  "admission": "HOLD"
+}

@@ -1,0 +1,224 @@
+{
+  "certificate_version": "4.3.0",
+  "input_digest": "c1a5ceb6de13c0a72b0bd034ccbff731382488605b01a1901585d5913c7f7c7c",
+  "claim_id": "AI-SELF-001",
+  "claim_text": "对任意模型，让它对自己的输出给出反馈并迭代修改，产出都会优于一次成文。",
+  "canonical_claim": null,
+  "normalized_ir": null,
+  "protocols_required": [
+    "FACTUAL_RECORD",
+    "SCOPE_BOUNDARY"
+  ],
+  "machine_checks": {
+    "payload": {
+      "status": "PASS",
+      "errors": []
+    },
+    "claim_ir": {
+      "status": "PASS",
+      "errors": []
+    },
+    "evidence": {
+      "status": "PASS",
+      "errors": []
+    },
+    "verified_scope": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {
+        "version": "GPT-3.5、ChatGPT 与 GPT-4，7 类任务，2023 年测得"
+      }
+    },
+    "verified_conditions": {
+      "status": "PASS",
+      "errors": [],
+      "plain": {}
+    },
+    "verified_exceptions": {
+      "status": "PASS",
+      "errors": []
+    },
+    "supported_components": {
+      "status": "PASS",
+      "errors": []
+    },
+    "routing": {
+      "status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_summary": {
+    "status": "PASS",
+    "code": "ENTAILMENT_RECORDED",
+    "counts": {
+      "AMBIGUOUS": 0,
+      "CONTRADICTS": 0,
+      "ENTAILS": 1,
+      "PARTIAL": 0,
+      "UNRELATED": 0
+    },
+    "entailing_evidence_ids": [
+      "E-AI-SELF-001-1"
+    ],
+    "contradicting_evidence_ids": [],
+    "partial_or_ambiguous_evidence_ids": [],
+    "errors": []
+  },
+  "adversarial_summary": {
+    "status": "HOLD",
+    "code": "REVIEWER_DISAGREEMENT",
+    "policy": "required",
+    "reviewer_ids": [
+      "claude-haiku-4-5-20251001"
+    ],
+    "independence": {
+      "E-AI-SELF-001-1": {
+        "declared": "SAME_FAMILY",
+        "verifiable_ceiling": "SAME_FAMILY"
+      }
+    },
+    "weakest_independence": "SAME_FAMILY",
+    "min_independence": "SAME_MODEL",
+    "reviewed_evidence_ids": [
+      "E-AI-SELF-001-1"
+    ],
+    "unreviewed_evidence_ids": [],
+    "disagreements": [
+      {
+        "evidence_id": "E-AI-SELF-001-1",
+        "first_pass_relation": "ENTAILS",
+        "adversarial_relation": "PARTIAL",
+        "adversarial_reviewer_id": "claude-haiku-4-5-20251001",
+        "strongest_counter_reading": "The evidence tests only three specific OpenAI models (GPT-3.5, ChatGPT, GPT-4) on seven tasks. It does not test the claim's universal quantifier 'for any model'—smaller models, different architectures, or non-OpenAI LLMs could behave differently. The evidence supports the mechanism works for state-of-the-art models on diverse tasks, but cannot establish whether it holds universally across all possible models."
+      }
+    ],
+    "falsifiers": [
+      {
+        "evidence_id": "E-AI-SELF-001-1",
+        "what_would_falsify": "Testing self-feedback iteration on a range of model families and sizes (e.g., open-source smaller models, models from other providers, instruction-tuned vs. base models) and finding measurable cases where iterative self-refinement fails to improve or degrades output quality."
+      }
+    ],
+    "errors": []
+  },
+  "locator_authority": {
+    "status": "PASS",
+    "code": "LOCATOR_SUPPORTS_DECLARED_ROLE",
+    "policy": "required",
+    "by_evidence": {
+      "E-AI-SELF-001-1": {
+        "locator_status": "CLASSIFIED",
+        "locator_code": "LOCATOR_CLASSIFIED",
+        "source_kind": "research_paper",
+        "declared_class": "SCHOLARLY",
+        "permits": [
+          "SCHOLARLY"
+        ],
+        "rule": "preprint server",
+        "verdict": "CONSISTENT"
+      }
+    },
+    "violations": [],
+    "unverifiable_evidence_ids": [],
+    "errors": []
+  },
+  "snapshot_integrity": {
+    "status": "SKIPPED",
+    "code": "NO_SNAPSHOT_SUPPLIED",
+    "policy": "optional",
+    "by_evidence": {},
+    "unsnapshotted_evidence_ids": [
+      "E-AI-SELF-001-1"
+    ],
+    "errors": []
+  },
+  "source_authority": {
+    "status": "PASS",
+    "code": "APPROPRIATE_SOURCE_PRESENT",
+    "domain": null,
+    "claim_class": null,
+    "by_evidence": {
+      "E-AI-SELF-001-1": "APPROPRIATE"
+    },
+    "appropriate_evidence_ids": [
+      "E-AI-SELF-001-1"
+    ],
+    "insufficient_evidence_ids": [],
+    "unclassified_evidence_ids": []
+  },
+  "protocol_results": {
+    "FACTUAL_RECORD": {
+      "status": "PASS",
+      "code": "TRACEABLE_SEMANTIC_SUPPORT",
+      "missing": [],
+      "details": {
+        "evidence_ids": [
+          "E-AI-SELF-001-1"
+        ]
+      }
+    },
+    "SCOPE_BOUNDARY": {
+      "status": "PASS_SCOPED",
+      "code": "CLAIM_SCOPE_NARROWED_TO_VERIFIED_SCOPE",
+      "missing": [],
+      "details": {
+        "mismatched_fields": [
+          "version"
+        ]
+      }
+    }
+  },
+  "provenance": {
+    "status": "PASS",
+    "code": "PROVENANCE_ACYCLIC",
+    "evidence_count": 1,
+    "source_count": 1,
+    "independent_root_count": 1,
+    "independent_provenance_roots": [
+      "PAPER-SELF-REFINE"
+    ],
+    "roots_by_source": {
+      "PAPER-SELF-REFINE": [
+        "PAPER-SELF-REFINE"
+      ]
+    },
+    "shared_datasets": {},
+    "cycles": [],
+    "nodes": {
+      "PAPER-SELF-REFINE": {
+        "derived_from": [],
+        "cites": [],
+        "dataset_ids": [],
+        "evidence_ids": [
+          "E-AI-SELF-001-1"
+        ]
+      }
+    }
+  },
+  "evidence_references": [
+    {
+      "evidence_id": "E-AI-SELF-001-1",
+      "source_id": "PAPER-SELF-REFINE",
+      "source_kind": "research_paper",
+      "quote": {
+        "text": "outputs generated with Self-Refine are preferred by humans and automatic metrics over those generated with the same LLM using conventional one-step generation",
+        "start": 532,
+        "end": 690
+      },
+      "date": "2023-03-30",
+      "version": null,
+      "scope": {}
+    }
+  ],
+  "transformations": [
+    "ALIGN_TO_VERIFIED_SCOPE"
+  ],
+  "supported_components": [],
+  "unresolved": [
+    "adversarial:REVIEWER_DISAGREEMENT",
+    "adversarial:disagreement:E-AI-SELF-001-1:ENTAILS->PARTIAL"
+  ],
+  "decisive_reasons": [
+    "ADVERSARIAL_GATE:REVIEWER_DISAGREEMENT"
+  ],
+  "admission": "HOLD"
+}

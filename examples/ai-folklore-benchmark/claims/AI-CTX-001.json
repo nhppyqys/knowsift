@@ -1,0 +1,72 @@
+{
+  "claim_ir": {
+    "claim_id": "AI-CTX-001",
+    "source_text": "大模型能够稳定利用超长上下文中任意位置的信息。",
+    "operator": "FACT",
+    "subject": "大模型",
+    "predicate": "能够稳定利用",
+    "object": "超长上下文中任意位置的信息",
+    "polarity": "POSITIVE",
+    "quantifier": "UNSPECIFIED",
+    "modality": "ASSERTED",
+    "scope": {},
+    "anchors": {
+      "subject": {
+        "text": "大模型",
+        "start": 0,
+        "end": 3
+      },
+      "predicate": {
+        "text": "能够稳定利用",
+        "start": 3,
+        "end": 9
+      },
+      "object": {
+        "text": "超长上下文中任意位置的信息",
+        "start": 9,
+        "end": 22
+      }
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "E-AI-CTX-001-1",
+      "source_id": "PAPER-LOST-MIDDLE",
+      "source_kind": "research_paper",
+      "locator": "https://arxiv.org/abs/2307.03172",
+      "source_text": "We analyze the performance of language models on two tasks that require identifying relevant information in their input contexts: multi-document question answering and key-value retrieval. We find that performance can degrade significantly when changing the position of relevant information, indicating that current language models do not robustly make use of information in long input contexts. In particular, we observe that performance is often highest when relevant information occurs at the beginning or end of the input context, and significantly degrades when models must access relevant information in the middle of long contexts, even for explicitly long-context models.",
+      "quote": {
+        "text": "current language models do not robustly make use of information in long input contexts",
+        "start": 308,
+        "end": 394
+      },
+      "date": "2023-07-06",
+      "derived_from": [],
+      "cites": []
+    }
+  ],
+  "semantic_reviews": [
+    {
+      "claim_id": "AI-CTX-001",
+      "evidence_id": "E-AI-CTX-001-1",
+      "relation": "CONTRADICTS",
+      "reviewer_id": "claude-opus-5",
+      "claim_fragment": "大模型能够稳定利用超长上下文中任意位置的信息",
+      "evidence_fragment": "current language models do not robustly make use of information in long input contexts",
+      "missing_bridge": ""
+    }
+  ],
+  "adversarial_reviews": [
+    {
+      "claim_id": "AI-CTX-001",
+      "evidence_id": "E-AI-CTX-001-1",
+      "relation": "CONTRADICTS",
+      "reviewer_id": "claude-haiku-4-5-20251001",
+      "independence": "SAME_FAMILY",
+      "evidence_fragment": "We find that performance can degrade significantly when changing the position of relevant information, indicating that current language models do not robustly make use of information in long input contexts.",
+      "strongest_counter_reading": "The evidence describes current empirical limitations in tested models but does not prove fundamental impossibility. Future architectures, training approaches, or models not included in this study might overcome these position-dependent performance gaps. The evidence shows what existing models struggle with, not what large models are inherently incapable of achieving.",
+      "what_would_falsify": "Benchmark results demonstrating that a state-of-the-art language model achieves within 5% performance variance when retrieving information from beginning, middle, and end positions across long contexts (100K+ tokens) on standardized multi-document QA and key-value retrieval tasks."
+    }
+  ],
+  "adversarial_policy": "required"
+}

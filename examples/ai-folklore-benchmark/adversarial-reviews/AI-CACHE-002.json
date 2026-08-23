@@ -1,0 +1,12 @@
+[
+  {
+    "claim_id": "AI-CACHE-002",
+    "evidence_id": "E-AI-CACHE-002-1",
+    "relation": "ENTAILS",
+    "reviewer_id": "claude-haiku-4-5-20251001",
+    "independence": "SAME_FAMILY",
+    "evidence_fragment": "Cache read tokens are 0.1 times the base input tokens price.",
+    "strongest_counter_reading": "One could argue the evidence applies only to specific platforms (Claude API, Claude Platform on AWS, Google Cloud, Microsoft Foundry) and the claim might be intended to apply more broadly, or that translation differences between '基础输入价格' and 'base input tokens price' introduce ambiguity about what constitutes the base price.",
+    "what_would_falsify": "Check the current Claude API pricing page (api.anthropic.com/pricing or the official documentation URL cited in the source) to verify whether cache read tokens are charged at a different multiplier than 0.1x, or whether the multiplier varies by platform, model, or cache duration."
+  }
+]
